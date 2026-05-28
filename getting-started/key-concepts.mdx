@@ -1,0 +1,144 @@
+---
+title: "Key Concepts"
+description: "Understand the UMS data model — the account hierarchy, core entities, invoice and brokerage workflows, utility types, and common terminology."
+---
+
+Understanding the UMS data model helps you get the most out of the platform.
+
+## The hierarchy
+
+UMS organises energy data in a clear hierarchy:
+
+```text
+Organisation (your company)
+└── Account (customer / business entity)
+    ├── Site (physical location)
+    │   └── Connection (utility meter — NMI, MIRN)
+    │       ├── Meter → Register → Reads (consumption data)
+    │       └── Retail Account (retailer's account reference)
+    ├── Agreement (energy contract with a supplier)
+    │   ├── Agreement Connections (which meters are covered)
+    │   └── Tariff Group → Tariff → Tariff Rates
+    ├── Invoice (energy bill)
+    │   └── Line Items (individual charges)
+    └── Contact (people associated with the account)
+```
+
+## Core entities
+
+### Account
+
+A business or entity you manage energy for. Accounts can be hierarchical — a parent company with subsidiary child accounts.
+
+### Site
+
+A physical location where energy is consumed. Each site has an address and can contain one or more connections. Sites appear on the dashboard map.
+
+### Connection
+
+An individual utility meter point. For electricity, this is identified by a **NMI** (National Meter Identifier). For gas, it is a **MIRN** (Meter Installation Reference Number). Each connection is linked to a site and can have multiple meters and registers.
+
+### Agreement
+
+An energy contract between an account and a supplier. Agreements have a type (electricity retail, gas retail, metering), start and end dates, and cover specific connections. They are the foundation for tariff rates and brokerage calculations.
+
+### Supplier
+
+An energy retailer or metering provider. Suppliers are linked to agreements and invoices. Common types are **RETAIL** (energy retailer) and **METER** (metering provider).
+
+### Retail Account
+
+The account reference that an energy retailer assigns to a connection. Retail accounts are the key link between your internal structure and the retailer's billing system — they are how incoming invoices get matched to the correct account and connection.
+
+### Invoice
+
+An energy bill from a supplier. Invoices contain line items (individual charges), are linked to connections via retail accounts, and can be processed automatically from email or uploaded manually.
+
+### Tariff
+
+The rate structure that defines how energy is priced. Tariff groups contain tariffs (date-scoped) which contain tariff rates (individual charge components like peak usage, off-peak usage, supply charge).
+
+## Workflows
+
+### Invoice processing pipeline
+
+```text
+Email arrives → Inbox → UtiliRead (OCR) → Invoice created → Validation → Review
+```
+
+<Steps>
+  <Step title="Emails arrive in the Inbox">
+    Emails from energy retailers arrive in the **Inbox**.
+  </Step>
+  <Step title="UtiliRead extracts the data">
+    **UtiliRead** extracts data from PDF attachments using OCR.
+  </Step>
+  <Step title="An Invoice is created">
+    An **Invoice** record is created with line items.
+  </Step>
+  <Step title="Validation runs">
+    **Validation** checks the invoice against tariff rates and expected data.
+  </Step>
+  <Step title="Flagged invoices go to Review">
+    Flagged invoices appear in **Review Items** for manual attention.
+  </Step>
+</Steps>
+
+### Brokerage pipeline
+
+```text
+Agreement → Brokerage Record → Calculation → Revenue
+```
+
+<Steps>
+  <Step title="Brokerage Records are linked">
+    **Brokerage Records** are linked to agreements with commission rates.
+  </Step>
+  <Step title="Calculations run">
+    **Calculations** process records against tariff rates and consumption data.
+  </Step>
+  <Step title="Revenue is calculated">
+    **Revenue** records show the calculated commission per connection.
+  </Step>
+</Steps>
+
+### Validation pipeline
+
+```text
+Invoice → Validation Rules → Pass / Fail / Review → Gap Detection
+```
+
+<Steps>
+  <Step title="Invoices are validated">
+    Invoices are validated against tariff rates, connection data, and billing patterns.
+  </Step>
+  <Step title="Results are categorised">
+    Results are categorised as PASSED, FAILED, or FOR_REVIEW.
+  </Step>
+  <Step title="Review Items consolidate issues">
+    **Review Items** consolidate all issues for manual attention.
+  </Step>
+  <Step title="Gap Detection finds missing invoices">
+    **Gap Detection** identifies missing invoices across your portfolio.
+  </Step>
+</Steps>
+
+## Utility types
+
+| Type            | Identifier | Unit | Description                         |
+| --------------- | ---------- | ---- | ----------------------------------- |
+| **Electricity** | NMI        | kWh  | National Meter Identifier           |
+| **Natural Gas** | MIRN       | MJ   | Meter Installation Reference Number |
+| **Water**       | Meter ID   | kL   | Water meter reference               |
+
+## Common terminology
+
+| Term     | Meaning                                                                                       |
+| -------- | -------------------------------------------------------------------------------------------- |
+| **NMI**  | National Meter Identifier — unique ID for an electricity meter in Australia                  |
+| **MIRN** | Meter Installation Reference Number — unique ID for a gas meter                              |
+| **ABN**  | Australian Business Number                                                                   |
+| **ACN**  | Australian Company Number                                                                    |
+| **GST**  | Goods and Services Tax (10% in Australia)                                                    |
+| **TOU**  | Time of Use — tariff structure with different rates for peak, off-peak, and shoulder periods |
+| **OCR**  | Optical Character Recognition — used by UtiliRead to extract data from PDF invoices          |

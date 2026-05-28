@@ -1,0 +1,44 @@
+---
+title: "UtiliRead"
+description: "UtiliRead is the automated OCR system that reads uploaded invoice documents and extracts their data into UMS invoice records."
+---
+
+UtiliRead is UMS's automated OCR (Optical Character Recognition) system that reads and extracts data from uploaded invoice documents.
+
+## How UtiliRead works
+
+When you upload an invoice PDF, UtiliRead automatically runs through the following stages:
+
+<Steps>
+  <Step title="Read the document">
+    UtiliRead uses OCR to extract text and data from the document.
+  </Step>
+  <Step title="Identify the source">
+    It identifies the supplier, account, and connection from the invoice content.
+  </Step>
+  <Step title="Extract key fields">
+    It extracts key fields — invoice number, dates, amounts, consumption data, and line items.
+  </Step>
+  <Step title="Create the invoice">
+    It creates an invoice record with the extracted data.
+  </Step>
+</Steps>
+
+![UtiliRead OCR processing history shown in a data grid](/images/utiliread/utiliread-list.png)
+
+## OCR processing history
+
+The UtiliRead page shows a history of all OCR processing jobs:
+
+| Column           | Description                           |
+| ---------------- | ------------------------------------- |
+| **Status**       | Processing result — SUCCESS or FAILED |
+| **Date Started** | When the OCR job began                |
+| **Date Ended**   | When the OCR job completed            |
+| **User Added**   | The user who triggered the upload     |
+
+Click **See Details** on any job to view the extracted data, original document, and any processing errors.
+
+### Uploading invoices
+
+The banner at the top directs you to the **Invoice Imports** page for uploading new invoices. The UtiliRead page itself is focused on viewing OCR processing history and results.

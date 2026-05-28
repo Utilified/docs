@@ -1,0 +1,72 @@
+---
+title: "Running Brokerage Calculations"
+description: "Run brokerage calculations in UMS to determine commission revenue from your energy brokerage agreements."
+---
+
+Brokerage calculations determine commission revenue from your energy brokerage agreements.
+
+## Brokerage overview
+
+The Brokerage page has four tabs.
+
+### Records tab
+
+![Brokerage records list in UMS](/images/brokerage/brokerage-list.png)
+
+Brokerage records are linked to agreements and define the commission structure. Each record shows:
+
+- Agreement name and supplier
+- Status (OPEN or PENDING)
+- Contract period (start/end dates)
+
+### Calculations tab
+
+![Brokerage calculations tab in UMS](/images/brokerage/brokerage-calculations-tab.png)
+
+Shows all calculation runs with their status, date, and the number of records processed.
+
+### Revenue tab
+
+![Brokerage revenue tab in UMS](/images/brokerage/brokerage-revenue-tab.png)
+
+Displays the actual revenue generated from calculations, with amounts per connection and agreement.
+
+## Running a calculation
+
+To run a new brokerage calculation, navigate to the **Brokerage** page and click the **+** button to open the **Brokerage Calculation Wizard**.
+
+<Steps>
+  <Step title="Filter and select records">
+    - Use filters to narrow down brokerage records by agreement, supplier, status, rate type, or date range.
+    - Select the records you want to include in the calculation.
+    - Review the selected records summary showing counts and status breakdown.
+  </Step>
+  <Step title="Review and configure">
+    - Verify your selections.
+    - Set a description and end date for the calculation.
+    - Check for warnings — records missing tariff rates will block the calculation.
+    - Optionally enable **Generate Missing Revenue** to create revenue records for gaps.
+  </Step>
+  <Step title="Generate">
+    - Click **Generate** to start the calculation.
+    - The system processes selected records against tariff rates and consumption data.
+    - A progress indicator shows the calculation status.
+  </Step>
+  <Step title="Review results">
+    - View the generated revenue records.
+    - Edit individual revenue values if needed.
+    - Export results as CSV for further analysis.
+  </Step>
+</Steps>
+
+## Viewing a calculation
+
+Click **See Details** on any calculation to view its results:
+
+![Brokerage calculation detail page in UMS](/images/brokerage/brokerage-detail.png)
+
+The detail page shows:
+
+- **Overview** — Calculation status, dates, and total revenue
+- **Revenue** — Generated revenue records with amounts
+- **Brokerage Records** — The input records used for this calculation

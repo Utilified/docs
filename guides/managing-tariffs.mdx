@@ -1,0 +1,77 @@
+---
+title: "Managing Tariffs"
+description: "Create and manage tariff rate structures in UMS using the Tariff Creation Wizard for invoice validation and brokerage calculations."
+---
+
+Tariffs define the rate structures that energy retailers charge. They are essential for invoice validation and brokerage calculations.
+
+## Viewing tariffs
+
+Navigate to the **Tariffs** page from the sidebar.
+
+![Tariffs list page in UMS](/images/tariffs/tariffs-list.png)
+
+## Creating a tariff
+
+Tariffs are typically created from within an agreement's **Tariffs** tab.
+
+<Steps>
+  <Step title="Open the agreement detail page">
+    Navigate to an agreement's detail page.
+  </Step>
+  <Step title="Open the Tariffs tab">
+    Click the **Tariffs** tab.
+  </Step>
+  <Step title="Start the Tariff Creation Wizard">
+    Click **New Tariff** to open the Tariff Creation Wizard.
+  </Step>
+</Steps>
+
+### Tariff wizard steps
+
+<Steps>
+  <Step title="Template selection">
+    Choose whether to start from an existing tariff template or create from scratch.
+  </Step>
+  <Step title="Input method">
+    Select how you want to enter tariff rates:
+
+    - **Manual Entry** — Build the tariff structure interactively.
+    - **CSV Upload** — Import rates from a CSV file.
+  </Step>
+  <Step title="Tariff details">
+    Configure the tariff group:
+
+    - **Tariff Group Name** — Descriptive name for the tariff
+    - **Supplier** — The energy retailer (pre-filled from agreement)
+    - **Agreement** — The linked agreement (pre-filled)
+    - **Effective Dates** — When this tariff applies
+  </Step>
+  <Step title="Rate builder (manual) or CSV import">
+    **Manual mode:**
+
+    - Add time periods (for example, Peak, Off-Peak, Shoulder).
+    - For each period, add rates with:
+      - Description
+      - Rate value
+      - Unit (c/kWh, $/day, and so on)
+      - Applicable factors
+
+    **CSV mode:**
+
+    - Upload a CSV file with columns for period, description, rate, and unit.
+    - The system validates the CSV and shows any errors.
+  </Step>
+  <Step title="Review and submit">
+    Preview the complete tariff configuration and submit.
+  </Step>
+</Steps>
+
+## Key concepts
+
+| Term               | Description                                                     |
+| ------------------ | --------------------------------------------------------------- |
+| **Tariff Group**   | The overall rate plan linked to an agreement                    |
+| **Period**         | A time block within the tariff (for example, Peak, Off-Peak)    |
+| **Rate**           | An individual charge component (for example, usage rate, supply charge) |
+| **Effective Date** | When the tariff rates take effect                               |

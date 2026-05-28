@@ -1,0 +1,238 @@
+---
+title: "Invoice Validation & Review"
+description: "Validate invoices, review flagged items, detect billing gaps, and manage inbox emails through the UMS Invoice Validation module."
+---
+
+The Invoice Validation module provides a complete workflow for validating invoices, reviewing flagged items, detecting billing gaps, managing inbox emails, and excluding problematic entries.
+
+## Validation dashboard
+
+Navigate to **Validation** from the sidebar.
+
+![Invoice validation dashboard in UMS](/images/validation/validation-dashboard.png)
+
+The dashboard provides an at-a-glance view of:
+
+- **Summary Stats** — Total Validations, Passed, Failed, and For Review counts
+- **Overall Pass Rate** — Percentage of invoices passing all checks
+- **Common Errors** — Most frequent validation failures (last 30 days)
+- **Supplier Performance** — How suppliers compare on validation quality
+- **Invoice Quality** — Gap detection results (Total Gaps, Open, Acknowledged, Resolved)
+
+## Running validation on an invoice
+
+<Steps>
+  <Step title="Open an invoice">
+    Open an invoice detail page.
+  </Step>
+  <Step title="Start validation">
+    Click the **Validate** button in the header.
+  </Step>
+  <Step title="The engine runs its checks">
+    The validation engine checks:
+
+    - **Amount accuracy** — Do line item totals match the invoice total?
+    - **Date consistency** — Are billing periods correct and non-overlapping?
+    - **Connection matching** — Are charges linked to valid connections?
+    - **Rate verification** — Do rates match the expected tariff?
+    - **Duplicate detection** — Is this invoice a duplicate of an existing one?
+  </Step>
+  <Step title="Review the results">
+    Results appear in the invoice's **Validation** tab and the module's **Validation Results** tab.
+  </Step>
+</Steps>
+
+## Validation results
+
+![Validation results tab in UMS](/images/validation/validation-results-tab.png)
+
+Each row represents a validated invoice showing:
+
+- **Status** — PASSED, FAILED, or FOR_REVIEW
+- **Current Charges** and **Tax** amounts
+- **Confidence Score** — System confidence in the result (0-1 scale)
+- **Error Source** — What caused the failure (for example, TARIFF_MISMATCH, QUANTITY_CALCULATION)
+
+### Completing a review
+
+<Steps>
+  <Step title="Find items needing attention">
+    Find invoices with status **FOR_REVIEW** or **FAILED**.
+  </Step>
+  <Step title="Open the validation detail">
+    Click **See Details** to open the validation detail.
+  </Step>
+  <Step title="Review the variance breakdown">
+    Review the variance breakdown showing where charges diverge from expected tariff rates.
+  </Step>
+  <Step title="Check the AI analysis">
+    Check the **AI Analysis** section for automated insights and recommendations.
+  </Step>
+  <Step title="Take action">
+    - **Approve** — Mark as reviewed and accept the charges.
+    - **Reject** — Flag for further investigation.
+    - **Edit** — Open the source invoice to correct line items.
+  </Step>
+</Steps>
+
+## Review items
+
+The **Review Items** tab consolidates all issues across the validation pipeline.
+
+![Review items tab in UMS](/images/validation/review-items-tab.png)
+
+Each item shows:
+
+- **Issue Type** — VALIDATION_FAILURE, DATA_QUALITY, DUPLICATE_INVOICE, GAP, SUGGESTION
+- **Severity** — CRITICAL, HIGH, MEDIUM, LOW, INFO
+- **Status** — OPEN, ACKNOWLEDGED, IN_PROGRESS, RESOLVED, DISMISSED
+- **Title** — Human-readable summary of the issue
+- **Variance** — Dollar amount and percentage difference detected
+- **Recommendations** — Suggested actions to resolve
+
+### Working through review items
+
+<Steps>
+  <Step title="Filter by severity">
+    Filter by severity — start with CRITICAL and HIGH.
+  </Step>
+  <Step title="Open a review item">
+    Click into a review item for full details.
+  </Step>
+  <Step title="Review the description and recommendations">
+    Review the description and recommendations.
+  </Step>
+  <Step title="Take action">
+    - **Acknowledge** — You have seen it, but it needs further work.
+    - **Resolve** — Mark as fixed with resolution notes and action taken.
+    - **Dismiss** — Not a real issue; dismiss with a reason.
+    - **Assign** — Delegate to another team member with a due date.
+  </Step>
+</Steps>
+
+## Invoice gap detection
+
+Invoice gaps are periods where an expected invoice is missing.
+
+![Invoice gaps tab in UMS](/images/validation/invoice-gaps-tab.png)
+
+### Triggering gap detection
+
+<Steps>
+  <Step title="Open the Validation Dashboard">
+    Navigate to the Validation Dashboard.
+  </Step>
+  <Step title="Trigger gap detection">
+    Click **Trigger Gap Detection** at the bottom of the Invoice Quality section.
+  </Step>
+  <Step title="The system analyses connections">
+    The system analyses all connections and identifies missing billing periods.
+  </Step>
+  <Step title="Review the results">
+    Results appear in the **Invoice Gaps** tab.
+  </Step>
+</Steps>
+
+Each gap shows the retail account, connection, expected period, number of gap days, billing frequency, and status:
+
+- **Open** — Not yet addressed
+- **Acknowledged** — Noted but awaiting supplier response
+- **Resolved** — Invoice received or gap explained
+
+## Inbox review
+
+The **Inbox Review** tab manages email-sourced invoices within the validation workflow.
+
+![Inbox review tab in UMS](/images/validation/inbox-review-tab.png)
+
+### Filtering inbox items
+
+The data grid shows inbox items with columns for Date Added, Subject, Has Attachments, Sender, Recipient, Read status, Email Type, Status, and Account Name. By default, only items matching the active status filters are shown — click **Clear**, then **Apply Filters**, to see all items regardless of status.
+
+The Inbox Review provides filtering by:
+
+- **Root Account** / **Account** — Narrow to specific accounts.
+- **Search** — Find by sender or email subject.
+- **Date Range** — Filter by received date.
+- **Status chips**:
+  - **Received** — New, unprocessed emails
+  - **Processing** — Currently being processed by UtiliRead
+  - **Success** — Successfully processed into invoices
+  - **Errors** — Processed with some errors
+  - **No Match** — Could not match to an account or connection
+  - **Failed** — Processing failed completely
+  - **Archived** — Manually archived
+  - **Excluded** — Deliberately excluded from processing
+  - **Duplicate** — Detected as a duplicate
+- **Type chips** — Invoice, Data File, Overdue Notice, Rate Change Notice, Payment Receipt, and so on.
+
+### Reviewing an inbox item
+
+Click any row in the grid to open the detail panel on the right side.
+
+![Inbox review detail panel in UMS](/images/validation/inbox-review-detail.png)
+
+The detail panel shows:
+
+- **Subject and status badges** — The email subject with status (for example, NO_DATA_MATCH) and type (for example, INVOICE) badges
+- **Processing Note** — Any notes from automated processing (for example, "No valid attachments found in email")
+- **Email Details** — From address, To address, received date, and email type, with an edit button to reclassify
+- **Generated Invoices** — Any invoices created from this email. Shows count and links to the invoice detail pages
+- **Email Content** — Expandable section to view the full email body
+- **Timestamps** — When the email was received and processed
+
+The action buttons in the top-right of the detail panel let you:
+
+- **Refresh** — Reprocess the email.
+- **Exclude** — Mark the item as excluded from processing.
+- **Process** — Send to UtiliRead for OCR processing.
+- **Close** — Close the detail panel.
+
+### Processing an inbox email
+
+<Steps>
+  <Step title="Open the detail panel">
+    Click the email row to open the detail panel.
+  </Step>
+  <Step title="Review the email">
+    Review the email details and content.
+  </Step>
+  <Step title="Send to UtiliRead">
+    Click the **Process** button (cloud icon) to send the attachment to **UtiliRead** (OCR).
+  </Step>
+  <Step title="The system extracts the data">
+    The system extracts invoice data, identifies the supplier and account, creates an invoice record, and links it to the correct connection.
+  </Step>
+  <Step title="Confirm the generated invoice">
+    The **Generated Invoices** section updates with a link to the new invoice.
+  </Step>
+  <Step title="Continue through the pipeline">
+    The processed invoice then flows through the validation pipeline.
+  </Step>
+</Steps>
+
+### Excluding invoices
+
+To exclude an inbox item from processing:
+
+<Steps>
+  <Step title="Open the detail panel">
+    Click the item to open the detail panel.
+  </Step>
+  <Step title="Exclude the item">
+    Click the **Exclude** button (circle with line icon) in the top-right action buttons.
+  </Step>
+  <Step title="Confirm the new status">
+    The status changes to **Excluded** and the item will no longer be processed.
+  </Step>
+  <Step title="Find excluded items later">
+    Excluded items remain visible when the **Excluded** filter chip is active.
+  </Step>
+</Steps>
+
+Use exclusion for:
+
+- Duplicate emails that should not create new invoices
+- Non-invoice communications (account notices, marketing)
+- Items already processed through another channel
+- Test or spam emails

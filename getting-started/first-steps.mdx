@@ -1,0 +1,147 @@
+---
+title: "Your First Steps"
+description: "Set up your organisation in UMS from scratch — create accounts, add sites, configure connections, create agreements, and upload your first invoice."
+---
+
+This guide walks you through setting up your organisation in UMS from scratch. If your organisation already has data, you can skip ahead to the sections relevant to you.
+
+## Step 1: Create your accounts
+
+Accounts are the top-level containers — typically one per customer or business entity.
+
+<Steps>
+  <Step title="Open Accounts">
+    Navigate to **Accounts** in the sidebar.
+  </Step>
+  <Step title="Start a new account">
+    Click the **+** button in the top-right.
+  </Step>
+  <Step title="Enter account details">
+    Enter the company name, ABN/ACN, and entity type.
+  </Step>
+  <Step title="Save">
+    Click **Save**.
+  </Step>
+</Steps>
+
+<Tip>
+  If you manage a business with multiple subsidiaries, create a parent account and link child accounts to it using the **Parent** field.
+</Tip>
+
+See [Creating Accounts](/guides/creating-accounts) for a detailed walkthrough.
+
+## Step 2: Add sites
+
+Sites represent the physical locations where energy is consumed — offices, warehouses, retail stores, factories.
+
+<Steps>
+  <Step title="Open Sites">
+    Navigate to **Sites** in the sidebar (or use the Sites tab on an account).
+  </Step>
+  <Step title="Start a new site">
+    Click the **+** button.
+  </Step>
+  <Step title="Enter the address">
+    Enter the site name and address — UMS uses Google Places for address autocomplete.
+  </Step>
+  <Step title="Link to an account">
+    Link the site to the correct account.
+  </Step>
+  <Step title="Save">
+    Click **Save**.
+  </Step>
+</Steps>
+
+## Step 3: Set up connections
+
+Connections represent individual utility meters — electricity NMIs, gas MIRNs, or water meters.
+
+<Steps>
+  <Step title="Open Connections">
+    Navigate to **Connections** in the sidebar.
+  </Step>
+  <Step title="Start a new connection">
+    Click the **+** button.
+  </Step>
+  <Step title="Enter the identifier">
+    Enter the connection identifier (e.g. NMI for electricity, MIRN for gas).
+  </Step>
+  <Step title="Set type and site">
+    Select the utility type and link to a site.
+  </Step>
+  <Step title="Save">
+    Click **Save**.
+  </Step>
+</Steps>
+
+## Step 4: Create agreements
+
+Agreements track energy contracts between your accounts and suppliers.
+
+<Steps>
+  <Step title="Open Agreements">
+    Navigate to **Agreements** in the sidebar.
+  </Step>
+  <Step title="Start a new agreement">
+    Click the **+** button.
+  </Step>
+  <Step title="Enter agreement details">
+    Enter the agreement name, type, supplier, and contract dates.
+  </Step>
+  <Step title="Save">
+    Click **Save**.
+  </Step>
+  <Step title="Add connections">
+    Add connections to the agreement via the **Connections** tab on the agreement detail page.
+  </Step>
+</Steps>
+
+See [Managing Agreements](/guides/managing-agreements) for details on bulk-adding connections and managing tariffs.
+
+## Step 5: Upload your first invoice
+
+<Steps>
+  <Step title="Open Invoices">
+    Navigate to **Invoices** in the sidebar.
+  </Step>
+  <Step title="Drop in a PDF">
+    Drag and drop a PDF invoice onto the upload area (or click to browse).
+  </Step>
+  <Step title="Let UtiliRead process it">
+    UMS automatically processes the invoice via **UtiliRead** (OCR).
+  </Step>
+  <Step title="Review the match">
+    The system extracts data, matches it to the correct account and connection, and creates the invoice record.
+  </Step>
+  <Step title="Verify the data">
+    Check the invoice detail page to verify the extracted data.
+  </Step>
+</Steps>
+
+<Tip>
+  Alternatively, set up email forwarding from your energy retailers to your UMS inbox for fully automated processing.
+</Tip>
+
+## What to do next
+
+Once your basic structure is in place, here are the most valuable next steps:
+
+### Set up tariff rates
+
+Configure tariff structures for your agreements so UMS can validate invoice charges against expected rates. See [Managing Tariffs](/guides/managing-tariffs).
+
+### Enable invoice validation
+
+Navigate to **Validation** to check your invoices for billing errors, tariff mismatches, and missing invoices. See [Invoice Validation and Review](/guides/invoice-validation).
+
+### Run an agreement expiry report
+
+Navigate to **Reports** and run the **Agreement Expiry Report** to identify contracts approaching renewal — so you can start renegotiating early.
+
+### Configure brokerage (if applicable)
+
+If you earn commission on energy agreements, set up brokerage records and run calculations. See [Running Brokerage Calculations](/guides/running-brokerage-calculations).
+
+### Bulk import via CSV
+
+For large portfolios, use the **Bulk Import Wizard** (available from the **+** menu on the Accounts page) to import accounts, sites, connections, and agreements from a CSV file in a single operation.
