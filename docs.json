@@ -1,29 +1,100 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Utilified",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#053937",
+    "light": "#1EA0AE",
+    "dark": "#1EA0AE"
   },
   "favicon": "/favicon.svg",
+  "icons": {
+    "library": "lucide"
+  },
   "navigation": {
-    "pages": ["index", "quickstart"],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    "groups": [
+      {
+        "group": "Get Started",
+        "icon": "rocket",
+        "pages": [
+          "index",
+          "getting-started/quick-start",
+          "getting-started/logging-in",
+          "getting-started/navigating-ums",
+          "getting-started/first-steps",
+          "getting-started/key-concepts"
+        ]
+      },
+      {
+        "group": "How-To Guides",
+        "icon": "book-open",
+        "pages": [
+          "guides/creating-accounts",
+          "guides/managing-agreements",
+          "guides/editing-invoices",
+          "guides/running-brokerage-calculations",
+          "guides/managing-tariffs",
+          "guides/invoice-validation",
+          "guides/running-reports"
+        ]
+      },
+      {
+        "group": "General",
+        "icon": "layout-dashboard",
+        "pages": [
+          "home",
+          "reports",
+          "suppliers"
+        ]
+      },
+      {
+        "group": "Accounts",
+        "icon": "building-2",
+        "pages": [
+          "accounts",
+          "sites",
+          "agreements",
+          "contacts"
+        ]
+      },
+      {
+        "group": "Connections",
+        "icon": "plug",
+        "pages": [
+          "connections",
+          "tariffs",
+          "scenarios",
+          "retail-accounts",
+          "brokerage"
+        ]
+      },
+      {
+        "group": "Invoices",
+        "icon": "file-text",
+        "pages": [
+          "invoices",
+          "utiliread",
+          "validation",
+          "batches"
+        ]
+      },
+      {
+        "group": "Settings & Notifications",
+        "icon": "settings",
+        "pages": [
+          "notifications",
+          "settings"
+        ]
+      },
+      {
+        "group": "What's New",
+        "icon": "sparkles",
+        "pages": [
+          "changelog/latest",
+          "changelog/archive"
+        ]
+      }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
@@ -33,32 +104,26 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:ops@utilified.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Go to UMS",
+      "href": "https://ums.utilified.com"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "linkedin": "https://www.linkedin.com/company/utilified"
     }
   }
 }

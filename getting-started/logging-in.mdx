@@ -1,0 +1,110 @@
+---
+title: "Logging In & Security"
+description: "How to sign in to UMS with email, SSO, or two-factor authentication, plus password resets, session management, and troubleshooting."
+---
+
+## Accessing UMS
+
+<Steps>
+  <Step title="Open your UMS URL">
+    Navigate to your organisation's UMS URL in a web browser.
+  </Step>
+  <Step title="Enter your credentials">
+    Enter your **email address** and **password**.
+  </Step>
+  <Step title="Sign in">
+    Click **Sign In**.
+  </Step>
+</Steps>
+
+### Single sign-on (SSO)
+
+If your organisation has SSO configured, you can also sign in using:
+
+- **Sign in with Microsoft 365** — Use your corporate Microsoft account
+- **Sign in with Google** — Use your Google Workspace account
+
+<Info>
+  SSO leverages your organisation's existing security policies and multi-factor authentication.
+</Info>
+
+## Two-factor authentication (2FA)
+
+If your organisation requires 2FA, you will be prompted for a verification code after entering your password.
+
+### Setting up 2FA
+
+<Steps>
+  <Step title="Open security settings">
+    Navigate to **Settings** then **Security**.
+  </Step>
+  <Step title="Start setup">
+    Click **Set up Two-Factor Authentication**.
+  </Step>
+  <Step title="Scan the QR code">
+    Scan the QR code with your authenticator app (Google Authenticator, Authy, Microsoft Authenticator, or any TOTP-compatible app).
+  </Step>
+  <Step title="Confirm the code">
+    Enter the 6-digit code from your app to confirm.
+  </Step>
+  <Step title="Save your recovery codes">
+    Save your **backup recovery codes** in a secure location — you will need these if you lose access to your authenticator.
+  </Step>
+</Steps>
+
+<Warning>
+  Store your backup recovery codes somewhere safe. Without them, losing access to your authenticator device can lock you out of your account.
+</Warning>
+
+### Signing in with 2FA
+
+<Steps>
+  <Step title="Enter your credentials">
+    Enter your email and password as normal.
+  </Step>
+  <Step title="Open your authenticator">
+    When prompted, open your authenticator app.
+  </Step>
+  <Step title="Enter the code">
+    Enter the current 6-digit code.
+  </Step>
+  <Step title="Verify">
+    Click **Verify**.
+  </Step>
+</Steps>
+
+## Resetting your password
+
+<Steps>
+  <Step title="Start the reset">
+    On the login page, click **Forgot Password**.
+  </Step>
+  <Step title="Enter your email">
+    Enter your email address.
+  </Step>
+  <Step title="Check your inbox">
+    Check your email for a reset link (check spam/junk if it does not arrive within a few minutes).
+  </Step>
+  <Step title="Set a new password">
+    Click the link and set a new password.
+  </Step>
+  <Step title="Sign in">
+    Sign in with your new password.
+  </Step>
+</Steps>
+
+## Session management
+
+- Your session remains active while you are using UMS
+- After a period of inactivity, you may be asked to sign in again
+- Tokens refresh automatically in the background — you should rarely need to re-authenticate during a working session
+
+## Troubleshooting
+
+| Problem                   | Solution                                                                           |
+| ------------------------- | ---------------------------------------------------------------------------------- |
+| Forgotten password        | Use the **Forgot Password** link on the login page                                 |
+| 2FA code not working      | Ensure your device clock is synchronised. Try waiting for the next code cycle      |
+| Lost authenticator device | Use one of your backup recovery codes, then set up 2FA on your new device          |
+| SSO not working           | Contact your IT administrator to verify your account is provisioned for UMS access |
+| Account locked            | Contact your system administrator to unlock your account                           |

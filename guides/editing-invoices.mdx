@@ -1,0 +1,81 @@
+---
+title: "Editing Invoices"
+description: "Review and edit invoice details, line items, and documents in UMS, and run invoices through the validation engine."
+---
+
+This guide explains how to review and edit invoice details, line items, and documents.
+
+## Invoice detail page
+
+Click **See Details** on any invoice to open the detail page.
+
+![Invoice detail page in UMS](/images/invoices/invoice-detail.png)
+
+The invoice detail page has these tabs:
+
+- **Overview** — Invoice summary with dates, amounts, supplier, and connection information
+- **Lines** — Individual line items (charges) on the invoice
+- **Documents** — Attached PDF documents
+- **Validation** — Validation results and rules
+
+## Editing line items
+
+The **Lines** tab shows all charges on the invoice.
+
+![Invoice lines tab showing charge line items in UMS](/images/invoices/invoice-lines-tab.png)
+
+Each line item displays:
+
+- **Description** — What the charge is for (for example, Peak Usage, Network Access)
+- **Category** — Charge category
+- **Charge Type** — Type of charge
+- **Rate** — Unit rate applied
+- **Amount** — Total charge amount
+- **Tax** — Whether GST applies
+- **Connection** — Which meter connection this charge relates to
+
+### Editing a line item
+
+<Steps>
+  <Step title="Open the line item editor">
+    Click the **edit** icon on a line item row.
+  </Step>
+  <Step title="Edit the line details">
+    The edit drawer opens with tabs:
+
+    - **General** — Description, category, charge type, amount, tax flag
+    - **Rates** — Unit rate and currency details
+    - **Quantities** — Associated quantity records (kWh, MJ, kL)
+    - **Factors** — Tax and conversion factors
+  </Step>
+  <Step title="Save your changes">
+    Make your changes and click **Save**.
+  </Step>
+</Steps>
+
+### Adding a line item
+
+Click **Add Line** to create a new charge line on the invoice.
+
+## Viewing documents
+
+The **Documents** tab shows any attached files.
+
+![Invoice documents tab in UMS](/images/invoices/invoice-documents-tab.png)
+
+You can:
+
+- **Download** individual documents
+- **Preview** PDF invoices directly in the browser
+- **Upload** additional documents
+
+## Running validation
+
+From the invoice detail page header, click **Validate** to run the invoice through the validation engine. This checks:
+
+- Amount calculations match line items
+- Dates are consistent
+- Connection and retail account references are valid
+- Rates match expected tariff rates
+
+See the [Invoice Validation & Review](/guides/invoice-validation) guide for more details.

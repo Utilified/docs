@@ -1,0 +1,209 @@
+---
+title: "Previous Releases"
+description: "Release history for earlier versions of UMS, from the initial release through scenarios, validation, batch processing, and SSO."
+---
+
+Browse the release notes for earlier versions of UMS.
+
+<Update label="v1.3.0" description="2026-03-15">
+  ## Documentation, Scenarios & Tariff Templates
+
+  ### Documentation & Help
+
+  - **User Documentation Site** — New docs site with getting started guide, validation guides, inbox review guide, and this changelog
+  - **Contextual Help** — Help buttons on module headers link directly to the relevant documentation page
+  - **Onboarding Checklist** — Step-by-step checklist to guide new users through initial setup
+
+  ### Scenario Modelling
+
+  - **Scenario Builder** — Create and compare energy scenarios with different tariff configurations
+  - **Tariff Review Wizard** — Step-by-step wizard for reviewing and applying tariff changes within scenarios
+  - **Retail Account Integration** — View and manage scenarios directly from the retail account detail page
+
+  ### Tariffs
+
+  - **Tariff Templates** — Save and reuse tariff configurations as templates with one-click cloning
+  - **Multi-Period Wizard** — Redesigned tariff creation wizard supporting multiple rate periods
+
+  ### Security
+
+  - **Secure 2FA Tokens** — Two-factor authentication tokens now stored in httpOnly cookies for improved security
+
+  ### Other Improvements
+
+  - **Inbox Filters** — Explicit Apply Filters button on the inbox review tab for better control
+  - **Portal Settings** — Configure favicon URLs for portal themes and assign portal accounts during user management
+  - **Invoice Detail UX** — Improved display formatting, error handling, and drawer titles
+  - **Natural Gas Units** — Gas statistics now correctly display in MJ instead of GJ
+</Update>
+
+<Update label="v1.2.0" description="2026-03-05">
+  ## Dashboard, Validation and Reporting Overhaul
+
+  ### Dashboard
+
+  - **Redesigned Dashboard** — New stat cards with trend indicators (30-day and yearly growth) and per-utility spend/consumption breakdown for electricity, gas, and water
+  - **Sites Map** — Interactive map showing the geographic distribution of your sites with clustered markers
+
+  ### Invoice Validation
+
+  - **Inbox Review** — New split-pane detail view for reviewing email-sourced invoices directly within the Validation module
+  - **Invoice Quality** — Consolidated page showing gaps, duplicates, and completeness issues in one place
+  - **Batch Export** — Export validation results and invoice quality data
+
+  ### Reports
+
+  - **Async Execution** — Reports now run in the background with notification on completion
+  - **Report History** — View and download previously generated reports
+  - **Better Filters** — Improved date range and account filter controls
+
+  ### Notifications
+
+  - **Actionable Notifications** — Click any notification to navigate directly to the relevant page
+  - **Subscriptions** — Subscribe to specific notification types (contract expiry, invoice imports, brokerage calculations)
+  - **Preferences** — Manage notification settings from your profile
+
+  ### Tariffs
+
+  - **Redesigned Tariff Editor** — Tree view navigation with inline editing for faster tariff management
+  - **Tariff Creation Wizard** — Step-by-step wizard with template selection, manual entry, or CSV import
+
+  ### Brokerage
+
+  - **Tariff Rate Selection** — Select tariff rates directly in brokerage record forms
+  - **Improved Calculation Views** — Better detail pages with revenue breakdown
+  - **Revenue Export** — Export brokerage revenue data as CSV
+
+  ### Other Improvements
+
+  - **Payment Groups** — Updated interface aligned with latest batch processing features
+  - **User Management** — Inline wizard for inviting users with permissions preview
+  - **AI Onboarding** — Upload documents and let AI extract account data automatically
+  - **Google Sign-In** — Sign in with Google alongside existing Microsoft SSO
+  - **Invoice Imports** — Unified imports page with multi-file drag-and-drop upload
+  - **PDF Export** — Export validation details and invoice quality views to PDF
+  - **Connection Reads** — Redesigned reads tab with improved chart drill-down and CSV export
+  - **Overview Pages** — Consistent, viewport-aware layouts with richer detail panels across all modules
+</Update>
+
+<Update label="v1.1.0" description="2026-02-11">
+  ## Joule AI Agent and Brokerage Wizard
+
+  - **Joule AI Assistant** — AI-powered assistant for navigating UMS and answering questions about your data
+  - **Brokerage Calculation Wizard** — Multi-step wizard for selecting records, configuring parameters, and generating brokerage calculations
+</Update>
+
+<Update label="v1.0.1" description="2025-10-10">
+  ## Security and Stability
+
+  - Updated all core dependencies for improved security and stability
+  - Bug fixes for Angular components, Material-UI, and Google Maps integration
+  - Performance improvements across the application
+</Update>
+
+<Update label="v1.0.0" description="2025-10-10">
+  ## Major Release — Dark Mode, Enhanced Inbox, and Consistent UI
+
+  ### Dark Mode
+
+  - Choose your theme preference in **Settings** — System (auto-switch), Light, or Dark
+  - Real-time switching when your device theme changes
+
+  ### Enhanced Inbox
+
+  - Click any email to open a full detail view with tabs for overview, attachments, details, and settings
+  - Improved email formatting and readability
+  - Organised attachment list with easy download
+  - Better email filtering and search
+
+  ### Consistent Visual Heights
+
+  - All list pages (Accounts, Agreements, Contacts, Sites, Suppliers, Invoices, Batches, Connections, Retail Accounts, Tariffs, Brokerage) now have consistent viewport-aware heights
+</Update>
+
+<Update label="v0.3.0" description="2025-08-22">
+  ## Batch Processing and Data Management
+
+  ### Invoice Batch Processing
+
+  - Group multiple invoices into payment batches
+  - Generate payment files in CSV, XML, and other formats
+  - Approval workflow for controlled payment processing
+  - Status tracking and audit trails
+
+  ### Site Data Management
+
+  - Bulk CSV upload wizard with step-by-step validation
+  - Site Data and Data Types tabs in site and account detail views
+  - Smart data feed selection with autocomplete
+
+  ### Connection Usage Reports
+
+  - Customisable date ranges with flexible intervals
+  - Account-based connection filtering
+  - Real-time export progress tracking
+</Update>
+
+<Update label="v0.2.9" description="2025-08-17">
+  ## Single Sign-On
+
+  - **Microsoft 365 Sign-In** — Use your organisation's Microsoft account to access UMS
+  - Leverage existing security policies and multi-factor authentication
+  - Admin configuration for SSO settings
+</Update>
+
+<Update label="v0.2.8" description="2025-08-13">
+  ## Inline Editing and Navigation
+
+  - Inline editing in invoice detail views
+  - Improved navigation flow for invoices and related records
+  - Smoother authentication with improved loading transitions
+</Update>
+
+<Update label="v0.2.7" description="2025-08-11">
+  ## Authentication and UI Polish
+
+  - Animated loading screen during authentication
+  - Streamlined tab layouts across all detail pages
+  - Enhanced autocomplete fields with improved validation
+  - Supplier Management with dedicated tabs for Agreements, Invoices, and Child Suppliers
+</Update>
+
+<Update label="v0.2.5" description="2025-08-06">
+  ## Quick Add and Data Tables
+
+  ### Quick Add
+
+  - Instant record creation from autocomplete fields without leaving your current form
+  - Add accounts, contacts, or other records on-the-fly
+
+  ### Enhanced Data Tables
+
+  - Persistent column view preferences saved automatically
+  - Improved filtering with better search
+  - Quick actions drawer for viewing and editing records from tables
+  - Enhanced CSV and Excel export
+
+  ### Universal Record Viewer
+
+  - Side panel drawer for viewing record details
+  - Quick editing directly in the drawer
+  - Customisable views for different record types
+</Update>
+
+<Update label="v0.2.2" description="2025-01-27">
+  ## Site Locations
+
+  - **Google Places Integration** — Automatic address lookup and validation
+  - Clickable addresses to view or edit location details
+  - Manual coordinate entry option
+</Update>
+
+<Update label="v0.2.1" description="2025-06-28">
+  ## Two-Factor Authentication
+
+  - Optional 2FA for additional account protection
+  - Multiple authenticator device support
+  - QR code setup process
+  - Backup recovery codes
+</Update>

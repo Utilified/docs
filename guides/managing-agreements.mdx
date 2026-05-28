@@ -1,0 +1,70 @@
+---
+title: "Managing Agreements"
+description: "Learn how to view, create, and manage energy agreements in UMS, including connections and tariffs."
+---
+
+Agreements are central to UMS — they link accounts, suppliers, connections, and tariffs together.
+
+## Viewing agreement details
+
+Click **See Details** on any agreement to open the detail page.
+
+![Agreement detail page in UMS](/images/agreements/agreement-detail.png)
+
+The agreement detail page has tabs for:
+
+- **Overview** — Agreement summary, dates, supplier, and key details
+- **Connections** — Connections covered by this agreement
+- **Tariffs** — Tariff structures and rates for this agreement
+- **Retail Accounts** — Retailer references linked to connections
+- **Invoices** — Invoices associated with this agreement
+- **Documents** — Attached agreement documents (PDFs, contracts)
+
+## Managing connections
+
+The **Connections** tab shows which meter connections are covered by this agreement.
+
+![Agreement connections tab in UMS](/images/agreements/agreement-connections-tab.png)
+
+### Adding connections
+
+You can add connections individually or in bulk:
+
+- **Individual** — Click **Add Connection** and search for the connection identifier (NMI, MIRN).
+- **Bulk** — Click **Bulk Add Connections** to open the wizard, where you can:
+  - Enter connection identifiers manually
+  - Upload a CSV file with identifiers
+  - Paste identifiers from a spreadsheet
+  - Set effective dates for all connections at once
+
+## Managing tariffs
+
+The **Tariffs** tab shows tariff structures linked to this agreement.
+
+![Agreement tariffs tab in UMS](/images/agreements/agreement-tariffs-tab.png)
+
+See the [Managing Tariffs](/guides/managing-tariffs) guide for detailed instructions on creating and editing tariffs.
+
+## Creating a new agreement
+
+<Steps>
+  <Step title="Open the Agreements page">
+    Navigate to the **Agreements** page.
+  </Step>
+  <Step title="Open the create drawer">
+    Click the **+** button in the top-right corner.
+  </Step>
+  <Step title="Fill in the agreement details">
+    - **Name** — Descriptive name for the agreement
+    - **Type** — ELEC_RETAIL, ELEC_METERING, NGAS_RETAIL, and so on
+    - **Account** — The account this agreement belongs to
+    - **Supplier** — The energy retailer or metering provider
+    - **Date Start** / **Date End** — Contract period
+  </Step>
+  <Step title="Save">
+    Click **Save**.
+  </Step>
+  <Step title="Complete the setup">
+    Add connections and tariffs to complete the setup.
+  </Step>
+</Steps>
