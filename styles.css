@@ -1,0 +1,5 @@
+/* Bump navbar logo height so the padded Utilified wordmark renders at a
+   comfortable size while keeping the official utilified.com framing. */
+img.nav-logo {
+  height: 3.25rem !important;
+}
