@@ -1,0 +1,71 @@
+---
+title: "Bulk Importing Data"
+description: "Import accounts, sites, connections, tariffs, meter reads, and more into UMS in bulk from CSV files using the Bulk Upload Wizard, then monitor results and exceptions."
+keywords: ["bulk import", "csv upload", "bulk upload wizard", "import template", "data import"]
+---
+
+When you are onboarding a large portfolio or loading data from another system, the **Bulk Upload Wizard** lets you import many records at once from CSV files. Each import is based on a template that defines the expected columns, so you can download a sample, fill it in, and upload it back.
+
+Bulk importing requires administrator permissions.
+
+## Open the Imports page
+
+<Steps>
+  <Step title="Open Imports">
+    Click your avatar in the top-right corner and select **Bulk Imports**.
+  </Step>
+  <Step title="Review previous imports">
+    The **Imports** page lists your previous upload tasks with their type, file name, status, and timestamps.
+
+    ![UMS Imports page listing previous upload tasks with their status and timestamps](/images/imports/imports-page.png)
+  </Step>
+  <Step title="Start a new import">
+    Click the **+** button in the top-right to open the **Bulk Upload Wizard**.
+  </Step>
+</Steps>
+
+## Run the Bulk Upload Wizard
+
+The wizard guides you through four steps: select a template, choose how to provide your data, supply the data, then upload and monitor.
+
+<Steps>
+  <Step title="Select a template">
+    Choose the type of data you want to import. Each template card shows how many fields it has and how many are required.
+
+    ![Bulk Upload Wizard on the Select Template step showing template cards for meter reads, invoices, site data, and more](/images/imports/select-template.png)
+
+    Templates are available for **accounts**, **sites**, **connections**, **tariffs**, **meter reads**, **quantity values**, **invoices**, **site data**, and **retail accounts**. Use the search box to find a template quickly.
+  </Step>
+  <Step title="Choose an input method">
+    Decide how you want to provide your data — upload a CSV file, or enter rows manually in an editable grid.
+
+    ![Choose Input Method step with Upload CSV and Manual Entry options](/images/imports/choose-input-method.png)
+  </Step>
+  <Step title="Provide your data">
+    If you chose **Upload CSV**, click **Download Template with Sample Data** to get a correctly-formatted CSV with example rows. Fill it in, then drag and drop your file (or several) onto the upload area. Each file can be up to 50&nbsp;MB.
+
+    ![Provide Data step showing the template download button and the CSV drag-and-drop area](/images/imports/provide-data.png)
+
+    UMS validates each file's columns against the template as soon as you add it, flagging any file as **Valid** or listing the errors to fix. If you chose **Manual Entry**, fill in the editable grid instead.
+
+    <Tip>
+      Always start from the downloaded template. It contains the exact column headers the importer expects, which avoids most validation errors.
+    </Tip>
+  </Step>
+  <Step title="Upload and monitor">
+    Click **Finish** to start the upload. UMS processes your files in the background and shows live progress for each one, including how many rows succeeded and any per-row errors.
+  </Step>
+</Steps>
+
+## Review import results
+
+Back on the **Imports** page, each upload task has a row menu for reviewing the outcome:
+
+- **Download** — Retrieve the original file you uploaded.
+- **Exceptions** — Download a CSV of the rows that failed, with the reason for each.
+- **Result Data** — Download a CSV showing the per-row outcome (success or failure) for the whole file.
+- **Refresh** — Re-check the status of an in-progress task.
+
+<Note>
+  Invalid files are skipped during upload rather than blocking the rest. Review the **Exceptions** report to see exactly which rows were rejected and why, then fix and re-import just those rows.
+</Note>

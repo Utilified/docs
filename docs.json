@@ -29,7 +29,9 @@
         "group": "How-To Guides",
         "icon": "book-open",
         "pages": [
+          "guides/setting-up-a-user",
           "guides/creating-accounts",
+          "guides/bulk-importing-data",
           "guides/managing-agreements",
           "guides/editing-invoices",
           "guides/running-brokerage-calculations",

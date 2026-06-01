@@ -1,0 +1,80 @@
+---
+title: "Setting Up a User"
+description: "Invite a new team member to your UMS organisation, assign their role and permissions, and manage existing users from the Settings area."
+keywords: ["invite user", "add user", "user roles", "permissions", "user management"]
+---
+
+This guide walks you through inviting a new user to your UMS organisation and assigning their access. Inviting and managing users requires administrator permissions — if the **Users** tab is greyed out, contact your organisation administrator.
+
+## Open user management
+
+User management lives on the **Users** tab of the Settings area.
+
+<Steps>
+  <Step title="Open Settings">
+    Click your avatar in the top-right corner and select **Settings**.
+  </Step>
+  <Step title="Open the Users tab">
+    Select the **Users** tab.
+
+    ![UMS user management showing the Total Users, Active Users, and Pending Invitations stats with the users table](/images/users/users-list.png)
+  </Step>
+</Steps>
+
+The Users tab shows three summary cards — **Total Users**, **Active Users**, and **Pending Invitations** — above a table of everyone in your organisation, with their role, status, and last login.
+
+## Invite a new user
+
+<Steps>
+  <Step title="Start an invitation">
+    Click **Invite User** in the top-right of the Users card. This opens the **Invite New User** wizard.
+  </Step>
+  <Step title="Enter user details">
+    On the **User Details** step, enter the new user's **First Name**, **Last Name**, **Email Address**, and **Phone Number**. The invitation is sent to the email address you enter here.
+
+    ![Invite New User wizard on the User Details step with name, email, and phone fields](/images/users/invite-user-details.png)
+
+    <Note>
+      Phone numbers use Australian format — `04XX XXX XXX` or `+614XX XXX XXX`.
+    </Note>
+  </Step>
+  <Step title="Choose a role">
+    Click **Next** to move to **Role & Permissions**, then select a **Role**. Permissions are assigned automatically based on the role, and the matrix below the dropdown previews exactly what the role can create, read, update, and delete across each application.
+
+    ![Role and Permissions step showing the Account Manager role selected with its permissions matrix](/images/users/invite-role-permissions.png)
+  </Step>
+  <Step title="Review and send">
+    Click **Next** to reach **Review & Send**. Check the summary, then click **Finish** to send the invitation. The new user receives an email to complete their registration and set a password.
+  </Step>
+</Steps>
+
+## User roles
+
+The role you choose controls what the user can access. UMS provides the following roles:
+
+| Role | Typical use |
+| --- | --- |
+| **Organisation Admin** | Full administrative access, including user management |
+| **Account Manager** | Manage accounts, sites, connections, and agreements |
+| **Account User** | Day-to-day work within assigned accounts |
+| **Account Viewer** | Read-only access to assigned accounts |
+| **Account Operations User** | Operational tasks such as invoice processing |
+| **Brokerage Operations User** | Brokerage records and calculations |
+| **Portal Admin** / **Portal User** | Access to a white-label portal account |
+
+<Tip>
+  For the **Portal Admin**, **Portal User**, **Account User**, and **Account Viewer** roles, the wizard also asks you to select a **Portal Account** so the user is scoped to the right account.
+</Tip>
+
+## Manage existing users
+
+Each row in the users table has actions for managing that user:
+
+- **Edit user** — Update their name, role, **Active** status, and which accounts they can access (on the **Account Access** tab).
+- **Resend invitation** — Re-send the registration email to a user whose invitation is still pending.
+- **Deactivate user** — Revoke access immediately without deleting the account. Use **Reactivate user** to restore it.
+- **Delete user** — Permanently remove the user. This cannot be undone.
+
+<Info>
+  A user with a pending invitation shows a **Pending Invitation** status until they complete registration, after which they appear as **Active**.
+</Info>
