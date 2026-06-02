@@ -1,6 +1,6 @@
 ---
 title: "Billing & Plans"
-description: "Pick or change your plan, manage your subscription through Stripe, and understand what happens when billing lapses."
+description: "Choose or change your UMS plan, manage your subscription through Stripe Checkout and the Billing Portal, and recover from a lapsed subscription."
 ---
 
 UMS includes a self-serve billing area where organisation administrators can choose a plan, change plans, and manage payment details without contacting Utilified. Billing lives under **Settings → Billing**.
@@ -68,7 +68,7 @@ UMS derives a billing **access state** from Stripe's subscription status. This d
 | `exempt`     | No Stripe subscription — billed by Utilified directly   | No banner. Billing actions show a contact-Utilified message.                                       |
 | `active`     | Subscription active or trialing                         | Full access. No banner.                                                                            |
 | `grace`      | Stripe is retrying a failed payment (past due)          | Full access, plus a dismissible warning banner with an **Update billing** shortcut.                |
-| `blocked`    | Subscription has lapsed                                 | A non-dismissable **Billing Locked** screen replaces the app until billing is resolved.            |
+| `blocked`    | Subscription has lapsed                                 | A non-dismissible **Billing Locked** screen replaces the app until billing is resolved.            |
 
 ### Grace-period banner
 
