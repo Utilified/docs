@@ -1,0 +1,105 @@
+---
+title: "Billing & Plans"
+description: "Pick or change your plan, manage your subscription through Stripe, and understand what happens when billing lapses."
+---
+
+UMS includes a self-serve billing area where organisation administrators can choose a plan, change plans, and manage payment details without contacting Utilified. Billing lives under **Settings → Billing**.
+
+## When to use this
+
+Use the billing area when you need to:
+
+- Subscribe to a plan for the first time after signing up.
+- Change to a different plan as your usage grows.
+- Update your payment method or download invoices via Stripe.
+- Restore access after a failed payment.
+
+## Who can manage billing
+
+Only users with the **Manage billing** permission (`can_manage_billing`) can start a checkout, change plans, or open the Stripe Billing Portal. This typically maps to organisation administrators.
+
+Users without this permission can still see the current plan and usage on the Billing page, but the **Subscribe**, **Manage subscription**, and Stripe Billing Portal actions are hidden. If billing lapses, non-admins are asked to contact an administrator.
+
+## Choosing or changing a plan
+
+The **Choose or change your plan** section on the Billing page lists every available plan side-by-side. Each plan card shows:
+
+- Plan name, monthly base price, and a short description
+- The features included in the plan
+- Any usage limits (for example, connections or users)
+- A **Subscribe** button — or a **Current plan** badge if your organisation is already on that plan
+
+<Steps>
+  <Step title="Open Billing">
+    Navigate to **Settings → Billing**.
+  </Step>
+  <Step title="Compare plans">
+    Scroll down to the **Choose or change your plan** section to compare available plans.
+  </Step>
+  <Step title="Subscribe">
+    Click **Subscribe** on the plan you want. UMS opens a secure Stripe Checkout session in the same window.
+  </Step>
+  <Step title="Complete checkout">
+    Enter your payment details in Stripe Checkout. When the payment succeeds you are returned to UMS and your new plan is active immediately.
+  </Step>
+</Steps>
+
+<Tip>
+  Changing plans uses the same flow as subscribing for the first time. Stripe prorates the change automatically.
+</Tip>
+
+## Managing your subscription
+
+Once your organisation has an active Stripe subscription, a **Manage subscription** button appears at the top of the Billing page. This opens the Stripe Billing Portal in a new tab, where you can:
+
+- Update your payment method
+- Download invoices and receipts
+- Change billing address and tax details
+- Cancel the subscription
+
+If your organisation is billed by Utilified directly (no Stripe subscription), the page instead shows a note prompting you to contact Utilified for changes.
+
+## What happens when billing lapses
+
+UMS derives a billing **access state** from Stripe's subscription status. This drives the in-app behaviour you see when payments fail or a subscription is cancelled.
+
+| Access state | Meaning                                                 | What you see                                                                                       |
+| ------------ | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `exempt`     | No Stripe subscription — billed by Utilified directly   | No banner. Billing actions show a contact-Utilified message.                                       |
+| `active`     | Subscription active or trialing                         | Full access. No banner.                                                                            |
+| `grace`      | Stripe is retrying a failed payment (past due)          | Full access, plus a dismissible warning banner with an **Update billing** shortcut.                |
+| `blocked`    | Subscription has lapsed                                 | A non-dismissable **Billing Locked** screen replaces the app until billing is resolved.            |
+
+### Grace-period banner
+
+When a payment fails but Stripe is still retrying, UMS shows a warning banner at the top of every page:
+
+> We couldn't process your latest payment. Update your billing details to avoid interruption.
+
+The banner has an **Update billing** button that links straight to Settings → Billing. You can dismiss the banner for the rest of the tab session, but it returns on the next reload until the payment is resolved.
+
+### Billing Locked screen
+
+If retries are exhausted and the subscription lapses, UMS replaces the main app with a full-screen lock that cannot be dismissed.
+
+- **Billing managers** see two actions: **Manage billing** (opens the Stripe Billing Portal to pay the overdue invoice or update the payment method) and **Choose a plan** (jumps to the plan picker in Settings → Billing).
+- **Other users** see a message asking them to contact their organisation's administrator.
+
+Both views also offer a **Sign out** action.
+
+<Note>
+  **Settings and onboarding stay reachable while locked.** Even when your organisation is in the `blocked` state, billing managers can still navigate to **Settings** and **Onboarding** so they can resolve payment. All other routes redirect to the Billing Locked screen until access is restored.
+</Note>
+
+## Billing during onboarding
+
+Plan selection is **optional** during sign-up. On the **Plan** step of onboarding you can either:
+
+- Pick a plan and complete Stripe Checkout up front, or
+- Click **Skip for now — set up billing later** to continue onboarding without a subscription.
+
+If you skip, you can subscribe at any time from **Settings → Billing**. Your organisation will keep working until the billing gate kicks in — once your trial or grace period ends without an active subscription, the Billing Locked screen prompts an administrator to choose a plan.
+
+<Tip>
+  Skipping is useful when you want to invite your team and start configuring accounts before deciding on a plan. Just remember that a billing manager will need to subscribe before the grace period ends.
+</Tip>
