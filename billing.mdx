@@ -13,6 +13,7 @@ Use the billing area when you need to:
 - Change to a different plan as your usage grows.
 - Update your payment method or download invoices via Stripe.
 - Restore access after a failed payment.
+- Request access to an Enterprise (request-only) plan.
 
 ## Who can manage billing
 
@@ -48,6 +49,30 @@ The **Choose or change your plan** section on the Billing page lists every avail
   Changing plans uses the same flow as subscribing for the first time. Stripe prorates the change automatically.
 </Tip>
 
+### Enterprise and other request-only plans
+
+Some plans — typically **Enterprise** and other usage-based plans — are **request-only**: they don't have a fixed monthly price and can't be subscribed to directly from Stripe Checkout. Their plan card shows:
+
+- A custom pricing summary instead of a monthly figure (for example, *"from $400/mo + 50¢/meter"*).
+- A **Request access** button instead of **Subscribe**.
+
+Clicking **Request access** opens a short form where you can confirm your name and email and add an optional message about your needs (for example, how many meters you manage). Submitting the form creates a lead and notifies the Utilified team, who will follow up to set up the plan for you.
+
+<Tip>
+  The form pre-fills your name and email from your UMS profile. Edit them if a different contact should hear back about the enquiry.
+</Tip>
+
+## 12-month commitment
+
+Paid plans run on a **12-month commitment**. While the commitment is active:
+
+- An info banner on the Billing page shows the date your term ends — for example, *"You're on a 12-month commitment until 1 Dec 2026."*
+- **Upgrades** to a higher-priced plan stay available at any time. Choosing an upgrade resets the 12-month clock from the new start date.
+- **Downgrades** and **cancellation** are locked until the term ends. Plan cards priced below your current plan show a disabled button with a *"Committed until …"* helper instead of **Subscribe**.
+- Request-only plans (such as Enterprise) are not affected by commitment gating — you can submit an enquiry at any time.
+
+Once the commitment end date passes, all plan-change options become available again from the same plan picker.
+
 ## Managing your subscription
 
 Once your organisation has an active Stripe subscription, a **Manage subscription** button appears at the top of the Billing page. This opens the Stripe Billing Portal in a new tab, where you can:
@@ -55,7 +80,7 @@ Once your organisation has an active Stripe subscription, a **Manage subscriptio
 - Update your payment method
 - Download invoices and receipts
 - Change billing address and tax details
-- Cancel the subscription
+- Cancel the subscription (after the commitment term ends)
 
 If your organisation is billed by Utilified directly (no Stripe subscription), the page instead shows a note prompting you to contact Utilified for changes.
 
@@ -96,6 +121,7 @@ Both views also offer a **Sign out** action.
 Plan selection is **optional** during sign-up. On the **Plan** step of onboarding you can either:
 
 - Pick a plan and complete Stripe Checkout up front, or
+- Request access to a request-only plan (such as Enterprise) using the same contact form available in Settings → Billing, or
 - Click **Skip for now — set up billing later** to continue onboarding without a subscription.
 
 If you skip, you can subscribe at any time from **Settings → Billing**. Your organisation will keep working until the billing gate kicks in — once your trial or grace period ends without an active subscription, the Billing Locked screen prompts an administrator to choose a plan.
