@@ -11,6 +11,7 @@ Use the billing area when you need to:
 
 - Subscribe to a plan for the first time after signing up.
 - Change to a different plan as your usage grows.
+- Check current usage against your plan limits.
 - Update your payment method or download invoices via Stripe.
 - Restore access after a failed payment.
 - Request access to an Enterprise (request-only) plan.
@@ -19,34 +20,49 @@ Use the billing area when you need to:
 
 Only users with the **Manage billing** permission (`can_manage_billing`) can start a checkout, change plans, or open the Stripe Billing Portal. This typically maps to organisation administrators.
 
-Users without this permission can still see the current plan and usage on the Billing page, but the **Subscribe**, **Manage subscription**, and Stripe Billing Portal actions are hidden. If billing lapses, non-admins are asked to contact an administrator.
+Users without this permission can still see the current plan and usage on the Billing page, but the **Subscribe**, **Manage billing**, and **Change plan** actions are hidden. If billing lapses, non-admins are asked to contact an administrator.
+
+## The Billing page
+
+The Billing tab gives you a single-panel summary of your subscription:
+
+- **Current plan** — Plan name with a status dot (Active, Trial, or Cancelled), the monthly price, and the next renewal date.
+- **Manage billing** — Opens the Stripe Billing Portal in a new tab (Stripe-billed orgs only).
+- **Usage** — A three-up row of usage meters: **Connections**, **Users**, and **Invoices this month**. Each meter shows your current count against the plan limit (or *Unlimited*) and turns amber as you approach the limit.
+- **Change plan** — A button that reveals the plan picker on demand. Use it when you want to compare or switch plans.
+- **Commitment notice** — When your organisation is inside its 12-month term, a short line under the price summarises when downgrades and cancellation become available.
+
+### Billing modes
+
+How your organisation pays for UMS determines which controls appear on the page:
+
+| Billing mode | What you see                                                                                                              |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| `stripe`     | Self-serve **Manage billing** and **Change plan** controls.                                                               |
+| `manual`     | A *"Your subscription is billed directly by Utilified"* notice. Stripe controls and the plan picker are hidden — contact Utilified to make changes. |
 
 ## Choosing or changing a plan
 
-The **Choose or change your plan** section on the Billing page lists every available plan side-by-side. Each plan card shows:
-
-- Plan name, monthly base price, and a short description
-- The features included in the plan
-- Any usage limits (for example, connections or users)
-- A **Subscribe** button — or a **Current plan** badge if your organisation is already on that plan
+Click **Change plan** on the Billing page to reveal the plan picker. Each plan card shows the plan name, monthly base price, a short description, included features, usage limits, and a **Subscribe** button — or a **Current plan** badge if your organisation is already on that plan.
 
 <Steps>
   <Step title="Open Billing">
     Navigate to **Settings → Billing**.
   </Step>
-  <Step title="Compare plans">
-    Scroll down to the **Choose or change your plan** section to compare available plans.
+  <Step title="Open the plan picker">
+    Click **Change plan** to reveal the list of available plans below the summary.
   </Step>
-  <Step title="Subscribe">
-    Click **Subscribe** on the plan you want. UMS opens a secure Stripe Checkout session in the same window.
+  <Step title="Pick a plan">
+    Click **Subscribe** on the plan you want.
   </Step>
-  <Step title="Complete checkout">
-    Enter your payment details in Stripe Checkout. When the payment succeeds you are returned to UMS and your new plan is active immediately.
+  <Step title="Complete the change">
+    - **New subscribers** — UMS opens a secure Stripe Checkout session. Enter your payment details; when payment succeeds Stripe returns you to **Settings → Billing** with a confirmation, and your new plan is active.
+    - **Existing subscribers** — UMS changes the plan in place on your current Stripe subscription. There's no redirect: you see a success message and the page refreshes to show the new plan immediately.
   </Step>
 </Steps>
 
 <Tip>
-  Changing plans uses the same flow as subscribing for the first time. Stripe prorates the change automatically.
+  Stripe prorates plan changes automatically — you're only charged the difference for the rest of the current billing period.
 </Tip>
 
 ### Enterprise and other request-only plans
@@ -66,7 +82,7 @@ Clicking **Request access** opens a short form where you can confirm your name a
 
 Paid plans run on a **12-month commitment**. While the commitment is active:
 
-- An info banner on the Billing page shows the date your term ends — for example, *"You're on a 12-month commitment until 1 Dec 2026."*
+- A note under the current plan shows the date your term ends — for example, *"On a 12-month commitment until 1 Dec 2026."*
 - **Upgrades** to a higher-priced plan stay available at any time. Choosing an upgrade resets the 12-month clock from the new start date.
 - **Downgrades** and **cancellation** are locked until the term ends. Plan cards priced below your current plan show a disabled button with a *"Committed until …"* helper instead of **Subscribe**.
 - Request-only plans (such as Enterprise) are not affected by commitment gating — you can submit an enquiry at any time.
@@ -75,14 +91,14 @@ Once the commitment end date passes, all plan-change options become available ag
 
 ## Managing your subscription
 
-Once your organisation has an active Stripe subscription, a **Manage subscription** button appears at the top of the Billing page. This opens the Stripe Billing Portal in a new tab, where you can:
+Once your organisation has an active Stripe subscription, a **Manage billing** button appears on the Billing page. This opens the Stripe Billing Portal in a new tab, where you can:
 
 - Update your payment method
 - Download invoices and receipts
 - Change billing address and tax details
 - Cancel the subscription (after the commitment term ends)
 
-If your organisation is billed by Utilified directly (no Stripe subscription), the page instead shows a note prompting you to contact Utilified for changes.
+If your organisation is billed by Utilified directly (manual billing mode), the page shows a *"billed by Utilified"* notice instead — contact Utilified to make any changes.
 
 ## What happens when billing lapses
 
