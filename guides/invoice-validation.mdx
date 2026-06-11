@@ -159,12 +159,18 @@ The Inbox Review provides filtering by:
   - **Processing** — Currently being processed by UtiliRead
   - **Success** — Successfully processed into invoices
   - **Errors** — Processed with some errors
-  - **No Match** — Could not match to an account or connection
+  - **Unmatched — No Account** — The inbound email's recipient could not be matched to any account
+  - **No Data Match** — An account was matched, but the data could not be linked to a specific meter or connection
+  - **Skipped — Non-Invoice Category** — The classifier tagged the email as a non-invoice type (for example, marketing or rate-change notice) and skipped invoice processing
   - **Failed** — Processing failed completely
   - **Archived** — Manually archived
   - **Excluded** — Deliberately excluded from processing
   - **Duplicate** — Detected as a duplicate
 - **Type chips** — Invoice, Data File, Overdue Notice, Rate Change Notice, Payment Receipt, and so on.
+
+<Note>
+  **Unmatched** and **Skipped** are backend-assigned triage states. They appear as filter chips and status labels in the grid, but you cannot move an email *into* them from the status dropdown — you only move emails *out* of them by re-matching the account or reclassifying the email type and reprocessing.
+</Note>
 
 ### Reviewing an inbox item
 
