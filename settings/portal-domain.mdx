@@ -4,22 +4,25 @@ description: "Deploy a white-label portal and connect a custom domain by delegat
 keywords: ["portal", "custom domain", "white label", "nameserver delegation", "DKIM", "inbound email", "outbound email"]
 ---
 
-The Portal tab in **Settings** lets Organisation Admins run a white-label customer portal on a domain you control, and route inbound and outbound email through that same domain.
+The **Portal & Domain** tab in **Settings** lets Organisation Admins run a white-label customer portal on a domain you control, and route inbound and outbound email through that same domain.
 
 This page covers the end-to-end flow: plan requirements, attaching a custom domain via nameserver delegation, verifying it, enabling email, and changing or removing the domain later.
 
 ## Who can use this
 
-- Portal deployment is available on the **Business** and **Enterprise** plans. Organisations on lower-tier plans see an upgrade notice in place of the Deploy controls.
-- The Domain section is available on all plans for routing organisation email (inbound and outbound) through your own domain. When your plan does not include the portal feature, the section presents itself as email-only.
-- Only users with the Organisation Admin role can edit the Portal tab.
+- **Portal & Domain** is a Business and Enterprise feature. Organisations on the Starter plan do not see the **Portal & Domain** tab in Settings at all. Organisations with no plan attached (for example, exempt or trial orgs) are treated as entitled and see the tab.
+- Only users with **Manager** or **Administrator** permissions can edit the Portal & Domain tab.
+
+<Info>
+  If your organisation is on the Starter plan and you want a white-label portal or to route email through your own domain, upgrade to Business or Enterprise from **Settings → Billing**. The **Portal & Domain** tab appears as soon as your plan upgrade takes effect.
+</Info>
 
 ## Plan gating
 
-Open **Settings → Portal**. The Deployment section behaves one of three ways:
+Inside **Settings → Portal & Domain**, the Deployment section behaves one of three ways:
 
 - **Plan includes the portal feature** — The **Deploy portal** button is shown. It is disabled until a verified custom domain is attached; hover the button to see the prerequisite.
-- **Plan does not include the portal feature** — An information notice replaces the Deploy controls: *"Portal deployment is available on the Business and Enterprise plans."* Use the **Upgrade** action in the notice to jump to the Billing tab.
+- **Plan does not include the portal feature** — In practice the whole **Portal & Domain** tab is hidden, so this state is rarely seen. If reached directly (for example, during a plan downgrade in progress), an information notice replaces the Deploy controls: *"Portal deployment is available on the Business and Enterprise plans."* Use the **Upgrade** action in the notice to jump to the Billing tab.
 - **Plan still loading** — A short placeholder is shown so the deploy controls and upgrade notice do not flash on first load.
 
 Server-side checks remain authoritative — attempting to deploy without the entitlement is rejected even if the UI is reached another way.
@@ -28,7 +31,7 @@ Server-side checks remain authoritative — attempting to deploy without the ent
 
 Use a subdomain you control — for example, `portal.yourcompany.com.au`. The same domain powers the portal URL, outbound email, and DKIM signing.
 
-1. Go to **Settings → Portal → Domain**.
+1. Go to **Settings → Portal & Domain → Domain**.
 2. Enter your domain in the **Domain** field and select **Add domain**.
 3. UMS provisions a hosted DNS zone for your domain and displays four nameservers in the **Delegate your domain** table.
 
@@ -59,7 +62,7 @@ After delegation, UMS automatically polls for verification while the **Domain** 
 - After about ten minutes of continued polling, automatic checks pause to avoid hammering DNS. The section shows a hint to click **Check now** to keep checking — doing so resumes auto-polling.
 - **Check now** also surfaces a one-off status message ("Domain verified", "Verification failed — check your nameserver delegation", or "Still awaiting DNS").
 
-Once the status flips to **Verified**, the Deploy portal button (if your plan includes the portal feature) is enabled, and the inbound/outbound email toggles become available.
+Once the status flips to **Verified**, the Deploy portal button is enabled, and the inbound/outbound email toggles become available.
 
 ## Deploy the portal
 
@@ -120,6 +123,7 @@ You can cancel any of these dialogs to leave the current state unchanged.
 
 ## Troubleshooting
 
+- **I don't see a Portal & Domain tab** — The tab is hidden on the Starter plan. Upgrade to Business or Enterprise from **Settings → Billing** to make it available. If you are on a higher plan but still don't see it, check that your role is Manager or Administrator.
 - **Status stays on "Awaiting verification"** — Confirm at your registrar that the domain's nameservers exactly match the four shown in UMS. Some registrars list trailing dots; the values are equivalent with or without the trailing dot.
 - **Status shows "Verification failed"** — Most often a nameserver mismatch or a registrar that has not yet propagated the change. Re-check the nameservers and use **Check now**.
 - **Automatic checks have paused** — UMS pauses background polling after about ten minutes to avoid excess lookups. Click **Check now** to resume.
