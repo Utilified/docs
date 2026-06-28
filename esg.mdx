@@ -1,0 +1,79 @@
+---
+title: "ESG & Emissions"
+description: "Measure, calculate, and report your organisation's carbon emissions across facilities and reporting periods."
+---
+
+<Note>
+  ESG is a gated module. It only appears in the sidebar when your organisation has the feature enabled and you hold the **emissions** permission. If you don't see **ESG Overview** and **Reference Data** under the **ESG** group, contact your administrator.
+</Note>
+
+The ESG module helps you track greenhouse gas emissions across Scope 1, Scope 2 (location and market), and Scope 3. You record activity data against reporting periods, calculate emissions using factor sets, review data quality, and generate disclosure-ready reports.
+
+## Overview dashboard
+
+The **ESG Overview** page (`/esg`) opens with a dashboard of KPI cards:
+
+- **Total Emissions** — combined emissions for the latest active period, in tCO2-e
+- **Active Periods** — count of reporting periods currently open
+- **Sites** — number of sites available for emissions reporting
+- **Open Review Items** — outstanding data-quality issues awaiting attention
+
+When emissions data exists, an **Emissions by Scope** pie chart and emissions-trend and target-progress charts appear below the cards.
+
+Beneath the dashboard, tabs let you browse the underlying records. Use the **+** button to create a new record for the active tab.
+
+| Tab | Description |
+| --- | --- |
+| **Reporting Periods** | The periods you report emissions against |
+| **Activity Data** | Raw activity records (fuel, electricity, and so on) by scope and category |
+| **Targets** | Emission-reduction targets with base and target values |
+| **Disclosures** | Disclosure content organised by section and reporting period |
+| **Scope 3 Screening** | A read-only screening view for Scope 3 categories |
+
+{/* TODO screenshot: /images/esg/esg-overview.png — ESG Overview dashboard with KPI cards, scope pie chart, and the record tabs */}
+
+## Reporting periods
+
+Open a reporting period from the **Reporting Periods** tab to manage its full lifecycle. The detail page has **Overview**, **Calculations**, **Activity Data**, **Review Items**, and **Audit Trail** tabs, plus header actions.
+
+<Steps>
+  <Step title="Create a reporting period">
+    Set its name, date range, and applicable frameworks.
+  </Step>
+  <Step title="Add activity data">
+    Enter records manually, or use **Import Scope 2 from Invoices** to populate Scope 2 activity automatically from your invoices.
+  </Step>
+  <Step title="Calculate emissions">
+    Run **Calculate Emissions** to queue a calculation that applies emission factors to your activity data.
+  </Step>
+  <Step title="Check for gaps and review">
+    Run **Run Gap Detection** to flag missing data, then resolve items on the **Review Items** tab.
+  </Step>
+  <Step title="Lock the period">
+    Use **Lock Period** to freeze the data once reporting is final. Calculation and import actions are disabled while a period is locked; **Unlock Period** reopens it.
+  </Step>
+</Steps>
+
+Use **Generate ESG Report** to produce a report for the period. The **Audit Trail** tab records changes for traceability.
+
+{/* TODO screenshot: /images/esg/reporting-period.png — reporting period detail page showing the Overview tab and header actions */}
+
+## Facilities
+
+A facility detail page (reached from emissions records) presents the facility's emissions context across **Overview**, **Activity Records**, **Calculations**, and **Equipment** tabs. Use it to see the activity recorded for a site, the resulting calculations, and the equipment that contributes to its emissions.
+
+{/* TODO screenshot: /images/esg/facilities-detail.png — facility detail page with the Overview tab */}
+
+## Reference data
+
+The **Reference Data** page (`/esg/reference-data`) holds the shared definitions your calculations draw on. Use the **+** button to add a record to the active tab.
+
+| Tab | Description |
+| --- | --- |
+| **Factor Sets** | Named sets of emission factors, with source, reporting year, and effective dates |
+| **Emission Factors** | Individual factors by scope, category, and region |
+| **Equipment** | Equipment definitions including type, fuel type, and refrigerant type |
+| **Instruments** | Environmental instruments (for example certificates) with quantities and vintage year |
+| **Intensity Metrics** | Intensity denominators used to normalise emissions |
+
+{/* TODO screenshot: /images/esg/reference-data.png — Reference Data page showing the Factor Sets tab */}

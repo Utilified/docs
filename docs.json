@@ -20,8 +20,11 @@
           "index",
           "getting-started/quick-start",
           "getting-started/logging-in",
+          "getting-started/choosing-a-plan",
+          "getting-started/getting-set-up",
           "getting-started/navigating-ums",
           "getting-started/first-steps",
+          "getting-started/whats-next",
           "getting-started/key-concepts"
         ]
       },
@@ -31,12 +34,16 @@
         "pages": [
           "guides/setting-up-a-user",
           "guides/creating-accounts",
+          "guides/managing-connections",
           "guides/bulk-importing-data",
           "guides/managing-agreements",
-          "guides/editing-invoices",
-          "guides/running-brokerage-calculations",
           "guides/managing-tariffs",
+          "guides/building-scenarios",
+          "guides/running-brokerage-calculations",
+          "guides/editing-invoices",
+          "guides/utiliread-review",
           "guides/invoice-validation",
+          "guides/processing-payments",
           "guides/running-reports"
         ]
       },
@@ -45,8 +52,10 @@
         "icon": "layout-dashboard",
         "pages": [
           "home",
+          "inbox",
           "reports",
-          "suppliers"
+          "suppliers",
+          "datahub"
         ]
       },
       {
@@ -64,10 +73,24 @@
         "icon": "plug",
         "pages": [
           "connections",
+          "meters",
           "tariffs",
+          "retail-accounts"
+        ]
+      },
+      {
+        "group": "Modelling",
+        "icon": "chart-line",
+        "pages": [
           "scenarios",
-          "retail-accounts",
           "brokerage"
+        ]
+      },
+      {
+        "group": "ESG",
+        "icon": "leaf",
+        "pages": [
+          "esg"
         ]
       },
       {
@@ -84,8 +107,12 @@
         "group": "Settings & Notifications",
         "icon": "settings",
         "pages": [
-          "notifications",
-          "settings"
+          "settings",
+          "settings/personal",
+          "settings/organisation",
+          "settings/white-label",
+          "imports",
+          "notifications"
         ]
       },
       {

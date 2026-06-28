@@ -5,11 +5,29 @@ description: "Manage the full lifecycle of energy invoices in UMS — upload, OC
 
 The Invoices module manages the full lifecycle of energy invoices — from upload through processing, validation, and payment.
 
-![UMS Invoices list showing invoices in a data grid](/images/invoices/invoices-list.png)
+<Frame>
+  ![UMS Invoices list showing invoices in a data grid](/images/invoices/invoices-list.png)
+</Frame>
+
+## Page tabs
+
+The Invoices page is a tabbed workspace. Each tab owns its own toolbar actions:
+
+| Tab | What it shows |
+| --- | --- |
+| **Dashboard** | Validation health, invoice stats, and quick upload — the landing tab. See [Validation](/validation). |
+| **Invoices** | The full invoice data grid (described below). |
+| **Review** | The exception queue of invoices flagged for manual review. See [Invoice Validation and Review](/guides/invoice-validation). |
+| **Uploads** | Drag-and-drop bulk upload into the OCR pipeline. |
+| **Activity** | An audit log of review actions taken on invoices. |
+
+<Note>
+  Invoice **Validation** is not a separate menu item — it lives on the **Dashboard** and **Review** tabs here, and on the **Review** tab of each invoice's detail page.
+</Note>
 
 ## Invoices list
 
-The Invoices page displays all invoices in a data grid:
+The **Invoices** tab displays all invoices in a data grid:
 
 | Column                              | Description                                  |
 | ----------------------------------- | -------------------------------------------- |
