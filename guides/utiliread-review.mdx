@@ -1,0 +1,114 @@
+---
+title: "Reviewing OCR-Extracted Invoices"
+description: "Step through the UtiliRead OCR review workflow — compare extracted fields against the source document, resolve low-confidence values, then approve and migrate the result into a UMS invoice."
+keywords:
+  - utiliread
+  - ocr review
+  - invoice extraction
+  - field resolution
+  - approve invoice
+  - extraction accuracy
+---
+
+When UtiliRead reads an uploaded document but isn't fully confident about one or more extracted fields, it flags the record for manual review instead of creating an invoice straight away. This guide walks through reviewing those records, resolving the flagged fields, and turning an approved extraction into a UMS invoice.
+
+For an overview of how the OCR engine works end to end, see [UtiliRead](/utiliread). Records that arrive by email are triaged first in the [Inbox](/inbox); once an extraction becomes an invoice, it flows into [Invoice Validation](/validation).
+
+## Where review fits
+
+A UtiliRead record moves through these statuses: `RAISED` → `IN_PROGRESS` → `SUCCESS`, or `FAILED` if processing breaks. When extraction succeeds but confidence is low on key fields, the record lands in `REVIEW` and waits for a person.
+
+<Note>
+  Only records in `REVIEW` (or those with a past review) show a **Review** tab. A `SUCCESS` record needs no field resolution — you can migrate it directly.
+</Note>
+
+## Open the review queue
+
+Navigate to **UtiliRead** from the sidebar. The **Processing Overview** banner at the top summarises the queue, and the grid below lists every OCR record.
+
+{/* TODO screenshot: /images/utiliread/review-queue.png — UtiliRead list with the Processing Overview banner expanded and records in the grid */}
+
+<Steps>
+  <Step title="Filter to records needing attention">
+    Use the banner chips to spot work: a `{n} review` chip counts records awaiting manual resolution, `{n} failed` counts processing failures, and `{n} queued` shows current queue depth. Open a record with status **REVIEW**.
+  </Step>
+  <Step title="Open the record">
+    Click into a record to open its detail page. The header title reads **UtiliRead Result #{id}**.
+  </Step>
+  <Step title="Compare extracted data to the source">
+    The **Overview** tab shows the source document alongside the extracted metadata — use the zoom and rotate controls to read the original. Cross-check the extracted values in the **Invoices**, **Connections**, **Line Items**, and **Raw Output** tabs against what the document actually says.
+  </Step>
+</Steps>
+
+## Resolve the flagged fields
+
+Open the **Review** tab. A warning banner shows the **Review Reason**, and each flagged field is listed with a confidence chip — green at 80%+, amber from 50%, red below.
+
+{/* TODO screenshot: /images/utiliread/review-detail.png — Review tab showing a flagged field with candidate values and confidence chips */}
+
+<Steps>
+  <Step title="Pick the correct value">
+    Each field offers the candidate values UtiliRead produced — **AI Primary**, **AI Secondary**, **Tiebreaker**, and the **Source** value read from the document. Click the one that matches the original, or choose **Manual Entry** and type the correct value yourself.
+  </Step>
+  <Step title="Add notes (optional)">
+    Record why you chose a value in the notes box — useful when the document is ambiguous.
+  </Step>
+  <Step title="Submit each field">
+    Click **Submit Resolution**. The field moves to **Resolved** and the unresolved count drops.
+  </Step>
+</Steps>
+
+<Tip>
+  Resolve every flagged field before approving. When you resolve the **last** outstanding field, UtiliRead approves the record for you automatically — you'll see "All fields resolved. Record approved automatically."
+</Tip>
+
+## Approve or reject
+
+The **Review Decision** bar at the top of the tab carries the final call.
+
+<Steps>
+  <Step title="Approve">
+    Once all fields are resolved, click **Approve**. The button stays disabled while any field is unresolved.
+  </Step>
+  <Step title="Reject">
+    If the extraction is unusable — wrong document, unreadable scan — click **Reject**. Rejection is available at any time, even with fields outstanding.
+  </Step>
+</Steps>
+
+<Warning>
+  For records that arrived by email, reprocessing must go through the **Inbox**, not the OCR record in isolation. The detail header shows **Reprocess from inbox** for these — it re-runs the whole email pipeline so the inbox, import records, and invoices stay consistent. Direct uploads instead expose **Retry**, **Force process**, and **Re-run OCR** actions.
+</Warning>
+
+## Turn the approved extraction into an invoice
+
+Approval confirms the data; it does not yet create the invoice. To do that, migrate the result into UMS.
+
+<Steps>
+  <Step title="Start the migration">
+    Click **Migrate** (the primary action in the detail header). This action appears once extraction has produced data.
+  </Step>
+  <Step title="Choose overwrite behaviour">
+    The migration dialog warns that this creates new invoices — and potentially new connections, retail accounts, and suppliers. Toggle **Overwrite** only if you need to replace records already imported from this result.
+  </Step>
+  <Step title="Confirm">
+    Click **Migrate**. On success you're redirected to the **Invoices** page **Uploads** tab, where the new invoice record appears and continues through [validation](/validation).
+  </Step>
+</Steps>
+
+<Tip>
+  Need the extracted data outside UMS? Use **Export to CSV** in the detail header to download the result as `utiliread-{id}.csv`.
+</Tip>
+
+## Accuracy and processing stats
+
+The **Processing Overview** banner on the UtiliRead list doubles as an at-a-glance accuracy dashboard.
+
+{/* TODO screenshot: /images/utiliread/accuracy-stats.png — expanded Processing Overview banner showing stat tiles and bulk-retry buttons */}
+
+It surfaces:
+
+- **Total**, **Success**, **Failed**, **Review**, and **Queue** record counts
+- **Avg Duration** — average time to process a document
+- **Rate (24h)**, **Rate (7d)**, **Rate (30d)** — success rate over each window
+
+When failures or review items exist, **Retry All Failed** and **Retry All Review** re-queue every record in that state in one click — handy after fixing an upstream issue such as a misconfigured supplier or account match.

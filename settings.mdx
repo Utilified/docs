@@ -1,42 +1,48 @@
 ---
 title: "Settings"
-description: "Administrative controls for your UMS organisation — manage users and roles, run bulk imports and exports, and configure organisation preferences."
+description: "Your control centre in UMS — personal preferences and security, plus organisation-wide configuration for users, automation, billing, the white-label portal, and single sign-on."
 ---
 
-The Settings area provides administrative controls for your UMS organisation.
+The Settings area gathers your personal preferences and your organisation's configuration in one place. Open it from your avatar in the top-right corner — choose **My account** for personal settings or **Organisation** for organisation settings — then use the left nav rail at `/settings`.
 
 ## Navigating Settings
 
 Settings uses a left-hand navigation rail split into two groups:
 
-- **Personal** — settings scoped to your own account, such as your profile and preferences.
-- **Organisation** — settings that affect everyone in your organisation, such as users, roles, and bulk imports.
+- **Personal** — settings scoped to your own account, such as your profile, security, and preferences.
+- **Organisation** — settings that affect everyone in your organisation, such as users, automation, and billing.
 
-The rail is permission-aware: sections you don't have permission to view are **hidden**, not greyed out. If you're expecting to see a section and it's missing from the rail, contact your organisation administrator to check your role.
+<Note>
+  The rail is permission-aware: sections you don't have permission to view are **hidden**, not greyed out. Organisation sections require manager or admin access, and some (Portal & Domain, Single Sign-On) also require a Business or Enterprise plan. If you're expecting a section and it's missing, contact your organisation administrator.
+</Note>
 
-## User management
+## Personal
 
-Manage user accounts, roles, and permissions from the **Users** section:
+Settings scoped to you. See [Personal Settings](/settings/personal) for the full detail.
 
-- **Add users** — Invite new team members to your organisation
-- **Edit roles** — Assign permissions that control what each user can access
-- **Deactivate users** — Remove access for users who no longer need it
+| Section | What it covers |
+| --- | --- |
+| **Profile** | Your name, contact details, and profile picture |
+| **Security** | Password and two-factor authentication (2FA) |
+| **Appearance** | Light, dark, or system theme |
+| **Notifications** | Your notification preferences and subscriptions |
+| **Alert Routing** | Rules that forward alerts to specific contacts |
 
-For a step-by-step walkthrough, see [Setting Up a User](/guides/setting-up-a-user).
+## Organisation
 
-## Imports and exports
+Settings that affect your whole organisation.
 
-Bulk data management tools:
+| Section | What it covers | Reference |
+| --- | --- | --- |
+| **General** | Organisation profile, logo, and timezone | [Organisation Settings](/settings/organisation) |
+| **Users** | Invite users, assign roles, manage access | [Setting Up a User](/guides/setting-up-a-user) |
+| **Auto-Pilot** | AI automation for the invoice pipeline | [Organisation Settings](/settings/organisation) |
+| **Billing** | Plan, usage, and payments | [Organisation Settings](/settings/organisation) |
+| **Portal & Domain** | White-label customer portal and custom domain | [Portal & Single Sign-On](/settings/white-label) |
+| **Single Sign-On** | SSO against your identity provider | [Portal & Single Sign-On](/settings/white-label) |
 
-- **Bulk imports** — Upload accounts, sites, connections, and other data in bulk using CSV templates
-- **Import history** — View the status and results of previous imports
-- **Export data** — Download data from any module as CSV
+## Related
 
-To import data, see [Bulk Importing Data](/guides/bulk-importing-data).
-
-## Preferences
-
-Customise your UMS experience:
-
-- **Display settings** — Configure default views and layouts
-- **Organisation settings** — Manage organisation-wide configuration
+- [Bulk Importing Data](/guides/bulk-importing-data) — import accounts, sites, connections, and more in bulk
+- [Imports](/imports) — the Imports page reference and status meanings
+- [Notifications](/notifications) — the in-app notifications drawer

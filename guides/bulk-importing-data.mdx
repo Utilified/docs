@@ -17,7 +17,9 @@ Bulk importing requires administrator permissions.
   <Step title="Review previous imports">
     The **Imports** page lists your previous upload tasks with their type, file name, status, and timestamps.
 
-    ![UMS Imports page listing previous upload tasks with their status and timestamps](/images/imports/imports-page.png)
+    <Frame>
+      ![UMS Imports page listing previous upload tasks with their status and timestamps](/images/imports/imports-page.png)
+    </Frame>
   </Step>
   <Step title="Start a new import">
     Click the **+** button in the top-right to open the **Bulk Upload Wizard**.
@@ -32,19 +34,25 @@ The wizard guides you through four steps: select a template, choose how to provi
   <Step title="Select a template">
     Choose the type of data you want to import. Each template card shows how many fields it has and how many are required.
 
-    ![Bulk Upload Wizard on the Select Template step showing template cards for meter reads, invoices, site data, and more](/images/imports/select-template.png)
+    <Frame>
+      ![Bulk Upload Wizard on the Select Template step showing template cards for meter reads, invoices, site data, and more](/images/imports/select-template.png)
+    </Frame>
 
     Templates are available for **accounts**, **sites**, **connections**, **tariffs**, **meter reads**, **quantity values**, **invoices**, **site data**, and **retail accounts**. Use the search box to find a template quickly.
   </Step>
   <Step title="Choose an input method">
     Decide how you want to provide your data — upload a CSV file, or enter rows manually in an editable grid.
 
-    ![Choose Input Method step with Upload CSV and Manual Entry options](/images/imports/choose-input-method.png)
+    <Frame>
+      ![Choose Input Method step with Upload CSV and Manual Entry options](/images/imports/choose-input-method.png)
+    </Frame>
   </Step>
   <Step title="Provide your data">
     If you chose **Upload CSV**, click **Download Template with Sample Data** to get a correctly-formatted CSV with example rows. Fill it in, then drag and drop your file (or several) onto the upload area. Each file can be up to 50&nbsp;MB.
 
-    ![Provide Data step showing the template download button and the CSV drag-and-drop area](/images/imports/provide-data.png)
+    <Frame>
+      ![Provide Data step showing the template download button and the CSV drag-and-drop area](/images/imports/provide-data.png)
+    </Frame>
 
     UMS validates each file's columns against the template as soon as you add it, flagging any file as **Valid** or listing the errors to fix. If you chose **Manual Entry**, fill in the editable grid instead.
 
@@ -56,6 +64,39 @@ The wizard guides you through four steps: select a template, choose how to provi
     Click **Finish** to start the upload. UMS processes your files in the background and shows live progress for each one, including how many rows succeeded and any per-row errors.
   </Step>
 </Steps>
+
+## Onboarding upload (all-in-one)
+
+When you're setting up a brand-new portfolio, the **onboarding** upload creates your whole hierarchy — **accounts, sites, connections, retail accounts, and agreements** — from a *single* CSV, instead of preparing a separate file for each entity in dependency order. It's the file behind the [guided onboarding wizard](/getting-started/getting-set-up).
+
+It's one **row per connection (meter)**. Account, site, and agreement values repeat down the rows and are de-duplicated automatically on a natural key, so you list each account or site once across many connections.
+
+<Warning>
+  The onboarding upload is **all-or-nothing**. If any row fails validation, nothing is created — fix the file and re-submit. You never end up with a half-built hierarchy.
+</Warning>
+
+### Before you upload
+
+- **Suppliers and utilities must already exist.** They're referenced by name and looked up only — an unknown name is a validation error. Set them up first.
+- **Values that repeat must be consistent.** Two rows with the same `account_name` but a different `account_email` are rejected (no last-write-wins).
+
+### Columns
+
+Download the template to get the exact headers: <a href="/assets/onboarding-template.csv" download>onboarding-template.csv</a>.
+
+The required minimum per row is `account_name`, `connection_identifier`, `retail_supplier_name`, and `retail_supplier_account_id`. Everything else is optional — a row can create just an account, connection, and retail account when there's no site or agreement yet.
+
+| Group | Columns | Notes |
+| --- | --- | --- |
+| **Account** | `account_name` *(required)*, `account_parent_name`, `account_email` | De-dup on name. `account_parent_name` may reference another row's account. |
+| **Site** | `site_name`, `site_address`, `site_city`, `site_state`, `site_postcode`, `site_type` | Optional per row — leave `site_name` blank to skip. The site links to the connection automatically. |
+| **Connection** | `connection_identifier` *(required)*, `utility_name`, `connection_namespace`, `connection_address`, `annual_utility_cost`, `annual_utility_consumption` | `utility_name` is looked up (must exist). `connection_namespace` defaults to `AU_DEFAULT`. |
+| **Retail Account** | `retail_supplier_name` *(required)*, `retail_supplier_account_id` *(required)*, `retail_status`, `retail_open_date` | `retail_supplier_name` is looked up (must exist). Status defaults to `ACTIVE`. |
+| **Agreement** | `agreement_name`, `agreement_type`, `agreement_supplier_name`, `agreement_date_start`, `agreement_date_end`, `agreement_status` | `agreement_type` is required when `agreement_name` is set. The connection and retail account are linked to the agreement automatically. |
+
+<Tip>
+  Start from the downloaded template and fill in only the columns you have. A row with just the four required columns is valid — you can enrich sites and agreements later.
+</Tip>
 
 ## Review import results
 

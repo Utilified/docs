@@ -1,0 +1,77 @@
+---
+title: "Getting Set Up"
+description: "Stand up your whole portfolio in UMS the fast way — let AI extract your data from documents, or load it all from one onboarding file, then review and create in the guided wizard."
+keywords: ["onboarding", "getting started", "AI onboarding", "bulk upload", "guided onboarding wizard", "set up"]
+---
+
+The quickest way to get a new organisation running in UMS is the **guided onboarding wizard**. Instead of creating accounts, sites, connections, and agreements one by one, you bring your existing data in once — by uploading documents for AI to read, or a single onboarding file — then review and create everything together.
+
+<Note>
+  Prefer to build your portfolio by hand, entity by entity? See [Your First Steps](/getting-started/first-steps) for the manual walkthrough. This page covers the faster, assisted path.
+</Note>
+
+## Before you start
+
+Onboarding goes smoothly when your reference data and source files are ready:
+
+- **Suppliers and utilities must already exist.** The onboarding upload *looks up* retailers and utility types by name — it won't create them. Make sure the suppliers and utilities you reference are set up first (ask your administrator if you're unsure).
+- **Gather your portfolio data** — your list of accounts, the sites and their addresses, connection identifiers (electricity `NMI`, gas `MIRN`), retailer account references, and any agreement details.
+- **Collect supporting documents** if you want AI to do the work — agreement PDFs, recent invoices, or a site-list spreadsheet.
+
+## The guided onboarding wizard
+
+The wizard runs against a master account and walks through five steps. Every step except Review is **optional**, so you can do as much or as little in each as you like, then review and create at the end.
+
+{/* TODO screenshot: /images/onboarding/wizard-import-data.png — the guided onboarding wizard on the Import Data step with the AI document upload and CSV options */}
+
+<Steps>
+  <Step title="Import Data">
+    Upload documents for **Joule** (the UMS AI assistant) to analyse, or import a CSV. Joule reads your files and pre-fills the later steps for you — see [AI document upload](#ai-document-upload) below.
+  </Step>
+  <Step title="Infrastructure">
+    Add or adjust **child accounts, sites, and connections**. If you used AI or a CSV in the first step, these are already populated for you to check.
+  </Step>
+  <Step title="Link Sites">
+    Connect sites to their connections, so each meter is tied to the right physical location.
+  </Step>
+  <Step title="Commercial">
+    Add **agreements and retail accounts** — the energy contracts and retailer references for your connections.
+  </Step>
+  <Step title="Review">
+    Review everything the wizard will create, then create all the records in one go.
+  </Step>
+</Steps>
+
+<Tip>
+  The wizard saves your progress as you go — your form state persists across a page refresh, so you can step away and come back without losing your work.
+</Tip>
+
+## AI document upload
+
+On the **Import Data** step, drop in the documents you already have and let AI extract a structured portfolio from them — no manual data entry. Joule reads your files and proposes **child accounts, sites, connections, site links, agreements, and retail accounts**, which then flow into the wizard for you to review and edit before anything is created.
+
+Supported file types: PDF, CSV, Excel (`.xlsx`, `.xls`), TSV, and images (`.png`, `.jpg`). Good sources include **agreement PDFs**, **recent invoices**, and **site-list spreadsheets**.
+
+{/* TODO screenshot: /images/onboarding/ai-document-upload.png — the AI document upload area with extracted data being mapped into the wizard */}
+
+<Note>
+  AI extraction is a starting point, not the final word. Always check the extracted accounts, connections, and agreements on the Infrastructure, Link Sites, and Commercial steps before you create them.
+</Note>
+
+## All-in-one onboarding file
+
+If you'd rather drive onboarding from a spreadsheet, the **onboarding upload** creates your entire hierarchy — accounts, sites, connections, retail accounts, and agreements — from a **single CSV**. It's one row per connection, with the account, site, and agreement values repeating down the rows and de-duplicated automatically.
+
+The upload is **all-or-nothing**: if any row fails validation, nothing is created — you fix the file and re-submit, so you never end up with a half-built portfolio.
+
+For the exact columns and a downloadable template, see [Onboarding upload (all-in-one)](/guides/bulk-importing-data#onboarding-upload-all-in-one) in the Bulk Importing Data guide.
+
+## After onboarding
+
+When you finish, UMS drops you on a **You're all set** page with quick links to keep going:
+
+- **Go to the dashboard** — see your portfolio overview at a glance
+- **Create your first account** — add another customer or business entity
+- **Invite your team** — bring colleagues in and set their access ([Setting Up a User](/guides/setting-up-a-user))
+
+See [What's Next](/getting-started/whats-next) for the highest-value things to set up in your first week.

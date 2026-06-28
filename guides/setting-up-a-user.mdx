@@ -12,12 +12,14 @@ User management lives in the **Users** section of Settings, under the **Organisa
 
 <Steps>
   <Step title="Open Settings">
-    Click your avatar in the bottom-left corner and select **Organization**.
+    Click your avatar in the top-right corner and select **Organisation**.
   </Step>
   <Step title="Open Users">
     In the left nav rail, select **Users** under **Organisation**.
 
-    ![UMS user management showing the Total Users, Active Users, and Pending Invitations stats with the users table](/images/users/users-list.png)
+    <Frame>
+      ![UMS user management showing the Total Users, Active Users, and Pending Invitations stats with the users table](/images/users/users-list.png)
+    </Frame>
   </Step>
 </Steps>
 
@@ -32,7 +34,9 @@ The Users section shows three summary cards — **Total Users**, **Active Users*
   <Step title="Enter user details">
     On the **User Details** step, enter the new user's **First Name**, **Last Name**, and **Email Address**. The invitation is sent to the email address you enter here. **Phone Number** is optional.
 
-    ![Invite New User wizard on the User Details step with name, email, and phone fields](/images/users/invite-user-details.png)
+    <Frame>
+      ![Invite New User wizard on the User Details step with name, email, and phone fields](/images/users/invite-user-details.png)
+    </Frame>
 
     <Note>
       If you enter a phone number, Australian format is preferred — `04XX XXX XXX` or `+614XX XXX XXX`.
@@ -41,7 +45,9 @@ The Users section shows three summary cards — **Total Users**, **Active Users*
   <Step title="Choose a role">
     Click **Next** to move to **Role & Permissions**, then pick a role from the curated **role cards**. The list is filtered to your own privilege level — you can only invite users at or below your role (Superuser and above are never offered). The permissions preview shown next to each card is fetched from the backend, so it always reflects what the role can actually create, read, update, and delete across each application.
 
-    ![Role and Permissions step showing the Account Manager role selected with its permissions matrix](/images/users/invite-role-permissions.png)
+    <Frame>
+      ![Role and Permissions step showing the Account Manager role selected with its permissions matrix](/images/users/invite-role-permissions.png)
+    </Frame>
   </Step>
   <Step title="Set account access (account-scoped roles only)">
     If the role you picked is account-scoped — **Portal Admin**, **Portal User**, **Account User**, or **Account Viewer** — the wizard adds an **Account Access** step where you choose the account(s) the user should be scoped to. This step is skipped for organisation-wide roles. It's the same picker that appears on the **Account Access** tab of the edit dialog for existing users.
