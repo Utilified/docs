@@ -111,6 +111,7 @@
           "settings/personal",
           "settings/organisation",
           "settings/white-label",
+          "settings/portal-domain",
           "billing",
           "imports",
           "notifications"

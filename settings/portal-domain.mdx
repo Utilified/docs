@@ -1,0 +1,131 @@
+---
+title: "Portal & custom domain"
+description: "Deploy a white-label portal and connect a custom domain by delegating nameservers to Utilified, with auto-polled verification and email routing."
+keywords: ["portal", "custom domain", "white label", "nameserver delegation", "DKIM", "inbound email", "outbound email"]
+---
+
+The **Portal & Domain** tab in **Settings** lets Organisation Admins run a white-label customer portal on a domain you control, and route inbound and outbound email through that same domain.
+
+This page covers the end-to-end flow: plan requirements, attaching a custom domain via nameserver delegation, verifying it, enabling email, and changing or removing the domain later.
+
+## Who can use this
+
+- **Portal & Domain** is a Business and Enterprise feature. Organisations on the Starter plan do not see the **Portal & Domain** tab in Settings at all. Organisations with no plan attached (for example, exempt or trial orgs) are treated as entitled and see the tab.
+- Only users with **Manager** or **Administrator** permissions can edit the Portal & Domain tab.
+
+<Info>
+  If your organisation is on the Starter plan and you want a white-label portal or to route email through your own domain, upgrade to Business or Enterprise from **Settings → Billing**. The **Portal & Domain** tab appears as soon as your plan upgrade takes effect.
+</Info>
+
+## Plan gating
+
+Inside **Settings → Portal & Domain**, the Deployment section behaves one of three ways:
+
+- **Plan includes the portal feature** — The **Deploy portal** button is shown. It is disabled until a verified custom domain is attached; hover the button to see the prerequisite.
+- **Plan does not include the portal feature** — In practice the whole **Portal & Domain** tab is hidden, so this state is rarely seen. If reached directly (for example, during a plan downgrade in progress), an information notice replaces the Deploy controls: *"Portal deployment is available on the Business and Enterprise plans."* Use the **Upgrade** action in the notice to jump to the Billing tab.
+- **Plan still loading** — A short placeholder is shown so the deploy controls and upgrade notice do not flash on first load.
+
+Server-side checks remain authoritative — attempting to deploy without the entitlement is rejected even if the UI is reached another way.
+
+## Add a custom domain
+
+Use a subdomain you control — for example, `portal.yourcompany.com.au`. The same domain powers the portal URL, outbound email, and DKIM signing.
+
+1. Go to **Settings → Portal & Domain → Domain**.
+2. Enter your domain in the **Domain** field and select **Add domain**.
+3. UMS provisions a hosted DNS zone for your domain and displays four nameservers in the **Delegate your domain** table.
+
+```text
+ns-123.awsdns-12.com
+ns-456.awsdns-45.net
+ns-789.awsdns-78.org
+ns-012.awsdns-01.co.uk
+```
+
+<Note>
+  Utilified uses **nameserver delegation**, not record-by-record DNS setup. You point your domain (or subdomain) at our nameservers and we manage DKIM, SPF, MX, and the SSL certificate inside that zone. You will not be asked to publish individual CNAME, TXT, or MX records.
+</Note>
+
+### Delegate your nameservers
+
+At your domain registrar (for example, Cloudflare, GoDaddy, or Route 53), set the nameservers for the domain shown in the table to the four nameservers listed in UMS.
+
+- If your registrar separates "Custom nameservers" from "DNS records", you want the **nameservers** setting.
+- Delegation typically propagates in **5–60 minutes**, though some registrars can take longer.
+
+## Verify your domain
+
+After delegation, UMS automatically polls for verification while the **Domain** section is open:
+
+- The status badge cycles **Awaiting verification → Verified** (or **Verification failed**) without a manual refresh.
+- Polling runs every 30 seconds, pauses while the browser tab is hidden, and resumes when you return.
+- After about ten minutes of continued polling, automatic checks pause to avoid hammering DNS. The section shows a hint to click **Check now** to keep checking — doing so resumes auto-polling.
+- **Check now** also surfaces a one-off status message ("Domain verified", "Verification failed — check your nameserver delegation", or "Still awaiting DNS").
+
+Once the status flips to **Verified**, the Deploy portal button is enabled, and the inbound/outbound email toggles become available.
+
+## Deploy the portal
+
+With a verified domain attached and on an eligible plan:
+
+1. Select **Deploy portal** in the Deployment section.
+2. Confirm the deployment in the dialog that appears.
+3. UMS provisions the portal stack and shows progress in the deployment stepper. When complete, the portal becomes available at your custom domain.
+
+The Deploy button stays disabled while a deployment is already in progress. Hover the button for the current reason if it is greyed out.
+
+## Inbound and outbound email
+
+Once your domain is verified, two switches appear under **Email delivery**:
+
+- **Outbound email** — Send notifications and other system mail from `no-reply@yourdomain`.
+- **Inbound email** — Receive invoices and other mail at addresses like `invoices@yourdomain`.
+
+Both switches require DNS verification before they can be turned on. If the domain is not yet verified, the switch is disabled with the hint *"Requires DNS verification."*
+
+Enabling a direction takes effect immediately. **Disabling** either direction opens a confirmation dialog that spells out what stops working — for example, *"Notifications will stop being sent from no-reply@yourdomain."* — so the impact is explicit before you proceed.
+
+<Tip>
+  Enable outbound first to start sending branded notifications. Enable inbound only when you are ready to receive mail (for example, supplier invoices) at addresses on your domain.
+</Tip>
+
+## Change your domain
+
+Domains cannot be renamed in place. Use the **Change domain** action to move to a different domain:
+
+1. Select **Change domain** next to your current domain.
+2. Read the confirmation dialog carefully — it lists each consequence: which email directions will stop, and whether your live portal at the current domain will be taken down.
+3. Confirm. UMS tears down the current domain and returns you to the empty "Add domain" state.
+4. Add the new domain following the [Add a custom domain](#add-a-custom-domain) steps and delegate its nameservers.
+
+<Warning>
+  Changing your domain is a full re-provision. You will need to delegate the new domain's nameservers and wait for verification again before redeploying the portal or re-enabling email.
+</Warning>
+
+## Remove your domain
+
+Use **Remove domain** (the bin icon next to the status badge) to revert your portal to the default Utilified domain and tear down email verification entirely.
+
+A confirmation dialog lists the consequences — including taking down your live portal if one is deployed — and requires you to acknowledge that the action cannot be undone.
+
+## Confirmation dialogs
+
+UMS shows a confirmation dialog before any destructive or impactful change on this page:
+
+| Action | What the dialog tells you |
+| --- | --- |
+| **Remove domain** | The portal will revert to the default Utilified domain, email verification is torn down, and your live portal (if any) will be taken down. |
+| **Change domain** | Same teardown as Remove, plus a reminder that you will need to re-delegate the new domain's nameservers. |
+| **Disable outbound email** | Notifications will stop being sent from `no-reply@yourdomain`. |
+| **Disable inbound email** | Mail sent to addresses like `invoices@yourdomain` will no longer be received. |
+
+You can cancel any of these dialogs to leave the current state unchanged.
+
+## Troubleshooting
+
+- **I don't see a Portal & Domain tab** — The tab is hidden on the Starter plan. Upgrade to Business or Enterprise from **Settings → Billing** to make it available. If you are on a higher plan but still don't see it, check that your role is Manager or Administrator.
+- **Status stays on "Awaiting verification"** — Confirm at your registrar that the domain's nameservers exactly match the four shown in UMS. Some registrars list trailing dots; the values are equivalent with or without the trailing dot.
+- **Status shows "Verification failed"** — Most often a nameserver mismatch or a registrar that has not yet propagated the change. Re-check the nameservers and use **Check now**.
+- **Automatic checks have paused** — UMS pauses background polling after about ten minutes to avoid excess lookups. Click **Check now** to resume.
+- **"This domain is already enabled for another organisation"** — The domain is in use by a different Utilified organisation. Remove it there first, or choose a different subdomain.
+- **Deploy portal stays disabled with a verified domain** — Hover the button for the current reason; the most common cause is an in-progress deployment.
