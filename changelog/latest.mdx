@@ -1,85 +1,51 @@
 ---
 title: "Latest"
-description: "Latest UMS release notes covering new features and improvements — the redesigned invoice and payments workflow, brokerage and tariff tooling, expanded reporting, and a refreshed interface across the app."
+description: "Latest UMS release notes covering new features and improvements — quick tariff reviews, resolving invoice exceptions in place, a rebuilt home page, and portal access management."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v1.32.0" description="2026-07-29">
-  ## Everything since v1.4.0
-
-  ### Invoices & validation review
-
-  - **Joule-assisted review (Workbench)** — Operators now triage invoice exceptions (duplicates, variances, no-match, low-confidence OCR, new suppliers, tariff changes, data-quality issues, period overlaps) in a dedicated Workbench with type-specific detail layouts, keyboard shortcuts, bulk resolve, and live updates.
-  - **Three-lane pipeline invoice workflow** — Invoices now flow through a redesigned Inbox → Invoices → Payments pipeline, with a unified invoice detail page (Exceptions / Validations / History) replacing the old scattered review pages.
-  - **Docked source-document viewer** — Invoice detail now shows the source PDF or image side-by-side with inline line-item editing, so you can verify and correct data without leaving the page.
-  - **Invoice tags & custom fields** — Invoices and Connections can now be tagged and carry custom fields, visible as a grid column and editable on the invoice overview.
-  - **Interval CSV column mapping** — Bulk interval-read uploads (including 5-minute clock-time files) now support a column-mapping step instead of requiring a fixed template.
-  - **Ingest invoice from URL** — Invoices can now be imported directly from a URL, not only via file upload.
-
-  ### Payments & batches
-
-  - **Payments module** — A new Payments area covers payment groups and files with an approvals queue, upcoming-run overview, a guided wizard to create payment groups, a schedule calendar, and supplier-concentration reporting.
-  - **Dual approval & line rejection** — Payment files now support a second approval step and per-line rejection with reissue of rejected lines, instead of single-step all-or-nothing approval.
-
-  ### Brokerage
-
-  - **Brokerage analytics dashboard** — Brokerage now has a KPI and chart dashboard (contracted revenue, monthly forecast vs actual, drawdown) with CSV export and inline-editable revenue records.
-  - **Status review workflow** — A dedicated Status Review tab surfaces closure candidates, missing Tariff rates, and pending brokerage records for triage.
-  - **Raise brokerage invoices in Xero** — Raise brokerage invoices directly into Xero from curated unbilled revenue, with filters, per-raise overrides, live preview, invoice-level field mapping, a billing-contact picker, and void support.
+<Update label="v1.35.0" description="2026-08-01">
+  ## Quick tariff review, in-place exception handling, and a rebuilt home page
 
   ### Tariffs
 
-  - **Tariff wizard & template system** — Tariffs can now be created from a database-backed template library with clone actions, and edited in a redesigned wizard supporting multi-period structures and a tree-view editor.
-  - **Contract extraction review** — Uploaded contracts are now auto-extracted into Agreement and Tariff fields for your review, with a binding-lock step in the wizard.
-  - **AER tariff import** — Standard AER network tariffs can now be imported directly, with pre-upload validation.
+  - **Quick tariff review** — A new three-step wizard creates a scenario from a Retail Account or straight from an uploaded Invoice, with a network Tariff shortlist filtered to the Connection's distributor and searchable, plus an "All distributors" option when you need to look wider.
+  - **Assumptions you can see the source of** — Detected inputs appear in an editable table that labels where each figure came from: from the Invoice, from metered data, entered manually, or no data available.
+  - **Start a review from an Invoice** — Invoice detail gains a Tariff review action that opens the wizard already bound to that Invoice and lists the Connections it bills, pre-ticked so you narrow the list rather than build it.
+  - **Opportunities** — The wizard now assesses demand reset and power factor correction alongside the Tariff comparison, showing annual saving, payback, and the reason where an opportunity did not apply.
+  - **A roomier Tariff review wizard** — A compact header and tighter layout give every wizard more room, the Tariff grids show about three more rows each, and the wizard goes full screen on smaller displays.
 
-  ### Joule
+  ### Invoices & validation
 
-  - **Joule tool integration & conversation management** — Joule can now call platform tools mid-conversation, and gets auto-generated titles plus full history management: rename, delete, and revisit past chats.
+  - **Resolve exceptions in place** — Open exceptions on the Invoice Review tab and the Retail Account Validation tab now expand to their full resolution layout and are actioned without leaving the page. Duplicates can be compared, merged or dismissed inline, and Tariff reviews offer Accept billed tariff, Correct tariff, Dispute and Defer.
+  - **Retail Account ledger** — A chronological ledger showing opening balance, a running balance on every row, and closing balance, with date and type filters, Invoice links, a reason column, and a reconciliation strip covering outstanding, invoiced, paid and adjusted amounts, open gaps and overlaps, and disputes.
+  - **Unified history** — A History tab on both Invoices and Retail Accounts brings field-level edit history, Joule actions, exception lifecycle and manual ledger entries into one timeline. Retail Accounts gain a History tab they did not have before.
+  - **Reasons on manual adjustments** — Ledger quick-add and the Invoice and Connection adjustment dialogs now require a reason.
+  - **Accurate Invoice status** — The status chip on Invoice detail showed "Pending" regardless of the validation outcome. It now reflects the real status.
+  - **Reprocess a failed import** — Import errors can be reprocessed in place, and View Source Email now opens the actual inbox record instead of landing on the dashboard.
+  - **Invoices keep processing when read preprocessing fails** — A meter-read preprocessing failure no longer stops the Invoice silently.
+  - **Extraction failures surface sooner** — Invoices no longer sit in limbo when the AI extraction provider's quota is exhausted.
 
-  ### Reports
+  ### Home
 
-  - **Expanded report library** — New report types include Invoiced Consumption, Period Consumption & Coverage, Connection Agreement Detail, Brokerage Go-Live & Revenue Commencement, and Brokerage Billing Recency Audit, each with drill-down and export.
-  - **Scheduled & ad-hoc reports** — Reports can now be scheduled on a recurring basis or run ad-hoc, with a management page, run history, and completion emails.
-  - **Field-picker report builder** — Report exports now let you choose which Site, Account and Connection fields to include via a reusable field picker.
-
-  ### Onboarding
-
-  - **Unified onboarding wizard** — AI account-data extraction and the onboarding checklist are now combined into a single guided wizard for new Organisations.
-  - **One-CSV bulk onboarding** — A single CSV upload can now create a full Account hierarchy (Accounts, Sites, Connections) in one step, replacing the old multi-entity import flow.
+  - **A rebuilt home page** — Home is now a grid of modules you choose and order yourself, saved to your account. The greeting states the scope you are viewing in words, an attention strip deep-links to what needs action, and a new chart shows billed monthly spend over time, stacked by utility.
 
   ### Settings & access
 
-  - **Roles & permissions v2** — User access is now managed through a redesigned roles-plus-module-overrides permissions interface, replacing the older flat permission model.
-  - **Billing & plan settings** — A self-serve billing tab (plan, usage, trend, entitlements) lets your Organisation view and manage its subscription, including 12-month commitment terms and Enterprise request flows.
-  - **Xero integration setup** — Connect Xero from Settings and configure invoice-raise mapping, including field-level and description-template mapping.
+  - **Portal access management** — A Portal Access tab on Account detail with per-feature toggles (validation outcomes, scenario outcomes, Invoices, Connections and Meters, Agreements, reports, Suppliers) and a Site-subset picker, so you control exactly what each customer sees in the UMS Portal.
+  - **Google Tag Manager container ID** — Settings → Portal & Domain now carries a GTM container ID, which the portal injects for your own analytics.
+  - **Usage analytics** — A new Settings section for Organisation managers shows per-user request counts, days active and last active over 7, 30 and 90 days, filterable between UMS and Portal.
+  - **Portal admin permissions** — Fixed portal admin users receiving permission errors on Connections and Retail Accounts.
 
-  ### Accounts & sites
+  ### Across the app
 
-  - **Refreshed grids, forms and page layouts** — Consistent breadcrumbs, clearer validation messages, and better tablet support across the app.
-  - **Account and Site consumption dashboards** — Account and Site pages now show daily consumption and spend visualisations, plus a per-utility breakdown.
-  - **Site map hover popups** — Hovering a site on the map now shows its address, spend and consumption at a glance.
-  - **Connection coverage-gap warning** — A quick-filter toolbar on Connections now flags coverage gaps, such as missing Agreement periods, directly in the list.
-  - **Editable inbox email** — The auto-generated inbox email address for an Account can now be edited up until the first email arrives.
-  - **Redesigned data grids** — Grids across the app now use a collapsible filter rail with related-field lookups and clearer exact-match filtering.
-
-  ### ESG
-
-  - **ESG dashboard** — A new ESG module provides emissions and sustainability dashboards with theme-aware charts. This module appears only when enabled for your Organisation.
-
-  ### Market
-
-  - **Market intelligence desk** — A new Market page and home widget show NEM spot prices, commodities, continuous WA and TAS futures curves, and curated market news.
-
-  ### Portal configuration
-
-  - **Portal, SSO & custom-domain settings** — Portal theming, SSO and custom-domain delegation are configured from UMS Settings, subject to your plan.
+  - **Consistent page actions** — The main action for a page is now always visible in the header rather than hidden behind the overflow menu. On mobile the header actions become a draggable speed dial that also carries Joule, replacing the two separate buttons that used to overlap.
 
   ### Other improvements
 
-  - **Faster login** — Login load time was reduced by removing the splash screen, paint gates and duplicate data fetches.
-  - **Chart PNG export** — Consumption and analysis charts can now be exported as themed PNG images.
+  - **Exports and scheduled reports no longer hang** — Task runtime is bounded and the coverage query is faster.
+  - **WA market data** — Market data keeps flowing through an AEMO WEM file format change.
 </Update>
 
 See [Previous Releases](/changelog/archive) for older versions.
