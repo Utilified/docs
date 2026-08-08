@@ -1,51 +1,77 @@
 ---
 title: "Latest"
-description: "Latest UMS release notes covering new features and improvements — quick tariff reviews, resolving invoice exceptions in place, a rebuilt home page, and portal access management."
+description: "Latest UMS release notes covering new features and improvements — a restructured navigation, rebuilt scenario and setup wizards, one payments workflow, and submetering hierarchies."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v1.35.0" description="2026-08-01">
-  ## Quick tariff review, in-place exception handling, and a rebuilt home page
+<Update label="v1.43.0" description="2026-08-08">
+  ## A restructured navigation, rebuilt wizards, and one workflow for payments
 
-  ### Tariffs
+  ### Navigation
 
-  - **Quick tariff review** — A new three-step wizard creates a scenario from a Retail Account or straight from an uploaded Invoice, with a network Tariff shortlist filtered to the Connection's distributor and searchable, plus an "All distributors" option when you need to look wider.
-  - **Assumptions you can see the source of** — Detected inputs appear in an editable table that labels where each figure came from: from the Invoice, from metered data, entered manually, or no data available.
-  - **Start a review from an Invoice** — Invoice detail gains a Tariff review action that opens the wizard already bound to that Invoice and lists the Connections it bills, pre-ticked so you narrow the list rather than build it.
-  - **Opportunities** — The wizard now assesses demand reset and power factor correction alongside the Tariff comparison, showing annual saving, payback, and the reason where an opportunity did not apply.
-  - **A roomier Tariff review wizard** — A compact header and tighter layout give every wizard more room, the Tariff grids show about three more rows each, and the wizard goes full screen on smaller displays.
+  - **Hub-based navigation** — Modules are grouped into hubs on a left rail, with the views inside each hub as tabs across the top of the page, so related screens sit together instead of in one long list.
+  - **Favourites** — Favourite any page from its header and it pins to the top of the nav drawer.
+  - **Shortcuts** — The nav drawer carries a shortcuts section for the places you reach for often, including Settings destinations, so you land on the right tab rather than the Settings landing page.
+  - **Faster switching between modules** — Moving between modules keeps the shell in place and loads only the content area, with a progress sweep and skeletons that match the page you are opening.
+  - **A refreshed sign-in and loading experience** — Login and loading states across the app now follow the Utilified brand.
+
+  ### Scenarios
+
+  - **New scenario launcher** — Start a scenario from one place, with a history tab showing what you have run before.
+  - **Rebuilt scenario wizards** — Scenario creation runs through consistent step-by-step wizards with searchable pickers for Sites, Connections and Retail Accounts, and you can add subjects manually where the data is not on the platform yet.
+  - **Opportunity summary and branded PDF** — Each scenario ends with an opportunity summary you can export as a branded PDF report to share with the customer.
+
+  ### Payments
+
+  - **One payments workflow** — Payment batches, the ledger and Invoice triage now sit in a single workflow under Invoices, so you approve a batch and see the resulting ledger movements without changing screens.
+  - **One record of what is instructed, paid and captured** — Payment status is now derived from a single source, so the batch, the ledger and the Invoice agree on what has actually been paid.
+
+  ### Utilities & submetering
+
+  - **Submetering hierarchies** — Build a parent/child hierarchy of Connections, view consumption charts across the hierarchy, and manage the data feeds behind it.
+  - **Inverter data feeds** — Sub-connections accept inverter data feeds alongside metered data.
 
   ### Invoices & validation
 
-  - **Resolve exceptions in place** — Open exceptions on the Invoice Review tab and the Retail Account Validation tab now expand to their full resolution layout and are actioned without leaving the page. Duplicates can be compared, merged or dismissed inline, and Tariff reviews offer Accept billed tariff, Correct tariff, Dispute and Defer.
-  - **Retail Account ledger** — A chronological ledger showing opening balance, a running balance on every row, and closing balance, with date and type filters, Invoice links, a reason column, and a reconciliation strip covering outstanding, invoiced, paid and adjusted amounts, open gaps and overlaps, and disputes.
-  - **Unified history** — A History tab on both Invoices and Retail Accounts brings field-level edit history, Joule actions, exception lifecycle and manual ledger entries into one timeline. Retail Accounts gain a History tab they did not have before.
-  - **Reasons on manual adjustments** — Ledger quick-add and the Invoice and Connection adjustment dialogs now require a reason.
-  - **Accurate Invoice status** — The status chip on Invoice detail showed "Pending" regardless of the validation outcome. It now reflects the real status.
-  - **Reprocess a failed import** — Import errors can be reprocessed in place, and View Source Email now opens the actual inbox record instead of landing on the dashboard.
-  - **Invoices keep processing when read preprocessing fails** — A meter-read preprocessing failure no longer stops the Invoice silently.
-  - **Extraction failures surface sooner** — Invoices no longer sit in limbo when the AI extraction provider's quota is exhausted.
+  - **Email-receipt reports** — Report on the Invoices received into an account inbox, including what arrived and what was processed.
+  - **Inbox actions that respond immediately** — Actions on the Inbox apply straight away and the tab counts stay accurate as you work.
+  - **Invoices scoped by account inbox** — Invoices and their charge records now resolve against the account inbox as well as the Retail Account, so mail-in Invoices appear against the right account.
+  - **Fewer duplicate Retail Accounts on import** — Imports match existing Retail Accounts across a supplier's related entities instead of creating a second account.
+  - **Large inboxes load quickly** — The Inbox list is faster on accounts with a long history.
+
+  ### Setup & forms
+
+  - **Rebuilt setup wizards** — Seven setup flows — including Sites, Connections and Tariffs — now run on one wizard framework, with the same step, validation and review behaviour throughout.
+  - **Simpler single-step forms** — Flows that never needed multiple steps are now a form with a live preview beside it, and two-factor setup is consolidated into one screen.
+  - **Look up related records inline** — Autocomplete fields open a searchable lookup dialog when you need to find a record by more than its name.
+  - **See what a site deactivation affects** — The site deactivation dialog previews what will change before you confirm.
+
+  ### Joule
+
+  - **Plan approval** — Joule sets out a plan for what it intends to change and waits for your approval before acting.
+  - **Joule in the nav drawer** — The Joule launcher now sits in the nav drawer rather than floating over the page.
+
+  ### Settings & users
+
+  - **Rebuilt user management** — The user list is now a full data grid with the same filtering, sorting and column controls as the rest of the app.
+  - **Accurate user status** — A user's account state (invited, active, deactivated) is tracked separately from their recent engagement, so the status column reflects the account rather than last activity.
+  - **Portal users stay in the Portal** — Portal accounts can no longer sign in to UMS, and are told where to go instead.
+
+  ### Reports
+
+  - **Bulk Consumption Export per connection** — The export runs in batches per Connection and streams its output, so large exports complete rather than timing out.
+  - **Clearer report history** — Per-connection exports are labelled as ZIP in report history so you know what you are downloading.
+  - **Chart exports on white-labelled reports** — Chart exports render correctly on branded reports, and analyse series draw continuously across the period.
 
   ### Home
 
-  - **A rebuilt home page** — Home is now a grid of modules you choose and order yourself, saved to your account. The greeting states the scope you are viewing in words, an attention strip deep-links to what needs action, and a new chart shows billed monthly spend over time, stacked by utility.
-
-  ### Settings & access
-
-  - **Portal access management** — A Portal Access tab on Account detail with per-feature toggles (validation outcomes, scenario outcomes, Invoices, Connections and Meters, Agreements, reports, Suppliers) and a Site-subset picker, so you control exactly what each customer sees in the UMS Portal.
-  - **Google Tag Manager container ID** — Settings → Portal & Domain now carries a GTM container ID, which the portal injects for your own analytics.
-  - **Usage analytics** — A new Settings section for Organisation managers shows per-user request counts, days active and last active over 7, 30 and 90 days, filterable between UMS and Portal.
-  - **Portal admin permissions** — Fixed portal admin users receiving permission errors on Connections and Retail Accounts.
-
-  ### Across the app
-
-  - **Consistent page actions** — The main action for a page is now always visible in the header rather than hidden behind the overflow menu. On mobile the header actions become a draggable speed dial that also carries Joule, replacing the two separate buttons that used to overlap.
+  - **Complete-month spend and growth** — The spend hero reports on complete months only, with growth statistics and a notifications module alongside it.
 
   ### Other improvements
 
-  - **Exports and scheduled reports no longer hang** — Task runtime is bounded and the coverage query is faster.
-  - **WA market data** — Market data keeps flowing through an AEMO WEM file format change.
+  - **Agreement statistics span the full width** — The Agreements module's statistics row now matches the other modules.
+  - **Security updates** — Dependency advisories across the platform and the Portal have been patched.
 </Update>
 
 See [Previous Releases](/changelog/archive) for older versions.
