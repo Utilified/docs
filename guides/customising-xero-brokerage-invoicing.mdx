@@ -1,0 +1,215 @@
+---
+title: "Customising Xero Brokerage Invoicing"
+description: "Connect Xero to UMS, map brokerage data onto Xero invoice fields, and build custom line descriptions — organisation-wide in Settings or for a single raise in the invoice wizard."
+---
+
+Once Xero is connected, you can raise brokerage invoices straight from unbilled revenue in UMS. Every invoice UMS creates is pushed to Xero as a **draft** — nothing is approved or sent automatically.
+
+This guide covers how to control what those drafts look like: which account code and tax type each line uses, what the invoice reference says, and — the part most organisations want to change — the **description** on each invoice line.
+
+<Note>
+  Xero settings live under **Settings → Integrations** and require **admin** access. Raising invoices requires the **Brokerage** permission.
+</Note>
+
+## Where customisation happens
+
+There are two places, and they work together:
+
+| Where | Scope | Use it for |
+| --- | --- | --- |
+| **Settings → Integrations** (`/settings#integrations`) | Every brokerage invoice your organisation raises | Your standing defaults — description template, account code, tax type, reference, tracking |
+| **Raise invoice wizard → Adjust fields** step | This one raise only | One-off overrides, e.g. a different description for a single supplier's quarterly bill |
+
+<Tip>
+  Set the pattern you use most often as the saved mapping in Settings, then override it in the wizard only when a particular raise needs something different.
+</Tip>
+
+## Connecting Xero
+
+<Steps>
+  <Step title="Open the Integrations section">
+    Go to **Settings → Integrations**. You'll see a **Xero** card with a connection status badge. (MYOB, QuickBooks, and NetSuite are listed as coming soon.)
+  </Step>
+  <Step title="Authorise UMS in Xero">
+    Click **Connect Xero**. You're sent to Xero to sign in and choose the organisation to connect. UMS requests access to invoices, contacts, and read-only access to your Xero settings.
+  </Step>
+  <Step title="Confirm the connection">
+    After authorising you're returned to UMS and the badge changes to **Connected**, showing the Xero organisation name.
+  </Step>
+</Steps>
+
+<Warning>
+  The **Invoice field mapping** panel only appears once the status is **Connected**. If you disconnect and reconnect, your saved mapping is retained.
+</Warning>
+
+## Setting your organisation-wide mapping
+
+With Xero connected, the **Invoice field mapping** panel appears below the connection card: "Choose how brokerage data is mapped into Xero invoice fields."
+
+### Defaults
+
+Two fallbacks used for any line that doesn't get a value from the mapping below:
+
+- **Default account code** — the Xero sales account brokerage revenue posts to. Leave blank and UMS uses the platform default, `200`.
+- **Default tax type** — the Xero tax type applied to each line. Leave blank and UMS uses `OUTPUT`.
+
+### How to build a custom description
+
+The **Description template** field controls the text on every invoice line. Write plain text and insert fields in curly braces; each placeholder is replaced with that revenue row's value when the line is created.
+
+<Steps>
+  <Step title="Type the fixed wording">
+    Start with the words you always want, for example `Brokerage commission —`.
+  </Step>
+  <Step title="Insert the dynamic fields">
+    Use the **Insert field** dropdown beside the template box to append a placeholder at the end of the template, or type the token yourself. Fields are grouped by source (Revenue, Brokerage record, Agreement, Account, Supplier, Connection, Tariff rate, Invoice, Calculation).
+  </Step>
+  <Step title="Check the result">
+    Raise a preview (see [Overriding a single raise](#overriding-a-single-raise)) — the preview step renders the template against real revenue rows before anything reaches Xero.
+  </Step>
+</Steps>
+
+A worked example:
+
+```
+{agreement.name} — {supplier.name} commission {revenue.date_start} to {revenue.date_end} ({connection.identifier})
+```
+
+renders as:
+
+```
+Acme Retail Supply Agreement — Origin Energy commission 2026-04-01 to 2026-06-30 (6203847561)
+```
+
+If you leave the template blank, UMS falls back to `Brokerage commission <period start>–<period end>`.
+
+#### Available fields
+
+These are the placeholders you can use in the description template. They resolve per revenue line.
+
+| Field | Token |
+| --- | --- |
+| Quantity | `{revenue.quantity}` |
+| Revenue value | `{revenue.revenue_value}` |
+| Period start | `{revenue.date_start}` |
+| Period end | `{revenue.date_end}` |
+| Notes | `{revenue.notes}` |
+| Brokerage external ID | `{brokerage_record.external_id}` |
+| Rate | `{brokerage_record.rate}` |
+| Rate type | `{brokerage_record.rate_type}` |
+| Brokerage start date | `{brokerage_record.start_date}` |
+| Brokerage end date | `{brokerage_record.end_date}` |
+| Agreement name | `{agreement.name}` |
+| Agreement reference | `{agreement.reference}` |
+| Agreement type | `{agreement.type}` |
+| Agreement start date | `{agreement.date_start}` |
+| Agreement end date | `{agreement.date_end}` |
+| Account name | `{account.name}` |
+| Supplier name | `{supplier.name}` |
+| Connection identifier (NMI/MIRN) | `{connection.identifier}` |
+| Connection address | `{connection.connection_address}` |
+| Tariff rate description | `{tariff_rate.description}` |
+| Invoice recipient | `{recipient.name}` |
+| Calculation ID | `{calculation_record.id}` |
+
+<Tip>
+  Dates accept a format suffix. `{revenue.date_start:%b %Y}` renders `Apr 2026` instead of `2026-04-01`.
+</Tip>
+
+<Note>
+  A placeholder that has no value for a given row renders as empty text rather than failing the raise — so check your preview for gaps like a missing connection address. Misspelt tokens are rejected when you save. Descriptions are truncated at 4,000 characters, Xero's limit.
+</Note>
+
+### Invoice fields
+
+These resolve once per invoice rather than per line:
+
+- **Reference** — the Xero invoice reference. Can use a group field (see below) or any per-revenue field, or a literal value. Choose **No reference** to leave it off.
+- **Invoice Date** — defaults to today.
+- **Due Date** — defaults to the Xero contact's payment terms.
+
+Invoice-level (group) fields, available to **Reference**, **Invoice Date**, and **Due Date**:
+
+| Field | Token |
+| --- | --- |
+| Period start | `{group.period_start}` |
+| Period end | `{group.period_end}` |
+| Recipient name | `{group.recipient_name}` |
+| Recipient type | `{group.recipient_type}` |
+| Line count | `{group.line_count}` |
+| Calculation ID | `{calculation_record.id}` |
+| Today | `{today}` |
+
+### Line fields and tracking
+
+The line table maps **Quantity**, **Account Code**, and **Tax Type**. Each row offers **Use default**, a brokerage source field, or **Literal value**.
+
+Below that, UMS lists a row for each active tracking category in your Xero organisation as **Tracking: \<category name>**. Pick the brokerage field whose value should be written to that category, or leave it **Not mapped**. Tracking rows take a source field only — not a literal.
+
+<Note>
+  Tracking categories and their options are read from Xero. UMS never creates them — add the category in Xero first, then map it here.
+</Note>
+
+Click **Save mapping** to apply. The mapping applies to all future raises; invoices already in Xero are unchanged.
+
+## Overriding a single raise
+
+Start a raise from **Brokerage → Revenue** (or go to `/billing/raise-invoice`). The wizard, **Raise invoice from unbilled revenue**, has five steps:
+
+<Steps>
+  <Step title="Select supplier">
+    Choose the supplier whose unbilled revenue you want to bill. This step only picks the supplier — description editing is in the next-but-one step.
+  </Step>
+  <Step title="Unbilled revenue">
+    Select the revenue rows to include on the invoice.
+  </Step>
+  <Step title="Adjust fields">
+    Override how brokerage data maps into invoice fields **for this raise only**.
+
+    - **Description template** — type a template here to replace the saved one. The placeholder text shows your saved default; leave it blank to keep using that default. Same tokens as the table above.
+    - **Per-raise field overrides** — a table of **Field / Default / Override** for **Account code**, **Tax type**, and **Reference**. Leave a row on **Use default** to keep the saved connection mapping, or pick a source field or **Literal value**. Reference also offers **No reference**.
+
+    Tracking categories, invoice date, and due date can't be overridden per raise — change those in Settings.
+  </Step>
+  <Step title="Billing contact">
+    Choose the Xero contact this invoice bills against. UMS pre-selects the contact previously linked to that supplier, or you can search Xero contacts or **Create new contact**.
+  </Step>
+  <Step title="Preview & raise">
+    The preview renders every line exactly as it will appear in Xero, with your template applied. Check the descriptions here, then raise. The invoice is created in Xero as a **draft**.
+  </Step>
+</Steps>
+
+## Which value wins
+
+When a field is set in more than one place, UMS resolves it in this order — later layers override earlier ones:
+
+<Steps>
+  <Step title="Supplier defaults">
+    For supplier-billed invoices, the supplier's **Default GL account** and **Default tax code** seed the account code and tax type. Suppliers do not carry a description template.
+  </Step>
+  <Step title="Saved connection mapping">
+    Whatever you saved in **Settings → Integrations**.
+  </Step>
+  <Step title="Per-raise override">
+    Anything you set in the wizard's **Adjust fields** step.
+  </Step>
+  <Step title="Built-in fallbacks">
+    If account code or tax type is still empty, UMS uses your **Default account code** / **Default tax type**, then the platform defaults `200` and `OUTPUT`. An empty description falls back to `Brokerage commission <period start>–<period end>`.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+| Symptom | Cause and fix |
+| --- | --- |
+| No **Invoice field mapping** panel | Xero isn't connected, or the status is Expired/Revoked. Reconnect from **Settings → Integrations**. |
+| Part of a description is blank | The placeholder had no value for that revenue row. Check the preview and choose a field that's always populated, or fall back to a literal. |
+| Contact step blocks the raise | The selected revenue spans more than one recipient — a single Xero contact can't be applied. Split the raise by recipient. |
+| No **Integrations** section in Settings | The section is admin-only. Ask your organisation administrator. |
+| Tracking category missing | Only **active** Xero tracking categories are listed. Create or reactivate it in Xero, then reload Settings. |
+
+## Related
+
+- [Running Brokerage Calculations](/guides/running-brokerage-calculations) — generate the revenue you invoice from
+- [Brokerage](/brokerage) — the Brokerage module reference
+- [Organisation Settings](/settings/organisation) — other organisation-wide configuration
