@@ -5,6 +5,49 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v1.35.0" description="2026-08-01">
+  ## Quick tariff review, in-place exception handling, and a rebuilt home page
+
+  ### Tariffs
+
+  - **Quick tariff review** — A new three-step wizard creates a scenario from a Retail Account or straight from an uploaded Invoice, with a network Tariff shortlist filtered to the Connection's distributor and searchable, plus an "All distributors" option when you need to look wider.
+  - **Assumptions you can see the source of** — Detected inputs appear in an editable table that labels where each figure came from: from the Invoice, from metered data, entered manually, or no data available.
+  - **Start a review from an Invoice** — Invoice detail gains a Tariff review action that opens the wizard already bound to that Invoice and lists the Connections it bills, pre-ticked so you narrow the list rather than build it.
+  - **Opportunities** — The wizard now assesses demand reset and power factor correction alongside the Tariff comparison, showing annual saving, payback, and the reason where an opportunity did not apply.
+  - **A roomier Tariff review wizard** — A compact header and tighter layout give every wizard more room, the Tariff grids show about three more rows each, and the wizard goes full screen on smaller displays.
+
+  ### Invoices & validation
+
+  - **Resolve exceptions in place** — Open exceptions on the Invoice Review tab and the Retail Account Validation tab now expand to their full resolution layout and are actioned without leaving the page. Duplicates can be compared, merged or dismissed inline, and Tariff reviews offer Accept billed tariff, Correct tariff, Dispute and Defer.
+  - **Retail Account ledger** — A chronological ledger showing opening balance, a running balance on every row, and closing balance, with date and type filters, Invoice links, a reason column, and a reconciliation strip covering outstanding, invoiced, paid and adjusted amounts, open gaps and overlaps, and disputes.
+  - **Unified history** — A History tab on both Invoices and Retail Accounts brings field-level edit history, Joule actions, exception lifecycle and manual ledger entries into one timeline. Retail Accounts gain a History tab they did not have before.
+  - **Reasons on manual adjustments** — Ledger quick-add and the Invoice and Connection adjustment dialogs now require a reason.
+  - **Accurate Invoice status** — The status chip on Invoice detail showed "Pending" regardless of the validation outcome. It now reflects the real status.
+  - **Reprocess a failed import** — Import errors can be reprocessed in place, and View Source Email now opens the actual inbox record instead of landing on the dashboard.
+  - **Invoices keep processing when read preprocessing fails** — A meter-read preprocessing failure no longer stops the Invoice silently.
+  - **Extraction failures surface sooner** — Invoices no longer sit in limbo when the AI extraction provider's quota is exhausted.
+
+  ### Home
+
+  - **A rebuilt home page** — Home is now a grid of modules you choose and order yourself, saved to your account. The greeting states the scope you are viewing in words, an attention strip deep-links to what needs action, and a new chart shows billed monthly spend over time, stacked by utility.
+
+  ### Settings & access
+
+  - **Portal access management** — A Portal Access tab on Account detail with per-feature toggles (validation outcomes, scenario outcomes, Invoices, Connections and Meters, Agreements, reports, Suppliers) and a Site-subset picker, so you control exactly what each customer sees in the UMS Portal.
+  - **Google Tag Manager container ID** — Settings → Portal & Domain now carries a GTM container ID, which the portal injects for your own analytics.
+  - **Usage analytics** — A new Settings section for Organisation managers shows per-user request counts, days active and last active over 7, 30 and 90 days, filterable between UMS and Portal.
+  - **Portal admin permissions** — Fixed portal admin users receiving permission errors on Connections and Retail Accounts.
+
+  ### Across the app
+
+  - **Consistent page actions** — The main action for a page is now always visible in the header rather than hidden behind the overflow menu. On mobile the header actions become a draggable speed dial that also carries Joule, replacing the two separate buttons that used to overlap.
+
+  ### Other improvements
+
+  - **Exports and scheduled reports no longer hang** — Task runtime is bounded and the coverage query is faster.
+  - **WA market data** — Market data keeps flowing through an AEMO WEM file format change.
+</Update>
+
 <Update label="v1.32.0" description="2026-07-29">
   ## Everything since v1.4.0
 
