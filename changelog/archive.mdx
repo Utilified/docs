@@ -5,6 +5,74 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v1.43.0" description="2026-08-08">
+  ## A restructured navigation, rebuilt wizards, and one workflow for payments
+
+  ### Navigation
+
+  - **Hub-based navigation** — Modules are grouped into hubs on a left rail, with the views inside each hub as tabs across the top of the page, so related screens sit together instead of in one long list.
+  - **Favourites** — Favourite any page from its header and it pins to the top of the nav drawer.
+  - **Shortcuts** — The nav drawer carries a shortcuts section for the places you reach for often, including Settings destinations, so you land on the right tab rather than the Settings landing page.
+  - **Faster switching between modules** — Moving between modules keeps the shell in place and loads only the content area, with a progress sweep and skeletons that match the page you are opening.
+  - **A refreshed sign-in and loading experience** — Login and loading states across the app now follow the Utilified brand.
+
+  ### Scenarios
+
+  - **New scenario launcher** — Start a scenario from one place, with a history tab showing what you have run before.
+  - **Rebuilt scenario wizards** — Scenario creation runs through consistent step-by-step wizards with searchable pickers for Sites, Connections and Retail Accounts, and you can add subjects manually where the data is not on the platform yet.
+  - **Opportunity summary and branded PDF** — Each scenario ends with an opportunity summary you can export as a branded PDF report to share with the customer.
+
+  ### Payments
+
+  - **One payments workflow** — Payment batches, the ledger and Invoice triage now sit in a single workflow under Invoices, so you approve a batch and see the resulting ledger movements without changing screens.
+  - **One record of what is instructed, paid and captured** — Payment status is now derived from a single source, so the batch, the ledger and the Invoice agree on what has actually been paid.
+
+  ### Utilities & submetering
+
+  - **Submetering hierarchies** — Build a parent/child hierarchy of Connections, view consumption charts across the hierarchy, and manage the data feeds behind it.
+  - **Inverter data feeds** — Sub-connections accept inverter data feeds alongside metered data.
+
+  ### Invoices & validation
+
+  - **Email-receipt reports** — Report on the Invoices received into an account inbox, including what arrived and what was processed.
+  - **Inbox actions that respond immediately** — Actions on the Inbox apply straight away and the tab counts stay accurate as you work.
+  - **Invoices scoped by account inbox** — Invoices and their charge records now resolve against the account inbox as well as the Retail Account, so mail-in Invoices appear against the right account.
+  - **Fewer duplicate Retail Accounts on import** — Imports match existing Retail Accounts across a supplier's related entities instead of creating a second account.
+  - **Large inboxes load quickly** — The Inbox list is faster on accounts with a long history.
+
+  ### Setup & forms
+
+  - **Rebuilt setup wizards** — Seven setup flows — including Sites, Connections and Tariffs — now run on one wizard framework, with the same step, validation and review behaviour throughout.
+  - **Simpler single-step forms** — Flows that never needed multiple steps are now a form with a live preview beside it, and two-factor setup is consolidated into one screen.
+  - **Look up related records inline** — Autocomplete fields open a searchable lookup dialog when you need to find a record by more than its name.
+  - **See what a site deactivation affects** — The site deactivation dialog previews what will change before you confirm.
+
+  ### Joule
+
+  - **Plan approval** — Joule sets out a plan for what it intends to change and waits for your approval before acting.
+  - **Joule in the nav drawer** — The Joule launcher now sits in the nav drawer rather than floating over the page.
+
+  ### Settings & users
+
+  - **Rebuilt user management** — The user list is now a full data grid with the same filtering, sorting and column controls as the rest of the app.
+  - **Accurate user status** — A user's account state (invited, active, deactivated) is tracked separately from their recent engagement, so the status column reflects the account rather than last activity.
+  - **Portal users stay in the Portal** — Portal accounts can no longer sign in to UMS, and are told where to go instead.
+
+  ### Reports
+
+  - **Bulk Consumption Export per connection** — The export runs in batches per Connection and streams its output, so large exports complete rather than timing out.
+  - **Clearer report history** — Per-connection exports are labelled as ZIP in report history so you know what you are downloading.
+  - **Chart exports on white-labelled reports** — Chart exports render correctly on branded reports, and analyse series draw continuously across the period.
+
+  ### Home
+
+  - **Complete-month spend and growth** — The spend hero reports on complete months only, with growth statistics and a notifications module alongside it.
+
+  ### Other improvements
+
+  - **Agreement statistics span the full width** — The Agreements module's statistics row now matches the other modules.
+  - **Security updates** — Dependency advisories across the platform and the Portal have been patched.
+</Update>
 <Update label="v1.35.0" description="2026-08-01">
   ## Quick tariff review, in-place exception handling, and a rebuilt home page
 

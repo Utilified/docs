@@ -1,77 +1,73 @@
 ---
 title: "Latest"
-description: "Latest UMS release notes covering new features and improvements — a restructured navigation, rebuilt scenario and setup wizards, one payments workflow, and submetering hierarchies."
+description: "Latest UMS release notes covering new features and improvements — payment group code assignments, more supplier invoice formats, scheduled reports that recover from a failed run, and Brokerage Xero mapping."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v1.43.0" description="2026-08-08">
-  ## A restructured navigation, rebuilt wizards, and one workflow for payments
-
-  ### Navigation
-
-  - **Hub-based navigation** — Modules are grouped into hubs on a left rail, with the views inside each hub as tabs across the top of the page, so related screens sit together instead of in one long list.
-  - **Favourites** — Favourite any page from its header and it pins to the top of the nav drawer.
-  - **Shortcuts** — The nav drawer carries a shortcuts section for the places you reach for often, including Settings destinations, so you land on the right tab rather than the Settings landing page.
-  - **Faster switching between modules** — Moving between modules keeps the shell in place and loads only the content area, with a progress sweep and skeletons that match the page you are opening.
-  - **A refreshed sign-in and loading experience** — Login and loading states across the app now follow the Utilified brand.
-
-  ### Scenarios
-
-  - **New scenario launcher** — Start a scenario from one place, with a history tab showing what you have run before.
-  - **Rebuilt scenario wizards** — Scenario creation runs through consistent step-by-step wizards with searchable pickers for Sites, Connections and Retail Accounts, and you can add subjects manually where the data is not on the platform yet.
-  - **Opportunity summary and branded PDF** — Each scenario ends with an opportunity summary you can export as a branded PDF report to share with the customer.
+<Update label="v1.47.0" description="2026-08-22">
+  ## Payment group configuration, more supplier invoice formats, and scheduled reports that recover
 
   ### Payments
 
-  - **One payments workflow** — Payment batches, the ledger and Invoice triage now sit in a single workflow under Invoices, so you approve a batch and see the resulting ledger movements without changing screens.
-  - **One record of what is instructed, paid and captured** — Payment status is now derived from a single source, so the batch, the ledger and the Invoice agree on what has actually been paid.
+  - **Code Assignments on payment groups** — A Code Assignments tab on a payment group lets you manage the codes a group applies, including cost-centre splits and the AU_STD columns, so payment files carry the coding your finance system expects.
+  - **A simpler way to create a payment group** — The create form now reveals fields as you need them and shows a live preview of which Retail Accounts and Invoices the group would match, so you can see the effect before saving.
+  - **Require a separate approver** — Payment groups carry a per-group setting that stops the person who prepared a payment file from approving it. It is off unless you turn it on for that group.
+  - **More detail on payment file lines** — Payment file lines now carry the NMI and the billed period, and tax coming from your ERP is pro-rated across the lines rather than sitting on one.
 
-  ### Utilities & submetering
+  ### Invoices
 
-  - **Submetering hierarchies** — Build a parent/child hierarchy of Connections, view consumption charts across the hierarchy, and manage the data feeds behind it.
-  - **Inverter data feeds** — Sub-connections accept inverter data feeds alongside metered data.
-
-  ### Invoices & validation
-
-  - **Email-receipt reports** — Report on the Invoices received into an account inbox, including what arrived and what was processed.
-  - **Inbox actions that respond immediately** — Actions on the Inbox apply straight away and the tab counts stay accurate as you work.
-  - **Invoices scoped by account inbox** — Invoices and their charge records now resolve against the account inbox as well as the Retail Account, so mail-in Invoices appear against the right account.
-  - **Fewer duplicate Retail Accounts on import** — Imports match existing Retail Accounts across a supplier's related entities instead of creating a second account.
-  - **Large inboxes load quickly** — The Inbox list is faster on accounts with a long history.
-
-  ### Setup & forms
-
-  - **Rebuilt setup wizards** — Seven setup flows — including Sites, Connections and Tariffs — now run on one wizard framework, with the same step, validation and review behaviour throughout.
-  - **Simpler single-step forms** — Flows that never needed multiple steps are now a form with a live preview beside it, and two-factor setup is consolidated into one screen.
-  - **Look up related records inline** — Autocomplete fields open a searchable lookup dialog when you need to find a record by more than its name.
-  - **See what a site deactivation affects** — The site deactivation dialog previews what will change before you confirm.
-
-  ### Joule
-
-  - **Plan approval** — Joule sets out a plan for what it intends to change and waits for your approval before acting.
-  - **Joule in the nav drawer** — The Joule launcher now sits in the nav drawer rather than floating over the page.
-
-  ### Settings & users
-
-  - **Rebuilt user management** — The user list is now a full data grid with the same filtering, sorting and column controls as the rest of the app.
-  - **Accurate user status** — A user's account state (invited, active, deactivated) is tracked separately from their recent engagement, so the status column reflects the account rather than last activity.
-  - **Portal users stay in the Portal** — Portal accounts can no longer sign in to UMS, and are told where to go instead.
+  - **More supplier formats read automatically** — Alinta and Momentum invoices are now read in both CSV and XLSX form, and Meridian statements are rebuilt from both of their CSV attachments instead of only the first.
+  - **Choose extra columns on a batch export** — Invoice batch export gains a column picker, so an export carries the fields you actually reconcile against.
+  - **Stranded imports can be replayed** — An import that stopped part-way can be replayed rather than re-uploaded, and the admin reprocess action now genuinely queues the work instead of appearing to.
+  - **Better supplier matching** — Suppliers are matched on their brand rather than their legal suffix, on the ABN extracted from the document, and on the NZBN for New Zealand suppliers. A supplier outside the import's own Organisation is never matched.
+  - **Retail Accounts matched on the billed period** — An Invoice is matched to the Retail Account that was billing for that period, not on the account number alone, so multi-period accounts land on the right record.
+  - **Spreadsheets included in format auto-detection** — Uploading a spreadsheet of account data no longer needs the format chosen by hand.
+  - **Self-describing read files skip column mapping** — Interval and read files that name their own columns go straight through instead of stopping at the mapping step.
+  - **Shared documents stored once** — An invoice batch extract that covers several Invoices sharing a document stores that document once.
 
   ### Reports
 
-  - **Bulk Consumption Export per connection** — The export runs in batches per Connection and streams its output, so large exports complete rather than timing out.
-  - **Clearer report history** — Per-connection exports are labelled as ZIP in report history so you know what you are downloading.
-  - **Chart exports on white-labelled reports** — Chart exports render correctly on branded reports, and analyse series draw continuously across the period.
+  - **Run a scheduled report over everything since it last succeeded** — A new "since last success" schedule preset picks up the window a failed run missed, so a skipped run does not leave a gap.
+  - **See why a scheduled report failed** — A failed scheduled report now records the reason, and failed runs are visible and retryable from the reports page.
+  - **Real account names in the Invoice Gap Report** — The report shows account names instead of identifiers.
+  - **External database sync reports** — Invoice and interval data can be synced out to an external database on a watermark, with retries on a failed run.
+  - **Brokerage reporting** — A point-in-time revenue extract has been added, report access has been corrected, and results are no longer silently truncated.
 
-  ### Home
+  ### Brokerage
 
-  - **Complete-month spend and growth** — The spend hero reports on complete months only, with growth statistics and a notifications module alongside it.
+  - **Pick Xero codes from a dropdown** — Raising a brokerage invoice offers the codes from Xero rather than free text, and unbilled revenue can be filtered by billing basis.
+  - **Unit rates keep their precision** — Brokerage unit rates no longer round to $0.00 when raised into Xero.
+  - **Row actions on the invoices grid** — The per-row actions on the Brokerage invoices grid are back.
+  - **The run wizard opens cleanly** — The brokerage run wizard no longer reloads itself on opening.
+
+  ### Xero
+
+  - **Mapping sources grouped by model** — The source dropdowns in Xero invoice mapping are grouped and categorised by the record they come from, so a long list is now navigable.
+  - **Mapping codes validated against Xero** — A mapping code is checked against the values Xero itself accepts, so an invalid code is caught when you set it rather than when a raise fails.
+
+  ### Retail Accounts
+
+  - **Retail Account status lifecycle** — Retail Accounts carry a managed status through their life, so closed and pending accounts are distinguishable from active ones.
+  - **Inactive accounts shown by default** — The Retail Accounts grid includes inactive accounts without changing a filter first.
+  - **Connections show the active Retail Account** — A Connection shows the Retail Account currently billing it, scoped to that customer.
+
+  ### Settings & access
+
+  - **Rotate an SSO client secret** — The SSO settings form now supports rotating a secret, and UMS warns you before a client secret expires rather than after sign-in breaks.
+  - **User management fixes** — The user modal loads when opened from a tab URL, dialogs scroll again on smaller screens, and inviting a user no longer fails on the Organisation field.
+
+  ### Inbox
+
+  - **Safer email preview** — Email HTML in the review detail panel is sanitised before it is shown.
+  - **Oversized forwards** — An email too large to forward is now degraded rather than dropped.
 
   ### Other improvements
 
-  - **Agreement statistics span the full width** — The Agreements module's statistics row now matches the other modules.
-  - **Security updates** — Dependency advisories across the platform and the Portal have been patched.
+  - **Data source health reads correctly** — A data source's error count is now counted since its last success, is labelled that way, and its status reflects the real state.
+  - **Branded market exports** — Axes and the logo are back on a branded analyse export.
+  - **Market news keeps flowing** — The news feed recovers from a provider blocking an automated request.
+  - **Marketplace** — Procurement rounds are now governed, with responses immutable once submitted, and broker visibility fails closed. Marketplace appears only where it is enabled for your Organisation.
 </Update>
 
 See [Previous Releases](/changelog/archive) for older versions.
