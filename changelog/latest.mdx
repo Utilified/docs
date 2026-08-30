@@ -1,73 +1,38 @@
 ---
 title: "Latest"
-description: "Latest UMS release notes covering new features and improvements — payment group code assignments, more supplier invoice formats, scheduled reports that recover from a failed run, and Brokerage Xero mapping."
+description: "Latest UMS release notes covering new features and improvements — a rebuilt payments workflow, honest payment coverage, site-level cost splits, and a redesigned invoice page."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v1.47.0" description="2026-08-22">
-  ## Payment group configuration, more supplier invoice formats, and scheduled reports that recover
+<Update label="v1.50.1" description="2026-08-26">
+  ## A rebuilt payments workflow, a redesigned invoice page, and site-level cost splits
 
   ### Payments
 
-  - **Code Assignments on payment groups** — A Code Assignments tab on a payment group lets you manage the codes a group applies, including cost-centre splits and the AU_STD columns, so payment files carry the coding your finance system expects.
-  - **A simpler way to create a payment group** — The create form now reveals fields as you need them and shows a live preview of which Retail Accounts and Invoices the group would match, so you can see the effect before saving.
-  - **Require a separate approver** — Payment groups carry a per-group setting that stops the person who prepared a payment file from approving it. It is off unless you turn it on for that group.
-  - **More detail on payment file lines** — Payment file lines now carry the NMI and the billed period, and tax coming from your ERP is pro-rated across the lines rather than sitting on one.
+  - **A rebuilt payment group and payment file workflow** — Payment groups and files now share one eligibility engine, so the grids, the counts and the selection you see all come from the same source. What you select is resolved on the server, so a selection made across pages or filters carries through to the file you create.
+  - **Honest coverage** — A payment group's coverage now tells you plainly what is included, what is outstanding, and what has been excluded, instead of implying an Invoice is covered when it is not.
+  - **Manage entity codes in one place** — Company, vendor and cost-centre codes are managed from the payment group rather than being spread across supplier records.
+  - **Site-level cost splits** — A code assignment can split a Connection's cost across Sites, so a payment file allocates to the cost centre that actually incurred the charge.
+  - **Send invoice copies with a payment file** — A payment group can opt in to having the source Invoices emailed alongside the payment file, and you can download the same set of copies from the file itself.
+  - **Connection address on ERP payment files** — Payment file descriptions carry the Connection address, so a line is identifiable in your finance system without opening UMS.
+  - **AU_STD payment file corrections** — The AU_STD format now totals correctly, renders its columns as your ERP expects, allocates each payable to the cost centre that incurred it, and no longer spreads a single Amount Due across Connection rows.
+  - **A clearer payment group overview** — The overview layout has been reworked and now shows an Excluded state alongside the rest of the coverage.
 
   ### Invoices
 
-  - **More supplier formats read automatically** — Alinta and Momentum invoices are now read in both CSV and XLSX form, and Meridian statements are rebuilt from both of their CSV attachments instead of only the first.
-  - **Choose extra columns on a batch export** — Invoice batch export gains a column picker, so an export carries the fields you actually reconcile against.
-  - **Stranded imports can be replayed** — An import that stopped part-way can be replayed rather than re-uploaded, and the admin reprocess action now genuinely queues the work instead of appearing to.
-  - **Better supplier matching** — Suppliers are matched on their brand rather than their legal suffix, on the ABN extracted from the document, and on the NZBN for New Zealand suppliers. A supplier outside the import's own Organisation is never matched.
-  - **Retail Accounts matched on the billed period** — An Invoice is matched to the Retail Account that was billing for that period, not on the account number alone, so multi-period accounts land on the right record.
-  - **Spreadsheets included in format auto-detection** — Uploading a spreadsheet of account data no longer needs the format chosen by hand.
-  - **Self-describing read files skip column mapping** — Interval and read files that name their own columns go straight through instead of stopping at the mapping step.
-  - **Shared documents stored once** — An invoice batch extract that covers several Invoices sharing a document stores that document once.
-
-  ### Reports
-
-  - **Run a scheduled report over everything since it last succeeded** — A new "since last success" schedule preset picks up the window a failed run missed, so a skipped run does not leave a gap.
-  - **See why a scheduled report failed** — A failed scheduled report now records the reason, and failed runs are visible and retryable from the reports page.
-  - **Real account names in the Invoice Gap Report** — The report shows account names instead of identifiers.
-  - **External database sync reports** — Invoice and interval data can be synced out to an external database on a watermark, with retries on a failed run.
-  - **Brokerage reporting** — A point-in-time revenue extract has been added, report access has been corrected, and results are no longer silently truncated.
-
-  ### Brokerage
-
-  - **Pick Xero codes from a dropdown** — Raising a brokerage invoice offers the codes from Xero rather than free text, and unbilled revenue can be filtered by billing basis.
-  - **Unit rates keep their precision** — Brokerage unit rates no longer round to $0.00 when raised into Xero.
-  - **Row actions on the invoices grid** — The per-row actions on the Brokerage invoices grid are back.
-  - **The run wizard opens cleanly** — The brokerage run wizard no longer reloads itself on opening.
-
-  ### Xero
-
-  - **Mapping sources grouped by model** — The source dropdowns in Xero invoice mapping are grouped and categorised by the record they come from, so a long list is now navigable.
-  - **Mapping codes validated against Xero** — A mapping code is checked against the values Xero itself accepts, so an invalid code is caught when you set it rather than when a raise fails.
+  - **A redesigned invoice page** — The Invoice detail page has been rebuilt around what you check first — charges, Connections and the source document — so validating an Invoice takes fewer clicks.
+  - **Attach supporting documents to an Invoice** — Supporting documents can be attached directly to an Invoice, and stay with it.
+  - **Source documents in the audit pack** — An audit-pack download now bundles the original supplier documents with the extracted data.
 
   ### Retail Accounts
 
-  - **Retail Account status lifecycle** — Retail Accounts carry a managed status through their life, so closed and pending accounts are distinguishable from active ones.
-  - **Inactive accounts shown by default** — The Retail Accounts grid includes inactive accounts without changing a filter first.
-  - **Connections show the active Retail Account** — A Connection shows the Retail Account currently billing it, scoped to that customer.
+  - **Status preset views show what you asked for** — The status preset views on the Retail Accounts grid no longer quietly filter to active accounts as well.
 
   ### Settings & access
 
-  - **Rotate an SSO client secret** — The SSO settings form now supports rotating a secret, and UMS warns you before a client secret expires rather than after sign-in breaks.
-  - **User management fixes** — The user modal loads when opened from a tab URL, dialogs scroll again on smaller screens, and inviting a user no longer fails on the Organisation field.
-
-  ### Inbox
-
-  - **Safer email preview** — Email HTML in the review detail panel is sanitised before it is shown.
-  - **Oversized forwards** — An email too large to forward is now degraded rather than dropped.
-
-  ### Other improvements
-
-  - **Data source health reads correctly** — A data source's error count is now counted since its last success, is labelled that way, and its status reflects the real state.
-  - **Branded market exports** — Axes and the logo are back on a branded analyse export.
-  - **Market news keeps flowing** — The news feed recovers from a provider blocking an automated request.
-  - **Marketplace** — Procurement rounds are now governed, with responses immutable once submitted, and broker visibility fails closed. Marketplace appears only where it is enabled for your Organisation.
+  - **Pending invites read correctly** — A user who has been invited but has not signed in yet is shown as pending rather than inactive.
+  - **Approvals under portal preview** — The approvals page no longer errors when opened while previewing the UMS Portal.
 </Update>
 
 See [Previous Releases](/changelog/archive) for older versions.
