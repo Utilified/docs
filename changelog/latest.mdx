@@ -1,38 +1,46 @@
 ---
 title: "Latest"
-description: "Latest UMS release notes covering new features and improvements — a rebuilt payments workflow, honest payment coverage, site-level cost splits, and a redesigned invoice page."
+description: "Latest UMS release notes covering new features and improvements — a SAP journal payment format, per-group invoice export filenames, new Invoice validation checks, and faster reports."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v1.50.1" description="2026-08-26">
-  ## A rebuilt payments workflow, a redesigned invoice page, and site-level cost splits
+<Update label="v1.52.1" description="2026-09-03">
+  ## A SAP journal payment format, new Invoice checks, and named invoice exports
 
   ### Payments
 
-  - **A rebuilt payment group and payment file workflow** — Payment groups and files now share one eligibility engine, so the grids, the counts and the selection you see all come from the same source. What you select is resolved on the server, so a selection made across pages or filters carries through to the file you create.
-  - **Honest coverage** — A payment group's coverage now tells you plainly what is included, what is outstanding, and what has been excluded, instead of implying an Invoice is covered when it is not.
-  - **Manage entity codes in one place** — Company, vendor and cost-centre codes are managed from the payment group rather than being spread across supplier records.
-  - **Site-level cost splits** — A code assignment can split a Connection's cost across Sites, so a payment file allocates to the cost centre that actually incurred the charge.
-  - **Send invoice copies with a payment file** — A payment group can opt in to having the source Invoices emailed alongside the payment file, and you can download the same set of copies from the file itself.
-  - **Connection address on ERP payment files** — Payment file descriptions carry the Connection address, so a line is identifiable in your finance system without opening UMS.
-  - **AU_STD payment file corrections** — The AU_STD format now totals correctly, renders its columns as your ERP expects, allocates each payable to the cost centre that incurred it, and no longer spreads a single Amount Due across Connection rows.
-  - **A clearer payment group overview** — The overview layout has been reworked and now shows an Excluded state alongside the rest of the coverage.
+  - **SAP journal payment files** — Payment files can now be produced as a balanced double-entry GL journal for SAP, with each leg signed by its posting key and GST-free legs labelled as such.
+  - **Name the invoice copies you export** — A payment group carries a filename template for the invoice documents it exports, so the copies arrive named the way your finance system expects them.
+  - **Account-level adjustments reach the journal** — An adjustment recorded against an account is carried onto the payment journal instead of being left out of the export.
+  - **Part-paid Invoices return to the next run** — Where an Invoice is only partly paid, the residual is re-batched into the next payment run rather than being treated as settled.
+  - **GST holds across a split Invoice** — An Invoice split across several legs keeps its GST treatment on every leg, and an amount that rounds slightly off still resolves to the right base.
+  - **Adjustments release with their Invoice** — An adjustment whose Invoice leaves the group is released rather than left stranded on it.
+  - **Held-back counts include child accounts** — The held-back badge on a payment group counts Connections held under child accounts.
 
   ### Invoices
 
-  - **A redesigned invoice page** — The Invoice detail page has been rebuilt around what you check first — charges, Connections and the source document — so validating an Invoice takes fewer clicks.
-  - **Attach supporting documents to an Invoice** — Supporting documents can be attached directly to an Invoice, and stay with it.
-  - **Source documents in the audit pack** — An audit-pack download now bundles the original supplier documents with the extracted data.
+  - **Bills covering several periods stay separate** — A bill spanning more than one billing period is split per period as it is ingested, so a Connection's charges are no longer collapsed onto one period.
+  - **A bill already held under a consolidated account is blocked** — Ingesting the same bill a second time under a consolidated Retail Account is refused rather than duplicated.
+  - **The billing file takes precedence over the PDF** — Where a supplier sends both, figures are taken from the billing file rather than from what was extracted from the PDF.
+  - **Sharper Retail Account matching** — Bills match on the billing supplier's family and a normalised account number, including an account number that appears only in the filename.
+  - **Records left in Review no longer block a re-ingest** — A stranded record sitting in Review no longer stops the same bill being ingested again.
+  - **Outstanding balances follow linking** — Ledger balances are brought into step when Invoices are linked to a Retail Account in bulk.
 
-  ### Retail Accounts
+  ### Joule
 
-  - **Status preset views show what you asked for** — The status preset views on the Retail Accounts grid no longer quietly filter to active accounts as well.
+  - **Charges that contradict the Invoice header** — A new check flags an Invoice whose Connection charges do not sum to the current charges on its header, which is how a split, duplicated or mis-captured statement shows up.
+  - **The same bill on two Retail Accounts** — Duplicate detection now catches one bill ingested onto two Retail Accounts, and requires a delimited reference match before calling two Invoices duplicates.
+  - **Accounts closed but still billed** — A weekly sweep now checks the Invoices you already hold, so an account closed while billing continued is raised without waiting for its next bill.
 
-  ### Settings & access
+  ### Reports and performance
 
-  - **Pending invites read correctly** — A user who has been invited but has not signed in yet is shown as pending rather than inactive.
-  - **Approvals under portal preview** — The approvals page no longer errors when opened while previewing the UMS Portal.
+  - **Completeness reports return on large portfolios** — The completeness report no longer runs a query per record, and the annual metrics run is processed in bounded chunks.
+  - **A lighter uploads page** — Upload statistics are fetched once and shared across the page, and the request behind them is bounded.
+
+  ### Other improvements
+
+  - **Multi-select filters** — Filter lookups skip empty values instead of failing the lookup.
 </Update>
 
 See [Previous Releases](/changelog/archive) for older versions.
