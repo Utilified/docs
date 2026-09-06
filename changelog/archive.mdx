@@ -5,6 +5,36 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v1.50.1" description="2026-08-26">
+  ## A rebuilt payments workflow, a redesigned invoice page, and site-level cost splits
+
+  ### Payments
+
+  - **A rebuilt payment group and payment file workflow** — Payment groups and files now share one eligibility engine, so the grids, the counts and the selection you see all come from the same source. What you select is resolved on the server, so a selection made across pages or filters carries through to the file you create.
+  - **Honest coverage** — A payment group's coverage now tells you plainly what is included, what is outstanding, and what has been excluded, instead of implying an Invoice is covered when it is not.
+  - **Manage entity codes in one place** — Company, vendor and cost-centre codes are managed from the payment group rather than being spread across supplier records.
+  - **Site-level cost splits** — A code assignment can split a Connection's cost across Sites, so a payment file allocates to the cost centre that actually incurred the charge.
+  - **Send invoice copies with a payment file** — A payment group can opt in to having the source Invoices emailed alongside the payment file, and you can download the same set of copies from the file itself.
+  - **Connection address on ERP payment files** — Payment file descriptions carry the Connection address, so a line is identifiable in your finance system without opening UMS.
+  - **AU_STD payment file corrections** — The AU_STD format now totals correctly, renders its columns as your ERP expects, allocates each payable to the cost centre that incurred it, and no longer spreads a single Amount Due across Connection rows.
+  - **A clearer payment group overview** — The overview layout has been reworked and now shows an Excluded state alongside the rest of the coverage.
+
+  ### Invoices
+
+  - **A redesigned invoice page** — The Invoice detail page has been rebuilt around what you check first — charges, Connections and the source document — so validating an Invoice takes fewer clicks.
+  - **Attach supporting documents to an Invoice** — Supporting documents can be attached directly to an Invoice, and stay with it.
+  - **Source documents in the audit pack** — An audit-pack download now bundles the original supplier documents with the extracted data.
+
+  ### Retail Accounts
+
+  - **Status preset views show what you asked for** — The status preset views on the Retail Accounts grid no longer quietly filter to active accounts as well.
+
+  ### Settings & access
+
+  - **Pending invites read correctly** — A user who has been invited but has not signed in yet is shown as pending rather than inactive.
+  - **Approvals under portal preview** — The approvals page no longer errors when opened while previewing the UMS Portal.
+</Update>
+
 <Update label="v1.47.0" description="2026-08-22">
   ## Payment group configuration, more supplier invoice formats, and scheduled reports that recover
 
