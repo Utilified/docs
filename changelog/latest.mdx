@@ -1,46 +1,57 @@
 ---
 title: "Latest"
-description: "Latest UMS release notes covering new features and improvements — a SAP journal payment format, per-group invoice export filenames, new Invoice validation checks, and faster reports."
+description: "Latest UMS release notes covering new features and improvements — smart Invoice validation, utility budgets, seasonal forecasting, and API keys."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v1.52.1" description="2026-09-03">
-  ## A SAP journal payment format, new Invoice checks, and named invoice exports
+<Update label="v1.58.0" description="2026-09-19">
+  ## Smart Invoice validation, utility budgets, and seasonal forecasting
 
-  ### Payments
+  ### Invoice validation
 
-  - **SAP journal payment files** — Payment files can now be produced as a balanced double-entry GL journal for SAP, with each leg signed by its posting key and GST-free legs labelled as such.
-  - **Name the invoice copies you export** — A payment group carries a filename template for the invoice documents it exports, so the copies arrive named the way your finance system expects them.
-  - **Account-level adjustments reach the journal** — An adjustment recorded against an account is carried onto the payment journal instead of being left out of the export.
-  - **Part-paid Invoices return to the next run** — Where an Invoice is only partly paid, the residual is re-batched into the next payment run rather than being treated as settled.
-  - **GST holds across a split Invoice** — An Invoice split across several legs keeps its GST treatment on every leg, and an amount that rounds slightly off still resolves to the right base.
-  - **Adjustments release with their Invoice** — An adjustment whose Invoice leaves the group is released rather than left stranded on it.
-  - **Held-back counts include child accounts** — The held-back badge on a payment group counts Connections held under child accounts.
+  - **Smart Invoice validation** — UMS derives the Tariff each Connection should be on, prices the Invoice against it, and classifies every difference it finds, so you review the discrepancies rather than the whole bill.
+  - **A Validation tab with its own queue** — Validation runs land in a queue you can filter and act on in bulk, with stats across the top showing what is waiting on you.
+  - **An Invoice review workspace** — Each run opens in a workspace where findings sit against the Invoice lines that produced them, and a single Validate action replaces the earlier multi-step flow.
+  - **Fix a Tariff without leaving the review** — A drawer lets you correct the Tariff behind a finding and re-run the check in place.
+  - **Tariff matching that learns** — The matcher shortlists the Tariffs that actually apply to a Connection, derives the Tariff family, and learns from the corrections you make.
+  - **Tolerances calibrated on your own bills** — Validation tolerances are calibrated against real Invoices, so small, normal variations stop being raised as discrepancies.
+  - **Fewer false discrepancies** — Boundary-day billing periods are realigned rather than flagged, arithmetically correct bills pass, tax rows no longer fail a run the bill got right, and only genuine split lines are apportioned.
+  - **The exception queue reflects live work** — Resolved and self-sustaining exceptions clear out of the queue instead of sitting in it.
+
+  ### Budgets and forecasting
+
+  - **Utility budgets** — Build a budget per utility, track actuals against it, and get an alert when a line drifts.
+  - **Budget tabs and per-event alert filters** — Budgets are organised into tabs, and you choose which events raise an alert.
+  - **Seasonal forecasting** — A seasonal engine projects consumption forward, and budgets project from the same model.
+  - **A forward band on the consumption graph** — The consumption graph carries a projection band, and budgets show a projected year alongside actuals.
+
+  ### Agreements
+
+  - **Calculated Agreement status** — An Agreement's status is derived from its dates and shown as a chip, with an override editor for the cases the dates get wrong.
+
+  ### Settings
+
+  - **API keys** — Create and revoke API keys under Settings, with the key shown once at creation.
+  - **Share payment files with Portal users** — A switch under portal access lets Portal users read and download released payment files.
 
   ### Invoices
 
-  - **Bills covering several periods stay separate** — A bill spanning more than one billing period is split per period as it is ingested, so a Connection's charges are no longer collapsed onto one period.
-  - **A bill already held under a consolidated account is blocked** — Ingesting the same bill a second time under a consolidated Retail Account is refused rather than duplicated.
-  - **The billing file takes precedence over the PDF** — Where a supplier sends both, figures are taken from the billing file rather than from what was extracted from the PDF.
-  - **Sharper Retail Account matching** — Bills match on the billing supplier's family and a normalised account number, including an account number that appears only in the filename.
-  - **Records left in Review no longer block a re-ingest** — A stranded record sitting in Review no longer stops the same bill being ingested again.
-  - **Outstanding balances follow linking** — Ledger balances are brought into step when Invoices are linked to a Retail Account in bulk.
+  - **A reason when you bulk-exclude** — Excluding emails from the Inbox in bulk now records why.
+  - **Duplicate detection on Connection identity** — Duplicates are keyed on the Connection rather than the invoice number, and an exclusion carries its reason.
+  - **EnergyAustralia consolidated CSVs** — A consolidated CSV is ingested as one record per site bill, with adjustments and cancellations handled.
+  - **AGL workbook GST** — The AGL workbook processor no longer double-counts GST.
+  - **UtiliRead totals anchored to the bill** — AGL Sales totals are anchored to the printed summary, and adjustment notes are linked to the Invoice they belong to.
 
-  ### Joule
+  ### Metering
 
-  - **Charges that contradict the Invoice header** — A new check flags an Invoice whose Connection charges do not sum to the current charges on its header, which is how a split, duplicated or mis-captured statement shows up.
-  - **The same bill on two Retail Accounts** — Duplicate detection now catches one bill ingested onto two Retail Accounts, and requires a delimited reference match before calling two Invoices duplicates.
-  - **Accounts closed but still billed** — A weekly sweep now checks the Invoices you already hold, so an account closed while billing continued is raised without waiting for its next bill.
-
-  ### Reports and performance
-
-  - **Completeness reports return on large portfolios** — The completeness report no longer runs a query per record, and the annual metrics run is processed in bounded chunks.
-  - **A lighter uploads page** — Upload statistics are fetched once and shared across the page, and the request behind them is bounded.
+  - **SolarEdge inverter data** — A production SolarEdge collector brings inverter generation into UMS alongside your meter Reads.
 
   ### Other improvements
 
-  - **Multi-select filters** — Filter lookups skip empty values instead of failing the lookup.
+  - **Payments reconcile more cleanly** — Ledger-settled Invoices stay settled, GL codes resolve per Connection, and a bill with no number still prints a reference your finance system can match.
+  - **Large exports complete** — Bulk exports stream to disk rather than being built in memory.
+  - **UtiliRead status counts** — Status counts on the UtiliRead page are correct.
 </Update>
 
 See [Previous Releases](/changelog/archive) for older versions.
