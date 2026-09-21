@@ -25,6 +25,7 @@ Stay up to date with the latest features and improvements in UMS.
   - **Held-back notices count the right window** — The held-back summary on a generation email is classified against the window the file recorded, so a delayed notice no longer counts Invoices that arrived after the run.
   - **Tick-to-pay shows what is owed** — The override panel reports the outstanding amount rather than a figure carrying arrears.
   - **Clearer state on unrendered files** — A file that has not been rendered reads "Not yet instructed" rather than $0.00, and a paid file no longer shows how long it has been awaiting approval.
+  - **Payment group settings are checked when you save them** — A group set to pay on a due-date horizon must carry one, and a setting the group cannot hold comes back as an error on the field rather than a failed save.
 
   ### Invoice validation
 
@@ -38,6 +39,10 @@ Stay up to date with the latest features and improvements in UMS.
   - **Feed-in lines priced as exports** — A derived feed-in rate is priced against exported energy rather than the Connection's imported volume.
   - **Tax rows do not out-run their base** — A tax row is not raised as an error while the lines beneath it are still unresolved.
   - **Origin reversals keep their GST** — A reversal or credit from Origin records its negative GST, correcting both the validation result and the ledger built from those records.
+
+  ### Other improvements
+
+  - **A failed save tells you why** — Where a form rejected a value belonging to a section you were not looking at, the save failed with nothing shown. The reason is now raised on the form you are editing.
 </Update>
 
 See [Previous Releases](/changelog/archive) for older versions.
