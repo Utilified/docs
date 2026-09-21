@@ -5,6 +5,55 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v1.58.0" description="2026-09-19">
+  ## Smart Invoice validation, utility budgets, and seasonal forecasting
+
+  ### Invoice validation
+
+  - **Smart Invoice validation** — UMS derives the Tariff each Connection should be on, prices the Invoice against it, and classifies every difference it finds, so you review the discrepancies rather than the whole bill.
+  - **A Validation tab with its own queue** — Validation runs land in a queue you can filter and act on in bulk, with stats across the top showing what is waiting on you.
+  - **An Invoice review workspace** — Each run opens in a workspace where findings sit against the Invoice lines that produced them, and a single Validate action replaces the earlier multi-step flow.
+  - **Fix a Tariff without leaving the review** — A drawer lets you correct the Tariff behind a finding and re-run the check in place.
+  - **Tariff matching that learns** — The matcher shortlists the Tariffs that actually apply to a Connection, derives the Tariff family, and learns from the corrections you make.
+  - **Tolerances calibrated on your own bills** — Validation tolerances are calibrated against real Invoices, so small, normal variations stop being raised as discrepancies.
+  - **Fewer false discrepancies** — Boundary-day billing periods are realigned rather than flagged, arithmetically correct bills pass, tax rows no longer fail a run the bill got right, and only genuine split lines are apportioned.
+  - **The exception queue reflects live work** — Resolved and self-sustaining exceptions clear out of the queue instead of sitting in it.
+
+  ### Budgets and forecasting
+
+  - **Utility budgets** — Build a budget per utility, track actuals against it, and get an alert when a line drifts.
+  - **Budget tabs and per-event alert filters** — Budgets are organised into tabs, and you choose which events raise an alert.
+  - **Seasonal forecasting** — A seasonal engine projects consumption forward, and budgets project from the same model.
+  - **A forward band on the consumption graph** — The consumption graph carries a projection band, and budgets show a projected year alongside actuals.
+
+  ### Agreements
+
+  - **Calculated Agreement status** — An Agreement's status is derived from its dates and shown as a chip, with an override editor for the cases the dates get wrong.
+
+  ### Settings
+
+  - **API keys** — Create and revoke API keys under Settings, with the key shown once at creation.
+  - **Share payment files with Portal users** — A switch under portal access lets Portal users read and download released payment files.
+
+  ### Invoices
+
+  - **A reason when you bulk-exclude** — Excluding emails from the Inbox in bulk now records why.
+  - **Duplicate detection on Connection identity** — Duplicates are keyed on the Connection rather than the invoice number, and an exclusion carries its reason.
+  - **EnergyAustralia consolidated CSVs** — A consolidated CSV is ingested as one record per site bill, with adjustments and cancellations handled.
+  - **AGL workbook GST** — The AGL workbook processor no longer double-counts GST.
+  - **UtiliRead totals anchored to the bill** — AGL Sales totals are anchored to the printed summary, and adjustment notes are linked to the Invoice they belong to.
+
+  ### Metering
+
+  - **SolarEdge inverter data** — A production SolarEdge collector brings inverter generation into UMS alongside your meter Reads.
+
+  ### Other improvements
+
+  - **Payments reconcile more cleanly** — Ledger-settled Invoices stay settled, GL codes resolve per Connection, and a bill with no number still prints a reference your finance system can match.
+  - **Large exports complete** — Bulk exports stream to disk rather than being built in memory.
+  - **UtiliRead status counts** — Status counts on the UtiliRead page are correct.
+</Update>
+
 <Update label="v1.52.1" description="2026-09-03">
   ## A SAP journal payment format, new Invoice checks, and named invoice exports
 
