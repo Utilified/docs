@@ -113,6 +113,7 @@
           "settings/organisation",
           "settings/white-label",
           "settings/portal-domain",
+          "mcp-connector",
           "billing",
           "imports",
           "notifications"
