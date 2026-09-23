@@ -1,6 +1,6 @@
 ---
 title: "Connect Claude and other AI assistants"
-description: "Add the Utilified MCP server to Claude, with all tools or just the groups you use."
+description: "Add the Utilified MCP server to Claude or Claude Code, with all tools or just the groups you use."
 ---
 
 The Utilified MCP server gives AI assistants live, permission-scoped access to your
@@ -22,7 +22,36 @@ Connect only the groups you work with. Fewer tools means faster, more accurate a
 Every group also includes search, account, site and supplier lookups, and the
 account, site and invoice overviews.
 
-## Add a connector
+## Add a connector in Claude
 
-In Claude, open **Settings → Connectors → Add custom connector**, paste a URL from the
-table, and sign in with your UMS account when prompted. Repeat for each group you want.
+<Steps>
+  <Step title="Open connectors">
+    In Claude, open **Settings → Connectors → Add custom connector**.
+  </Step>
+  <Step title="Paste a group URL">
+    Paste a URL from the table above, for example `https://mcp.ums.utilified.com/mcp/billing`.
+  </Step>
+  <Step title="Sign in">
+    Sign in with your UMS account when prompted. Repeat for each group you want.
+  </Step>
+</Steps>
+
+## Add a connector in Claude Code
+
+Add each group you want from your terminal, then run `/mcp` inside Claude Code to sign in:
+
+```bash
+claude mcp add --transport http ums-billing https://mcp.ums.utilified.com/mcp/billing
+claude mcp add --transport http ums-portfolio https://mcp.ums.utilified.com/mcp/portfolio
+```
+
+## Moving from the full connector
+
+If you already connected `https://mcp.ums.utilified.com/mcp`, it keeps working and still
+serves every tool. To switch to groups:
+
+1. Add a connector for each group you use, as above. Each group asks you to sign in once.
+2. Remove or turn off the full connector. Keeping both loads the same tools twice.
+
+Keep the full connector if you regularly ask questions that span every area, such as
+billing, sustainability and modelling in one conversation.
