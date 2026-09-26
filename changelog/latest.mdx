@@ -1,48 +1,61 @@
 ---
 title: "Latest"
-description: "Latest UMS release notes covering new features and improvements — payment file management, due-date batching, and a more careful Invoice validation engine."
+description: "Latest UMS release notes covering new features and improvements — self-clearing payment exceptions, bulk Invoice editing, pass-through and environmental charge validation, and portal access defaults."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v1.59.0" description="2026-09-20">
-  ## Payment file management, due-date batching, and a more careful validation engine
+<Update label="v1.62.4" description="2026-09-26">
+  ## Payment exceptions that clear themselves, bulk Invoice editing, and portal access defaults
 
   ### Payments
 
-  - **A rebuilt payment files list** — The list leads with client, payment group, status, earliest due date, amount and approver, and a filter rail narrows it to files due within seven days, overdue, awaiting approval, on hold, or carrying rejections.
-  - **Bulk approve and hold state the money** — Approving or holding a set of payment files shows the total you are about to act on, subtotalled per currency.
-  - **Pay by due-date horizon** — A payment group can batch every Invoice due within a set number of days, and a single run can override that horizon.
-  - **A payload preview before you generate** — The generate dialog previews the count, total, overdue amount and earliest due date of the file, including Invoices carried forward from a superseded review file, and offers only the formats the group's template can render.
-  - **Due profile and selection criteria** — Two cards on a payment file show how its lines sit against their due dates, and why each Invoice was picked up, from the window and horizon the run recorded.
-  - **More on the Lines tab** — Lines carry due date, Account, Connection and period, filter to overdue, short-paid or rejected, and total across the whole file rather than the page you are looking at.
-  - **A consolidated payment file header** — Status, total and created date sit in one header band, with a copy control in place of a printed id.
-  - **Selection counts match what the action reaches** — On every grid in UMS, the selected count reports the rows an action can act on rather than every row matching the filter.
-  - **An instructed file is no longer re-priced** — Re-processing is refused once approval has started, so a payment posted after a file was sent cannot shrink the amounts the bank was instructed to pay.
-  - **Hold reasons are kept** — The reason you give when holding a payment file is recorded against it instead of being dropped.
-  - **Bulk approve reports what happened** — A bulk approval where every file failed no longer reports success.
-  - **Scheduled runs use the group's own file format** — An unattended run builds the file the group's template expects, so an ABA group no longer produces a CSV and parks on hold.
-  - **Held-back notices count the right window** — The held-back summary on a generation email is classified against the window the file recorded, so a delayed notice no longer counts Invoices that arrived after the run.
-  - **Tick-to-pay shows what is owed** — The override panel reports the outstanding amount rather than a figure carrying arrears.
-  - **Clearer state on unrendered files** — A file that has not been rendered reads "Not yet instructed" rather than $0.00, and a paid file no longer shows how long it has been awaiting approval.
-  - **Payment group settings are checked when you save them** — A group set to pay on a due-date horizon must carry one, and a setting the group cannot hold comes back as an error on the field rather than a failed save.
+  - **Exceptions on the payment file** — A payment file shows the exceptions raised on its own Invoices, and the Lines tab adds a Flagged filter beside Overdue, Short paid and Rejected, each linking through to where the exception is resolved.
+  - **Fixed exceptions clear on their own** — Once the problem behind an exception is gone, such as an Invoice now linked to its Retail Account or a period overlap that no longer exists, UMS closes the exception so the Invoice can be paid without someone closing it by hand.
+  - **Bulk edit Invoices** — Select Invoices on the list and change a field across all of them, with each row's current value shown beside the change and any failures reported row by row.
+  - **Overdue and due soon on the Invoice list** — Invoices past or near their due date carry an Overdue or Due soon chip, and the list filters to either.
+  - **Hold an Invoice from the Invoice itself** — You can hold an Invoice from payment, or release it, directly on the Invoice, and a hold asks for a reason.
+  - **See which payment runs carry an Invoice** — An Invoice lists the payment files it appears on, each linking to that file's lines.
+  - **Clearer pre-flight checklist** — The section for expected bills that have not arrived is now called "Bills not yet received", so it no longer reads like a count of overdue Invoices.
+  - **Payment group schedule sits with its settings** — The run calendar now appears under the Schedule section of the Settings tab, taking the payment group from eight tabs to seven.
 
   ### Invoice validation
 
-  - **The engine only claims what it can support** — Where a Tariff is unconfirmed, a quantity difference is raised for your review rather than asserted as a billing error.
-  - **A rejected derived Tariff stays rejected** — Rejecting a Tariff derived from an Invoice stops the same document deriving it again.
-  - **Credit and adjustment notes stay out of reference data** — UMS reads the Invoice total ahead of a contradicting Connection header, so a credit note is recognised as a correction and never becomes the basis for a derived Tariff.
-  - **Credit notes validated with the sign they bill** — Credit note lines are compared against negative quantities, so they stop reporting twice their amount.
-  - **Amount-only rates priced as amounts** — A derived rate expressed as an amount is no longer multiplied by the day count printed beside it.
-  - **One GST basis per Invoice** — Whether a bill is priced inclusive or exclusive of GST is settled once for the Invoice rather than per Connection record.
-  - **Expected quantity matches its own amount** — Where a rate is billed on two quantities at once, the expected quantity shown beside a variance is the one the amount was priced on.
-  - **Feed-in lines priced as exports** — A derived feed-in rate is priced against exported energy rather than the Connection's imported volume.
-  - **Tax rows do not out-run their base** — A tax row is not raised as an error while the lines beneath it are still unresolved.
-  - **Origin reversals keep their GST** — A reversal or credit from Origin now records its negative GST, so from here on both the validation result and the ledger built from it carry the right tax.
+  - **Market pass-through charges are accepted** — AEMO ancillary, market and participant fees that legitimately change price every month are recorded as a price change instead of failing validation, and newly derived Tariffs flag these lines automatically.
+  - **Environmental charges priced on their obligation share** — LRET, SRES and similar scheme charges are priced on the year's obligation percentage, so the share no longer shows up as a variance.
+  - **Time-of-use windows follow local time and public holidays** — Peak and off-peak windows track daylight saving in your Connection's state and treat public holidays as non-business days.
+  - **Rolling demand at maximum kW** — Tariffs that bill the kVA recorded at the 12-month maximum kW interval, such as United Energy's rolling demand charge, are now priced that way.
+  - **Demand measured on 30-minute intervals** — Demand is taken from 30-minute intervals before daily totals are built, and demand billed per kVA per day is priced on the right basis.
+  - **Seasonal and weekday rates stay in their window** — A rate outside its season or its days of the week no longer expects a charge.
+  - **Discounts and loss factors priced like the bill** — Derived discounts and loss factors are calculated the way the retailer applies them.
+  - **Network bands kept apart from retail time-of-use** — A network band with no code of its own is no longer matched to the retail time-of-use periods.
+  - **Metered bands shared across meters** — Where a band is split across a Connection's Meters, the lines share one band rather than each being priced on the whole.
+  - **GST on reversals, credits and split statements** — Below-the-line reversals, multiple credits on one statement, adjustment signs and GST split across Connection records are judged against the Invoice header, and GST on a line UMS cannot price is shown as unknown rather than wrong.
+
+  ### Invoices
+
+  - **Search by supplier account number** — The Invoice list search matches the supplier's account number as well as the Invoice number.
+  - **Re-uploads without an Invoice number stay single** — An Invoice with no printed number is recognised as a duplicate when it is uploaded again.
+  - **Rebills stand in for the period they re-bill** — A rebill replaces the original for that period, and a record netted off by a rebill or reversal is no longer treated as the primary bill.
+  - **EnergyAustralia consolidated spreadsheets read correctly** — Consolidated spreadsheet bills from EnergyAustralia are routed to the right reader.
+
+  ### Joule
+
+  - **Approving a Joule plan works reliably** — If an approval fails, the card shows why and lets you try again instead of greying out.
+  - **Irreversible actions confirmed once** — A step Joule cannot undo runs only with exactly what you approved, and only once.
+  - **Faster Joule responses** — Joule loads the tools relevant to the page you are on rather than every tool on every message.
+
+  ### Settings
+
+  - **Opt-in portal modules** — Supplier directory, budgets and scenario outcomes are switched on per Account from the Portal Access tab.
+  - **Organisation default portal access** — Organisation admins set Default Portal Access under Settings → Portal; Accounts without their own settings inherit it and can revert to organisation defaults at any time.
 
   ### Other improvements
 
-  - **A failed save tells you why** — Where a form rejected a value belonging to a section you were not looking at, the save failed with nothing shown. The reason is now raised on the form you are editing.
+  - **Account spend chart shows each period's spend** — The chart on an Account's Overview covers a continuous 12 months of current charges, so carried-forward balances no longer inflate the bars and large Accounts are no longer cut short.
+  - **Connection create tells you why it failed** — A rejected new Connection, such as one with a duplicate identifier, shows the reason in the drawer.
+  - **Usage chart timeouts are reported** — When daily usage takes too long to load, the chart says so rather than showing an empty chart.
+  - **Faster lists** — The validation queue, Invoice imports, Agreements, suppliers, users and Connections lists load with fewer round trips.
 </Update>
 
 See [Previous Releases](/changelog/archive) for older versions.
