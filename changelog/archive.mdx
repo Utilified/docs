@@ -5,6 +5,61 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v1.64.1" description="2026-10-02">
+  ## Payment file review and regenerate, ledger corrections, and per-client portal reports
+
+  ### Payments
+
+  - **Review tab on the payment file** — Before you release a file, the Review tab checks each line and offers quick fixes, shows extraction gaps and each bill's amount due, and you can record a payment straight from the Lines tab.
+  - **Regenerate an unreleased payment file** — Regenerate rebuilds the file from today's eligibility and shows you which Invoices were added or dropped.
+  - **Use credits on a payment file** — An Invoice in credit can be added to a payment file through pay anyway, so the credit comes off the supplier's next bill instead of sitting on the ledger. Credits are never added automatically.
+  - **Format picker and delete on the file overview** — Choose the file format and delete a payment file from its Overview tab.
+  - **Bulk short-pay with reasons** — Short-pay several lines at once on the Lines tab and pick the reason from a list.
+  - **Reasons for exclusions and overrides** — Excluding an Invoice from payment, or paying one anyway, now asks for a reason, so every exception is explained in the audit trail.
+  - **Paid Invoices are no longer overdue** — Invoices already carried on a payment file stop showing as Overdue, even though the supplier's printed balance has not changed.
+  - **Pay anyway ignores run filters** — An Invoice you choose to pay anyway is included even when it falls outside the run's date window or age filters.
+  - **Payment file totals stay current** — A file's total is refreshed every time it is rendered, and GST-free credits no longer trip the GST check.
+  - **Weekly payment groups run on their day** — Weekly groups honour their configured day of the week and run on that day.
+  - **SAP journal lines per Connection** — SAP journal exports post each Connection's supply on its own line with its own GST and NMI, split cost by Connection record, and post GST according to the adjustment reason.
+
+  ### Invoices
+
+  - **Ledger corrections from the Invoice** — Invoice actions now include record payment, apply supplier credit, not an invoice, mark as rebill and recompute from lines, reverse and adjust take a ledger date, and the Lines tab warns you when Connection totals are out of date.
+  - **Clearer exception review** — Period overlaps and Retail Account status exceptions have their own review layouts, and suspected duplicates show both source PDFs side by side.
+  - **Process past the page limit** — An inbox item held for exceeding the page limit can be processed anyway from its review hold.
+  - **Flat invoice copy downloads** — When you set a filename template, the invoice copies zip puts every file at the top level instead of in folders.
+
+  ### Invoice validation
+
+  - **Loss factors on interval recalculation** — Recalculating an Invoice from interval data now applies the Connection's loss factors.
+  - **Single-rate plans skip the time-of-use hold** — Invoices on single-rate plans are no longer held for time-of-use review.
+  - **Western Australian reads on local time** — WA reads are matched on their own clock, and the GST printed on the bill is accepted.
+
+  ### Brokerage
+
+  - **Connection and Agreement details on release** — The Invoice drawer in brokerage release shows the Connection and Agreement behind each Invoice.
+
+  ### Joule
+
+  - **Revert is a real undo** — Reverting a Joule action restores the record as it was, and if the record has changed since or there is nothing to restore, Joule tells you why it cannot revert.
+
+  ### Settings
+
+  - **Account visibility per user** — On a user's Access tab, choose whether they see all Accounts in the organisation or only the Accounts assigned to them.
+  - **Per-client portal reports** — A Portal Reports section on the Portal Access tab, for an Account or the organisation default, lets you switch standard reports off for a client and opt-in reports on.
+
+  ### Reports
+
+  - **Monthly spend accrual covers unbilled Connections** — The Monthly Spend Accrual report now accrues Connections with no bill yet for the month and spreads long bills across the months they cover.
+  - **Empty reports say so** — A report that matches no rows exports a file with column headers, and the notification tells you it was empty.
+
+  ### Other improvements
+
+  - **Retail Accounts link to open-ended Agreements** — Retail Accounts link to Agreement Connections with no end date, and consolidated Retail Accounts resolve their Agreement codes.
+  - **Quick-add dialogs stay separate** — Adding a record from a quick-add dialog no longer affects the form behind it, and drawer dropdowns and form errors behave consistently.
+  - **Filter Connections by consumption and demand** — Filtering Connections by annual consumption or annual demand range works again instead of returning an error.
+</Update>
+
 <Update label="v1.62.4" description="2026-09-26">
   ## Payment exceptions that clear themselves, bulk Invoice editing, and portal access defaults
 
