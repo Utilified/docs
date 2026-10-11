@@ -1,6 +1,6 @@
 ---
 title: "Batches"
-description: "Group invoices into payment batches in UMS, generate ABA payment files for your bank, and monitor batch totals, status, and invoice quality."
+description: "Group invoices into payment batches in UMS, generate payment exports for your finance system, and monitor batch totals, status, and invoice quality."
 ---
 
 Invoice Batches helps you manage invoice payment workflows — grouping invoices for payment, generating payment files, and monitoring invoice quality.
@@ -26,6 +26,10 @@ View and manage generated payment files for submission to your finance system or
 - **Pending Approval** — Files awaiting approval before processing
 - **Approved** — Files that have been approved
 - **View Files** — Browse all payment files
+
+## In-credit invoices
+
+When generating or regenerating a payment file, use **In-credit invoices** and **Net on this run** to select eligible credits against bills on the same Retail Account. Regeneration carries forward credits already on the file and refuses the rebuild if a credit would be lost. See [Processing Invoice Payments](/guides/processing-payments#in-credit-invoices-and-regeneration) for the workflow and eligibility rules.
 
 ## Invoice quality
 

@@ -37,3 +37,37 @@ Click the **+** button to create a new scenario. You configure:
 - Scenario name and description
 - The [retail accounts](/retail-accounts) to include
 - Pricing items to compare
+
+## Energy assessments and existing equipment
+
+Energy assessments and existing-equipment comparisons require modelling and DER-modelling access for your organisation, plus the relevant user permissions. Proposals appear only when proposal access is also enabled for your organisation and user. Assess a Site's solar and battery options using its usage, Tariffs and existing equipment. Joule can draft a proposal's narrative from the assessment for you to review and edit.
+
+Declare equipment on the Site's [Energy assets](/sites#energy-assets) tab. In the assessment's **Existing equipment** section, select the equipment to model. Selected existing generators use their declared rating, parallel approval and operating limits. Equipment you do not select remains part of the measured load.
+
+The **Existing equipment → commercial outcome** comparison separates today's operation, using existing equipment, and the incremental value of adding the recommended solar or battery investment. Where the study inputs support it, generator results show operating costs, fuel use, run hours, starts and Scope 1 emissions.
+
+Generator reporting shows the expected-value adjustment for each generator as well as its operating costs. Review warnings that mark the financial estimate as approximate before quoting a result.
+
+Review data readiness, operating assumptions and any result warnings before using the comparison. If the missing-data check fails or is interrupted, retry it before calculating. Re-dispatching an existing battery requires charge/discharge telemetry or a declared idle or backup-only operating mode.
+
+<Note>
+  Generator modelling covers generators already at the Site. New-generator investment modelling and generator proposals or PDFs are not supported. An entered backup value is an assumption, not an outage simulation. Results depend on the available usage data and equipment specifications.
+</Note>
+
+### Tariff reviews with existing equipment
+
+With modelling and DER-modelling access enabled for your organisation and the relevant user permissions, you can include declared generators or batteries in a Tariff review.
+
+<Steps>
+  <Step title="Select existing equipment">
+    In the Tariff review wizard, use **Compare with existing equipment (optional)** to select declared equipment for the chosen Retail Accounts. Choose whether to keep an existing battery's observed operation or re-dispatch it, where the data supports this.
+  </Step>
+  <Step title="Review operating assumptions">
+    Check **Generator value basis**, fuel price, retune costs and any energy management fee. The expected basis uses each generator's reliability factor; **Every start succeeds** is a modelling assumption. Any declared backup value is your estimate, not an outage simulation.
+  </Step>
+  <Step title="Compare complete bills">
+    After calculation, review **Tariffs as-is and with existing equipment**. Compare current and proposed bill sets for each Retail Account. The table separates bill charges, generator operating costs, expected value withheld, energy management and retune costs, declared backup value, and the resulting economic cost. Economic costs use the actual review period and are ex-GST; bill tax remains separate.
+  </Step>
+</Steps>
+
+Screening requires complete calendar months, at most twelve months, and at least 90% interval coverage. Annual demand or ratchet charges require twelve months. Unsupported periods, missing required data or incompatible billing methods retain the ordinary Tariff review results with a warning; they do not produce a supported equipment comparison.
