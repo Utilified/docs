@@ -82,3 +82,13 @@ The file's **Overview** tab shows a progress stepper tracking the lifecycle: `CR
 ## Working the approvals queue
 
 The Payments **Overview** tab surfaces every file in `APPROVAL_PENDING` or `SECONDARY_APPROVAL_PENDING` across the organisation. Approve or hold each item inline, or open it to act on the full file detail. Use this as your daily worklist rather than scanning the **Payment Files** tab manually.
+
+## In-credit invoices and regeneration
+
+When generating a payment file, expand **In-credit invoices** in the pre-flight checklist. Tick **Net on this run** for each credit you want to offset against bills on the same Retail Account. Enter a reason for the selected overrides before generating the file; UMS records the decision in the file's status log.
+
+The list offers eligible credits from the last 24 months. It excludes manually excluded credits, credits already on an open payment file, and credits with blocking exceptions. The section is informational: available credits do not make an otherwise ready run unready. UMS does not pay a credit on its own and refuses a file that would leave a Retail Account net in credit.
+
+For an unreleased payment file, **Regenerate** rebuilds the file using today's eligibility. The dialog offers eligible additional credits and blocked invoices, with a reason required for any selected overrides. Credits already netted on the file carry forward and do not appear as new choices.
+
+If an existing credit is now excluded, blocked or otherwise ineligible, UMS refuses regeneration and preserves the original file. Review the reason and resolve the issue; where appropriate, explicitly override a blocked credit with a reason. If you intend to remove the credit, delete the unreleased file and generate a new one after reviewing the revised amount due.

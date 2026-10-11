@@ -5,6 +5,65 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v1.68.0" description="2026-10-06">
+  ## Energy assessments and proposals, GST treatment checks, and a payment-prep workbench
+
+  ### Energy assessments and proposals
+
+  Energy assessments require modelling and DER-modelling access for your organisation and the relevant user permissions. Proposals appear only when proposal access is also enabled for your organisation and user.
+
+  - **Energy assessments** — Run an assessment for a Site, model solar and battery options against its real usage and Tariffs, and turn the result into a proposal from the new Proposals page.
+  - **Joule drafts the proposal narrative** — Joule writes the first draft of a proposal's narrative from the assessment, ready for you to edit.
+  - **Assessment autopilot** — UMS studies eligible Sites automatically and queues the promising ones on a new Opportunities tab under Scenarios, with notifications linking straight to each one.
+  - **Joule study copilot** — Joule shows assessment runs and solar and battery shortlists in the chat, and a readiness checklist tells you what a Site still needs before it can be assessed.
+  - **Existing equipment** — A Site's new Energy assets tab records the solar, batteries and inverters already installed, and modelling now accounts for them.
+  - **Certificates, replacement costs and NZ tax** — Results show the certificates a system earns, replacement costs in size bands, and New Zealand tax treatment.
+  - **More demand charge types** — Modelling prices top-N, power factor, event mean and block demand charges.
+
+  ### Invoice validation
+
+  - **GST treatment checks** — UMS flags line GST treatment that differs from the jurisdiction's tax rate for you to review in the Workbench. You decide whether to correct it or accept the treatment and save a rule; UMS does not automatically correct tax treatment.
+  - **Convert GST-inclusive lines** — When a supplier prints lines including GST, UMS flags it and previews each line ex-GST, and you can convert them on the Invoice's Line Items tab, in the Workbench, or in bulk from the review queue.
+  - **Network tariff mismatch in review** — The review panel shows when the network Tariff on the bill differs from the one assigned, along with the billing basis and how much of the period the reads cover.
+  - **Apply boundary realignments in one click** — Period realignments queued in the Workbench show each start date that moves and apply on confirm.
+  - **Composite and split charges matched** — Fixed charges billed as several parts, and lines split across a statement, now match their Tariff rate.
+  - **Demand days, seasons and partial reads** — Per-day demand charges count the right days, rate checks respect seasons, and periods with only partial read coverage are judged on what is there.
+  - **Cleaner derived Tariffs** — Network-coded lines stay out of derived retail Tariffs, and a derived rate is never tied to another state's time-of-use periods.
+  - **AER Tariff import fixes** — Energy rates without a code are no longer read as demand, and distributor demand bases and top-N daily maximums import correctly.
+  - **Regulator-year boundaries** — Day-weighting across a 1 July regulator-year change is calculated correctly.
+
+  ### Payments
+
+  - **Payment-prep workbench** — Pre-flight exceptions for GST anomalies and Retail Account number mismatches open in a drawer with their own layouts, funnel counts, re-check, and save and next.
+  - **No exception for a missing Invoice number** — New Invoices with no printed number no longer raise a missing-number exception. Existing missing-number exceptions remain open until resolved or dismissed.
+  - **Edit netted credit lines** — Credit lines netted on a payment file can now be edited.
+  - **No zero-value lines** — Payment files never include a zero-value line.
+  - **Rounding to the cent** — Amounts round half-up to the cent, and splits allocate the leftover cent so totals always add up.
+  - **No payable without Connection records** — An Invoice with no Connection records no longer creates a payable.
+
+  ### Tariffs
+
+  - **Assign and switch Tariffs in one dialog** — Pick the Tariff and dates, and optionally the assignment it replaces, which is end-dated the day before only when you select it as the replacement; the dialog blocks overlapping assignments.
+  - **Edit rate bindings in the Tariff tree** — Change which rates a Tariff binds to directly from the tree.
+  - **Contracted demand and MDQ** — Agreement Connections show contracted demand (kVA) and MDQ (GJ/day).
+
+  ### Invoices
+
+  - **Duplicate detection across formats** — A numbered spreadsheet row now matches the same bill's unnumbered PDF copy.
+  - **UtiliRead accuracy** — EnergyAustralia Invoices take the printed issue date, AGL "cr" amounts read as credits, and GST-free account-level charges are included in Connection totals.
+  - **Emailed interval data** — NEM12 files sent to an Account inbox go to Reads instead of being treated as Invoices.
+  - **Page-limit holds stay visible** — Files held for exceeding the page limit remain visible in the inbox and import queues.
+
+  ### Other improvements
+
+  - **Clearer errors** — When the server refuses an action, UMS shows the reason, and confirmation dialogs look and behave the same everywhere.
+  - **Data Hub time-of-use** — Time-of-use definitions show their labels with a weekday by half-hour preview, and a new Quantities list sits alongside them.
+  - **Public holidays stay current** — Time-of-use windows use a backup holiday source when the government calendar is late.
+  - **Smoother updates** — If UMS updates while you have it open, the page reloads instead of showing an error.
+  - **Accessibility and dark mode** — Better headings, button labels and keyboard navigation, plus dark-mode colour fixes.
+  - **Faster pages** — API responses are compressed, and the brokerage and Invoice lists load faster.
+</Update>
+
 <Update label="v1.64.1" description="2026-10-02">
   ## Payment file review and regenerate, ledger corrections, and per-client portal reports
 
