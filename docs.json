@@ -158,5 +158,11 @@
     "socials": {
       "linkedin": "https://www.linkedin.com/company/utilified"
     }
+  },
+  "integrations": {
+    "posthog": {
+      "apiKey": "phc_vRtDzfxNiakrYzA8AtPvgVaXjZMX57LvM4GruzPMxQJ9",
+      "apiHost": "https://us.i.posthog.com"
+    }
   }
 }
