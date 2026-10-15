@@ -17,10 +17,26 @@ Connect only the groups you work with. Fewer tools means faster, more accurate a
 | `https://mcp.ums.utilified.com/mcp/sustainability` | Emissions, budgets, forecasts, reports |
 | `https://mcp.ums.utilified.com/mcp/modelling` | Scenarios, load profiles, datasets, data sources, market events |
 | `https://mcp.ums.utilified.com/mcp/admin` | Users, CRM, alerts, notifications, exports, plans |
+| `https://mcp.ums.utilified.com/mcp/procurement` | Energy Marketplace tenders: where they can run, which retailers can supply, and offer packs |
 | `https://mcp.ums.utilified.com/mcp` | Everything above |
 
 Every group also includes search, account, site and supplier lookups, and the
 account, site and invoice overviews.
+
+## Procurement tools
+
+The procurement group covers tenders in the Energy Marketplace (EMP). Its tools are
+read-only: they look things up but never create or change a tender.
+
+| Tool | What it does |
+|---|---|
+| `get_emp_catalogue` | Lists the countries and regions where a tender can run, how many retailers cover each region, and which tender types you can create. |
+| `list_emp_catalogue_suppliers` | Shows which retailers can supply a tender type in the regions you choose, best coverage first, and whether each one can sign in to respond. |
+| `get_emp_offer_pack` | Reads one retailer's offer on a tender in full: lots with cost, rates and terms, annual cost per site, and the submission checklist with its documents. |
+
+The catalogue tools are available to broker organisations. The broker running a tender
+can read its offer packs once the round has closed, including each site's current
+contract and saving. A retailer can read its own offer packs.
 
 ## Add a connector in Claude
 
