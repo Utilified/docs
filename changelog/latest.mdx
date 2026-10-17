@@ -1,31 +1,51 @@
 ---
 title: "Latest"
-description: "UMS v1.69.0 — compare existing equipment and generator operating costs, and select in-credit invoices for payment files. Released 11 October 2026."
+description: "UMS v3.3.1 — Utilified platform 3.0, a new app layout, Site and Connection analytics, SolisCloud data feeds and Origin LPG imports. Released 17 October 2026."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v1.69.0" description="2026-10-11">
-  ## Existing equipment comparisons and in-credit invoice selection
+<Update label="v3.3.1" description="2026-10-17">
+  ## Utilified platform 3.0: a new app layout, Site and Connection analytics, and SolisCloud data feeds
 
-  ### Energy assessments
+  UMS now ships as part of the Utilified platform, with one version number for everything. That's why this release jumps from v1.69.0 to v3.3.1.
 
-  Energy assessments and existing-equipment comparisons require modelling and DER-modelling access for your organisation, plus the relevant user permissions. Proposals appear only when proposal access is also enabled for your organisation and user.
+  ### Navigation and layout
 
-  - **Compare existing equipment** — Compare today's operation with using selected existing equipment, then assess the additional value of new solar or battery options separately.
-  - **Existing generator operating costs** — Model generators already at the Site using their declared operating limits and fuel costs. Results show fuel use, run hours, starts and Scope 1 emissions where supported by the study inputs.
-  - **Tariffs with existing equipment** — Compare complete current and proposed bills with selected existing generators or batteries. The comparison separates bill charges from operating costs and other economic assumptions.
-  - **Expected generator value** — Review each generator's reliability adjustment alongside operating costs. Check any warning that marks the financial estimate as approximate before using it.
-  - **Clearer study readiness** — If the missing-data check fails or is interrupted, retry it before calculating. Review the study's data warnings and operating assumptions before using its results.
+  - **New app layout** — Global actions now live in the sidebar and every page shares one frame, so the desktop top bar is gone and more of the screen goes to your data.
+  - **Back works the way you expect** — Back, Cancel and Close return you to the page you came from, or to its parent when you opened a link directly. Tabs, drawers and scroll position come back with you.
+  - **Regrouped Settings** — Settings sections are grouped under Account, Organisation, Access & integrations, Operations and Commercial, with icons and search, and every section uses the same layout.
 
-  See [Scenarios & Modelling](/scenarios#energy-assessments-and-existing-equipment) and [Site energy assets](/sites#energy-assets). Generator modelling covers existing equipment; it does not assess buying a new generator or provide generator proposals or PDFs. Results depend on the available data and declared assumptions. An entered backup value does not simulate outages.
+  ### Sites and Connections
 
-  ### Payments
+  - **Site analytics** — A Site's Overview shows its spend and usage at a glance, plus a monthly spend and usage chart.
+  - **Connection analytics** — A Connection's Overview shows spend, usage and contract details, with a data-feed status panel and when the first bill is expected.
+  - **Spend from every bill** — Spend charts now include bills that have no billing period, and the Home spend chart uses the same organisation-wide monthly trend.
+  - **Connect SolisCloud** — Sign in to SolisCloud from a Connection's data feed to pull in solar data. UMS keeps the authorisation alive and flags the feed if it expires.
 
-  - **Select in-credit invoices** — When generating or regenerating a payment file, expand **In-credit invoices** and tick **Net on this run** to offset bills on the same Retail Account. Only eligible credits are offered, and your selection and reason are recorded.
-  - **Keep credits when regenerating** — Credits already netted on an unreleased file carry forward. If one can no longer be included, UMS refuses the rebuild so you can review it rather than lose the offset.
+  ### Invoices
 
-  See [Processing Invoice Payments](/guides/processing-payments#in-credit-invoices-and-regeneration) for eligibility and regeneration details.
+  - **Origin LPG reports** — Import Origin LPG monthly transaction reports and usage reports. Rows link to Connections by location number, and any skipped rows are reported.
+  - **Find identifiers however they're typed** — Search matches NMIs and other identifiers with or without spaces and punctuation, and invoice search now covers NMI, Site, parent account and aliases.
+  - **Preview an inbox exclusion** — Before you exclude an inbox email, see which downstream records the exclusion would leave behind.
+  - **Smarter missing-bill checks** — UMS reads each Retail Account's billing cadence from its recent bills and statements, and only flags a missing invoice once the next bill is overdue.
+  - **No duplicate paid bills** — UMS blocks re-importing a bill that has already been paid.
+
+  ### Payments and ledger
+
+  - **Add an invoice to a payment file** — Add a missing invoice to a payment file before it is released. Once a file is released, its lines are locked.
+  - **Clearer coverage reasons** — Coverage flags explain when an invoice falls outside the Retail Account's active window, and such invoices are held only when the mismatch is confirmed.
+  - **Delete a ledger row written in error** — Remove an invoice-derived row from a Retail Account's Ledger tab.
+
+  ### Other improvements
+
+  - **Consistent formatting** — Money and brokerage rates are formatted the same way across UMS, and dashboard cards fill the full width.
+  - **Accrual report** — Reversed bills no longer appear in the accrual report.
+  - **Agreements** — Retail Accounts closed before an agreement's term are ignored.
+  - **UtiliRead** — Credit balances are extracted as negative amounts, and non-invoice correspondence is skipped at import.
+  - **Read coverage** — Current-month read coverage is measured against the days elapsed, and daily summaries count consumption only.
+  - **Inbox previews** — Email previews no longer pick up UMS styles.
+  - **Security** — Changing your password ends your other sessions, and SSO user mappings are read-only in Settings and used for sign-in only.
 </Update>
 
-See [Previous Releases](/changelog/archive) for v1.68.0 (6 October 2026) and older versions, including energy assessments and proposals, Joule's proposal narrative drafts, and GST treatment reviews.
+See [Previous Releases](/changelog/archive) for v1.69.0 (11 October 2026) and older versions, including existing-equipment comparisons, in-credit invoice selection, and energy assessments and proposals.
