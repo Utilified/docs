@@ -5,6 +5,49 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v3.3.1" description="2026-10-17">
+  ## Utilified platform 3.0: a new app layout, Site and Connection analytics, and SolisCloud integration preparation
+
+  UMS now ships as part of the Utilified platform, with one version number for everything. That's why this release jumps from v1.69.0 to v3.3.1.
+
+  ### Navigation and layout
+
+  - **New app layout** — Global actions now live in the sidebar and every page shares one frame, so the desktop top bar is gone and more of the screen goes to your data.
+  - **Navigation improvements** — Back, Cancel and Close have more consistent destinations in supported flows, including a parent-page fallback when you open a link directly.
+  - **Regrouped Settings** — Settings sections are grouped under Account, Organisation, Access & integrations, Operations and Commercial, with icons and search, and every section uses the same layout.
+
+  ### Sites and Connections
+
+  - **Site analytics** — A Site's Overview shows its spend and usage at a glance, plus a monthly spend and usage chart.
+  - **Connection analytics** — A Connection's Overview shows spend, usage and contract details, with a data-feed status panel and when the first bill is expected.
+  - **Spend from every bill** — Spend charts now include bills that have no billing period, and the Home spend chart uses the same organisation-wide monthly trend.
+  - **SolisCloud integration preparation** — Preparation for SolisCloud solar data feeds is in place. Customer availability is pending production activation and live validation.
+
+  ### Invoices
+
+  - **Origin LPG reports** — Import Origin LPG monthly transaction reports and usage reports. Rows link to Connections by location number, and any skipped rows are reported.
+  - **Find identifiers however they're typed** — Search matches NMIs and other identifiers with or without spaces and punctuation, and invoice search now covers NMI, Site, parent account and aliases.
+  - **Preview an inbox exclusion** — Before you exclude an inbox email, see which downstream records the exclusion would leave behind.
+  - **Smarter missing-bill checks** — UMS reads each Retail Account's billing cadence from its recent bills and statements, and only flags a missing invoice once the next bill is overdue.
+  - **No duplicate paid bills** — UMS blocks re-importing a bill that has already been paid.
+
+  ### Payments and ledger
+
+  - **Add an invoice to a payment file** — Add a missing invoice to a payment file before it is released. Once a file is released, its lines are locked.
+  - **Clearer coverage reasons** — Coverage flags explain when an invoice falls outside the Retail Account's active window, and such invoices are held only when the mismatch is confirmed.
+  - **Delete a ledger row written in error** — Remove an invoice-derived row from a Retail Account's Ledger tab.
+
+  ### Other improvements
+
+  - **Consistent formatting** — Money and brokerage rates are formatted the same way across UMS, and dashboard cards fill the full width.
+  - **Accrual report** — Reversed bills no longer appear in the accrual report.
+  - **Agreements** — Retail Accounts closed before an agreement's term are ignored.
+  - **UtiliRead** — Credit balances are extracted as negative amounts, and non-invoice correspondence is skipped at import.
+  - **Read coverage** — Current-month read coverage is measured against the days elapsed, and daily summaries count consumption only.
+  - **Inbox previews** — Email previews no longer pick up UMS styles.
+  - **Security** — Changing your password ends your other sessions, and SSO user mappings are read-only in Settings and used for sign-in only.
+</Update>
+
 <Update label="v1.69.0" description="2026-10-11">
   ## Existing equipment comparisons and in-credit invoice selection
 
