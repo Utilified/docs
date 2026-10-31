@@ -1,62 +1,65 @@
 ---
 title: "Latest"
-description: "UMS v3.10.2 — billing gaps and bill requests, an agreement onboarding pipeline, Scenario Studio and brokerage runs with RCTI import. Released 23 October 2026."
+description: "UMS v3.30.0 — custom reports, brokerage approvals, guided SSO setup and customer dashboards. Released 31 October 2026."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v3.10.2" description="2026-10-23">
-  ## Billing gaps, an agreement onboarding pipeline, Scenario Studio and brokerage runs
+<Update label="v3.30.0" description="2026-10-31">
+  ## Custom reports, brokerage approvals, guided SSO setup and customer dashboards
 
-  ### Invoices and validation
+  This release covers everything since v3.10.2.
 
-  - **Billing gaps** — A new Billing gaps page under Invoices shows, period by period, which bills each Connection has received and which are partial, missing or not yet due. Accounts, Connections and Retail Accounts show the same completeness view.
-  - **Request missing bills** — Select the gaps you want filled and send a bill request to the retailer from UMS.
-  - **Preview a tariff fix before you save** — The Fix tariff drawer now prices your edits against the real invoice, so you can see the result before the change is saved.
-  - **Dismissed exceptions stay dismissed** — An exception you dismiss is no longer raised again by the daily and weekly checks.
-  - **Fewer stuck tariff reviews** — Older bills that arrive after newer ones now price against the right tariff, and tariff reviews are no longer raised on accounts with validation turned off or where no tariff priced anything.
-  - **More accurate network validation** — Network charges are checked more precisely, including kVA demand, capacity ratchets (such as Ausgrid EA302, EA305 and EA310), per-meter charges, reactive export, jurisdictional scheme lines, TasNetworks specified demand, AusNet critical peak demand, UFE charges, TOU apportionment and discounts.
-  - **Energex large-business tariffs** — Energex large-business network TOU tariffs are now available.
+  ### Reports
 
-  ### Agreements
+  - **Large reports export in the background** — Export a big custom report without waiting on the page, and totals now load separately so the report opens faster.
+  - **Group, sort and calculate** — Custom reports support group-by, sorting on computed columns, Site attributes in formulas and a days measure. Converted measures sort in the unit you see.
+  - **Emissions in reports** — Add emissions estimates to a custom report. Emissions reports now split by scope and include energy and Scope 3.
+  - **Spend accrual** — The spend accrual report accrues usage and shows Site status, and its account filter now applies to bills.
 
-  - **Onboarding pipeline** — A new pipeline view tracks each agreement Connection from submission to in-service, with milestone dates, days in stage and overdue flags. Contestable metering eligibility is tracked per Connection.
-  - **Retailer submission pack** — Email the signed retail agreement, plus any overlapping metering agreements, to the retailer from the agreement.
+  ### Dashboards
+
+  - **Customer dashboards** — Build a dashboard in UMS and publish it to your customer portal.
 
   ### Brokerage
 
-  - **Brokerage runs with preview** — Preview a brokerage run as a draft before you commit it, see coverage and gaps, and rerun past periods when source data changes.
-  - **Three rate types** — Contracts use per-unit, percentage or fixed-fee rates. Percentage commission can come from invoices or be calculated from tariffs.
-  - **Supplier statements (RCTIs)** — Upload RCTIs from retailers and metering providers, check them against calculated revenue and accept them as what the supplier paid. Metering revenue now starts at the install date.
-  - **Raise an invoice across suppliers** — Pick several suppliers, or specific child suppliers, when you raise an invoice from unbilled revenue.
-  - **Brokerage fixes** — Supplier tabs count contracts correctly, revenue labels are clearer, bulk transitions ask for confirmation, Xero status sync reaches every open invoice, and LPG revenue rolls up to calendar months.
+  - **Approve before you commit** — Review and approve a brokerage run before it commits and invoices. Raise an invoice straight from a committed run.
+  - **Run errors on the overview** — A run's errors now show on its overview, and uploads with the wrong energy units or mismatched NMIs are refused.
+  - **Brokerage overview and analytics** — A new overview and analytics tab, with one export path, replace the separate views.
+  - **Forecasts and contract dates** — Forecasts use run rates, due dates are stored, and a contract's lifecycle follows its dates. New brokerage settings sit alongside.
+  - **Revenue fixes** — Partial meter data is priced from invoices, quantities stay in the contract's unit, and legacy revenue and Synergy imports work again.
 
-  ### Payments and ledger
+  ### Invoices and validation
 
-  - **Outstanding from the latest bill** — For a Retail Account that isn't on a payment file, Outstanding shows the latest bill's amount due and is labelled so it isn't read as the ledger total.
-  - **SAP journal coding holds** — An SAP journal payment group holds an invoice whose Site or Account is missing coding, instead of failing the whole file or posting a blank cost centre.
-  - **Validation holds** — A payment group can hold back invoices whose validation failed or is still unconfirmed, and the coverage reason says why.
+  - **Billing error tracking** — Follow a billing error from identified through to credited.
+  - **Fewer false exceptions** — Validation no longer raises false exceptions on GST relief, interest and rebates, loss factors, split periods, $0 lines, repeated consumption tranches, and Ausgrid, AusNet and Shell charges.
+  - **Notifications only to colleagues who can see the account** — Validation emails copy only colleagues with access to the account.
+  - **Origin and Shell invoices** — Origin C&I lines read ex-GST with quantities and units, and Shell C&I cent rates and per-day demand rates read correctly.
+  - **UtiliRead** — Bills are read in Australia, and statement opening balances and tax invoice numbers are captured.
+  - **Invoice detail** — Invoice detail shows the expected GST, and invoice balances and chart units are corrected.
 
   ### Scenarios
 
-  Scenarios require modelling access for your organisation.
+  - **Tariff reviews without reads** — Scenarios cost tariff reviews from the bill when a Connection has no reads.
+  - **Clearer tariff review overview** — The overview and negative-saving wording are reworked.
 
-  - **Scenario Studio** — One launcher replaces the five scenario cards. Pick a Site or Retail Account and what you want to explore, then run once. Results are redesigned and include existing solar and batteries.
-  - **Portfolio screening** — The portfolio screen now screens batteries and power factor correction alongside solar.
+  ### Settings and security
 
-  ### Settings
-
-  - **Automations** — Set up scheduled automations that generate Retail Accounts or email retailer submission packs. Every automation starts off. This section appears only when automations are enabled for your organisation.
+  - **Guided SSO setup** — Set up SSO with a real test sign-in, and verify your email domains with a DNS TXT record.
+  - **SSO-only sign-in** — Require SSO for your organisation, with email-first sign-in.
+  - **AI runs in Australia** — Joule, UtiliRead and the other AI features now run on AWS Bedrock in Australia.
+  - **API keys** — Organisation API keys expire and can be rotated.
+  - **Sign-in hardening** — Access tokens issued before a password reset or logout are rejected, and password rules are stricter.
+  - **Bulk-sync inverter plants** — Sync inverter plants in bulk from Settings.
 
   ### Other improvements
 
-  - **Global search** — Search (⌘K) now covers Accounts, Sites, Connections, Retail Accounts, Invoices, Agreements, Suppliers and Contacts, grouped by type, with a See all link and an Ask Joule option.
-  - **No duplicate Connections** — A gas MIRN labelled as an NMI, in an upload or an invoice, no longer creates a second Connection, and read uploads match the right Connection.
-  - **Meters** — A new Meter starts when a meter's interval length changes.
-  - **Reports** — Report account filters include the whole account hierarchy.
-  - **UtiliRead** — Supplier matching prefers the Retail Account's own supplier and only fuzzy-matches the same brand, and credit-note connection charges come from the bill's lines.
-  - **Forms** — Field labels line up with their inputs, including multi-line labels.
-  - **Security** — Sessions, SSO and login throttling are hardened.
+  - **Personal grid views** — Saved grid views follow you across devices.
+  - **Account icons** — An Account's icon is fetched from its website, and you can upload your own.
+  - **Notifications** — Notification counts are reliable, and Web Push is available.
+  - **Colour themes** — The app shell, forms, charts, Joule and the map follow your chosen light or dark theme, and your saved scheme applies before the page paints.
+  - **Smoother navigation** — Lists keep their state, upload retries recover, and status chips show readable labels.
+  - **Faster analytics** — Daily consumption summaries load faster, and usage changes are hidden when the years aren't like for like.
 </Update>
 
-See [Previous Releases](/changelog/archive) for v3.3.1 (17 October 2026) and older versions, including Utilified platform 3.0, the new app layout, and Site and Connection analytics.
+See [Previous Releases](/changelog/archive) for v3.10.2 (23 October 2026) and older versions, including Utilified platform 3.0, the new app layout, and Site and Connection analytics.
