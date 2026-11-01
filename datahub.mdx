@@ -1,79 +1,54 @@
 ---
-title: "DataHub"
-description: "Manage the shared reference data — dates, factors, time-of-use schedules, and units — that underpins tariffs, validation, and reporting across your organisation."
+title: "Reference library"
+description: "Browse the shared reference data — dates, time-of-use schedules, quantities, factors, units, and market reference records — that underpins tariffs, validation, and reporting."
 ---
 
-DataHub is the central library for the reference data that the rest of UMS depends on. Tariffs, validation rules, and reports all read from these shared records, so keeping them accurate and consistent keeps the rest of the platform accurate too.
+The Reference library holds the shared reference data the rest of UMS depends on. Tariffs, validation, and reports all read from these records, so they stay consistent across every organisation.
 
-You reach DataHub at `/datahub`. The home page groups reference data into collapsible categories — **Temporal Data**, **Technical Specifications**, **Geographic Reference**, and **Infrastructure** — and a **Search data types…** field in the top-right filters the cards as you type.
-
-<Frame>
-  ![DataHub home showing reference-data categories and their cards](/images/datahub/overview.png)
-</Frame>
-
-Each card shows the data type, a short description, and a count of existing records. The card actions let you:
-
-- **View Data** — open the full record list for that type in a dialog
-- **Add** — create a new reference record
-- **Export** — download the records
-
-Selecting a card opens a data grid in a modal. From there you can open any record to view and edit its detail page.
+Open it from the utility menu by selecting **Reference library** (`/reference-library`). The menu entry is hidden for users whose role denies access to resources.
 
 <Note>
-  DataHub holds organisation-shared reference data rather than account-specific records. Changes here can affect how tariffs are priced and how invoices are validated, so edit with care.
+  Reference library records are shared platform data. You can browse and view them; only Utilified staff can create or edit them. If a date group, time-of-use schedule, or quantity looks wrong, contact Utilified support.
 </Note>
 
-This page focuses on the four core reference-data types. The Geographic and Infrastructure categories hold supporting reference data — countries, states, markets, utilities, and namespaces — that follow the same list-and-detail pattern.
+## Browsing reference data
+
+The page groups data types into four sections. A **Search data types...** field in the top-right filters the cards by title, description, or section.
+
+| Section                      | Data types                                                         |
+| ---------------------------- | ------------------------------------------------------------------ |
+| **Temporal data**            | **Dates**, **Manual Dates**, **Time of Use**                       |
+| **Technical specifications** | **Quantities**, **Factors**, **Base Units**, **Scientific Units**  |
+| **Geographic reference**     | **Countries**, **States & Regions**                                |
+| **Infrastructure**           | **Markets**, **Utilities**, **Namespaces**                         |
+
+Select a card to open its records in a dialog. Open any record from the grid to see its detail page. Click **Close** to return to the cards.
 
 ## Dates
 
-Date groups are system-generated calendars (for example, public-holiday sets) that time-of-use schedules reference to decide which periods apply on a given day. **Manual Dates** let you add custom or one-off entries on top of the generated groups.
+**Dates** are system-generated date groups and calendars, such as public-holiday sets. Time-of-use labels reference date groups to decide which days a time window applies to. **Manual Dates** hold custom date entries and special occasions.
 
-{/* TODO screenshot: /images/datahub/dates.png — the Dates grid in DataHub with date-group rows */}
+## Time of Use
 
-A date group's detail page exposes `id`, `name`, `description`, `date_type`, and `active`.
+A time-of-use (TOU) record defines the time-based periods, such as peak, off-peak, and shoulder, that tariffs price differently. Accurate TOU definitions are essential for correct invoice validation.
 
-## Factors
+A TOU's page shows:
 
-Factors are the calculation factors and multipliers applied during energy and cost calculations — for example, converting or scaling a metered value before it feeds a tariff or report.
-
-{/* TODO screenshot: /images/datahub/factors.png — the Factors grid showing factor groups */}
-
-A factor group's detail page exposes `id`, `name`, `description`, `type`, and `active`.
-
-## Time of Use (TOU)
-
-Time-of-use records define the time-based periods — such as peak, off-peak, and shoulder — that tariffs price differently. They are the backbone of TOU tariff structures, so accurate TOU definitions are essential for correct invoice validation.
-
-{/* TODO screenshot: /images/datahub/tou.png — the Time of Use grid listing TOU schedules */}
-
-A TOU record's detail page exposes `id`, `name`, `description`, `type`, and `active`.
+- **Details** — the **ID**, **Name**, **Timezone**, and **Default label**
+- **Labels** — a table with **Label**, **Time windows**, and **Date groups** columns. The default label is marked **Default** and covers everything else. A label with no date groups applies **Every day**.
+- **Weekly preview** — a grid showing which label applies at each time across the week
 
 <Tip>
-  **TOU** stands for Time of Use — a tariff structure with different rates for peak, off-peak, and shoulder periods. See [Key Concepts](/getting-started/key-concepts) for related terminology.
+  **TOU** stands for Time of Use. See [Key concepts](/getting-started/key-concepts) for related terminology.
 </Tip>
 
-## Units
+## Quantities, factors, and units
 
-Units are the measurement units used throughout the platform. **Base Units** are the fundamental units (for example, kWh for electricity, MJ for gas, kL for water), while **Scientific Units** cover more advanced measurements. Consistent units let UMS normalise consumption across utility types for reporting and validation.
+- **Quantities** — billed quantities and how read quantities are calculated
+- **Factors** — calculation factors and multipliers applied during energy and cost calculations
+- **Base Units** — fundamental measurement units, such as kWh
+- **Scientific Units** — advanced scientific measurement units
 
-{/* TODO screenshot: /images/datahub/units.png — the Units grid showing base units and their symbols */}
+## Geographic and infrastructure reference
 
-A unit's detail page exposes `id`, `name`, `symbol`, `description`, `type`, and `active`.
-
-## Adding a reference record
-
-<Steps>
-  <Step title="Open the data type">
-    On the DataHub home page, find the card for the reference type you want (for example, **Time of Use**).
-  </Step>
-  <Step title="Start a new record">
-    Click **Add** on the card to begin creating a new entry.
-  </Step>
-  <Step title="Fill in the details">
-    Enter the `name`, `description`, and type-specific fields, and set **Active** as appropriate.
-  </Step>
-  <Step title="Save">
-    Save the record. It immediately becomes available to the tariffs, validation, and reports that reference it.
-  </Step>
-</Steps>
+**Countries**, **States & Regions**, **Markets**, **Utilities**, and **Namespaces** hold the supporting reference records that sites, connections, and tariffs link to. They follow the same list-and-detail pattern.

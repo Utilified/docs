@@ -1,0 +1,86 @@
+---
+title: "Payments"
+description: "Group invoices for payment, generate payment files, and approve them before they are sent in UMS."
+---
+
+The Payments module turns validated [invoices](/invoices) into payment files. You set up payment groups that decide which invoices are paid together, then generate, review and approve a payment file for each run.
+
+<Note>
+  Payments only appears for users with access to the Validation module. If you can't see it in the sidebar, ask an organisation admin.
+</Note>
+
+## Payments tabs
+
+The Payments page has three tabs:
+
+| Tab          | What it shows                                                              |
+| ------------ | -------------------------------------------------------------------------- |
+| **Overview** | **Your approvals** (payment files waiting on you) and a **Runs** summary of every payment group |
+| **Groups**   | Every payment group in your organisation                                   |
+| **Files**    | Every payment file generated from those groups                             |
+
+### Overview
+
+**Your approvals** lists payment files waiting on your approval, with your role on each (**Primary** or **Secondary**). Click **Approve Payment File** to approve one. You can add an optional approval comment.
+
+**Runs** lists your active payment groups and flags runs that are **Awaiting approval** or **Overdue**.
+
+## Payment groups
+
+A payment group defines a set of invoices that are paid together on a schedule. Click **New payment group** to create one.
+
+Open a group to see its tabs:
+
+| Tab          | Purpose                                                       |
+| ------------ | ------------------------------------------------------------- |
+| **Overview** | The group's eligible invoices and the generate flow           |
+| **Invoices** | Invoices in scope for the group                               |
+| **Files**    | Payment files generated from this group                       |
+| **Coverage** | Which invoices the group covers                               |
+| **Settings** | Group configuration, including code assignments               |
+
+<Warning>
+  Unsaved code assignment changes on the **Settings** tab are discarded if you leave the tab. UMS asks you to confirm first.
+</Warning>
+
+## Generating a payment file
+
+<Steps>
+  <Step title="Start the file">
+    On a group's **Overview** tab, click **Generate payment file**. You can also click **Generate payment file** on the **Files** tab.
+  </Step>
+  <Step title="Choose the options">
+    Select the **Payment Group**, the **File Format**, and how many days ahead to include under **Due within (days)**.
+  </Step>
+  <Step title="Review and approve">
+    Open the file to check it, then submit it for approval. Approvers see it under **Your approvals**.
+  </Step>
+</Steps>
+
+## Payment file details
+
+Each payment file has four tabs: **Overview**, **Lines**, **Review** and **Activity**. The **Other files in this group** menu jumps to the group's other files.
+
+### Payment file statuses
+
+| Status                         | Meaning                                         |
+| ------------------------------ | ----------------------------------------------- |
+| **Created**                    | The file exists but has no invoices yet         |
+| **Invoices linked**            | Invoices have been added to the file            |
+| **Processed**                  | The file has been processed                     |
+| **Review raised**              | A review has been raised on the file            |
+| **Review in progress**         | The review is under way                         |
+| **Review passed**              | The review is complete                          |
+| **Release ready**              | The file is ready for release                   |
+| **On hold**                    | The file is held manually                       |
+| **Approval pending**           | Waiting on the primary approver                 |
+| **Secondary approval pending** | Waiting on the secondary approver               |
+| **Approved**                   | All approvals are complete                      |
+| **Sent**                       | The file has been sent for payment              |
+| **Payment made**               | Payment is confirmed                            |
+| **Payment rejected**           | Payment was rejected                            |
+
+## Related
+
+- [Invoices](/invoices) — the invoices that payment groups pay
+- [Validation](/validation) — check invoices before they are paid
