@@ -1,0 +1,51 @@
+---
+title: "Market"
+description: "Track wholesale spot prices, electricity futures, commodity indices, and energy news, and build your own market charts."
+---
+
+The Market module brings wholesale energy market data and news into UMS. Use it to follow prices and explain market movements to your customers.
+
+Select **Market** in the main navigation (`/market`). It has three tabs: **Desk**, **News**, and **Analyse**.
+
+## Desk
+
+The desk is a live overview of the market:
+
+- **Ticker** — every instrument, grouped into **Spot**, **Futures**, and **Indices**, with the latest value and change. Stale values are marked **Stale**. Selecting an instrument focuses the desk on it.
+- **Price map** — a map of Australia with each wholesale region shaded and labelled by its spot price. Click a region to select it, or **Expand map** for a larger view. The map shows on desktop widths only.
+- **Regional spot prices** — a table of each spot region's latest price and change
+- **Chart** — with nothing selected, a whole-market chart overlays each region's daily average. Toggle between **Absolute** and **Indexed** (rebased to 100 at the start of the range), and pick a **7d**, **30d**, or **90d** range or **From** / **To** dates.
+- **Forward prices** — the next financial-year base-load strip for each region
+- **Futures** — quarterly base-load contracts per region, and FY (July to June) and CAL (calendar year) strips where traded
+- **Commodities** — fuel and commodity indices that drive wholesale energy costs
+- **Market brief** — a daily summary of the market with numbered links to its sources
+- **News** — the latest headlines, with a link to the full **News** tab
+
+Each price panel shows the data's attribution underneath.
+
+## News
+
+The **News** tab lists energy market news. Use **Search news**, filter by **Source** and by **From** / **To** dates, and sort by **Newest** or **Oldest**. Click **Load more** to see older stories.
+
+## Analyse
+
+The **Analyse** tab builds a custom chart from up to six series.
+
+<Steps>
+  <Step title="Pick series">
+    Choose up to six instruments in **Series**.
+  </Step>
+  <Step title="Shape the chart">
+    Choose **Absolute** or **Indexed**, an aggregation period (**Daily**, **Weekly**, **Monthly**, or **Quarterly**), a statistic (**Avg**, **Max**, or **Min**), and the date range.
+  </Step>
+  <Step title="Add notes">
+    Click **Add note**, click a date on the chart, type the **Note**, and click **Save note**. Notes appear as markers on the chart.
+  </Step>
+  <Step title="Export">
+    Download the chart as an image or its data as CSV. Notes are included in the CSV.
+  </Step>
+</Steps>
+
+If your organisation has portal branding configured, switch between **App theme** and your organisation's branding so an exported chart matches your portal.
+
+For a futures series, the tab also lists known forward-looking factors for that delivery period, such as scheduled closures and policy milestones.

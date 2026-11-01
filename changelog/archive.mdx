@@ -5,6 +5,29 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v1.69.0" description="2026-10-11">
+  ## Existing equipment comparisons and in-credit invoice selection
+
+  ### Energy assessments
+
+  Energy assessments and existing-equipment comparisons require modelling and DER-modelling access for your organisation, plus the relevant user permissions. Proposals appear only when proposal access is also enabled for your organisation and user.
+
+  - **Compare existing equipment** — Compare today's operation with using selected existing equipment, then assess the additional value of new solar or battery options separately.
+  - **Existing generator operating costs** — Model generators already at the Site using their declared operating limits and fuel costs. Results show fuel use, run hours, starts and Scope 1 emissions where supported by the study inputs.
+  - **Tariffs with existing equipment** — Compare complete current and proposed bills with selected existing generators or batteries. The comparison separates bill charges from operating costs and other economic assumptions.
+  - **Expected generator value** — Review each generator's reliability adjustment alongside operating costs. Check any warning that marks the financial estimate as approximate before using it.
+  - **Clearer study readiness** — If the missing-data check fails or is interrupted, retry it before calculating. Review the study's data warnings and operating assumptions before using its results.
+
+  See [Scenarios & Modelling](/scenarios#energy-assessments-and-existing-equipment) and [Site energy assets](/sites#energy-assets). Generator modelling covers existing equipment; it does not assess buying a new generator or provide generator proposals or PDFs. Results depend on the available data and declared assumptions. An entered backup value does not simulate outages.
+
+  ### Payments
+
+  - **Select in-credit invoices** — When generating or regenerating a payment file, expand **In-credit invoices** and tick **Net on this run** to offset bills on the same Retail Account. Only eligible credits are offered, and your selection and reason are recorded.
+  - **Keep credits when regenerating** — Credits already netted on an unreleased file carry forward. If one can no longer be included, UMS refuses the rebuild so you can review it rather than lose the offset.
+
+  See [Processing Invoice Payments](/guides/processing-payments#in-credit-invoices-and-regeneration) for eligibility and regeneration details.
+</Update>
+
 <Update label="v1.68.0" description="2026-10-06">
   ## Energy assessments and proposals, GST treatment checks, and a payment-prep workbench
 

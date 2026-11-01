@@ -1,0 +1,57 @@
+---
+title: "Site data"
+description: "Record non-utility values against a site — such as floor area or occupancy — and define the data types they use."
+---
+
+Site data lets you store values against a site that don't come from a utility bill, for example floor area, headcount, or production output. Each value belongs to a **data type**, which sets how the value is interpreted and the units it displays in.
+
+Site data and site data types have no menu entry of their own. You reach them from a site, or directly at `/site-data` and `/site-data-types`.
+
+## Viewing a site's data
+
+<Steps>
+  <Step title="Open the site">
+    Go to **Sites** and open the site.
+  </Step>
+  <Step title="Switch to site data">
+    On the site's **Usage** tab, choose the **Site data** view. The grid lists every site data record for that site.
+  </Step>
+</Steps>
+
+## Site data records
+
+The **Site Data** page (`/site-data`) lists every site data record across your organisation. From it you can:
+
+- Click **New Site Data** to add a record
+- Click **Data types** to manage site data types
+
+A record's detail page is titled with its data type and value. It shows:
+
+- **Data value** — **Value**, **Data type**, and **Status** (**Active** or **Inactive**)
+- **References** — the **Site**, and the **Source file** when the record was created by a [data feed](/data-feeds)
+- **Dates** — **Start date**, **End date**, and **Record date**
+
+Click the edit icon to change the record.
+
+## Site data types
+
+The **Site Data Types** page (`/site-data-types`) lists the data types available to site data records. Click **Site data** to return to the records.
+
+<Note>
+  Only administrators see **New Data Type** and can create data types.
+</Note>
+
+A data type's page has two tabs:
+
+- **Overview** — **Name**, **Description**, **Type**, **Status**, **Display units**, **Date added**, and **Date modified**
+- **Data Records** — every site data record that uses this type
+
+The **Type** sets how values are interpreted over time:
+
+| Type                     | Meaning                                         |
+| ------------------------ | ----------------------------------------------- |
+| **Constant over Period** | The value holds steady across the period        |
+| **Total over Period**    | The value is a total for the period             |
+| **Accumulation Total**   | The value is a running, accumulating total      |
+
+Site data can be used in dashboard [custom measures](/dashboards#custom-measures).

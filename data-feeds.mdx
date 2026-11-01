@@ -1,0 +1,59 @@
+---
+title: "Data feeds"
+description: "Bring external data into UMS for an account through data feeds, their data sources, and the files each source delivers."
+---
+
+Data feeds bring external data into UMS for an account. They are organised in three levels:
+
+- **Data feed** — a named feed for one account and one data type
+- **Data source** — where the feed's data comes from. A feed can have several sources.
+- **Data source file** — a file a source delivered, and how its processing went
+
+Processed files create [site data](/site-data) records, and each record links back to the file it came from.
+
+## Data feeds
+
+Go to **Connections** and select the **Data feeds** tab. The grid lists every data feed in your organisation.
+
+- Click **New Data Feed** to create a feed
+- Click **Data sources** to see every data source across all feeds
+
+A feed's page shows the account as its subtitle and has three tabs:
+
+- **Overview** — **Name**, **Description**, **Account**, **Data type**, **Created**, and **Last modified**, plus the feed's data sources
+- **Data Sources** — the sources attached to this feed
+- **Settings** — the feed's details and a **Danger zone** with **Delete Data Feed**
+
+Click **Add Data Source** to attach a new source, or the edit icon to change the feed.
+
+## Data sources
+
+The **Data sources** page (`/data-sources`) lists every data source across all feeds.
+
+- Click **New Data Source** to create a source
+- Click **Files** to see every file delivered by any source
+
+A source's page links back to its data feed and has three tabs:
+
+- **Overview** — **Name**, **Description**, **Data feed**, **Account**, **Created**, and **Last modified**
+- **Files** — the files this source has delivered
+- **Settings** — the source's details and a **Danger zone** for deleting it
+
+Click **Edit Data Source** to change the source.
+
+## Data source files
+
+The **Data source files** page (`/data-source-files`) lists every file delivered by any data source. Click **Upload File** to add a file manually.
+
+A file's page shows:
+
+- **File information** — **File name**, **Processing status**, **Records created**, **Date created**, and **Date processed**
+- **Data source** — the source the file came from
+- **Processing errors** — shown only when processing reported errors
+- **Processing summary** — shown only when a summary is available
+
+**Processing status** is one of **Pending**, **Processing**, **Completed**, or **Failed**.
+
+<Tip>
+  If a file shows **Failed**, read the **Processing errors** panel to see what went wrong, fix the file, and upload it again.
+</Tip>

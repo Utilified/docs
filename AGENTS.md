@@ -5,7 +5,7 @@
 - This is the published documentation site for the **Utilified Utility Management System (UMS)**, built on [Mintlify](https://mintlify.com).
 - Pages are MDX files with YAML frontmatter. Configuration lives in `docs.json` — every page must be referenced there to appear in the navigation.
 - Scope is the **UMS product only**. The EMP tender product (`emp-web`) is out of scope. The white-label portal (`ums-portal`) end-user docs are deferred; only UMS-side portal configuration (Portal & Domain, SSO under Settings) is documented here.
-- The product source lives in the sibling `ums-web` repo (`src/app/(main)/` route groups, `src/config/navigation.tsx`). Verify feature names and UI labels against the app before documenting them.
+- The product source lives in `ums-web/` in the `Utilified/utilified-platform` monorepo, which checks this repo out as its `platform-docs` submodule (`src/app/(main)/` route groups, `src/config/navigationRegistry.tsx`). Verify feature names and UI labels against the app before documenting them.
 
 ## Terminology
 

@@ -1,31 +1,57 @@
 ---
 title: "Latest"
-description: "UMS v1.69.0 — compare existing equipment and generator operating costs, and select in-credit invoices for payment files. Released 11 October 2026."
+description: "UMS v3.32.0 — one system version, custom reports, customer dashboards, Scenario Studio and self-service SSO. Released 1 November 2026."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v1.69.0" description="2026-10-11">
-  ## Existing equipment comparisons and in-credit invoice selection
+<Update label="v3.32.0" description="2026-11-01">
+  ## Custom reports, customer dashboards, Scenario Studio and SSO
 
-  ### Energy assessments
+  UMS now ships as one system version across the platform, starting at v3.0.0, so release numbers jump from v1.69.0 to v3.x. This entry covers every customer-visible change from v3.0.0 to v3.32.0.
 
-  Energy assessments and existing-equipment comparisons require modelling and DER-modelling access for your organisation, plus the relevant user permissions. Proposals appear only when proposal access is also enabled for your organisation and user.
+  ### Reports and dashboards
 
-  - **Compare existing equipment** — Compare today's operation with using selected existing equipment, then assess the additional value of new solar or battery options separately.
-  - **Existing generator operating costs** — Model generators already at the Site using their declared operating limits and fuel costs. Results show fuel use, run hours, starts and Scope 1 emissions where supported by the study inputs.
-  - **Tariffs with existing equipment** — Compare complete current and proposed bills with selected existing generators or batteries. The comparison separates bill charges from operating costs and other economic assumptions.
-  - **Expected generator value** — Review each generator's reliability adjustment alongside operating costs. Check any warning that marks the financial estimate as approximate before using it.
-  - **Clearer study readiness** — If the missing-data check fails or is interrupted, retry it before calculating. Review the study's data warnings and operating assumptions before using its results.
+  - **Custom reports** — Build your own reports with group-by, sorting, formulas using Site attributes, and a days measure. Large reports export in the background.
+  - **Emissions in reports** — Reports split emissions by scope, add energy and Scope 3, and show the market renewable share in the basis.
+  - **Customer dashboards** — Build dashboards in UMS and publish them to the Portal.
+  - **Accrual report** — Accrues usage, shows Site status, applies the account filter to bills and leaves out reversed bills.
+  - **Saved grid views** — Personal grid views save to your account, and you can export a grid's visible columns.
 
-  See [Scenarios & Modelling](/scenarios#energy-assessments-and-existing-equipment) and [Site energy assets](/sites#energy-assets). Generator modelling covers existing equipment; it does not assess buying a new generator or provide generator proposals or PDFs. Results depend on the available data and declared assumptions. An entered backup value does not simulate outages.
+  ### Scenarios and modelling
 
-  ### Payments
+  - **Scenario Studio** — One launcher for every measure, with run summaries and a faster portfolio sweep.
+  - **Portfolio screening** — Screen batteries and power factor correction alongside solar.
+  - **Seasonal charges** — Annual costs price seasonal charges over their season.
 
-  - **Select in-credit invoices** — When generating or regenerating a payment file, expand **In-credit invoices** and tick **Net on this run** to offset bills on the same Retail Account. Only eligible credits are offered, and your selection and reason are recorded.
-  - **Keep credits when regenerating** — Credits already netted on an unreleased file carry forward. If one can no longer be included, UMS refuses the rebuild so you can review it rather than lose the offset.
+  ### Invoices and payments
 
-  See [Processing Invoice Payments](/guides/processing-payments#in-credit-invoices-and-regeneration) for eligibility and regeneration details.
+  - **Supplier reading fixes** — UMS reads Origin, Shell and Alinta C&I invoices more accurately, including units, cent rates and GST.
+  - **Duplicate handling** — A duplicate upload's PDF links to the stored invoice, and duplicate summaries identify the source file.
+  - **Payment controls** — Payment approval is tighter, and SAP journal invoices with missing coding are held.
+
+  ### Brokerage
+
+  - **Unified runs** — Preview a run, check coverage and approve it before it commits and invoices.
+  - **Rate types** — Three rate types plus percentage commission, with forecast run rates and due dates.
+  - **Supplier statements and RCTIs** — Import supplier statements and RCTIs, including from metering providers.
+
+  ### Metering and integrations
+
+  - **Solar monitoring** — Connect SolisCloud and Sungrow to bring in solar data.
+  - **Meters** — A new meter starts when the interval length changes, and NMI or MIRN mislabels no longer create duplicate connections.
+
+  ### Sign-in and security
+
+  - **Single sign-on** — Verify email domains with a DNS record and set up SSO yourself for Portal parent accounts. Sign-in starts with your email.
+  - **API keys** — Organisation API keys expire and can be rotated.
+  - **Sessions** — Changing your password or signing out ends your other sessions.
+
+  ### Everyday use
+
+  - **Global search** — Search results are grouped by type, with Ask Joule built in.
+  - **Lists keep their place** — Going back to a list keeps your filters and position.
+  - **Account icons** — UMS fetches an account's icon from its website, and you can upload your own.
 </Update>
 
-See [Previous Releases](/changelog/archive) for v1.68.0 (6 October 2026) and older versions, including energy assessments and proposals, Joule's proposal narrative drafts, and GST treatment reviews.
+See [Previous Releases](/changelog/archive) for v1.69.0 (11 October 2026) and older versions, including existing-equipment comparisons and in-credit invoice selection.
