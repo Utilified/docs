@@ -1,57 +1,65 @@
 ---
 title: "Latest"
-description: "UMS v3.32.0 — one system version, custom reports, customer dashboards, Scenario Studio and self-service SSO. Released 1 November 2026."
+description: "UMS v3.30.0 — custom reports, brokerage approvals, guided SSO setup and customer dashboards. Released 31 October 2026."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v3.32.0" description="2026-11-01">
-  ## Custom reports, customer dashboards, Scenario Studio and SSO
+<Update label="v3.30.0" description="2026-10-31">
+  ## Custom reports, brokerage approvals, guided SSO setup and customer dashboards
 
-  UMS now ships as one system version across the platform, starting at v3.0.0, so release numbers jump from v1.69.0 to v3.x. This entry covers every customer-visible change from v3.0.0 to v3.32.0.
+  This release covers everything since v3.10.2.
 
-  ### Reports and dashboards
+  ### Reports
 
-  - **Custom reports** — Build your own reports with group-by, sorting, formulas using Site attributes, and a days measure. Large reports export in the background.
-  - **Emissions in reports** — Reports split emissions by scope, add energy and Scope 3, and show the market renewable share in the basis.
-  - **Customer dashboards** — Build dashboards in UMS and publish them to the Portal.
-  - **Accrual report** — Accrues usage, shows Site status, applies the account filter to bills and leaves out reversed bills.
-  - **Saved grid views** — Personal grid views save to your account, and you can export a grid's visible columns.
+  - **Large reports export in the background** — Export a big custom report without waiting on the page, and totals now load separately so the report opens faster.
+  - **Group, sort and calculate** — Custom reports support group-by, sorting on computed columns, Site attributes in formulas and a days measure. Converted measures sort in the unit you see.
+  - **Emissions in reports** — Add emissions estimates to a custom report. Emissions reports now split by scope and include energy and Scope 3.
+  - **Spend accrual** — The spend accrual report accrues usage and shows Site status, and its account filter now applies to bills.
 
-  ### Scenarios and modelling
+  ### Dashboards
 
-  - **Scenario Studio** — One launcher for every measure, with run summaries and a faster portfolio sweep.
-  - **Portfolio screening** — Screen batteries and power factor correction alongside solar.
-  - **Seasonal charges** — Annual costs price seasonal charges over their season.
-
-  ### Invoices and payments
-
-  - **Supplier reading fixes** — UMS reads Origin, Shell and Alinta C&I invoices more accurately, including units, cent rates and GST.
-  - **Duplicate handling** — A duplicate upload's PDF links to the stored invoice, and duplicate summaries identify the source file.
-  - **Payment controls** — Payment approval is tighter, and SAP journal invoices with missing coding are held.
+  - **Customer dashboards** — Build a dashboard in UMS and publish it to your customer portal.
 
   ### Brokerage
 
-  - **Unified runs** — Preview a run, check coverage and approve it before it commits and invoices.
-  - **Rate types** — Three rate types plus percentage commission, with forecast run rates and due dates.
-  - **Supplier statements and RCTIs** — Import supplier statements and RCTIs, including from metering providers.
+  - **Approve before you commit** — Review and approve a brokerage run before it commits and invoices. Raise an invoice straight from a committed run.
+  - **Run errors on the overview** — A run's errors now show on its overview, and uploads with the wrong energy units or mismatched NMIs are refused.
+  - **Brokerage overview and analytics** — A new overview and analytics tab, with one export path, replace the separate views.
+  - **Forecasts and contract dates** — Forecasts use run rates, due dates are stored, and a contract's lifecycle follows its dates. New brokerage settings sit alongside.
+  - **Revenue fixes** — Partial meter data is priced from invoices, quantities stay in the contract's unit, and legacy revenue and Synergy imports work again.
 
-  ### Metering and integrations
+  ### Invoices and validation
 
-  - **Solar monitoring** — Connect SolisCloud and Sungrow to bring in solar data.
-  - **Meters** — A new meter starts when the interval length changes, and NMI or MIRN mislabels no longer create duplicate connections.
+  - **Billing error tracking** — Follow a billing error from identified through to credited.
+  - **Fewer false exceptions** — Validation no longer raises false exceptions on GST relief, interest and rebates, loss factors, split periods, $0 lines, repeated consumption tranches, and Ausgrid, AusNet and Shell charges.
+  - **Notifications only to colleagues who can see the account** — Validation emails copy only colleagues with access to the account.
+  - **Origin and Shell invoices** — Origin C&I lines read ex-GST with quantities and units, and Shell C&I cent rates and per-day demand rates read correctly.
+  - **UtiliRead** — Bills are read in Australia, and statement opening balances and tax invoice numbers are captured.
+  - **Invoice detail** — Invoice detail shows the expected GST, and invoice balances and chart units are corrected.
 
-  ### Sign-in and security
+  ### Scenarios
 
-  - **Single sign-on** — Verify email domains with a DNS record and set up SSO yourself for Portal parent accounts. Sign-in starts with your email.
+  - **Tariff reviews without reads** — Scenarios cost tariff reviews from the bill when a Connection has no reads.
+  - **Clearer tariff review overview** — The overview and negative-saving wording are reworked.
+
+  ### Settings and security
+
+  - **Guided SSO setup** — Set up SSO with a real test sign-in, and verify your email domains with a DNS TXT record.
+  - **SSO-only sign-in** — Require SSO for your organisation, with email-first sign-in.
+  - **AI runs in Australia** — Joule, UtiliRead and the other AI features now run on AWS Bedrock in Australia.
   - **API keys** — Organisation API keys expire and can be rotated.
-  - **Sessions** — Changing your password or signing out ends your other sessions.
+  - **Sign-in hardening** — Access tokens issued before a password reset or logout are rejected, and password rules are stricter.
+  - **Bulk-sync inverter plants** — Sync inverter plants in bulk from Settings.
 
-  ### Everyday use
+  ### Other improvements
 
-  - **Global search** — Search results are grouped by type, with Ask Joule built in.
-  - **Lists keep their place** — Going back to a list keeps your filters and position.
-  - **Account icons** — UMS fetches an account's icon from its website, and you can upload your own.
+  - **Personal grid views** — Saved grid views follow you across devices.
+  - **Account icons** — An Account's icon is fetched from its website, and you can upload your own.
+  - **Notifications** — Notification counts are reliable, and Web Push is available.
+  - **Colour themes** — The app shell, forms, charts, Joule and the map follow your chosen light or dark theme, and your saved scheme applies before the page paints.
+  - **Smoother navigation** — Lists keep their state, upload retries recover, and status chips show readable labels.
+  - **Faster analytics** — Daily consumption summaries load faster, and usage changes are hidden when the years aren't like for like.
 </Update>
 
-See [Previous Releases](/changelog/archive) for v1.69.0 (11 October 2026) and older versions, including existing-equipment comparisons and in-credit invoice selection.
+See [Previous Releases](/changelog/archive) for v3.10.2 (23 October 2026) and older versions, including Utilified platform 3.0, the new app layout, and Site and Connection analytics.

@@ -5,6 +5,103 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v3.10.2" description="2026-10-23">
+  ## Billing gaps, an agreement onboarding pipeline, Scenario Studio and brokerage runs
+
+  ### Invoices and validation
+
+  - **Billing gaps** — A new Billing gaps page under Invoices shows, period by period, which bills each Connection has received and which are partial, missing or not yet due. Accounts, Connections and Retail Accounts show the same completeness view.
+  - **Request missing bills** — Select the gaps you want filled and send a bill request to the retailer from UMS.
+  - **Preview a tariff fix before you save** — The Fix tariff drawer now prices your edits against the real invoice, so you can see the result before the change is saved.
+  - **Dismissed exceptions stay dismissed** — An exception you dismiss is no longer raised again by the daily and weekly checks.
+  - **Fewer stuck tariff reviews** — Older bills that arrive after newer ones now price against the right tariff, and tariff reviews are no longer raised on accounts with validation turned off or where no tariff priced anything.
+  - **More accurate network validation** — Network charges are checked more precisely, including kVA demand, capacity ratchets (such as Ausgrid EA302, EA305 and EA310), per-meter charges, reactive export, jurisdictional scheme lines, TasNetworks specified demand, AusNet critical peak demand, UFE charges, TOU apportionment and discounts.
+  - **Energex large-business tariffs** — Energex large-business network TOU tariffs are now available.
+
+  ### Agreements
+
+  - **Onboarding pipeline** — A new pipeline view tracks each agreement Connection from submission to in-service, with milestone dates, days in stage and overdue flags. Contestable metering eligibility is tracked per Connection.
+  - **Retailer submission pack** — Email the signed retail agreement, plus any overlapping metering agreements, to the retailer from the agreement.
+
+  ### Brokerage
+
+  - **Brokerage runs with preview** — Preview a brokerage run as a draft before you commit it, see coverage and gaps, and rerun past periods when source data changes.
+  - **Three rate types** — Contracts use per-unit, percentage or fixed-fee rates. Percentage commission can come from invoices or be calculated from tariffs.
+  - **Supplier statements (RCTIs)** — Upload RCTIs from retailers and metering providers, check them against calculated revenue and accept them as what the supplier paid. Metering revenue now starts at the install date.
+  - **Raise an invoice across suppliers** — Pick several suppliers, or specific child suppliers, when you raise an invoice from unbilled revenue.
+  - **Brokerage fixes** — Supplier tabs count contracts correctly, revenue labels are clearer, bulk transitions ask for confirmation, Xero status sync reaches every open invoice, and LPG revenue rolls up to calendar months.
+
+  ### Payments and ledger
+
+  - **Outstanding from the latest bill** — For a Retail Account that isn't on a payment file, Outstanding shows the latest bill's amount due and is labelled so it isn't read as the ledger total.
+  - **SAP journal coding holds** — An SAP journal payment group holds an invoice whose Site or Account is missing coding, instead of failing the whole file or posting a blank cost centre.
+  - **Validation holds** — A payment group can hold back invoices whose validation failed or is still unconfirmed, and the coverage reason says why.
+
+  ### Scenarios
+
+  Scenarios require modelling access for your organisation.
+
+  - **Scenario Studio** — One launcher replaces the five scenario cards. Pick a Site or Retail Account and what you want to explore, then run once. Results are redesigned and include existing solar and batteries.
+  - **Portfolio screening** — The portfolio screen now screens batteries and power factor correction alongside solar.
+
+  ### Settings
+
+  - **Automations** — Set up scheduled automations that generate Retail Accounts or email retailer submission packs. Every automation starts off. This section appears only when automations are enabled for your organisation.
+
+  ### Other improvements
+
+  - **Global search** — Search (⌘K) now covers Accounts, Sites, Connections, Retail Accounts, Invoices, Agreements, Suppliers and Contacts, grouped by type, with a See all link and an Ask Joule option.
+  - **No duplicate Connections** — A gas MIRN labelled as an NMI, in an upload or an invoice, no longer creates a second Connection, and read uploads match the right Connection.
+  - **Meters** — A new Meter starts when a meter's interval length changes.
+  - **Reports** — Report account filters include the whole account hierarchy.
+  - **UtiliRead** — Supplier matching prefers the Retail Account's own supplier and only fuzzy-matches the same brand, and credit-note connection charges come from the bill's lines.
+  - **Forms** — Field labels line up with their inputs, including multi-line labels.
+  - **Security** — Sessions, SSO and login throttling are hardened.
+</Update>
+
+<Update label="v3.3.1" description="2026-10-17">
+  ## Utilified platform 3.0: a new app layout, Site and Connection analytics, and SolisCloud integration preparation
+
+  UMS now ships as part of the Utilified platform, with one version number for everything. That's why this release jumps from v1.69.0 to v3.3.1.
+
+  ### Navigation and layout
+
+  - **New app layout** — Global actions now live in the sidebar and every page shares one frame, so the desktop top bar is gone and more of the screen goes to your data.
+  - **Navigation improvements** — Back, Cancel and Close have more consistent destinations in supported flows, including a parent-page fallback when you open a link directly.
+  - **Regrouped Settings** — Settings sections are grouped under Account, Organisation, Access & integrations, Operations and Commercial, with icons and search, and every section uses the same layout.
+
+  ### Sites and Connections
+
+  - **Site analytics** — A Site's Overview shows its spend and usage at a glance, plus a monthly spend and usage chart.
+  - **Connection analytics** — A Connection's Overview shows spend, usage and contract details, with a data-feed status panel and when the first bill is expected.
+  - **Spend from every bill** — Spend charts now include bills that have no billing period, and the Home spend chart uses the same organisation-wide monthly trend.
+  - **SolisCloud integration preparation** — Preparation for SolisCloud solar data feeds is in place. Customer availability is pending production activation and live validation.
+
+  ### Invoices
+
+  - **Origin LPG reports** — Import Origin LPG monthly transaction reports and usage reports. Rows link to Connections by location number, and any skipped rows are reported.
+  - **Find identifiers however they're typed** — Search matches NMIs and other identifiers with or without spaces and punctuation, and invoice search now covers NMI, Site, parent account and aliases.
+  - **Preview an inbox exclusion** — Before you exclude an inbox email, see which downstream records the exclusion would leave behind.
+  - **Smarter missing-bill checks** — UMS reads each Retail Account's billing cadence from its recent bills and statements, and only flags a missing invoice once the next bill is overdue.
+  - **No duplicate paid bills** — UMS blocks re-importing a bill that has already been paid.
+
+  ### Payments and ledger
+
+  - **Add an invoice to a payment file** — Add a missing invoice to a payment file before it is released. Once a file is released, its lines are locked.
+  - **Clearer coverage reasons** — Coverage flags explain when an invoice falls outside the Retail Account's active window, and such invoices are held only when the mismatch is confirmed.
+  - **Delete a ledger row written in error** — Remove an invoice-derived row from a Retail Account's Ledger tab.
+
+  ### Other improvements
+
+  - **Consistent formatting** — Money and brokerage rates are formatted the same way across UMS, and dashboard cards fill the full width.
+  - **Accrual report** — Reversed bills no longer appear in the accrual report.
+  - **Agreements** — Retail Accounts closed before an agreement's term are ignored.
+  - **UtiliRead** — Credit balances are extracted as negative amounts, and non-invoice correspondence is skipped at import.
+  - **Read coverage** — Current-month read coverage is measured against the days elapsed, and daily summaries count consumption only.
+  - **Inbox previews** — Email previews no longer pick up UMS styles.
+  - **Security** — Changing your password ends your other sessions, and SSO user mappings are read-only in Settings and used for sign-in only.
+</Update>
+
 <Update label="v1.69.0" description="2026-10-11">
   ## Existing equipment comparisons and in-credit invoice selection
 
