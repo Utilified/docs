@@ -2,7 +2,7 @@
 
 The published documentation site for the **Utilified Utility Management System (UMS)** — the customer-facing product docs at [docs.utilified.com](https://docs.utilified.com). Built with [Mintlify](https://mintlify.com).
 
-This repo is the `platform-docs` submodule of the [Utilified/utilified](https://github.com/Utilified) monorepo. It documents the **UMS** product only (the EMP tender product and the white-label portal are out of scope here).
+This repo is the `platform-docs` submodule of the [Utilified/utilified-platform](https://github.com/Utilified/utilified-platform) monorepo. It documents the **UMS** product only (the EMP tender product and the white-label portal are out of scope here).
 
 ## Structure
 
