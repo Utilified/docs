@@ -1,65 +1,60 @@
 ---
 title: "Latest"
-description: "UMS v3.30.0 — custom reports, brokerage approvals, guided SSO setup and customer dashboards. Released 31 October 2026."
+description: "UMS v4.14.1 — outage board, full grid exports, a smarter invoice inbox and scheduled draft reports. Released 5 November 2026."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v3.30.0" description="2026-10-31">
-  ## Custom reports, brokerage approvals, guided SSO setup and customer dashboards
+<Update label="v4.14.1" description="2026-11-05">
+  ## Outage board, full grid exports, a smarter inbox and scheduled draft reports
 
-  This release covers everything since v3.10.2.
+  This release covers everything since v3.30.0.
 
-  ### Reports
+  ### Connections
 
-  - **Large reports export in the background** — Export a big custom report without waiting on the page, and totals now load separately so the report opens faster.
-  - **Group, sort and calculate** — Custom reports support group-by, sorting on computed columns, Site attributes in formulas and a days measure. Converted measures sort in the unit you see.
-  - **Emissions in reports** — Add emissions estimates to a custom report. Emissions reports now split by scope and include energy and Scope 3.
-  - **Spend accrual** — The spend accrual report accrues usage and shows Site status, and its account filter now applies to bills.
+  - **Outage board** — A new Outages tab under Connections lists live, in-progress, upcoming and recently ended outages that affect your Connections. Sites and Connections show a banner while an outage is in progress or upcoming, and an Off supply tile on Home takes you straight to them.
+  - **Outages refresh in place** — The board refreshes without resetting your page or scroll position, and more outage notices are matched to the right Connections.
+  - **Short read histories** — Connections with less than 30 days of reads now chart and drill down.
 
-  ### Dashboards
+  ### Inbox
 
-  - **Customer dashboards** — Build a dashboard in UMS and publish it to your customer portal.
+  - **Bills attached to overdue notices** — When a supplier's reminder attaches the bill it is chasing, UMS now reads that bill.
+  - **Payment receipts on the ledger** — Supplier payment receipts post as payments on the Retail Account, and the next bill's printed payments are checked against them.
+  - **Fewer misfiled emails** — Overdue request letters are filed as letters, forwarded bills are read as Invoices, survey emails are archived, and emails sent as HTML are read correctly.
+  - **Clearer error handling** — Excluding an email asks for a reason, reprocessing no longer risks removing Invoices, unmatched mail has its own tab, and every tab shows its count.
 
-  ### Brokerage
+  ### Reports and dashboards
 
-  - **Approve before you commit** — Review and approve a brokerage run before it commits and invoices. Raise an invoice straight from a committed run.
-  - **Run errors on the overview** — A run's errors now show on its overview, and uploads with the wrong energy units or mismatched NMIs are refused.
-  - **Brokerage overview and analytics** — A new overview and analytics tab, with one export path, replace the separate views.
-  - **Forecasts and contract dates** — Forecasts use run rates, due dates are stored, and a contract's lifecycle follows its dates. New brokerage settings sit alongside.
-  - **Revenue fixes** — Partial meter data is priced from invoices, quantities stay in the contract's unit, and legacy revenue and Synergy imports work again.
+  - **Agreement expiry report** — Filter by period, customer, status and onboarding stage, see names instead of IDs, and optionally check that each Connection was billed across its agreement term.
+  - **Schedule draft custom reports** — Schedule a custom report before you publish it, over a rolling period (current month, previous month, previous quarter or year to date) or only the rows added since the last run.
+  - **Estimated emissions on dashboards** — Dashboards can show consumption-based estimated emissions when you have no saved emissions calculations, and filter by Account, state or Agreement.
+  - **Emissions for portal viewers** — Portal viewers can now see emissions measures in shared custom reports.
+
+  ### Grids
+
+  - **Export everything you've filtered** — Download as CSV or Excel now exports every filtered row, not just the loaded page, with the columns you can see in their current order.
 
   ### Invoices and validation
 
-  - **Billing error tracking** — Follow a billing error from identified through to credited.
-  - **Fewer false exceptions** — Validation no longer raises false exceptions on GST relief, interest and rebates, loss factors, split periods, $0 lines, repeated consumption tranches, and Ausgrid, AusNet and Shell charges.
-  - **Notifications only to colleagues who can see the account** — Validation emails copy only colleagues with access to the account.
-  - **Origin and Shell invoices** — Origin C&I lines read ex-GST with quantities and units, and Shell C&I cent rates and per-day demand rates read correctly.
-  - **UtiliRead** — Bills are read in Australia, and statement opening balances and tax invoice numbers are captured.
-  - **Invoice detail** — Invoice detail shows the expected GST, and invoice balances and chart units are corrected.
+  - **Fewer false exceptions** — Validation now handles separately priced metering, bundled network fixed charges, month-priced lines, per-day demand rates, rates billed per another period, pass-through amount-only lines and DLF-only loss factors, and ignores archived Retail Accounts.
+  - **Missing charges flagged** — Validation flags other charges on a bill that aren't recorded against the Connection.
+  - **Complete "All" exceptions view** — The All preset now lists every exception type.
+  - **Supplier invoices** — Diamond, AGL, Alinta, Shell C&I, Stanwell and Origin SME invoices read more accurately, including GST splits and revision bills.
+  - **UtiliRead duplicates** — Byte-identical copies of an Invoice are marked as duplicates instead of going to review.
+  - **Invoice documents** — UMS tells you when a document can't be previewed, and non-PDF documents no longer download when the page opens.
+  - **Account balances** — Account balances now include other charges and credits.
 
-  ### Scenarios
+  ### Settings
 
-  - **Tariff reviews without reads** — Scenarios cost tariff reviews from the bill when a Connection has no reads.
-  - **Clearer tariff review overview** — The overview and negative-saving wording are reworked.
-
-  ### Settings and security
-
-  - **Guided SSO setup** — Set up SSO with a real test sign-in, and verify your email domains with a DNS TXT record.
-  - **SSO-only sign-in** — Require SSO for your organisation, with email-first sign-in.
-  - **AI runs in Australia** — Joule, UtiliRead and the other AI features now run on AWS Bedrock in Australia.
-  - **API keys** — Organisation API keys expire and can be rotated.
-  - **Sign-in hardening** — Access tokens issued before a password reset or logout are rejected, and password rules are stricter.
-  - **Bulk-sync inverter plants** — Sync inverter plants in bulk from Settings.
+  - **SSO secret expiry warnings** — Record when your portal SSO secret expires and get warnings 30 days and 7 days out and on expiry. Connection failures now show in the SSO panel.
+  - **Portal analytics and chat** — Add Google Analytics 4 and Zoho SalesIQ chat to your portal from portal settings. The Google Tag Manager field has been removed.
 
   ### Other improvements
 
-  - **Personal grid views** — Saved grid views follow you across devices.
-  - **Account icons** — An Account's icon is fetched from its website, and you can upload your own.
-  - **Notifications** — Notification counts are reliable, and Web Push is available.
-  - **Colour themes** — The app shell, forms, charts, Joule and the map follow your chosen light or dark theme, and your saved scheme applies before the page paints.
-  - **Smoother navigation** — Lists keep their state, upload retries recover, and status chips show readable labels.
-  - **Faster analytics** — Daily consumption summaries load faster, and usage changes are hidden when the years aren't like for like.
+  - **Scenarios** — Seasonal charges are priced over their season in annual costs, and a battery's capacity starts at its shown health.
+  - **Emissions** — The renewable power percentage is averaged over NGA reporting years.
+  - **Dashboards** — Dashboard visuals and card sizing are restored.
+  - **AusNet time of use** — AusNet network time-of-use periods follow AEST.
 </Update>
 
-See [Previous Releases](/changelog/archive) for v3.10.2 (23 October 2026) and older versions, including Utilified platform 3.0, the new app layout, and Site and Connection analytics.
+See [Previous Releases](/changelog/archive) for v3.30.0 (31 October 2026) and older versions, including custom reports, guided SSO setup, Utilified platform 3.0 and the new app layout.
