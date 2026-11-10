@@ -5,6 +5,63 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v3.30.0" description="2026-10-31">
+  ## Custom reports, brokerage approvals, guided SSO setup and customer dashboards
+
+  This release covers everything since v3.10.2.
+
+  ### Reports
+
+  - **Large reports export in the background** — Export a big custom report without waiting on the page, and totals now load separately so the report opens faster.
+  - **Group, sort and calculate** — Custom reports support group-by, sorting on computed columns, Site attributes in formulas and a days measure. Converted measures sort in the unit you see.
+  - **Emissions in reports** — Add emissions estimates to a custom report. Emissions reports now split by scope and include energy and Scope 3.
+  - **Spend accrual** — The spend accrual report accrues usage and shows Site status, and its account filter now applies to bills.
+
+  ### Dashboards
+
+  - **Customer dashboards** — Build a dashboard in UMS and publish it to your customer portal.
+
+  ### Brokerage
+
+  - **Approve before you commit** — Review and approve a brokerage run before it commits and invoices. Raise an invoice straight from a committed run.
+  - **Run errors on the overview** — A run's errors now show on its overview, and uploads with the wrong energy units or mismatched NMIs are refused.
+  - **Brokerage overview and analytics** — A new overview and analytics tab, with one export path, replace the separate views.
+  - **Forecasts and contract dates** — Forecasts use run rates, due dates are stored, and a contract's lifecycle follows its dates. New brokerage settings sit alongside.
+  - **Revenue fixes** — Partial meter data is priced from invoices, quantities stay in the contract's unit, and legacy revenue and Synergy imports work again.
+
+  ### Invoices and validation
+
+  - **Billing error tracking** — Follow a billing error from identified through to credited.
+  - **Fewer false exceptions** — Validation no longer raises false exceptions on GST relief, interest and rebates, loss factors, split periods, $0 lines, repeated consumption tranches, and Ausgrid, AusNet and Shell charges.
+  - **Notifications only to colleagues who can see the account** — Validation emails copy only colleagues with access to the account.
+  - **Origin and Shell invoices** — Origin C&I lines read ex-GST with quantities and units, and Shell C&I cent rates and per-day demand rates read correctly.
+  - **UtiliRead** — Bills are read in Australia, and statement opening balances and tax invoice numbers are captured.
+  - **Invoice detail** — Invoice detail shows the expected GST, and invoice balances and chart units are corrected.
+
+  ### Scenarios
+
+  - **Tariff reviews without reads** — Scenarios cost tariff reviews from the bill when a Connection has no reads.
+  - **Clearer tariff review overview** — The overview and negative-saving wording are reworked.
+
+  ### Settings and security
+
+  - **Guided SSO setup** — Set up SSO with a real test sign-in, and verify your email domains with a DNS TXT record.
+  - **SSO-only sign-in** — Require SSO for your organisation, with email-first sign-in.
+  - **AI runs in Australia** — Joule, UtiliRead and the other AI features now run on AWS Bedrock in Australia.
+  - **API keys** — Organisation API keys expire and can be rotated.
+  - **Sign-in hardening** — Access tokens issued before a password reset or logout are rejected, and password rules are stricter.
+  - **Bulk-sync inverter plants** — Sync inverter plants in bulk from Settings.
+
+  ### Other improvements
+
+  - **Personal grid views** — Saved grid views follow you across devices.
+  - **Account icons** — An Account's icon is fetched from its website, and you can upload your own.
+  - **Notifications** — Notification counts are reliable, and Web Push is available.
+  - **Colour themes** — The app shell, forms, charts, Joule and the map follow your chosen light or dark theme, and your saved scheme applies before the page paints.
+  - **Smoother navigation** — Lists keep their state, upload retries recover, and status chips show readable labels.
+  - **Faster analytics** — Daily consumption summaries load faster, and usage changes are hidden when the years aren't like for like.
+</Update>
+
 <Update label="v3.10.2" description="2026-10-23">
   ## Billing gaps, an agreement onboarding pipeline, Scenario Studio and brokerage runs
 
