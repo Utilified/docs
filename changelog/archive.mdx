@@ -5,6 +5,73 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v4.17.0" description="2026-11-10">
+  ## Outage board, full grid exports, a smarter inbox and brokerage balances
+
+  This release covers everything since v3.30.0.
+
+  ### Connections
+
+  - **Outage board** — Open Connections, then Outages, to see live, upcoming and recently ended outages that affect your Connections. Sites show a banner while one is on, and an Off supply tile on Home takes you straight there.
+  - **Reads for new Connections** — Chart and drill into Connections with under 30 days of reads.
+
+  ### Invoices and inbox
+
+  - **Bills attached to overdue notices** — When a supplier's overdue notice attaches the bill it's chasing, we read that bill. Overdue request letters are treated as letters, not bills.
+  - **Payment receipts on the ledger** — Supplier payment receipts post to the Retail Account's ledger, matched on bill charges.
+  - **DMARC holds** — Release mail held for DMARC and assign it to an Account from the inbox.
+  - **More accurate supplier invoices** — AGL, Alinta, Diamond, EnergyAustralia, Meridian, Origin, Shell, Stanwell and Synergy invoices read through updated supplier templates, including GST splits and printed identifiers.
+  - **Duplicate copies** — Byte-identical copies of an invoice are marked Duplicate instead of sent for review.
+  - **Document previews** — UMS tells you when an invoice document can't be previewed, and non-PDF documents no longer download when the page loads.
+
+  ### Validation
+
+  - **Fewer false exceptions** — Validation handles separately priced metering, bundled network fixed charges, per-day demand rates, month-priced lines, DLF-only loss factors and pass-through amount-only lines.
+  - **Missing charges** — Additive other charges missing from a Connection's records are flagged.
+  - **Exceptions "All" preset** — The All preset lists every current exception type.
+
+  ### Reports and exports
+
+  - **Export everything you've filtered** — Download as CSV or Excel gives you every filtered row, with the columns you can see in the order you set them.
+  - **Schedule draft reports** — Schedule a custom report before you publish it, over a rolling period like last month or year to date, or just the rows added since it last ran.
+  - **Agreement expiry report** — Filter by period, customer, status and onboarding stage, and check each Connection was billed across its agreement term.
+  - **Brokerage billing coverage** — The billing recency and coverage reports add period, status and month coverage.
+
+  ### Brokerage
+
+  - **Balances and analytics** — See monthly contracted value, contracted balance as expected less billed, and links to each RCTI.
+  - **Approval differences** — Accept adjustment differences above a minimum, see them in the approval summary, and require an approver to waive differences on draft runs.
+  - **Accounting Connection** — Choose which Connection brokerage is accounted against.
+  - **Forecast fixes** — Forecasts use the current contract rate, skip commission already billed upfront, and count a reissued bill once.
+  - **RCTI uploads** — Shared suppliers are accepted on an RCTI upload.
+
+  ### Dashboards
+
+  - **Portfolio emissions** — Add portfolio emissions estimates to a dashboard and deliver it to clients.
+  - **Edit after publishing** — Correct a dashboard's layout after it's published.
+
+  ### Uploads
+
+  - **Smarter spreadsheet uploads** — Uploads find the header row below title rows, re-detect it when you change sheet, and work out a date column's format from its samples.
+
+  ### Accounts, portal and settings
+
+  - **Add portal users from the Account screen** — Invite portal users without leaving the Account.
+  - **Google Workspace portal SSO** — Bind a portal's SSO to an Account's Google Workspace.
+  - **Portal SSO warnings** — Record when your portal's SSO secret expires and we'll warn you 30 days and 7 days out. Connection failures now show in Settings.
+  - **Portal analytics** — Set up GA4 and Zoho SalesIQ for your portal. Organisation-set Google Tag Manager containers are removed.
+
+  ### Help and support
+
+  - **Contact Utilified** — Raise a request from the Contact Utilified dialog in UMS, follow it in your requests and inbox, and get a first answer from our AI assistant.
+
+  ### Other improvements
+
+  - **Web Push** — Web Push notifications activate reliably.
+  - **Data feeds** — Coliban lab results and hourly discharge data are read from data feeds.
+  - **Scenarios** — Seasonal charges are priced over their season, and a battery's capacity path starts at its shown health.
+</Update>
+
 <Update label="v3.30.0" description="2026-10-31">
   ## Custom reports, brokerage approvals, guided SSO setup and customer dashboards
 
