@@ -1,0 +1,174 @@
+---
+title: "Brokerage revenue and invoicing"
+description: "The month-end brokerage workflow in UMS: run and approve revenue, raise invoices to retailers, process supplier statements (RCTIs), correct revenue, and handle retailer disputes."
+---
+
+This guide follows brokerage revenue from calculation to a paid invoice, and covers what to do when a figure is wrong or a retailer disputes an invoice. Everything here lives under **Billing** → **Brokerage**.
+
+<Info>
+  The Brokerage hub has six tabs: **Overview**, **Contracts**, **Revenue**, **Runs**, **Invoices & RCTIs** and **Analytics**. Header buttons such as **New run**, **Raise invoice** and **Import** are available from every tab.
+</Info>
+
+## How revenue gets billed
+
+Each contract (brokerage record, identified by its **OppID** — the external ID) earns revenue for each connection (NMI or MIRN) and period. That revenue is billed in one of two ways, set per supplier:
+
+| Supplier pays by | What you do | Typical suppliers |
+| --- | --- | --- |
+| **Invoice from Utilified** | Run revenue, then **Raise invoice** into Xero | Most retailers |
+| **RCTI** (a statement the supplier sends you) | Import the supplier's statement and **Accept** it | Metering providers, such as Metering Dynamics (Yurika) |
+
+You can see and change each supplier's method under **Invoices & RCTIs** → **Supplier billing**. Metering providers default to RCTI.
+
+<Note>
+  Every contract also has an **Invoice Recipient** (contract **Settings** tab): **Supplier** or **Account**. For Utilizer, brokerage is always billed to the retailer, so it should be **Supplier**. A contract set to **Account** is invoiced to the customer on its own invoice.
+</Note>
+
+## The monthly workflow
+
+<Steps>
+  <Step title="Run the month's revenue">
+    On the **Runs** tab click **New run**. In the **Records** step, filter and select the contracts to include and click **Add to Selection**. In the **Review** step, set the **Batch Description** and **Calculation End Date**, then click **Preview revenue**.
+
+    - **Raise missing revenue** adds estimates and zero-value placeholder lines where data is missing. These aren't actual usage and can't be invoiced.
+    - **Minimum adjustment** sets the smallest difference from already-billed revenue that the run proposes as an adjustment.
+
+    The run opens as a **Draft** so you can preview it before anything goes live.
+  </Step>
+  <Step title="Review the draft">
+    On the run's **Overview** tab, check the **If committed** panel: new, changed and removed lines, the net change, coverage gaps and lines that need review.
+
+    If a line's figure looks wrong, fix the cause (missing tariff, missing meter data) and use **Retry calculation**, which starts a new draft over the same contracts and dates.
+  </Step>
+  <Step title="Commit or approve">
+    - Without approval rules, click **Commit run**.
+    - With approvals turned on, click **Submit for approval**. An approver reviews the **Approval** tab and clicks **Approve** (or **Reject**).
+
+    Approving a run raises invoices for every recipient that isn't held or paid by RCTI. On the **Approval** tab you can **Hold** a recipient to keep it out of this invoice, and **Release hold** later.
+  </Step>
+  <Step title="Raise the invoice">
+    If invoices weren't raised on approval, click **Raise invoice** on the committed run (or from **Invoices & RCTIs**). The **Raise invoice from unbilled revenue** wizard walks through:
+
+    1. **Select suppliers** (skipped when you start from a run)
+    2. **Unbilled revenue** — tick the lines to bill
+    3. **Adjust fields** — override the description or reference for this invoice only
+    4. **Billing contact** — the Xero contact to bill
+    5. **Preview & raise** — check the lines and totals, then click **Raise invoice**
+
+    The invoice is created as a draft in Xero. A negative total is raised as a credit note.
+  </Step>
+  <Step title="Send and reconcile">
+    Approve and send the invoice in Xero. Under **Invoices & RCTIs**, open **View & reconcile** on an invoice and use **Refresh from Xero** to pick up its status and payment.
+  </Step>
+</Steps>
+
+<Tip>
+  The **Unbilled revenue** step only lists lines that can be raised. Lines waiting on a supplier's RCTI aren't listed — the step tells you how many there are and to import the supplier's statement instead.
+</Tip>
+
+## Supplier statements (RCTIs)
+
+When a supplier sends you a statement of what it is paying (a recipient-created tax invoice, or a commission report), import it as an RCTI rather than as plain revenue.
+
+<Steps>
+  <Step title="Start the import">
+    On **Invoices & RCTIs**, click **Upload RCTI**. (From **Import**, turn on **This file is a supplier statement (RCTI)**.)
+  </Step>
+  <Step title="Fill in the details">
+    - **Supplier** — who the statement is from.
+    - **RCTI number** — the statement's number. If it has none (Yurika's reports don't), leave it blank: it's saved as `RCTI-YYYY-MM` from the statement period.
+    - **RCTI date** and **Statement period from** / **to**.
+    - **Amounts include GST** — turn on if the statement's amounts are GST-inclusive.
+    - **Default charge type** — for rows that don't say whether they're metering, VAS or other.
+
+    Known formats (Yurika, Diamond, Mondo, Plus ES, SmartestEnergy, Synergy, ZEN) are recognised automatically, with their columns mapped for you.
+  </Step>
+  <Step title="Check the preview">
+    Each row is matched to a contract for that supplier, NMI and period:
+
+    - **Fills in calculated** — the statement replaces a calculated figure; the difference shows as a variance.
+    - **Create** — no calculated line existed, so one is added.
+    - **Errors** — fix and re-upload, or tick **Exclude** for that row.
+    - A row on a contract set to bill the customer is still matched, with a warning to set its **Invoice Recipient** to **Supplier**.
+
+    If a row overlaps revenue that's already billed, tick **Adjustment** (or **Mark N overlap(s) as adjustments**) to record it as the supplier's difference instead.
+  </Step>
+  <Step title="Accept">
+    Click **Open RCTI**, then **Accept RCTI**:
+
+    - Turn on **Raise invoice in Xero** if you invoice this supplier for its statements. The whole statement is billed to that supplier on one invoice, whatever each contract's recipient.
+    - Otherwise its lines are marked as invoiced against the RCTI number (or the **External invoice number** you enter).
+  </Step>
+</Steps>
+
+<Note>
+  Two statements from the same supplier can't share an RCTI number. If a supplier sends two unnumbered statements in one month, give the second its own number.
+</Note>
+
+## Correcting revenue
+
+Calculated revenue is read-only once a run is committed, so the original figure is always kept. Corrections are recorded as adjustment lines. Open a line from the **Revenue** tab:
+
+| To... | Use | Notes |
+| --- | --- | --- |
+| Set a line to the retailer's figure | **Adjust or override** → **Corrected total** | Enter the amount (and optionally **Quantity**, e.g. kWh). UMS records the difference. |
+| Cancel a line (already paid, duplicate) | **Adjust or override** → **Corrected total** of `0` | The line nets to zero and won't be billed again. |
+| Add or remove a set amount | **Adjust or override** → **Difference** | Negative reduces, positive adds. |
+| Put a line on the right contract | **Move to another OppID** | The amount, and any invoice or payment, stay as they are. |
+| Remove a line that shouldn't exist | Delete (bin icon) | Only lines not on a live invoice or RCTI. |
+
+<Warning>
+  If you move a line but the old OppID still covers that NMI for the period, UMS asks you to confirm. End or remove the NMI on the old OppID's agreement afterwards, or a later run will bill the period there again.
+</Warning>
+
+### Proposed adjustments from a run
+
+When a run recalculates a period you've already billed (for example, revised meter data arrived), it proposes the difference as a draft adjustment line. On the run's **Approval** tab, click **Review** on a recipient:
+
+- **Accept difference** keeps the billed amount and drops the line. Later runs won't propose it again unless the recalculated figure changes.
+- **Drop line** removes a draft line and returns its period to gaps.
+- Leave it in to bill the difference on the next invoice.
+
+### Gaps
+
+The **Revenue** tab's **Coverage** view shows each connection by month as **Billed**, **Calculated**, **Gap** or **Excluded**, with the reason for each gap: not installed, no invoice, no meter data, missing tariff rate, account inactive, or not yet run. Fix the cause, then rerun.
+
+## When a retailer disputes an invoice
+
+<Steps>
+  <Step title="Find the lines">
+    On **Invoices & RCTIs**, click **View & reconcile** on the invoice.
+  </Step>
+  <Step title="Choose the fix">
+    - **Wrong amounts on a draft or unpaid invoice:** select the affected rows and click **Release selected**. This returns them to unbilled without voiding the invoice. Correct them with **Adjust or override**, then raise them again or add them back (below).
+    - **The whole invoice is wrong:** use **Void invoice** from the row menu. This cancels it in Xero and releases every line.
+    - **The invoice is paid:** lines can't be released. Raise a credit or a corrected line on the next invoice instead.
+  </Step>
+  <Step title="Tie corrected lines back to the original invoice (optional)">
+    If you've edited the invoice directly in Xero, select the corrected lines on the **Revenue** tab, click **Set Invoice ID** with the invoice number, then **Mark Invoiced**. They then show as invoiced and won't be raised again.
+  </Step>
+</Steps>
+
+<Warning>
+  Void invoices from UMS, not by deleting them in Xero. Voiding in UMS releases the lines so they can be raised again.
+</Warning>
+
+## Troubleshooting
+
+| Message or symptom | Cause | Fix |
+| --- | --- | --- |
+| "Some revenue rows are not eligible (already billed, not actual, or not visible)" | The selection includes lines that can't be raised: already billed, placeholders, flagged for review, on hold, or waiting on an RCTI | Untick them. For an RCTI supplier, import its statement instead. |
+| **Raise invoice** offers nothing for a supplier | The supplier pays by RCTI | Import its statement under **Upload RCTI** and accept it. |
+| One statement became several invoices | Some contracts are set to bill the customer (**Account**) | Set their **Invoice Recipient** to **Supplier**, void the invoices in UMS, and raise again. |
+| "No contract with … covers NMI … on …" (RCTI preview) | No contract with that supplier covers the NMI and period | Check the contract's agreement includes the NMI for those dates, or that it's under the right supplier. |
+| "Overlaps existing revenue … for this connection" | The period is already covered | Tick **Adjustment** to record the difference, or exclude the row. |
+| "RCTI … from this supplier is already uploaded" | That RCTI number exists for the supplier | Delete the earlier RCTI (if not accepted) or use a different number. |
+| A line can't be edited or moved | It's calculated or draft revenue, or on a live invoice or accepted RCTI | Use **Adjust or override**; release or void the invoice first if needed. |
+| A supplier appears twice (e.g. a parent and its retail entity) | Supplier family | Choose the parent: it covers contracts under every entity in the family. |
+
+## Related
+
+- [Running Brokerage Calculations](/guides/running-brokerage-calculations)
+- [Customising Xero Brokerage Invoicing](/guides/customising-xero-brokerage-invoicing)
+- [Bulk importing data](/guides/bulk-importing-data)
+- [Brokerage](/brokerage)
