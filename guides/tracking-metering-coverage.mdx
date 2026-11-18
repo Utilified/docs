@@ -28,7 +28,7 @@ The **coverage status** column says what to do next:
 | `live`               | Revenue is being received                                               | None                                                    |
 | `unclassified`       | The customer size is unknown and there's no metering agreement         | Set the connection's NMI classification                 |
 
-Other columns include the account, site, NMI, state, classification, annual consumption, retailer and retail agreement. They also include the metering provider and agreement, onboarding stage, metering start and in-service dates, revenue received and the last paid period.
+Other columns include the account, site, NMI, state, classification, annual consumption, retailer, retail agreement, and the retail account number with its status (for example `ACTIVE` or `INACTIVE`). They also include the metering provider and agreement, onboarding stage, metering start and in-service dates, revenue received and the last paid period.
 
 <Tip>
   Metering revenue normally starts only once the meter is installed, and supplier statements can lag by around two months. A `started_not_live` row with a recent start date usually just needs time.
@@ -41,7 +41,7 @@ Other columns include the account, site, NMI, state, classification, annual cons
     Go to **Reports** and find **Metering Coverage**.
   </Step>
   <Step title="Click Run and choose filters">
-    Filter by **Coverage status** (one or more), **Customer** (sub-accounts are included) or **Metering provider**. Leave the filters empty to see every row.
+    Filter by **Coverage status** (one or more), **Customer** (sub-accounts are included), **Metering provider**, or **Active retail account only**. Leave the filters empty to see every row.
   </Step>
   <Step title="Download the result">
     Choose Excel, CSV or JSON. You'll get a notification when it's ready.
