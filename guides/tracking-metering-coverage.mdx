@@ -62,7 +62,7 @@ The report is only as good as the data behind it. When you set up a new contract
 
 - **Create the brokerage record** on the retail agreement. Without one, the connection is left out of the report.
 - **Set the agreement's segment** (large market, small market or embedded network).
-- **Set the NMI classification** (large or small customer) on each connection. Without it, UMS estimates size from annual consumption against the state's large-customer threshold. Connections with no consumption data appear as `unclassified`.
+- **Set the NMI classification** (large or small customer) on each connection. Without it, UMS estimates size from annual consumption against the state's large-customer threshold. With no consumption data either, a connection on a small-market contract is treated as a small customer, unless it has a metering agreement or a large-market contract. Anything else appears as `unclassified`.
 
 Install dates fill in automatically as metering revenue is billed and supplier statements are accepted, so you don't need to enter them.
 
