@@ -1,0 +1,73 @@
+---
+title: "Tracking Metering Coverage"
+description: "Use the Metering Coverage report in UMS to find large-market NMIs with no metering agreement, metering agreements that have started but aren't earning, and revenue that has stopped."
+---
+
+The **Metering Coverage** report lists every large-market NEM electricity connection on an active retail contract you brokered. For each one it shows whether there's a metering agreement and whether that agreement is earning. Use it to find metering opportunities and to chase metering revenue that hasn't arrived.
+
+<Note>
+  The report only appears for users with access to the **Brokerage** module, because it shows received brokerage revenue.
+</Note>
+
+## What the report shows
+
+Each row is one connection (NMI). The report includes connections that are:
+
+- Top-level, active, NEM electricity connections
+- Classified as large customers, or not yet classified
+- On an active electricity or energy retail agreement that has a brokerage record. Contracts with no brokerage record, such as a customer's direct contract, are left out unless you turn off **Brokered retail contracts only**.
+
+The **coverage status** column says what to do next:
+
+| Coverage status      | Meaning                                                                 | Typical action                                          |
+| -------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------- |
+| `no_metering`        | No current metering agreement                                           | Offer a metering agreement                              |
+| `signed_not_started` | A metering agreement is signed but hasn't started yet                   | No action; check again after the start date             |
+| `started_not_live`   | The metering agreement has started but no revenue has been received     | Ask the metering provider to confirm the install        |
+| `stopped`            | Revenue was received, but nothing has been paid for more than 120 days | Chase the provider's supplier statements (RCTIs)        |
+| `live`               | Revenue is being received                                               | None                                                    |
+| `unclassified`       | The customer size is unknown and there's no metering agreement         | Set the connection's NMI classification                 |
+
+Other columns include the account, site, NMI, state, classification, annual consumption, retailer and retail agreement. They also include the metering provider and agreement, onboarding stage, metering start and in-service dates, revenue received and the last paid period.
+
+<Tip>
+  Metering revenue normally starts only once the meter is installed, and supplier statements can lag by around two months. A `started_not_live` row with a recent start date usually just needs time.
+</Tip>
+
+## Running the report
+
+<Steps>
+  <Step title="Open Reports">
+    Go to **Reports** and find **Metering Coverage**.
+  </Step>
+  <Step title="Click Run and choose filters">
+    Filter by **Coverage status** (one or more), **Customer** (sub-accounts are included) or **Metering provider**. Leave the filters empty to see every row.
+  </Step>
+  <Step title="Download the result">
+    Choose Excel, CSV or JSON. You'll get a notification when it's ready.
+  </Step>
+</Steps>
+
+## Scheduling it
+
+Click **Schedule** on the report to receive it weekly. Create one schedule per audience, for example:
+
+- **Sales:** coverage status `no_metering`
+- **Operations:** coverage statuses `started_not_live` and `stopped`, filtered by metering provider if you forward each provider its own list
+- **Management:** all statuses
+
+## Keeping the report accurate
+
+The report is only as good as the data behind it. When you set up a new contract:
+
+- **Create the brokerage record** on the retail agreement. Without one, the connection is left out of the report.
+- **Set the agreement's segment** (large market, small market or embedded network).
+- **Set the NMI classification** (large or small customer) on each connection. Without it, UMS estimates size from annual consumption against the state's large-customer threshold. Connections with no consumption data appear as `unclassified`.
+
+Install dates fill in automatically as metering revenue is billed and supplier statements are accepted, so you don't need to enter them.
+
+## Related
+
+- [Brokerage](/brokerage): brokerage records, calculations and revenue
+- [Brokerage revenue and invoicing](/guides/brokerage-revenue-and-invoicing): supplier statements (RCTIs) and month-end workflow
+- [Running reports](/guides/running-reports): running and scheduling reports
