@@ -1,85 +1,88 @@
 ---
 title: "Navigating UMS"
-description: "Move around UMS with the sidebar, global search, consistent list and detail page patterns, drawers, keyboard shortcuts, and notifications."
+description: "Move around UMS with the sidebar, search, the account menu, Joule, and the list and detail page patterns every module shares."
 ---
 
-## Sidebar navigation
+## Sidebar
 
-<Frame>
-  ![The UMS sidebar expanded, showing the General, Accounts, Connections, Modelling and Invoices sections](/images/navigation/sidebar.png)
-</Frame>
+The left sidebar is the main way to move around UMS. Your most-used pages sit at the top, followed by five sections:
 
-The left sidebar is the primary way to move around UMS. It is organised into six sections that mirror your energy management workflow:
+| Section | What it contains |
+| --- | --- |
+| *(top)* | **Home**, **Inbox** and, when enabled, **Help requests** |
+| **Portfolio** | **Accounts** (with Sites, Retail accounts, Contacts and Suppliers), **Connections** (with Meters, Tariffs, Outages and Data feeds) and, when enabled, **Solar watch** |
+| **Operations** | **Invoices** and **Payments** |
+| **Commercial** | **Agreements**, **Scenarios**, **Proposals** and **Market** |
+| **Billing** | **Brokerage** |
+| **Insights** | **Reports** and **ESG** |
 
-| Section         | What it contains                                                  |
-| --------------- | ----------------------------------------------------------------- |
-| **General**     | Home, Inbox, Reports, Suppliers — your daily starting points      |
-| **Accounts**    | Accounts, Sites, Agreements, Contacts — your customer portfolio   |
-| **Connections** | Connections, Tariffs, Retail Accounts — the energy data layer     |
-| **Modelling**   | Scenarios, Brokerage — analysis and commissions                   |
-| **ESG**         | ESG Overview, Reference Data — sustainability reporting           |
-| **Invoices**    | Invoices, Payments — your billing workflow                        |
+You only see the modules your role and your organisation's plan give you access to.
+
+Below the sections, **Pinned** holds the pages you've marked as favourites, and **Recent** lists the records you viewed most recently.
+
+### Hubs and tabs
+
+Each sidebar item opens a hub. A hub groups related pages as tabs along the top of the page. For example, **Connections** has tabs for **Connections**, **Needs setup**, **Meters**, **Tariffs**, **Outages** and **Data feeds**. Many list tabs also offer views such as **All** or **Active** to filter the list quickly.
 
 ### Expanding and collapsing
 
-The sidebar can be **expanded** (showing icon and label) or **collapsed** (showing icons only). Click the arrow at the bottom of the sidebar to toggle between modes. The collapsed sidebar gives you more screen space for data grids and detail pages.
+The sidebar can be expanded (icons and labels) or collapsed (icons only). Collapse it when you need more room for a data grid.
 
-## Global search
+## Account menu
 
-Click the **Search everything...** bar at the top of the sidebar to open global search, or press **Cmd+K** (Mac) / **Ctrl+K** (Windows/Linux) to open the Command Palette.
+Click your name at the bottom of the sidebar to open the account menu:
 
-Global search finds results across all modules simultaneously — accounts, sites, connections, invoices, agreements, suppliers, and more. Click any result to navigate directly to that record.
+- **My Account** for your profile, security and notification preferences
+- **Settings** for your organisation's settings
+- **Bulk Imports** (administrators only)
+- **Reference library**
+- **Help & Docs**, which opens this site
+- **Support**, to contact Utilified (see [Contact Utilified](/help))
 
-## Common page patterns
+## Search
 
-UMS uses consistent patterns across all modules so you only need to learn them once.
+Click **Search…** at the top of the sidebar, or press **⌘K** (Mac) / **Ctrl+K** (Windows and Linux), to open search. It finds pages and records across accounts, sites, connections, invoices, agreements, suppliers and more. Each group of results has a **See all** link that opens the full list, already filtered.
 
-### List pages
-
-Every module has a list page with:
-
-- **Summary cards** at the top showing counts and growth trends
-- **Data grid** with sortable columns, row selection, and pagination
-- **Toolbar** with filter, column visibility, export, refresh, density, and search controls
-- **Create button** (+) in the top-right corner
-
-### Row actions
-
-Each row in the data grid has action buttons:
-
-| Icon       | Action          | Description                                                |
-| ---------- | --------------- | ---------------------------------------------------------- |
-| Arrow      | **See Details** | Navigate to the record's detail page                       |
-| Pencil     | **Quick Edit**  | Open a side drawer to edit fields without leaving the list |
-| Three dots | **More**        | Additional context-specific actions                        |
-
-### Detail pages
-
-Detail pages use a **tabbed interface** with:
-
-- **Header** showing the record name, status, and action buttons
-- **Tabs** for different aspects of the record (e.g. Overview, Sites, Agreements, Invoices)
-- **Overview tab** with summary statistics and key information
-
-### Drawers
-
-When you click **Quick Edit** or **Create**, a **drawer panel** slides in from the right side of the screen. Drawers let you view and edit records without navigating away from your current page. Click **Save** to apply changes or **Cancel** / press **Escape** to close.
-
-## Keyboard shortcuts
-
-| Shortcut               | Action                        |
-| ---------------------- | ----------------------------- |
-| **Cmd+K** / **Ctrl+K** | Open the Command Palette       |
-| **Escape**             | Close drawer or modal         |
-| **Enter**              | Submit form or confirm action |
+To ask a question instead, choose **Ask Joule** in the search results, or press **⌘↵** / **Ctrl+↵**. This opens a new Joule conversation with your question.
 
 ## Notifications
 
-Open the **user menu** (click your avatar in the bottom-left of the sidebar) and choose **Notifications** to open the notification drawer. An unread count badge appears on your avatar when you have unread notifications. The drawer shows alerts for:
+The bell beside the search box shows your notifications and a count of unread ones. Click a notification to go to the record it's about.
 
-- Completed reports
-- Invoice import results
-- Agreement expiry warnings
-- Brokerage calculation completions
+## Joule
 
-Click any notification to navigate directly to the relevant page.
+Joule is the AI assistant built into UMS. Open it with the Joule button beside your name at the bottom of the sidebar, or press **⌘J** / **Ctrl+J**. It opens in a side panel and can answer questions about your data. If you have permission to edit, it can also propose changes, which run only after you approve them.
+
+## Page patterns
+
+Every module uses the same patterns, so you only need to learn them once.
+
+### List pages
+
+- A **data grid** with sortable columns, filters, row selection and export
+- **Views** above the grid for common filters
+- A labelled create button in the page header, such as **New Connection** or **Add account**
+- A **See Details** action on each row that opens the record
+
+### Detail pages
+
+- A header with the record's name, status and actions
+- Tabs for each part of the record. Some tabs have segments, which are smaller switches inside the tab. For example, a Connection's **Metering** tab has segments for its meters, reads and usage analytics.
+- An **Overview** tab with the key facts and summary figures
+
+### Drawers
+
+Creating or quickly editing a record often opens a drawer from the right. Click **Save** to apply your changes. Click **Cancel** or press **Escape** to close it without saving.
+
+### Getting help on a page
+
+Pages with a help icon in the header open the matching page of these docs. Choosing **Support** in the account menu opens [Contact Utilified](/help) beside the page you're on, where your organisation has it turned on.
+
+## Keyboard shortcuts
+
+| Shortcut | Action |
+| --- | --- |
+| **⌘K** / **Ctrl+K** | Open search |
+| **⌘↵** / **Ctrl+↵** (in search) | Ask Joule |
+| **⌘J** / **Ctrl+J** | Open or close Joule |
+| **Escape** | Close a drawer or dialog |

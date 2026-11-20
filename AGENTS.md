@@ -30,3 +30,16 @@
 - Permission/feature-flag-gated modules (e.g. ESG): document them, but state plainly that the section only appears when enabled for the organisation.
 - Don't document EMP. Defer white-label portal end-user workflows; do cover the UMS-side configuration an operator performs.
 - Verify against `ums-web` source before stating column names, field labels, or workflow steps — don't guess.
+
+## Structure
+
+- The `docs.json` navigation mirrors the app sidebar's groups: Home and inbox, Portfolio, Operations, Commercial, Billing, Insights, then Settings and tools. Put a page in the group where its screen lives in the app. Guides go in that group's guides sub-group.
+- Removing or renaming a page needs an entry in `docs.json` `redirects`, and every inbound link updated. `mint broken-links` must pass.
+- Module pages follow this order: where to find it (sidebar group › item › tab), what it's for, tabs and views (a table), actions, statuses, related guides.
+- Every module page and guide lists the app routes it documents in frontmatter, for example `ums_routes: ["/connections", "/connections/[id]"]`. Mintlify ignores the key. Drift checks use it to find the page to update when those routes change.
+- Name buttons by their label, such as **New Connection**. Don't write "+".
+
+## Screenshots
+
+- Capture screenshots only from the local seeded stack (`dev:local` with demo data), never from production. Production holds customer data.
+- When the UI a screenshot shows has changed and you can't recapture it, add `{/* screenshot-stale */}` above its `<Frame>` rather than leaving it unmarked.

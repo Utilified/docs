@@ -3,7 +3,7 @@ title: "Inbox"
 description: "Manage retailer emails in the UMS Inbox. Match messages to accounts, classify attachments, and reprocess emails through the invoice pipeline."
 ---
 
-The **Inbox** is where emails sent by energy retailers land. Each account has its own email address; messages addressed to it are captured, matched to the account, classified, and fed into the [UtiliRead](/utiliread) OCR pipeline so their PDF attachments become [invoices](/invoices). Open it from **Inbox** in the **General** section of the sidebar.
+The **Inbox** is where emails sent by energy retailers land. Each account has its own email address; messages addressed to it are captured, matched to the account, classified, and fed into UtiliRead, the OCR pipeline, so their PDF attachments become [invoices](/invoices). Open it from **Inbox** at the top of the sidebar.
 
 <Frame>
   ![UMS Inbox showing incoming email-sourced items](/images/navigation/inbox.png)
@@ -19,7 +19,7 @@ The **Inbox** is where emails sent by energy retailers land. Each account has it
     The message is tagged with an `email_type` such as `Invoice`, `Statement`, `Overdue Notice`, or `Data File`. Non-invoice categories are marked `Skipped — Non-Invoice Category`.
   </Step>
   <Step title="UtiliRead reads the attachments">
-    For invoice emails, [UtiliRead](/utiliread) runs OCR over the PDF attachments to extract line items, totals, and meter data.
+    For invoice emails, UtiliRead runs OCR over the PDF attachments to extract line items, totals, and meter data.
   </Step>
   <Step title="An invoice is created">
     A matched, extracted attachment becomes an [Invoice](/invoices) record, ready for [Validation](/validation).
