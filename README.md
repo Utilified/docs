@@ -9,7 +9,7 @@ This repo is the `platform-docs` submodule of the [Utilified/utilified-platform]
 | Path | Contents |
 | --- | --- |
 | `docs.json` | Site config — navigation, theme, navbar/footer. Every page must be referenced here to appear in the sidebar. |
-| `index.mdx`, `home.mdx` | Landing and dashboard pages. |
+| `index.mdx`, `home.mdx` | Landing page and the Home page reference. |
 | `getting-started/` | Onboarding: quick start, logging in, navigating UMS, first steps, key concepts. |
 | `guides/` | Task-oriented how-to walkthroughs (use `<Steps>`). |
 | `*.mdx` (root) | Per-module reference pages (accounts, invoices, validation, reports, …). |
@@ -31,3 +31,4 @@ mint broken-links # validate internal links before pushing
 - **Bold** for UI elements the user clicks (Click **Settings**); code formatting for paths, fields, and identifiers.
 - Wrap screenshots in `<Frame>` and store them under `images/<topic>/`.
 - Add every new page to the relevant group in `docs.json`, or it won't render in the nav.
+- Navigation in `docs.json` mirrors the app sidebar groups; see `AGENTS.md` for page structure and the `ums_routes` frontmatter.

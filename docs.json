@@ -14,7 +14,7 @@
   "navigation": {
     "groups": [
       {
-        "group": "Get Started",
+        "group": "Get started",
         "icon": "rocket",
         "pages": [
           "index",
@@ -24,96 +24,111 @@
           "getting-started/getting-set-up",
           "getting-started/navigating-ums",
           "getting-started/first-steps",
-          "getting-started/whats-next",
-          "getting-started/key-concepts"
+          "getting-started/key-concepts",
+          "getting-started/whats-next"
         ]
       },
       {
-        "group": "How-To Guides",
-        "icon": "book-open",
-        "pages": [
-          "guides/setting-up-a-user",
-          "guides/creating-accounts",
-          "guides/managing-connections",
-          "guides/bulk-importing-data",
-          "guides/managing-agreements",
-          "guides/managing-tariffs",
-          "guides/building-scenarios",
-          "guides/running-brokerage-calculations",
-          "guides/brokerage-revenue-and-invoicing",
-          "guides/customising-xero-brokerage-invoicing",
-          "guides/tracking-metering-coverage",
-          "guides/editing-invoices",
-          "guides/utiliread-review",
-          "guides/invoice-validation",
-          "guides/processing-payments",
-          "guides/running-reports"
-        ]
-      },
-      {
-        "group": "General",
-        "icon": "layout-dashboard",
+        "group": "Home and inbox",
+        "icon": "house",
         "pages": [
           "home",
           "inbox",
-          "reports",
-          "dashboards",
-          "suppliers",
-          "datahub"
+          "help"
         ]
       },
       {
-        "group": "Accounts",
+        "group": "Portfolio",
         "icon": "building-2",
         "pages": [
           "accounts",
           "sites",
+          "retail-accounts",
+          "contacts",
+          "suppliers",
           "site-data",
-          "agreements",
-          "contacts"
-        ]
-      },
-      {
-        "group": "Connections",
-        "icon": "plug",
-        "pages": [
           "connections",
           "meters",
           "tariffs",
-          "retail-accounts",
-          "data-feeds"
+          "data-feeds",
+          {
+            "group": "Portfolio guides",
+            "pages": [
+              "guides/creating-accounts",
+              "guides/managing-connections",
+              "guides/managing-tariffs",
+              "guides/tracking-metering-coverage"
+            ]
+          }
         ]
       },
       {
-        "group": "Modelling",
-        "icon": "chart-line",
-        "pages": [
-          "scenarios",
-          "brokerage",
-          "proposals",
-          "market"
-        ]
-      },
-      {
-        "group": "ESG",
-        "icon": "leaf",
-        "pages": [
-          "esg"
-        ]
-      },
-      {
-        "group": "Invoices",
+        "group": "Operations",
         "icon": "file-text",
         "pages": [
           "invoices",
-          "utiliread",
           "validation",
-          "batches",
-          "payments"
+          "payments",
+          {
+            "group": "Operations guides",
+            "pages": [
+              "guides/editing-invoices",
+              "guides/utiliread-review",
+              "guides/invoice-validation",
+              "guides/processing-payments"
+            ]
+          }
         ]
       },
       {
-        "group": "Settings & Notifications",
+        "group": "Commercial",
+        "icon": "handshake",
+        "pages": [
+          "agreements",
+          "scenarios",
+          "proposals",
+          "market",
+          {
+            "group": "Commercial guides",
+            "pages": [
+              "guides/managing-agreements",
+              "guides/building-scenarios"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Billing",
+        "icon": "receipt",
+        "pages": [
+          "brokerage",
+          {
+            "group": "Billing guides",
+            "pages": [
+              "guides/brokerage-revenue-and-invoicing",
+              "guides/running-brokerage-calculations",
+              "guides/customising-xero-brokerage-invoicing"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Insights",
+        "icon": "chart-line",
+        "pages": [
+          "reports",
+          "dashboards",
+          "esg",
+          {
+            "group": "Insights guides",
+            "pages": [
+              "guides/running-reports"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Settings and tools",
         "icon": "settings",
         "pages": [
           "settings",
@@ -121,15 +136,22 @@
           "settings/organisation",
           "settings/white-label",
           "settings/portal-domain",
-          "mcp-connector",
           "billing",
-          "imports",
           "notifications",
-          "help"
+          "imports",
+          "datahub",
+          "mcp-connector",
+          {
+            "group": "Settings guides",
+            "pages": [
+              "guides/setting-up-a-user",
+              "guides/bulk-importing-data"
+            ]
+          }
         ]
       },
       {
-        "group": "What's New",
+        "group": "What's new",
         "icon": "sparkles",
         "pages": [
           "changelog/latest",
@@ -138,6 +160,16 @@
       }
     ]
   },
+  "redirects": [
+    {
+      "source": "/batches",
+      "destination": "/payments"
+    },
+    {
+      "source": "/utiliread",
+      "destination": "/invoices"
+    }
+  ],
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"

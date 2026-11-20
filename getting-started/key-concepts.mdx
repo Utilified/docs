@@ -79,23 +79,23 @@ Email arrives → Inbox → UtiliRead (OCR) → Invoice created → Validation �
   <Step title="Validation runs">
     **Validation** checks the invoice against tariff rates and expected data.
   </Step>
-  <Step title="Flagged invoices go to Review">
-    Flagged invoices appear in **Review Items** for manual attention.
+  <Step title="Flagged invoices need attention">
+    Invoices that fail validation appear under **Invoices** › **Validations**. Invoices that can't be processed automatically appear under **Invoices** › **Exceptions**.
   </Step>
 </Steps>
 
 ### Brokerage pipeline
 
 ```text
-Agreement → Brokerage Record → Calculation → Revenue
+Agreement → Contract → Run → Revenue
 ```
 
 <Steps>
-  <Step title="Brokerage Records are linked">
-    **Brokerage Records** are linked to agreements with commission rates.
+  <Step title="Contracts are linked">
+    Brokerage **Contracts** are linked to agreements with commission rates.
   </Step>
-  <Step title="Calculations run">
-    **Calculations** process records against tariff rates and consumption data.
+  <Step title="Runs calculate commission">
+    **Runs** process contracts against tariff rates and consumption data.
   </Step>
   <Step title="Revenue is calculated">
     **Revenue** records show the calculated commission per connection.
@@ -105,7 +105,7 @@ Agreement → Brokerage Record → Calculation → Revenue
 ### Validation pipeline
 
 ```text
-Invoice → Validation Rules → Pass / Fail / Review → Gap Detection
+Invoice → Validation Rules → Pass / Fail / Review → Billing gaps
 ```
 
 <Steps>
@@ -115,11 +115,11 @@ Invoice → Validation Rules → Pass / Fail / Review → Gap Detection
   <Step title="Results are categorised">
     Results are categorised as PASSED, FAILED, or FOR_REVIEW.
   </Step>
-  <Step title="Review Items consolidate issues">
-    **Review Items** consolidate all issues for manual attention.
+  <Step title="Issues are queued for review">
+    **Invoices** › **Validations** lists runs that need attention, and **Invoices** › **Exceptions** lists invoices that need a decision.
   </Step>
-  <Step title="Gap Detection finds missing invoices">
-    **Gap Detection** identifies missing invoices across your portfolio.
+  <Step title="Billing gaps find missing invoices">
+    **Billing gaps** identifies missing invoices across your portfolio.
   </Step>
 </Steps>
 
