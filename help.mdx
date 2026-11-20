@@ -1,46 +1,62 @@
 ---
 title: "Contact Utilified"
-description: "Send questions, data problems, bug reports and feature requests to Utilified from inside UMS, and follow each request in Help requests."
-keywords: ["contact utilified", "help requests", "support", "report a bug", "feature request"]
+description: "Ask the help assistant, or send a question, data problem, bug report or feature request to Utilified from beside the page you're on, then follow it in Help requests."
+keywords: ["contact utilified", "help requests", "support", "report a bug", "feature request", "get help"]
+ums_routes: ["/help/requests", "/help/requests/[id]"]
 ---
 
-Use **Contact Utilified** to send a question, report a problem or ask for a feature without leaving UMS. Utilified replies inside the request, and you get a notification when they do.
+**Contact Utilified** opens in a panel beside the page you're on, so the page stays in view. Start by asking the help assistant. If you need the Utilified team, the assistant drafts a request for you to check and send. Utilified replies inside the request, and you get a notification when they do.
 
 <Note>
-  Contact Utilified only appears when it is enabled for your organisation. Without it, **Support** in the sidebar opens the external support form instead.
+  Contact Utilified only appears when it's turned on for your organisation. When it's off, **Support** opens Utilified's external support form in a new tab, and **Help requests** and **Get help** don't appear.
 </Note>
 
-## Send a request
+## Open Contact Utilified
+
+- Open the account menu (your name at the bottom of the sidebar) and choose **Support**.
+- On **Help requests** in the sidebar, click **Contact Utilified**.
+- Click **Get help** beside an error. It appears on error messages that stay on screen, on sections that failed to load, and on the screen shown when a page crashes. The error is attached to your request.
+
+Open it from the page the problem is on. The page and any recent errors on it go with your request.
+
+## Ask the assistant
+
+The panel opens on a chat. The assistant answers from these docs and your own records, and knows the page you're on.
 
 <Steps>
-  <Step title="Open Contact Utilified">
-    Select **Support** in the sidebar. You can also open **Help requests** in the sidebar and click **Contact Utilified**.
+  <Step title="Ask">
+    Type in **Ask the assistant** and click **Ask** (or press `Enter`; `Shift+Enter` adds a line). If the page has just shown an error, click the **Ask about "…"** chip to ask what it means.
   </Step>
-  <Step title="Choose what it is about">
-    Pick one of:
-
-    - **Question**: "How do I…?"
-    - **Data problem**: a number or record looks wrong
-    - **Bug**: something is broken
-    - **Feature request**: something you need
-  </Step>
-  <Step title="Describe it">
-    Enter a **Subject** and **Description** (both required).
-
-    For a **Bug**, you can also fill in **Steps to reproduce**, **Expected** and **Actual**. For a **Feature request**, you can add **What are you trying to do?**
-  </Step>
-  <Step title="Send">
-    Click **Send**. The request appears in **Help requests**.
+  <Step title="Hand it to Utilified if you need to">
+    If the assistant can't solve it, it can draft a request for you. You can also click **Send to Utilified** at any time to write the request yourself, starting from what you've typed.
   </Step>
 </Steps>
 
-<Tip>
-  The page you were on is sent with your request. Open **Support** from the page the problem is on, so Utilified can see it in context.
-</Tip>
+The assistant never sends anything itself. A drafted request always goes to a review step first.
+
+## Review and send a request
+
+The review step shows **Drafted by the assistant. Check it before sending.** when the assistant wrote it. If the assistant is unavailable, you go straight to this step.
+
+| Field | What to enter |
+| --- | --- |
+| **What is this about?** | **Question**, **Data problem**, **Bug** or **Feature request** |
+| **What do you need?** | The request itself. The only required field. |
+| **Subject** | Optional. If you leave it blank, UMS uses the first line of your request. |
+| **Add steps (optional)** | For a **Bug**: **Steps to reproduce**, **Expected** and **Actual** |
+| **Add the problem (optional)** | For a **Feature request**: **What are you trying to do?** |
+
+Below the fields, UMS shows what's sent with your request:
+
+- **Related records**: chips for the records the assistant linked to your request. Remove any that aren't relevant. These only appear on assistant-drafted requests.
+- **Sent with your request**: the page you were on and recent errors. Remove an error chip to leave it out. When available, a replay of your session is attached too, to help Utilified see what happened.
+- Your chat with the assistant, if you had one.
+
+Click **Send**, or **Back to chat** to keep talking to the assistant. Once it's sent, **View request** opens it and **Done** closes the panel.
 
 ## Follow your requests
 
-**Help requests** lists the requests you have sent, with the latest activity first. Each row shows the subject, the request type, the date of the last message and its status.
+**Help requests** in the sidebar lists the requests you've sent, latest activity first. Each row shows the subject, the request type, the date of the last message and the status. You can also open it from the list icon (**Your requests**) at the top of the panel.
 
 | Status | Meaning |
 | --- | --- |
@@ -56,3 +72,8 @@ Use **Contact Utilified** to send a question, report a problem or ask for a feat
 Click a request to open it. The page shows the details you sent and the conversation with Utilified, which refreshes as new messages arrive.
 
 To reply, type in the **Reply** box and click **Send**. You can also press `Ctrl+Enter` (`Cmd+Enter` on Mac).
+
+## Related
+
+- [Joule](/joule), the in-app assistant for questions about your data
+- [Navigating UMS](/getting-started/navigating-ums)

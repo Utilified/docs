@@ -1,10 +1,10 @@
 ---
 title: "Connect Claude and other AI assistants"
-description: "Connect Claude or another AI assistant to UMS with the Utilified MCP server. Choose all available tools or only the groups you need."
+description: "Connect Claude or another AI assistant to UMS with the Utilified MCP server. Choose all available tools or only the groups you need, and control what it may change."
+ums_routes: []
 ---
 
-The Utilified MCP server gives AI assistants live, permission-scoped access to your
-portfolio. Each assistant signs in as you and sees only what you can see in UMS.
+The Utilified MCP server gives AI assistants live access to your portfolio. Each assistant signs in as you and sees only what you can see in UMS.
 
 ## Choose what to connect
 
@@ -17,10 +17,26 @@ Connect only the groups you work with. Fewer tools means faster, more accurate a
 | `https://mcp.ums.utilified.com/mcp/sustainability` | Emissions, budgets, forecasts, reports |
 | `https://mcp.ums.utilified.com/mcp/modelling` | Scenarios, load profiles, datasets, data sources, market events |
 | `https://mcp.ums.utilified.com/mcp/admin` | Users, CRM, alerts, notifications, exports, plans |
+| `https://mcp.ums.utilified.com/mcp/automations` | Automations and their runs, the log of emails UMS has sent, and agreement submission packs |
 | `https://mcp.ums.utilified.com/mcp` | Everything above |
 
-Every group also includes search, account, site and supplier lookups, and the
-account, site and invoice overviews.
+Every group also includes search, account, site and supplier lookups, and the account, site and invoice overviews.
+
+<Note>
+  Groups only decide which tools the assistant loads. They don't limit what it can access: your UMS permissions and the access you grant when you sign in do that.
+</Note>
+
+## What the assistant can change
+
+When you sign in, a consent screen lists what the assistant is asking for. Click **Authorize** to connect it, or **Deny**.
+
+- **Reading** your data is always included.
+- **Making changes** (creating, editing and deleting records) needs write access, the `mcp:write` scope. If the assistant only has read access, every tool that changes data is refused.
+- **Financial changes** are off unless you turn them on. These are payment files, ledger records, invoice reversals, supplier bank details, and the review and autopilot settings that decide what's paid without a person. To allow them, tick **Also allow financial changes (optional)** on the consent screen. Leave it unticked to keep the assistant to everyday changes.
+
+<Warning>
+  Financial changes made by an assistant can cause wrong payments or records. Have a person review them.
+</Warning>
 
 ## Add a connector in Claude
 
@@ -32,7 +48,7 @@ account, site and invoice overviews.
     Paste a URL from the table above, for example `https://mcp.ums.utilified.com/mcp/billing`.
   </Step>
   <Step title="Sign in">
-    Sign in with your UMS account when prompted. Repeat for each group you want.
+    Sign in with your UMS account when prompted, and approve the consent screen. Repeat for each group you want.
   </Step>
 </Steps>
 
@@ -47,11 +63,13 @@ claude mcp add --transport http ums-portfolio https://mcp.ums.utilified.com/mcp/
 
 ## Moving from the full connector
 
-If you already connected `https://mcp.ums.utilified.com/mcp`, it keeps working and still
-serves every tool. To switch to groups:
+If you already connected `https://mcp.ums.utilified.com/mcp`, it keeps working and still serves every tool. To switch to groups:
 
 1. Add a connector for each group you use, as above. Each group asks you to sign in once.
 2. Remove or turn off the full connector. Keeping both loads the same tools twice.
 
-Keep the full connector if you regularly ask questions that span every area, such as
-billing, sustainability and modelling in one conversation.
+Keep the full connector if you regularly ask questions that span every area, such as billing, sustainability and modelling in one conversation.
+
+## Related
+
+- [Joule](/joule), the assistant built into UMS
