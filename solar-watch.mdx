@@ -1,0 +1,61 @@
+---
+title: "Solar watch"
+description: "Find solar plants that are producing less than expected, investigate them, and snooze or note what you found."
+ums_routes:
+  - "/solar-watch"
+---
+
+Solar watch lists the solar plants in your portfolio and flags the ones producing less than expected. UMS scans the plants nightly, comparing each plant's output with what it should have produced and, where there are enough, with nearby plants.
+
+Find it in the sidebar under **Portfolio** › **Solar watch**.
+
+<Note>
+  **Solar watch** only appears when it's enabled for your organisation. You also need access to the Utilities module; without it the page says **Solar watch isn’t enabled for you**.
+</Note>
+
+## The list
+
+Plants are listed in order of urgency: those needing investigation first, the biggest shortfall first. Click a row to open the plant.
+
+| Column            | Description                                                                         |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| **Plant**         | The solar plant's name                                                              |
+| **Organisation**  | The organisation the plant belongs to                                               |
+| **Site**          | The site the plant is at                                                            |
+| **Status**        | The plant's status (see below)                                                      |
+| **Finding**       | How far below expected the plant is and over how many days, "Within expected range", or why it couldn't be scored |
+| **Basis**         | What the expected output is based on: peer-adjusted against nearby plants, or modelled only |
+| **Flagged since** | When the plant was first flagged                                                    |
+| **Snoozed until** | When a snooze ends                                                                  |
+| **Last note**     | The start of the latest note                                                        |
+
+### Filtering
+
+- Use the switch above the list to show **All** plants or one status.
+- Turn on **Show snoozed** to include snoozed plants. They're hidden otherwise.
+
+### Statuses
+
+| Status                  | Meaning                                                                          |
+| ----------------------- | -------------------------------------------------------------------------------- |
+| **Needs investigation** | The plant is producing less than expected                                        |
+| **Feed issue**          | The plant's data feed has a problem, so it can't be scored                       |
+| **Not enough data**     | The plant can't be scored yet, for example its system size or location is unknown, or there are too few recent days |
+| **OK**                  | The plant is within the expected range                                           |
+
+## Plant drawer
+
+Clicking a plant opens a drawer headed by the plant's name, its organisation and site, and its size in kW DC.
+
+- The **Finding**, **Basis**, **Flagged since** and **Last checked** time.
+- **Open site Solar view**: opens the site's solar view.
+- **Daily output**: a chart of actual against expected output per day. Peer-adjusted plants also show the weather factor.
+- **Snooze**: hide the plant from the list until a date. Pick **2 weeks**, **1 month** or **3 months**, or choose a date in **Snooze until** and click **Snooze**. A snoozed plant shows **Unsnooze** instead.
+- **Notes**: what others have found. Type in **Add a note** and click **Add note**.
+
+Snoozing and adding notes need permission to edit utilities. Without it, you see the snooze date and notes but not the controls.
+
+## Related pages
+
+- [Data feeds](/data-feeds)
+- [Sites](/sites)

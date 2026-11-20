@@ -1,83 +1,136 @@
 ---
 title: "Tariffs"
 description: "Define the rate structures retailers charge for electricity, gas, and water — used to validate invoice charges and calculate expected costs."
+ums_routes:
+  - "/tariffs"
+  - "/tariffs/[id]"
+  - "/tariffs/new"
 ---
 
-Tariffs define the rate structures that energy retailers charge for electricity, gas, and water. They are used to validate invoice charges, calculate expected costs, and run brokerage commission calculations.
+Tariffs define the rate structures that energy retailers charge for electricity, gas and water. UMS uses them to validate invoice charges, calculate expected costs and run brokerage calculations.
 
-<Frame>
-  ![UMS Tariffs list showing tariff structures in a data grid](/images/tariffs/tariffs-list.png)
-</Frame>
+Find them under **Portfolio** › **Connections** › **Tariffs**.
 
 ## How tariffs are structured
 
 UMS models pricing in three nested layers:
 
-| Layer            | Description                                                                                              |
-| ---------------- | -------------------------------------------------------------------------------------------------------- |
-| **Tariff Group** | The overall rate plan (for example, "Business Time of Use"), linked to a `supplier` and an [agreement](/agreements) |
-| **Tariff**       | A date-scoped *version* of the group, with a `start_date` and optional `end_date` — lets rates change over time while keeping history |
-| **Tariff Rate**  | An individual charge component within a version, with a `category` (peak, off-peak, supply, demand), `value`, and `display_units` (c/kWh, $/day) |
+| Layer            | Description                                                                                          |
+| ---------------- | ---------------------------------------------------------------------------------------------------- |
+| **Tariff group** | The overall rate plan, for example "Business Time of Use", linked to a supplier and an [agreement](/agreements) |
+| **Version**      | A date-scoped version of the group, with a start date and optional end date, so rates can change over time while keeping history |
+| **Rate**         | An individual charge component within a version, with a category, value and display units (for example c/kWh or $/day) |
 
-Each rate can carry **rate quantities** — the applicable factors or consumption blocks that govern when the rate applies. See [Key Concepts](/getting-started/key-concepts) for where tariffs sit in the wider data model.
+Each rate can carry quantities: the factors or consumption blocks that decide when the rate applies. See [Key concepts](/getting-started/key-concepts) for where tariffs sit in the wider data model.
 
 ## Tariffs list
 
-The **Tariff Groups** page displays every tariff group in your organisation in a data grid:
+The **Tariffs** tab lists every tariff group in your organisation.
 
-| Column                 | Description                                            |
-| ---------------------- | ------------------------------------------------------ |
-| **Id**                 | Internal identifier for the tariff group               |
-| **Name**               | Descriptive name of the rate plan                      |
-| **Active**             | Whether the tariff group is currently in use           |
-| **Category**           | Utility/rate category for the group                    |
-| **External Reference** | The retailer's own reference for this tariff           |
-| **Supplier**           | The energy retailer the tariff belongs to              |
-| **Agreement**          | The linked [agreement](/agreements)                    |
-| **Description**        | Free-text notes (hidden by default)                    |
+{/* screenshot-stale */}
+<Frame>
+  ![UMS Tariffs list showing tariff structures in a data grid](/images/tariffs/tariffs-list.png)
+</Frame>
 
-The toolbar provides filtering, column visibility, export, density, and quick-search, matching the other list pages. Click **New Tariff Group** (the **+** action) to launch the **Tariff Creation Wizard**.
+| Column           | Description                                                    |
+| ---------------- | -------------------------------------------------------------- |
+| **Name**         | The rate plan's name. Click it to open the tariff group        |
+| **Status**       | Active or Inactive                                             |
+| **Confirmation** | Whether someone has checked the rates (see below)              |
+| **Source**       | Where the rates came from (see below)                          |
+| **Category**     | The tariff category                                            |
+| **Reference**    | The retailer's own reference for the tariff                    |
+| **Supplier**     | The retailer the tariff belongs to                             |
+| **Agreement**    | The linked [agreement](/agreements)                            |
 
-<Tip>
-  For the full build walkthrough — wizard steps, manual rate entry, and CSV import — see the [Managing Tariffs](/guides/managing-tariffs) guide.
-</Tip>
+The grid also has an ID column and a hidden description column.
 
-## Tariff detail page
+Click **New Tariff Group** to open the **Create tariff** wizard. See [Managing tariffs](/guides/managing-tariffs).
 
+### Confirmation and source
+
+| Confirmation    | Meaning                                                                                       |
+| --------------- | --------------------------------------------------------------------------------------------- |
+| **Confirmed**   | Someone has checked the rates                                                                 |
+| **Unconfirmed** | Nobody has checked the rates yet. Validations that use them raise an unconfirmed-tariff discrepancy |
+| **Rejected**    | The rates were rejected                                                                       |
+
+| Source              | The rates were                       |
+| ------------------- | ------------------------------------ |
+| **Manual**          | Entered by hand                      |
+| **Invoice-derived** | Derived from an invoice              |
+| **Agreement**       | Taken from the agreement             |
+| **Template**        | Created from a template              |
+| **EMP award**       | Created from an EMP award            |
+
+## Tariff group page
+
+The header shows the group's name, its supplier and agreement, and an **Active** or **Inactive** status.
+
+{/* screenshot-stale */}
 <Frame>
   ![A tariff group detail page — Overview tab with rate summary and details](/images/tariffs/tariff-detail.png)
 </Frame>
 
-Selecting a tariff group opens the detail page with a tabbed interface:
+| Tab          | What it shows                                                                                                        |
+| ------------ | -------------------------------------------------------------------------------------------------------------------- |
+| **Overview** | **Tariff Details**, and a summary of versions, rates, quantities and rate categories. Click **View Rates** to open the rates |
+| **Rates**    | The rates in each version, as a **Tree** or a **Table**                                                              |
+| **Accounts** | The retail accounts the group is assigned to                                                                         |
+| **Settings** | Edit the group's details, or archive or delete it                                                                    |
 
-| Tab          | Description                                                                                          |
-| ------------ | ---------------------------------------------------------------------------------------------------- |
-| **Overview** | Status, category, supplier, and agreement, plus a rate summary — version count, total rates, quantities, a timeline, and a category breakdown |
-| **Rates**    | The rates for each tariff version, shown as an interactive tree or a flat table                      |
-| **Accounts** | The [retail accounts](/retail-accounts) this tariff group is assigned to                             |
-| **Settings** | Edit core fields (name, category, supplier, agreement, external reference) or archive/delete the group |
+### Header actions
 
-The header offers two actions: **Duplicate** (clone the group with all of its rates) and **Add to Retail Account** (create a tariff assignment).
+| Action                    | What it does                                                                                     |
+| ------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Add to Retail Account** | Assigns the group to a retail account (see [Tariff assignments](#tariff-assignments))             |
+| Duplicate (icon)          | Copies the group with all its rates and opens the copy. Tooltip: **Duplicate this tariff group with all rates** |
+| Confirm (icon)            | Marks the rates as checked. Tooltip: **Confirm these rates are correct**                          |
+| Reject (icon)             | Rejects the tariff. Tooltip: **Reject this tariff**                                               |
+
+Confirm and Reject only appear on a group that wasn't entered by hand or isn't confirmed yet, and only if you can edit utilities. Rejecting ends the group's open account and connection assignments and resolves the tariff-review exceptions it raised.
+
+### Banners
+
+- **Confirmed tariff**, **Unconfirmed tariff** or **Rejected tariff**: says where the rates came from and whether they've been checked. A hand-entered, confirmed group shows no banner.
+- **Tariff health**: lists errors and warnings in how the rates are set up that would make validation price invoices wrongly. Click **Show rate** to jump to the rate. Click **Hide** or **Show** to collapse the list.
 
 ### Rates tab
 
-The Rates tab toggles between a **Tree** view (rates grouped under their version) and a **Table** view with columns for `description`, `category`, `value`, `display_units`, and `tax_applicable`. Two controls drive it:
+Switch between **Tree** (rates grouped under their version) and **Table**.
 
-- **New Version** — create a date-scoped tariff version (`description`, `start_date`, optional `end_date`) so rates can change over time. A group must have at least one version before rates can be added.
-- **Add Rate** — add an individual rate component to the current version.
+- **New Version**: creates a version with a description, start date and optional end date.
+- **Add Rate**: adds a rate to a version. A group needs at least one version first.
+
+**New Version** and **Add Rate** don't appear on shared tariffs your organisation can't edit.
+
+After you change a confirmed tariff's rates, UMS offers **Re-check affected validation runs**, because runs already priced with the tariff still use the old rates. Click **Later** to skip it.
 
 ## Tariff assignments
 
-A **tariff assignment** links a tariff group to a retailer's [retail account](/retail-accounts) for a date range, so incoming invoices are validated against the correct rates. Each assignment records the `tariffgroup`, `account` (retail account), `start_date`, and `end_date`, and can be edited or removed from the assignment detail page.
+A tariff assignment links a tariff group to a [retail account](/retail-accounts) for a date range, so invoices on that account are validated against the right rates.
 
-{/* TODO screenshot: /images/tariffs/tariff-assignments.png — tariff assignment detail page */}
+To create one, click **Add to Retail Account** on the tariff group. In the **Assign tariff** dialog:
+
+- **Retail account**: the account to assign the tariff to.
+- **Connection**: optional. Leave it empty to apply the tariff to every connection on the account.
+- **Start date** and **End date**: the end date is optional and inclusive.
+- **Replaces**: to switch tariffs, pick the assignment this one replaces. UMS end-dates it the day before the new start date. Choose **Nothing (add alongside)** to keep both.
+
+Click **Assign tariff** (or **Switch tariff** when replacing one).
+
+The group's **Accounts** tab lists its assignments with **Start**, **End**, **Tariff Group**, **Account** and **Supplier**. Click a row to open the **Tariff assignment** drawer, where you can edit the dates or click **Delete tariff assignment**. Deleting keeps the tariff and the retail account.
 
 ## Tariff reviews and scenarios
 
-Comparing tariffs against actual or modelled consumption now lives under **Scenarios** — the tariff review routes redirect there. Use scenarios to model expected costs across rate plans before committing. See [Building Scenarios](/guides/building-scenarios) for the workflow.
+Comparing tariffs against actual or modelled consumption lives under **Scenarios**. Use scenarios to model expected costs across rate plans before committing. See [Building scenarios](/guides/building-scenarios) for the workflow.
 
 With modelling and DER-modelling access enabled for your organisation and the relevant user permissions, you can also compare complete current and proposed bills with selected existing generators or batteries. Review operating costs and expected generator value separately from bill charges. See [Tariff reviews with existing equipment](/scenarios#tariff-reviews-with-existing-equipment) for the workflow and data requirements.
 
 <Note>
-  Accurate tariffs are essential for invoice validation and brokerage calculations — keep versions and effective dates current as retailers re-price.
+  Accurate tariffs are essential for invoice validation and brokerage calculations. Keep versions and effective dates current as retailers re-price.
 </Note>
+
+## Related guides
+
+- [Managing tariffs](/guides/managing-tariffs)

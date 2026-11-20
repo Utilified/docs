@@ -1,6 +1,13 @@
 ---
 title: "Data feeds"
 description: "Bring external data into UMS for an account through data feeds, their data sources, and the files each source delivers."
+ums_routes:
+  - "/data-feeds"
+  - "/data-feeds/[id]"
+  - "/data-sources"
+  - "/data-sources/[id]"
+  - "/data-source-files"
+  - "/data-source-files/[id]"
 ---
 
 Data feeds bring external data into UMS for an account. They are organised in three levels:
@@ -51,6 +58,8 @@ A file's page shows:
 - **Data source** — the source the file came from
 - **Processing errors** — shown only when processing reported errors
 - **Processing summary** — shown only when a summary is available
+
+Click **Edit File** to change the file's details.
 
 **Processing status** is one of **Pending**, **Processing**, **Completed**, or **Failed**.
 
