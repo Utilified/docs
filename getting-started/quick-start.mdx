@@ -1,62 +1,63 @@
 ---
 title: "Quick Start"
-description: "Get up and running in UMS in five steps — log in, explore the dashboard, review accounts, check invoices, and run your first report."
+description: "Get going in UMS in five steps: sign in, check Home, review your accounts, upload invoices and run your first report."
+ums_routes: ["/home", "/accounts", "/invoices/uploads", "/reports"]
 ---
-
-Welcome to the Utilified Management System. This guide will get you up and running in minutes.
-
-## What is UMS?
 
 UMS is an energy management platform for Australian businesses and energy brokers. It helps you:
 
-- **Track energy accounts** across multiple sites and connections
-- **Process invoices** automatically via email or manual upload
-- **Validate billing** against tariff rates to catch errors
-- **Manage agreements** and monitor contract expiry dates
-- **Calculate brokerage** revenue from energy agreements
-- **Generate reports** on consumption, spend, and portfolio health
+- Track energy accounts across sites and connections
+- Process invoices automatically from email or by upload
+- Validate billing against tariff rates to catch errors
+- Manage agreements and watch contract end dates
+- Calculate brokerage revenue from energy agreements
+- Report on consumption, spend and portfolio health
 
 ## Getting started in 5 steps
 
 <Steps>
-  <Step title="Log in to your account">
-    Navigate to your organisation's UMS URL and sign in with your credentials. If your organisation uses Microsoft 365 or Google SSO, click the appropriate sign-in button.
+  <Step title="Sign in">
+    Open your organisation's UMS URL, enter your email and click **Continue**. Then enter your password, or sign in through your organisation's single sign-on if it uses one.
 
-    See [Logging In & Security](/getting-started/logging-in) for details on 2FA and password management.
+    See [Logging In & Security](/getting-started/logging-in) for 2FA and password resets.
   </Step>
-  <Step title="Explore the dashboard">
-    After logging in, the [Dashboard](/home) gives you an instant overview of your portfolio — total accounts, sites, connections, agreements, spend breakdown by utility, and a map of your sites across Australia.
+  <Step title="Check Home">
+    You land on [Home](/home). It shows a count of your accounts, connections and sites, tiles for work that needs attention, market headlines and the modules you choose.
 
+    {/* screenshot-stale */}
     <Frame>
-      ![UMS dashboard showing portfolio totals, spend breakdown, and a map of sites across Australia](/images/home/dashboard.png)
+      ![The UMS Home page](/images/home/dashboard.png)
     </Frame>
   </Step>
   <Step title="Review your accounts">
-    Navigate to [Accounts](/accounts) in the sidebar to see your customer accounts. Click **See Details** on any account to view its sites, connections, agreements, invoices, and contacts.
+    Select [Accounts](/accounts) in the sidebar. Click **See Details** on any account to open its sites, connections, invoices and agreements.
 
+    {/* screenshot-stale */}
     <Frame>
       ![Accounts list page showing customer accounts in a data grid](/images/accounts/accounts-list.png)
     </Frame>
   </Step>
-  <Step title="Check your invoices">
-    Navigate to [Invoices](/invoices) to see all processed invoices. You can upload new invoices by dragging files onto the upload area, or let them flow in automatically via email through the [Inbox](/getting-started/navigating-ums#sidebar).
+  <Step title="Upload invoices">
+    Open [Invoices](/invoices) › **Uploads** and click **Upload invoices** (the upload icon in the header) to add invoice files. UtiliRead extracts them and matches them to accounts and connections. Invoices can also arrive by email through your [Inbox](/inbox).
   </Step>
   <Step title="Run your first report">
-    Navigate to [Reports](/reports) and click **Run** on any report card. Start with the **Agreement Expiry Report** to see which contracts are due for renewal.
+    Select [Reports](/reports) and click **Run** on any report card. Try the **Agreement Connections Expiry and Billing Report** to see which contracts are due for renewal.
   </Step>
 </Steps>
 
 ## What to explore next
 
-| If you want to...             | Go to...                                                                  |
-| ----------------------------- | ------------------------------------------------------------------------- |
-| Invite your team              | [Setting Up a User](/guides/setting-up-a-user)                            |
-| Set up your account structure | [Creating Accounts](/guides/creating-accounts)                            |
-| Import data in bulk from CSV  | [Bulk Importing Data](/guides/bulk-importing-data)                        |
-| Process incoming invoices     | [Editing Invoices](/guides/editing-invoices)                              |
-| Validate invoice accuracy     | [Working the validation queue](/guides/invoice-validation)             |
-| Track brokerage revenue       | [Brokerage revenue and invoicing](/guides/brokerage-revenue-and-invoicing)|
-| Configure tariff rates        | [Managing Tariffs](/guides/managing-tariffs)                              |
-| Manage energy agreements      | [Managing Agreements](/guides/managing-agreements)                        |
-| Generate scheduled reports    | [Running Reports](/guides/running-reports)                                |
-| Understand the data model     | [Key Concepts](/getting-started/key-concepts)                             |
+| If you want to... | Go to... |
+| --- | --- |
+| Get around the app | [Navigating UMS](/getting-started/navigating-ums) |
+| Ask questions about your data | [Joule](/joule) |
+| Invite your team | [Setting Up a User](/guides/setting-up-a-user) |
+| Set up your account structure | [Creating Accounts](/guides/creating-accounts) |
+| Import data in bulk from CSV | [Bulk Importing Data](/guides/bulk-importing-data) |
+| Process incoming invoices | [Editing Invoices](/guides/editing-invoices) |
+| Validate invoice accuracy | [Working the validation queue](/guides/invoice-validation) |
+| Track brokerage revenue | [Brokerage revenue and invoicing](/guides/brokerage-revenue-and-invoicing) |
+| Configure tariff rates | [Managing Tariffs](/guides/managing-tariffs) |
+| Manage energy agreements | [Managing Agreements](/guides/managing-agreements) |
+| Schedule reports | [Running Reports](/guides/running-reports) |
+| Understand the data model | [Key Concepts](/getting-started/key-concepts) |

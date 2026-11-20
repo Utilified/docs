@@ -1,38 +1,57 @@
 ---
 title: "Choosing a Plan"
-description: "Pick the right UMS plan during onboarding — compare what each plan includes, understand usage limits, and learn how to change plans later."
+description: "Pick a UMS plan during onboarding, compare what each plan includes, or skip and subscribe later from Plan & billing."
 keywords: ["plan", "pricing", "billing", "subscription", "starter", "business", "enterprise"]
+ums_routes: ["/onboarding/plan"]
 ---
 
-Early in onboarding, UMS asks you to choose a plan. Your plan sets your usage limits and which features are available — some capabilities (like the white-label portal and single sign-on) are only included on higher tiers.
+After you verify your email, UMS asks you to choose a plan on the **Choose your plan** page. Your plan sets your usage limits and which features you can use.
 
-## Comparing plans
+## The plan page
 
-The plan selection screen lists each available plan with its price and the features it includes. Plans fall into two kinds:
+<Steps>
+  <Step title="Accept the terms">
+    Tick **I agree to the Terms of Service & Master Services Agreement**. **Subscribe** and **Skip for now** stay disabled until you do.
+  </Step>
+  <Step title="Compare the plans">
+    Each card shows the plan's price, a description, the features it includes (ticked) and its usage limits. The **Recommended** chip marks the suggested plan.
+  </Step>
+  <Step title="Choose one">
+    - **Subscribe** takes you to secure checkout. When payment is confirmed, you continue to the next step.
+    - **Request access** appears on plans you can't buy online. It opens a short form (**Your name**, **Email**, **Message (optional)**). Click **Send request** and the Utilified team gets in touch.
+    - **Skip for now — set up billing later** finishes this step without a subscription.
+  </Step>
+</Steps>
 
-- **Self-serve plans** — a fixed monthly price you can select and start straight away.
-- **Usage-based / custom plans** — shown with **Custom pricing** and a **Contact us** action rather than instant checkout, for larger or tailored requirements.
+If Utilified has already assigned your organisation a plan, the page says so and shows **Continue to setup** instead. No payment is needed.
 
-{/* TODO screenshot: /images/onboarding/plan-selection.png — the plan selection screen comparing the available plans and their features */}
+## Plans
 
-Each plan card shows which features are **included** versus not, so you can match a plan to what you need. As a guide:
+| Plan | Price | Connections | Invoices per month | Active users |
+| --- | --- | --- | --- | --- |
+| Starter | $400 / month | 500 | 200 | 5 |
+| Business | $1,500 / month | 2,500 | 1,000 | 25 |
+| Enterprise | Shown on the plan page | 10,000 | 5,000 | 100 |
 
-- **Starter** suits a single organisation getting started with core account, connection, invoice, and reporting features.
-- **Business** adds higher usage limits and unlocks features such as the **white-label portal** and **single sign-on**.
-- **Enterprise** covers large or bespoke deployments with custom pricing.
+Starter doesn't include API access, the white-label portal or single sign-on. Business and Enterprise include every feature. A plan with custom pricing shows a pricing summary and **Request access** instead of a monthly price and **Subscribe**.
 
 <Note>
-  Plan names, prices, and included features are managed centrally and may differ from the examples above — always go by what the plan selection screen shows for your account.
+  Plans are managed centrally, so names, prices and limits can change. The plan page always shows what's current for your organisation.
 </Note>
 
 ## Usage limits
 
-Your plan caps usage on a few dimensions — typically **connections**, **users**, and **invoices per month**. You can see your live usage against these limits any time in **Settings → Billing**, where each meter shows how close you are to its limit.
+Your plan caps the number of connections, invoices per month and active users. An organisation admin can see live usage against each limit in **Settings** › **Plan & billing**.
 
 ## Changing your plan later
 
-You're not locked in by your onboarding choice. To upgrade, switch, or review your plan after setup, open **Settings → Billing** and use **Change plan** (or **Manage billing** for payment details). See [Organisation Settings](/settings/organisation#billing) for the full billing reference.
+You aren't locked in. An organisation admin can open **Settings** › **Plan & billing** at any time:
+
+- **Change plan** shows the plan options so you can switch.
+- **Manage billing** opens your payment details and invoices.
+
+If you skipped this step, subscribe from the same place whenever you're ready. See [Plan & billing](/billing).
 
 <Tip>
-  If you're not sure which plan fits, start on the lowest tier that covers your current usage — you can upgrade the moment you need a gated feature or more headroom.
+  Not sure which plan fits? Start on the lowest plan that covers your current usage. You can upgrade when you need a gated feature or more headroom.
 </Tip>

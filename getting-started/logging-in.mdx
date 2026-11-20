@@ -1,101 +1,102 @@
 ---
 title: "Logging In & Security"
-description: "How to sign in to UMS with email, SSO, or two-factor authentication, plus password resets, session management, and troubleshooting."
+description: "Sign up for UMS, sign in with your email and password or your organisation's single sign-on, set up two-factor authentication, and reset your password."
+ums_routes: ["/signup", "/login", "/password-reset", "/settings"]
 ---
 
 ## Creating your organisation
 
-If you're brand new to UMS, start by creating your account.
+If you're new to UMS, start by creating your organisation's account.
 
 <Steps>
   <Step title="Sign up">
-    On the sign-up page, enter your name, **Organisation Name**, email, and a password, then click **Sign Up**.
+    On the **Create Your Account** page, enter your **Contact Name**, **Email** and **Organisation Name**. If plans are listed under **Plan (optional)**, you can pick one now or leave it for later. Click **Sign Up**.
   </Step>
   <Step title="Verify your email">
-    UMS sends a verification email. Open it and click the link to activate your account (check spam/junk if it doesn't arrive within a few minutes).
+    UMS sends a verification link to the address you entered. Click it to activate your account. Check spam or junk if it doesn't arrive within a few minutes.
   </Step>
   <Step title="Choose a plan and get set up">
-    After verifying, you're guided through [choosing a plan](/getting-started/choosing-a-plan) and the [guided onboarding wizard](/getting-started/getting-set-up) to load your portfolio.
+    After verifying, you're taken to [choosing a plan](/getting-started/choosing-a-plan). Then load your portfolio with [guided onboarding](/getting-started/getting-set-up).
   </Step>
 </Steps>
 
-Already have an account? Sign in below.
+Signing up doesn't ask for a password. The verification link signs you in.
 
-## Accessing UMS
+## Signing in
 
+{/* screenshot-stale */}
 <Frame>
-  ![The UMS sign-in screen with email, password, and SSO options](/images/login/login.png)
+  ![The UMS sign-in screen](/images/login/login.png)
 </Frame>
 
+Sign-in asks for your email first, then works out how you sign in.
+
 <Steps>
-  <Step title="Open your UMS URL">
-    Navigate to your organisation's UMS URL in a web browser.
-  </Step>
-  <Step title="Enter your credentials">
-    Enter your **email address** and **password**.
+  <Step title="Enter your email">
+    Open your organisation's UMS URL, enter your **Email Address** and click **Continue**.
   </Step>
   <Step title="Sign in">
-    Click **Sign In**.
+    - If your organisation uses single sign-on (SSO), UMS takes you to your organisation's identity provider. Sign in there and you return to UMS.
+    - Otherwise, a **Password** field appears. Enter your password and click **Sign in**.
   </Step>
 </Steps>
 
-### Single sign-on (SSO)
-
-If your organisation has SSO configured, you can also sign in using:
-
-- **Sign in with Microsoft 365** — Use your corporate Microsoft account
-- **Sign in with Google** — Use your Google Workspace account
+Tick **Remember me** to stay signed in on this browser. If your organisation uses SSO but you need to sign in with a password, click **Sign in with a password instead**.
 
 <Info>
-  SSO leverages your organisation's existing security policies and multi-factor authentication.
+  SSO is set up by your organisation's administrator. Your identity provider's own policies, including its multi-factor authentication, apply when you sign in through it.
 </Info>
 
 ## Two-factor authentication (2FA)
 
-If your organisation requires 2FA, you will be prompted for a verification code after entering your password.
+With 2FA on, UMS asks for a code as well as your password when you sign in.
 
 ### Setting up 2FA
 
 <Steps>
-  <Step title="Open security settings">
-    Navigate to **Settings** then **Security**.
+  <Step title="Open Security">
+    Open the account menu (your name at the bottom of the sidebar), choose **My Account**, then select **Security**.
   </Step>
   <Step title="Start setup">
-    Click **Set up Two-Factor Authentication**.
+    Under **Two-factor authentication**, click **Set up 2FA**. If 2FA is already on, the button reads **Add method**.
   </Step>
-  <Step title="Scan the QR code">
-    Scan the QR code with your authenticator app (Google Authenticator, Authy, Microsoft Authenticator, or any TOTP-compatible app).
+  <Step title="Choose a method">
+    Choose **Authenticator app (recommended)**, **Email verification** or **Backup codes**.
 
+    {/* screenshot-stale */}
     <Frame>
-      ![The two-factor authentication setup dialog — choosing an authentication method](/images/login/2fa-setup.png)
+      ![The two-factor authentication setup dialog, choosing an authentication method](/images/login/2fa-setup.png)
     </Frame>
   </Step>
   <Step title="Confirm the code">
-    Enter the 6-digit code from your app to confirm.
+    For an authenticator app, scan the QR code with Google Authenticator, Authy, Microsoft Authenticator or any TOTP app. Enter the 6-digit code it shows and click **Verify**. UMS may also ask for **Your password**. For email, enter the code UMS sends you.
   </Step>
-  <Step title="Save your recovery codes">
-    Save your **backup recovery codes** in a secure location — you will need these if you lose access to your authenticator.
+  <Step title="Save your backup codes">
+    After an authenticator app, UMS asks for backup codes. Confirm it's you, click **Generate backup codes**, store the codes somewhere safe, then click **Complete setup**.
   </Step>
 </Steps>
 
 <Warning>
-  Store your backup recovery codes somewhere safe. Without them, losing access to your authenticator device can lock you out of your account.
+  Backup codes are shown once. Without them, losing your authenticator device can lock you out of your account.
 </Warning>
+
+### When your organisation requires 2FA
+
+If your organisation requires 2FA and you haven't set it up, UMS asks you to at sign-in. The **Set up two-factor authentication** dialog appears after your password. Scan the code with an authenticator app, enter the 6-digit code and click **Verify** to finish signing in. You may also be asked for a **Code from the email we sent you**.
+
+This step doesn't create backup codes. Generate them afterwards from **Security**.
 
 ### Signing in with 2FA
 
 <Steps>
-  <Step title="Enter your credentials">
-    Enter your email and password as normal.
+  <Step title="Sign in as normal">
+    Enter your email and password.
   </Step>
-  <Step title="Open your authenticator">
-    When prompted, open your authenticator app.
+  <Step title="Choose how to verify">
+    In the **Two-Factor Authentication** dialog, pick **Authenticator App**, **Email Verification** or **Backup Codes**. Only the methods you've set up are shown. For email, click **Send Code** first.
   </Step>
   <Step title="Enter the code">
-    Enter the current 6-digit code.
-  </Step>
-  <Step title="Verify">
-    Click **Verify**.
+    Enter the **Verification Code** and click **Verify**.
   </Step>
 </Steps>
 
@@ -103,34 +104,23 @@ If your organisation requires 2FA, you will be prompted for a verification code 
 
 <Steps>
   <Step title="Start the reset">
-    On the login page, click **Forgot Password**.
+    On the sign-in page, enter your email, click **Continue**, then click **Forgot password?**.
   </Step>
-  <Step title="Enter your email">
-    Enter your email address.
-  </Step>
-  <Step title="Check your inbox">
-    Check your email for a reset link (check spam/junk if it does not arrive within a few minutes).
+  <Step title="Request the link">
+    On the **Reset Password** page, enter your **Email Address** and click **Request Password Reset**.
   </Step>
   <Step title="Set a new password">
-    Click the link and set a new password.
-  </Step>
-  <Step title="Sign in">
-    Sign in with your new password.
+    Open the link in the email and set a new password. Check spam or junk if it doesn't arrive within a few minutes.
   </Step>
 </Steps>
 
-## Session management
-
-- Your session remains active while you are using UMS
-- After a period of inactivity, you may be asked to sign in again
-- Tokens refresh automatically in the background — you should rarely need to re-authenticate during a working session
+To change a password you know, open **Security** and click **Change password**.
 
 ## Troubleshooting
 
-| Problem                   | Solution                                                                           |
-| ------------------------- | ---------------------------------------------------------------------------------- |
-| Forgotten password        | Use the **Forgot Password** link on the login page                                 |
-| 2FA code not working      | Ensure your device clock is synchronised. Try waiting for the next code cycle      |
-| Lost authenticator device | Use one of your backup recovery codes, then set up 2FA on your new device          |
-| SSO not working           | Contact your IT administrator to verify your account is provisioned for UMS access |
-| Account locked            | Contact your system administrator to unlock your account                           |
+| Problem | Solution |
+| --- | --- |
+| Forgotten password | Click **Forgot password?** on the sign-in page |
+| 2FA code not working | Check your device's clock is correct, then wait for the next code |
+| Lost authenticator device | Sign in with **Backup Codes**, then set up 2FA on your new device |
+| SSO not working | Ask your IT administrator to check your account is set up for UMS |

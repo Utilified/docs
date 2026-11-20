@@ -1,77 +1,89 @@
 ---
 title: "Getting Set Up"
-description: "Set up your UMS portfolio with the guided onboarding wizard. Extract data from documents or upload one file, then review and create your records."
-keywords: ["onboarding", "getting started", "AI onboarding", "bulk upload", "guided onboarding wizard", "set up"]
+description: "Finish sign-up, then load your portfolio with guided onboarding: extract data from documents or one file, review it, and create your records."
+keywords: ["onboarding", "getting started", "AI onboarding", "bulk upload", "guided onboarding", "set up"]
+ums_routes: ["/onboarding/complete", "/onboarding/guided"]
 ---
 
-The quickest way to get a new organisation running in UMS is the **guided onboarding wizard**. Instead of creating accounts, sites, connections, and agreements one by one, you bring your existing data in once — by uploading documents for AI to read, or a single onboarding file — then review and create everything together.
+The quickest way to get a new organisation running is **guided onboarding**. You bring your existing data in once, as documents for Joule to read or a single onboarding file. Then you review it and create everything together.
 
 <Note>
-  Prefer to build your portfolio by hand, entity by entity? See [Your First Steps](/getting-started/first-steps) for the manual walkthrough. This page covers the faster, assisted path.
+  Prefer to build your portfolio by hand? See [Your First Steps](/getting-started/first-steps). This page covers the faster, assisted path.
 </Note>
+
+## You're all set
+
+After the [plan step](/getting-started/choosing-a-plan), UMS shows a **You're all set!** page. Your organisation is ready, and the page offers quick links:
+
+| Link | Goes to |
+| --- | --- |
+| **Go to Dashboard** | [Home](/home), your portfolio overview |
+| **Create your first account** | [Accounts](/accounts) |
+| **Invite your team** | **Settings** › **Users** ([Setting Up a User](/guides/setting-up-a-user)) |
+| **Read the docs** | This site |
+
+Guided onboarding runs against an account, so create an account first.
 
 ## Before you start
 
-Onboarding goes smoothly when your reference data and source files are ready:
+- Suppliers and utilities must already exist. The onboarding upload looks up retailers and utility types by name and doesn't create them. Ask your administrator if you're unsure.
+- Gather your portfolio data: accounts, sites and their addresses, connection identifiers (electricity `NMI`, gas `MIRN`), retailer account references and agreement details.
+- Collect supporting documents if you want Joule to do the work: agreement PDFs, recent invoices or a site-list spreadsheet.
 
-- **Suppliers and utilities must already exist.** The onboarding upload *looks up* retailers and utility types by name — it won't create them. Make sure the suppliers and utilities you reference are set up first (ask your administrator if you're unsure).
-- **Gather your portfolio data** — your list of accounts, the sites and their addresses, connection identifiers (electricity `NMI`, gas `MIRN`), retailer account references, and any agreement details.
-- **Collect supporting documents** if you want AI to do the work — agreement PDFs, recent invoices, or a site-list spreadsheet.
+## Open guided onboarding
+
+Start it from any of these:
+
+- **Accounts** › **Guided setup**: creates an account, then opens guided onboarding for it.
+- An account's page: click **Launch Onboarding with Joule** (the Joule icon in the header).
+- An account's **Settings** tab: under **Onboarding Tools**, click **Launch Onboarding with Joule**.
 
 ## The guided onboarding wizard
 
-The wizard runs against a master account and walks through five steps. Every step except Review is **optional**, so you can do as much or as little in each as you like, then review and create at the end.
-
-{/* TODO screenshot: /images/onboarding/wizard-import-data.png — the guided onboarding wizard on the Import data step with the AI document upload and CSV options */}
+The wizard runs against the account you opened it from and has five steps. Every step except **Review** is optional.
 
 <Steps>
   <Step title="Import data">
-    Upload documents for **Joule** (the UMS AI assistant) to analyse, or import a CSV. Joule reads your files and pre-fills the later steps for you — see [AI document upload](#ai-document-upload) below.
+    Upload documents for Joule to analyse, or import a CSV. Joule reads your files and pre-fills the later steps. See [AI document upload](#ai-document-upload).
   </Step>
   <Step title="Infrastructure">
-    Add or adjust **child accounts, sites, and connections**. If you used AI or a CSV in the first step, these are already populated for you to check.
+    Add or adjust associated accounts, sites and connections. If you imported data, these are already filled in for you to check.
   </Step>
   <Step title="Site links">
-    Connect sites to their connections, so each meter is tied to the right physical location.
+    Connect sites to connections, so each meter is tied to the right location.
   </Step>
   <Step title="Commercial">
-    Add **agreements and retail accounts** — the energy contracts and retailer references for your connections.
+    Add agreements and retail accounts.
   </Step>
   <Step title="Review">
-    Review everything the wizard will create, then create all the records in one go.
+    Check everything the wizard will create, then create the records in one go. The button names what it's about to create.
   </Step>
 </Steps>
 
+When the records are created, you return to the account's page.
+
 <Tip>
-  The wizard saves your progress as you go — your form state persists across a page refresh, so you can step away and come back without losing your work.
+  The wizard saves your progress as you go, so your work survives a page refresh. The draft is kept in your browser tab, so closing the tab discards it.
 </Tip>
 
 ## AI document upload
 
-On the **Import data** step, drop in the documents you already have and let AI extract a structured portfolio from them — no manual data entry. Joule reads your files and proposes **child accounts, sites, connections, site links, agreements, and retail accounts**, which then flow into the wizard for you to review and edit before anything is created.
+On the **Import data** step, drop in the documents you already have. Joule extracts a portfolio from them and proposes associated accounts, sites, connections, site links, agreements and retail accounts. These flow into the later steps for you to review and edit before anything is created.
 
-Supported file types: PDF, CSV, Excel (`.xlsx`, `.xls`), TSV, and images (`.png`, `.jpg`). Good sources include **agreement PDFs**, **recent invoices**, and **site-list spreadsheets**.
-
-{/* TODO screenshot: /images/onboarding/ai-document-upload.png — the AI document upload area with extracted data being mapped into the wizard */}
+Accepted files: PDF, CSV, Excel (`.xlsx`, `.xls`), TSV and images (`.png`, `.jpg`, `.jpeg`), up to 50 MB each. Agreement PDFs, recent invoices and site-list spreadsheets work well.
 
 <Note>
-  AI extraction is a starting point, not the final word. Always check the extracted accounts, connections, and agreements on the Infrastructure, Site links, and Commercial steps before you create them.
+  Extraction is a starting point. Check the extracted accounts, connections and agreements on the **Infrastructure**, **Site links** and **Commercial** steps before you create them.
 </Note>
 
 ## All-in-one onboarding file
 
-If you'd rather drive onboarding from a spreadsheet, the **onboarding upload** creates your entire hierarchy — accounts, sites, connections, retail accounts, and agreements — from a **single CSV**. It's one row per connection, with the account, site, and agreement values repeating down the rows and de-duplicated automatically.
+To drive onboarding from a spreadsheet, the **onboarding upload** creates your whole hierarchy (accounts, sites, connections, retail accounts and agreements) from a single CSV. It's one row per connection. Repeated account, site and agreement values are de-duplicated.
 
-The upload is **all-or-nothing**: if any row fails validation, nothing is created — you fix the file and re-submit, so you never end up with a half-built portfolio.
+The upload is all-or-nothing. If any row fails validation, nothing is created. Fix the file and upload it again.
 
-For the exact columns and a downloadable template, see [Onboarding upload (all-in-one)](/guides/bulk-importing-data#onboarding-upload-all-in-one) in the Bulk Importing Data guide.
+For the columns and a template, see [Onboarding upload (all-in-one)](/guides/bulk-importing-data#onboarding-upload-all-in-one).
 
-## After onboarding
+## Next
 
-When you finish, UMS drops you on a **You're all set** page with quick links to keep going:
-
-- **Go to the dashboard** — see your portfolio overview at a glance
-- **Create your first account** — add another customer or business entity
-- **Invite your team** — bring colleagues in and set their access ([Setting Up a User](/guides/setting-up-a-user))
-
-See [What's Next](/getting-started/whats-next) for the highest-value things to set up in your first week.
+See [What's Next](/getting-started/whats-next) for the most valuable things to set up in your first week.

@@ -1,31 +1,34 @@
 ---
 title: "Your First Steps"
-description: "Set up your organisation in UMS from scratch — create accounts, add sites, configure connections, create agreements, and upload your first invoice."
+description: "Set up your organisation in UMS by hand: create accounts, add sites, set up connections, create agreements and upload your first invoice."
+ums_routes: ["/accounts", "/sites", "/connections", "/agreements", "/invoices/uploads", "/imports"]
 ---
 
-This guide walks you through setting up your organisation in UMS **by hand**, one entity at a time — useful for understanding how the pieces fit together, or for small additions. If your organisation already has data, skip ahead to the sections relevant to you.
+This guide sets up your organisation **by hand**, one record at a time. It's useful for learning how the pieces fit together, or for small additions. If your organisation already has data, skip to the sections you need.
 
 <Tip>
-  Setting up a whole portfolio? The faster path is the [guided onboarding wizard](/getting-started/getting-set-up) — upload documents for AI to read, or load everything from a single file, then review and create it all at once. Come back here when you want to add records manually.
+  Setting up a whole portfolio? [Guided onboarding](/getting-started/getting-set-up) is faster. Upload documents for Joule to read, or load everything from one file, then review and create it all at once.
 </Tip>
 
 <Note>
-  Plan selection is **optional** during sign-up. You can skip the **Plan** step and finish onboarding without a subscription — just click **Skip for now — set up billing later** on the plan picker. A billing manager can subscribe at any time from [Settings → Billing](/billing); the billing gate will prompt you once your trial or grace period ends.
+  Choosing a plan is optional during sign-up. If you clicked **Skip for now — set up billing later**, an organisation admin can subscribe at any time from **Settings** › **Plan & billing**. See [Plan & billing](/billing).
 </Note>
+
+Each create button opens a drawer on the right. Fill in the fields and click **Save**.
 
 ## Step 1: Create your accounts
 
-Accounts are the top-level containers — typically one per customer or business entity.
+Accounts are the top-level containers, typically one per customer or business entity.
 
 <Steps>
   <Step title="Open Accounts">
-    Navigate to **Accounts** in the sidebar.
+    Select **Accounts** in the sidebar.
   </Step>
-  <Step title="Start a new account">
-    Click the **+** button in the top-right.
+  <Step title="Add an account">
+    Click **Add account**.
   </Step>
-  <Step title="Enter account details">
-    Enter the company name, ABN/ACN, and entity type.
+  <Step title="Enter the details">
+    Enter the account name (required). You can also set the entity type, tax ID (ABN or ACN) and a parent account.
   </Step>
   <Step title="Save">
     Click **Save**.
@@ -33,27 +36,24 @@ Accounts are the top-level containers — typically one per customer or business
 </Steps>
 
 <Tip>
-  If you manage a business with multiple subsidiaries, create a parent account and link child accounts to it using the **Parent** field.
+  For a business with subsidiaries, create the parent account first, then set it as the parent on each child account.
 </Tip>
 
-See [Creating Accounts](/guides/creating-accounts) for a detailed walkthrough.
+See [Creating Accounts](/guides/creating-accounts) for more.
 
 ## Step 2: Add sites
 
-Sites represent the physical locations where energy is consumed — offices, warehouses, retail stores, factories.
+Sites are the physical locations where energy is used: offices, warehouses, stores, factories.
 
 <Steps>
   <Step title="Open Sites">
-    Navigate to **Sites** in the sidebar (or use the Sites tab on an account).
+    Select **Accounts** in the sidebar, then the **Sites** tab.
   </Step>
-  <Step title="Start a new site">
-    Click the **+** button.
+  <Step title="Add a site">
+    Click **New Site** to open the **Create New Site** drawer.
   </Step>
-  <Step title="Enter the address">
-    Enter the site name and address — UMS uses Google Places for address autocomplete.
-  </Step>
-  <Step title="Link to an account">
-    Link the site to the correct account.
+  <Step title="Enter the details">
+    Enter the site name, choose its account (both required) and enter the address.
   </Step>
   <Step title="Save">
     Click **Save**.
@@ -62,25 +62,27 @@ Sites represent the physical locations where energy is consumed — offices, war
 
 ## Step 3: Set up connections
 
-Connections represent individual utility meters — electricity NMIs, gas MIRNs, or water meters.
+Connections are individual utility meter points: electricity `NMI`s, gas `MIRN`s or water meters.
 
 <Steps>
   <Step title="Open Connections">
-    Navigate to **Connections** in the sidebar.
+    Select **Connections** in the sidebar.
   </Step>
-  <Step title="Start a new connection">
-    Click the **+** button.
+  <Step title="Add a connection">
+    Click **New Connection** to open the **Create New Connection** drawer.
   </Step>
-  <Step title="Enter the identifier">
-    Enter the connection identifier (e.g. NMI for electricity, MIRN for gas).
-  </Step>
-  <Step title="Set type and site">
-    Select the utility type and link to a site.
+  <Step title="Enter the details">
+    Enter the connection identifier (for example the `NMI` or `MIRN`) and its utility.
   </Step>
   <Step title="Save">
     Click **Save**.
   </Step>
+  <Step title="Link it to a site">
+    The drawer doesn't ask for a site. On the connection's page, click **Add to Site**.
+  </Step>
 </Steps>
+
+See [Managing Connections](/guides/managing-connections) for more.
 
 ## Step 4: Create agreements
 
@@ -88,76 +90,71 @@ Agreements track energy contracts between your accounts and suppliers.
 
 <Steps>
   <Step title="Open Agreements">
-    Navigate to **Agreements** in the sidebar.
+    Select **Agreements** in the sidebar.
   </Step>
-  <Step title="Start a new agreement">
-    Click the **+** button.
+  <Step title="Add an agreement">
+    Click **Add agreement** to open the **Create New Agreement** drawer.
   </Step>
-  <Step title="Enter agreement details">
-    Enter the agreement name, type, supplier, and contract dates.
+  <Step title="Enter the details">
+    Enter the agreement name and type (both required), then the account, supplier and contract dates.
   </Step>
   <Step title="Save">
     Click **Save**.
   </Step>
   <Step title="Add connections">
-    Add connections to the agreement via the **Connections** tab on the agreement detail page.
+    On the agreement's page, add connections on the **Connections** tab.
   </Step>
 </Steps>
 
-See [Managing Agreements](/guides/managing-agreements) for details on bulk-adding connections and managing tariffs.
+See [Managing Agreements](/guides/managing-agreements) for bulk-adding connections and managing tariffs.
 
 ## Step 5: Upload your first invoice
 
 <Steps>
-  <Step title="Open Invoices">
-    Navigate to **Invoices** in the sidebar.
+  <Step title="Open Uploads">
+    Select **Invoices** in the sidebar, then the **Uploads** tab.
   </Step>
-  <Step title="Drop in a PDF">
-    Drag and drop a PDF invoice onto the upload area (or click to browse).
+  <Step title="Add your files">
+    Click **Upload invoices** (the upload icon in the header), then drag invoice files onto the drop area or click it to choose them.
   </Step>
-  <Step title="Let UtiliRead process it">
-    UMS automatically processes the invoice via **UtiliRead** (OCR).
+  <Step title="Let UtiliRead process them">
+    UtiliRead extracts each invoice and matches it to the right account and connection. Follow progress in the upload queue.
   </Step>
-  <Step title="Review the match">
-    The system extracts data, matches it to the correct account and connection, and creates the invoice record.
-  </Step>
-  <Step title="Verify the data">
-    Check the invoice detail page to verify the extracted data.
+  <Step title="Check the result">
+    Open the invoice to check the extracted data.
   </Step>
 </Steps>
 
 <Tip>
-  Alternatively, set up email forwarding from your energy retailers to your UMS inbox for fully automated processing.
+  You can also have retailers email invoices to your UMS inbox so they're processed automatically. See [Inbox](/inbox).
 </Tip>
 
 ## What to do next
 
-Once your basic structure is in place, here are the most valuable next steps:
-
 ### Set up tariff rates
 
-Configure tariff structures for your agreements so UMS can validate invoice charges against expected rates. See [Managing Tariffs](/guides/managing-tariffs).
+Configure tariffs for your agreements so UMS can check invoice charges against expected rates. See [Managing Tariffs](/guides/managing-tariffs).
 
-### Enable invoice validation
+### Check invoice validation
 
-Go to **Invoices** › **Validations** to check your invoices for billing errors, tariff mismatches, and missing invoices. See [Working the validation queue](/guides/invoice-validation).
+Open **Invoices** › **Validations** to find billing errors and tariff mismatches. See [Working the validation queue](/guides/invoice-validation).
 
 ### Run an agreement expiry report
 
-Navigate to **Reports** and run the **Agreement Expiry Report** to identify contracts approaching renewal — so you can start renegotiating early.
+Open **Reports** and run the **Agreement Connections Expiry and Billing Report** to find contracts nearing renewal, so you can start renegotiating early.
 
 ### Configure brokerage (if applicable)
 
-If you earn commission on energy agreements, set up brokerage contracts and runs. See [Brokerage revenue and invoicing](/guides/brokerage-revenue-and-invoicing).
+If you earn commission on energy agreements, set up brokerage. See [Brokerage revenue and invoicing](/guides/brokerage-revenue-and-invoicing).
 
-### Bulk import via CSV
+### Bulk import from CSV
 
-For large portfolios, use the **Bulk Upload Wizard** to import accounts, sites, connections, tariffs, and more from CSV files. Open it from your avatar menu under **Bulk Imports**. To stand up a whole hierarchy from one file, use the [all-in-one onboarding upload](/guides/bulk-importing-data#onboarding-upload-all-in-one). See [Bulk Importing Data](/guides/bulk-importing-data).
+For large portfolios, import accounts, sites, connections, tariffs and more from CSV. Open the account menu (your name at the bottom of the sidebar), select **Bulk Imports**, then click **New Import** to open the **Bulk upload** wizard. **Bulk Imports** only appears for organisation admins. To create a whole hierarchy from one file, use the [all-in-one onboarding upload](/guides/bulk-importing-data#onboarding-upload-all-in-one). See [Bulk Importing Data](/guides/bulk-importing-data).
 
 ### Invite your team
 
-Add colleagues to your organisation and control what each of them can access. See [Setting Up a User](/guides/setting-up-a-user).
+Add colleagues and control what each of them can access. See [Setting Up a User](/guides/setting-up-a-user).
 
 ### Subscribe to a plan
 
-If you skipped plan selection during onboarding, choose a plan from **Settings → Billing** before your grace period ends. See [Billing & Plans](/billing).
+If you skipped the plan step, subscribe from **Settings** › **Plan & billing** at any time. See [Plan & billing](/billing).
