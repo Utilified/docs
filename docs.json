@@ -106,7 +106,6 @@
             "group": "Billing guides",
             "pages": [
               "guides/brokerage-revenue-and-invoicing",
-              "guides/running-brokerage-calculations",
               "guides/customising-xero-brokerage-invoicing"
             ]
           }
@@ -168,6 +167,10 @@
     {
       "source": "/utiliread",
       "destination": "/invoices"
+    },
+    {
+      "source": "/guides/running-brokerage-calculations",
+      "destination": "/guides/brokerage-revenue-and-invoicing"
     }
   ],
   "logo": {
