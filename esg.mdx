@@ -48,23 +48,56 @@ Once you have data, the **Emissions by scope (latest period)**, **Emissions tren
 
 ## Reporting periods
 
-Open a reporting period from the **Reporting periods** tab. The header shows its name, date range and status, and the page has **Overview**, **Calculations**, **Activity data**, **Review items** and **History** tabs.
+Open a reporting period from the **Reporting periods** tab. The header shows its name, date range and status, and the page has **Overview**, **Reports**, **Calculations**, **Activity data**, **Review items** and **History** tabs.
 
 ### Actions
 
-| Action                         | What it does                                                                     |
-| ------------------------------ | -------------------------------------------------------------------------------- |
-| **Calculate**                  | Queues a calculation that applies emission factors to the period's activity data |
-| **Import Scope 2 from invoices** | Populates Scope 2 activity data from your invoices                             |
-| **Run gap detection**          | Queues a check for missing data; findings appear on **Review items**             |
-| **Generate ESG report**        | Opens **Reports** in a new tab                                                   |
-| **Lock period** / **Unlock period** | Freezes the period's data once reporting is final, or reopens it            |
+| Action                  | What it does                                                                                                      |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Prepare data**        | Imports activity data from your invoices, checks for gaps and recalculates the period's emissions in one run       |
+| **Lock** / **Unlock**   | Freezes the period and its calculations once reporting is final, or reopens it                                    |
 
-**Calculate** is the header's main button. The others are icon buttons; hover one to see its name. **Calculate** and **Import Scope 2 from invoices** are disabled while the period is locked.
+**Prepare data** is the header's main button. While a run is in progress it shows **Preparing…** and the page updates itself when the run finishes. If a run shows **Calculating** for more than an hour, the button changes to **Restart prepare** so you can start it again. **Prepare data** is disabled while the period is locked.
+
+**Lock** and **Unlock** open a confirmation dialog with a **Reason (optional)** field; confirm with **Lock period** or **Unlock period**. The change is recorded on the **History** tab. Locking freezes the period's calculations, so reports use those figures until you unlock it. **Lock** is disabled while a prepare run is in progress.
 
 ### Statuses
 
-A reporting period moves through **Open**, **Collecting data**, **Calculating**, **In review**, **Submitted** and **Locked**. **Locked** is final: the period's data is frozen until you unlock it.
+A reporting period moves through **Open**, **Collecting data**, **Calculating**, **In review**, **Submitted** and **Locked**. A period shows **Calculating** while **Prepare data** runs and moves to **In review** when it finishes. If a run fails, the period returns to its previous status and the failure appears on **Review items**. **Locked** is final: the period's data is frozen until you unlock it.
+
+### Reports
+
+The **Reports** tab shows one panel per framework the period applies to. A period with no frameworks set uses NGER, NPI, ASRS S2 and the GHG Protocol. Each panel has a **Ready** or **Not ready** chip, a checklist and a button for each of the framework's reports, such as **Generate NGER Corporate Report**.
+
+Each check passes, warns or fails, with a short detail when it doesn't pass:
+
+| Check                                          | Fails or warns when                                                         |
+| ---------------------------------------------- | --------------------------------------------------------------------------- |
+| **Activity data recorded for the period**      | Fails when the period has no activity data                                  |
+| **Every metered connection has activity**      | Warns when connections have no activity in the period (data gaps)           |
+| **Every activity has a calculation**           | Fails when activities have no calculation, for example a missing factor     |
+| **No open high-severity review items**         | Fails when high-severity review items are open                              |
+| **No other open review items**                 | Warns when other review items are open                                      |
+| **Calculations cover the framework's scopes**  | Fails with no Scope 1 or Scope 2 calculations; warns on the framework's other missing scopes |
+| **Period locked**                              | Warns until the period is locked                                            |
+
+A framework is **Ready** when no check fails; warnings don't block it. You can still generate a report while a framework is **Not ready**.
+
+Each of these buttons opens the report in **Reports** with this period already selected. On those report forms, **Reporting Period** is a picker that lists your periods by name and dates. Click **Generate report** to queue the run, then download the file from the **History** tab in **Reports**. Each framework report downloads as an Excel workbook with several sheets, including a "Basis of preparation" sheet that records the period, emission factor sets and methods used. If you schedule one as CSV, the file holds only the first sheet.
+
+| Report                                    | What it covers                                                                                                                                                                  |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **NGER Corporate Report**                 | Scope 1, Scope 2 (location-based) and energy consumed in GJ and TJ across your organisation, by facility and by source, screened against the corporate group threshold (50 kt CO2-e or 200 TJ) and each facility against the facility threshold (25 kt CO2-e or 100 TJ) |
+| **NGER Section 19 Facility Report**       | The same NGER figures for one site. Choose the site in the **Site** picker.                                                                                                     |
+| **NPI Facility Report**                   | Per site, fuel burnt in tonnes against the Category 2a (400 t) and 2b (2,000 t) thresholds and electricity against 60,000 MWh, the categories triggered and the substances to report. **Site** is optional. |
+| **ASRS S2 Climate Disclosure Report**     | Scope 1, Scope 2 location- and market-based and Scope 3 by category, by site, with targets and progress, instruments, intensity and disclosure status                          |
+| **GHG Protocol Corporate Inventory**      | Scope 1, dual Scope 2 and Scope 3 by category, by site                                                                                                                          |
+
+Totals add Scope 1, location-based Scope 2 and, where the framework includes it, Scope 3. The market-based figure is shown beside them, never added. A whole bill belongs to the reporting period that contains its start date; bills are not split across periods.
+
+<Note>
+  The NGER and NPI threshold screens are indicative, not an obligation assessment or assurance. They are worked out from your billing data, so they can't account for everything the schemes test. The NGER corporate screen sums every account in your organisation and counts energy consumed only, not energy produced, and your sites may not match NGER facility boundaries. The NPI screen can't assess the 1 tonne in any hour or 20 MW tests, or deduct electricity used for lighting, computing or motive purposes. The NPI report lists the substances to report, but you estimate their quantities yourself with the NPI emission estimation technique manuals.
+</Note>
 
 ### Working through a period
 
@@ -72,17 +105,23 @@ A reporting period moves through **Open**, **Collecting data**, **Calculating**,
   <Step title="Create the period">
     On the **Reporting periods** tab, click **New Reporting Period** and set its name, date range and applicable frameworks.
   </Step>
-  <Step title="Add activity data">
-    Add records on the **Activity data** tab, or use **Import Scope 2 from invoices** on the period.
+  <Step title="Add other activity data">
+    Add any activity that doesn't come from invoices, such as fleet fuel or refrigerants, on the **Activity data** tab.
   </Step>
-  <Step title="Calculate emissions">
-    Click **Calculate**. Results appear on the **Calculations** tab.
+  <Step title="Prepare the data">
+    Click **Prepare data**. It imports activity from your invoices, checks for gaps and recalculates. Results appear on the **Calculations** tab once the period moves to **In review**.
   </Step>
-  <Step title="Check for gaps">
-    Run **Run gap detection**, then work through the **Review items** tab.
+  <Step title="Work through review items">
+    Resolve the data gaps and other issues on the **Review items** tab. Click **Prepare data** again after you fix source data.
+  </Step>
+  <Step title="Check readiness">
+    Open the **Reports** tab and clear any failed checks for the frameworks you report against.
   </Step>
   <Step title="Lock the period">
-    Use **Lock period** once reporting is final. The **History** tab records changes to the period.
+    Click **Lock** once reporting is final. The **History** tab records the change.
+  </Step>
+  <Step title="Generate the reports">
+    On the **Reports** tab, click the button for each report you need, such as **Generate NGER Corporate Report**.
   </Step>
 </Steps>
 
