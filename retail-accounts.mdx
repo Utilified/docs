@@ -1,107 +1,143 @@
 ---
 title: "Retail Accounts"
 description: "Manage retailer account references in UMS, link them to your connections, and understand how incoming invoices are matched to the right account."
+ums_routes:
+  - "/retail-accounts"
+  - "/retail-accounts/[id]"
+  - "/retail-accounts/update"
+  - "/retail-accounts/generate"
+  - "/retail-accounts/merge"
+  - "/retail-accounts/merge-recommendations"
 ---
 
-Retail accounts represent the account references that energy retailers assign to your [connections](/connections). They are the key link between your internal account structure and the retailer's billing system — they are how incoming [invoices](/invoices) get matched to the correct [account](/accounts) and connection.
+Retail accounts are the account references that energy retailers assign to your [connections](/connections). They link your internal account structure to the retailer's billing system, and they are how incoming [invoices](/invoices) get matched to the correct [account](/accounts) and connection.
 
+## Where to find it
+
+Open **Accounts** in the **Portfolio** group of the sidebar, then select the **Retail accounts** tab.
+
+<Note>
+  The **Retail accounts** tab only appears for users with access to the Validation module.
+</Note>
+
+{/* screenshot-stale */}
 <Frame>
   ![UMS Retail Accounts list showing retailer account references](/images/retail-accounts/retail-accounts-list.png)
 </Frame>
 
 ## Retail accounts list
 
-The Retail Accounts page displays all retail account references in your organisation in a data grid. Tabs across the top filter the list:
+The view switch above the grid filters the list:
 
-- **Retail Accounts** — All active retail accounts
-- **Active** — Status `ACTIVE` only
-- **Inactive** — Status `INACTIVE` only
-- **Transfer Pending** — Accounts in transition (`PENDING_ACTIVE`, `PENDING_INACTIVE`, or `DRAFT`)
+| View                 | Shows                                                                  |
+| -------------------- | ---------------------------------------------------------------------- |
+| **All**              | Every retail account                                                   |
+| **Active**           | Status Active only                                                     |
+| **Inactive**         | Status Inactive only                                                   |
+| **Transfer Pending** | Accounts in transition: pending active, pending inactive, draft or suggested active |
 
-| Column                        | Description                                                                  |
-| ----------------------------- | ---------------------------------------------------------------------------- |
-| **Retail Account No.**        | The retailer's account reference (`supplier_account_id`)                      |
-| **Supplier**                  | The energy retailer that issued the account                                  |
-| **Account**                   | Your internal account the retail account belongs to                          |
-| **Status**                    | Lifecycle status (see below)                                                  |
-| **Connection**                | The linked connection identifier (NMI / MIRN)                                 |
-| **Invoice Validation**        | Whether automated invoice validation is enabled for this account             |
-| **Gap Check**                 | Whether billing-period gap detection is enabled                              |
-| **Match Tolerance**           | Allowable variance when matching invoice values during validation            |
-| **Expected Billing Frequency**| Cadence the retailer is expected to bill at (used by gap checks)             |
-| **Open Date** / **Close Date**| When the account reference was opened and closed with the retailer           |
+| Column                 | Description                                                    |
+| ---------------------- | -------------------------------------------------------------- |
+| **Account ID**         | The retailer's account reference. Click it to open the account |
+| **Supplier**           | The retailer that issued the account                           |
+| **Account**            | Your internal account the retail account belongs to            |
+| **Status**             | Lifecycle status (see below)                                   |
+| **Connection**         | The linked connection identifier (NMI or MIRN)                 |
+| **Match Tolerance**    | Allowable variance when matching invoice values in validation  |
+| **Billing Freq.**      | How often the retailer is expected to bill (used by gap checks) |
+| **Next Bill Expected** | When the next bill is due to arrive                            |
+| **Opened** / **Closed** | When the account opened and closed with the retailer          |
+| **Created** / **Edited** | When the record was created and last changed in UMS          |
 
-### Status meanings
+The grid also shows whether invoice validation and gap checks are switched on for each account.
 
-| Status               | Meaning                                                              |
-| -------------------- | -------------------------------------------------------------------- |
-| **ACTIVE**           | Currently billing — the live account for the connection             |
-| **PENDING_ACTIVE**   | Activation in progress (for example, a transfer-in not yet confirmed)|
-| **SUGGESTED_ACTIVE** | System-suggested as the likely active account, awaiting confirmation |
-| **PENDING_INACTIVE** | Closure in progress (transfer-out not yet confirmed)                |
-| **INACTIVE**         | Closed — no longer billing                                          |
-| **DRAFT**            | Created but not yet activated                                       |
+### Header actions
 
-### Toolbar actions
-
-The header provides:
-
-- **New Retail Account** (**+**) — Open a drawer to create a retail account
-- **Update from CSV** — Bulk-update existing retail accounts from a spreadsheet
-- **Generate Retail Accounts** — Auto-generate accounts from existing connection data
-- **Merge Retail Accounts** — Combine duplicate accounts (see below)
-- **Merge Recommendations** — Review system-suggested merges of likely-duplicate accounts
+| Action                       | What it does                                                  |
+| ---------------------------- | ------------------------------------------------------------- |
+| **New Retail Account**       | Opens a drawer to create a retail account                     |
+| **Update from CSV**          | Bulk-updates existing retail accounts from a spreadsheet      |
+| **Generate Retail Accounts** | Generates retail accounts from existing connection data       |
+| **Merge Retail Accounts**    | Combines duplicate accounts (see below)                       |
+| **Merge Recommendations**    | Reviews system-suggested merges of likely duplicates          |
 
 ### Creating a retail account
 
-Click **New Retail Account** to open a drawer. You supply the retailer reference (`supplier_account_id`), and link the **Supplier**, **Account**, and **Connection**. You can also set the open/close dates, status, validation and gap-check toggles, match tolerance, expected billing frequency, and payment terms.
+Click **New Retail Account** to open the drawer. Enter the retailer's account reference and link the supplier, account and connection. You can also set the open and close dates, status, validation and gap-check settings, match tolerance, expected billing frequency and payment terms.
 
 <Note>
-  A retail account links one connection to one retailer reference. When a connection transfers between retailers, a new retail account is created and the old one is closed — keeping a full billing history per retailer.
+  A retail account links one connection to one retailer reference. When a connection transfers between retailers, a new retail account is created and the old one is closed, which keeps a full billing history per retailer.
 </Note>
+
+## Statuses
+
+The list and the detail page header label the same statuses slightly differently:
+
+| Status value       | In the list          | On the detail page       | Meaning                                                   |
+| ------------------ | -------------------- | ------------------------ | --------------------------------------------------------- |
+| `ACTIVE`           | **Active**           | **Active**               | Currently billing: the live account for the connection    |
+| `PENDING_ACTIVE`   | **Pending active**   | **Activation pending**   | Activation in progress, for example an unconfirmed transfer-in |
+| `SUGGESTED_ACTIVE` | **Suggested active** | **Suggested**            | UMS suggests this is the active account; awaiting confirmation |
+| `PENDING_INACTIVE` | **Pending inactive** | **Deactivation pending** | Closure in progress, for example an unconfirmed transfer-out |
+| `INACTIVE`         | **Inactive**         | **Inactive**             | Closed: no longer billing                                 |
+| `DRAFT`            | **Draft**            | **Draft**                | Created but not yet activated                             |
 
 ## Retail account detail page
 
+{/* screenshot-stale */}
 <Frame>
   ![A retail account detail page with its tabbed interface and details panel](/images/retail-accounts/retail-account-detail.png)
 </Frame>
 
-Clicking a retail account opens the detail page with a tabbed interface:
+The header shows the retailer's account reference, a status chip and a link to the parent account.
 
-| Tab            | Description                                                                       |
-| -------------- | --------------------------------------------------------------------------------- |
-| **Overview**   | Account details, key dates, and summary statistics                                |
-| **Validation** | Invoice-validation and gap-check toggles, run validation, and open gaps (badged)  |
-| **Invoices**   | Invoices billed against this retail account, with document preview                |
-| **Ledger**     | Financial ledger of charges and payments, with an outstanding balance             |
-| **Agreements** | Energy [agreements](/agreements) linked to this retail account                    |
-| **Tariffs**    | [Tariff](/tariffs) rates assigned to this retail account                          |
-| **Scenarios**  | Tariff-review [scenarios](/scenarios) and modelling                               |
-| **Settings**   | Account-specific configuration                                                    |
+| Tab            | What it shows                                                                                   |
+| -------------- | ----------------------------------------------------------------------------------------------- |
+| **Overview**   | **Retail Account Details**, a **Validation** summary and, if you have Modelling access, a **Scenarios** card |
+| **Invoices**   | **Calendar** (billing-period calendar) and **Grid** (invoice list with a document preview) views |
+| **Validation** | Validation and gap-check state, run validation for a period, and open gaps. The badge counts open items |
+| **Ledger**     | Charges and payments with the outstanding balance. **Set opening balance** records a starting balance |
+| **Agreements** | **Agreements** view: linked [agreement](/agreements) connections. **Tariffs** view: [tariff](/tariffs) assignments, with **Assign / switch tariff** |
+| **Settings**   | Account details, validation and billing settings, payment file settings and the change history |
 
-Header actions let you **Add a Tariff**, create a **Retail Sub-Account** (a child account under this one), **Activate** the account, or **Close** it. Activating an account also closes any other Active or pending accounts on the connection; closing prompts for a close date and can be marked as *Deactivation Pending*.
+The **Scenarios** card lists tariff-review [scenarios](/scenarios) for the account. Use **Model opportunities** to start a new one, or **Bulk tariff review** for a multi-period review.
 
-### Merging retail accounts
+### Header actions
 
-When duplicate retail accounts exist for the same connection, merge them into a single root. The merge is **irreversible** — all agreements, connections, invoices, and related data move into the chosen root account.
+| Action                             | What it does                                                                 |
+| ---------------------------------- | ---------------------------------------------------------------------------- |
+| **Assign tariff**                  | Opens the **Tariffs** view of the **Agreements** tab and the assign/switch tariff dialog |
+| **New Associated Retail Account**  | Creates a retail account linked under this one                               |
+| **Activate Retail Account**        | Activates the account. Hidden when it is already active                      |
+| **Close Retail Account**           | Closes the account on a date you choose. Hidden when it is already inactive  |
+
+Activating an account also closes any other active or pending accounts on the connection. Tick **Mark as Pending** to close those as **Deactivation pending** instead of **Inactive**. When closing, tick **Mark as Pending** to close this account as **Deactivation pending**.
+
+## Merging retail accounts
+
+When duplicate retail accounts exist for the same connection, merge them into a single root. The merge is **irreversible**: agreements, connections, invoices and related data move into the root account.
 
 <Steps>
   <Step title="Select">
-    Choose the **root** account to keep, then select the other accounts to merge into it.
+    Click **Merge Retail Accounts**. Choose the root account to keep, then add the accounts to merge into it.
   </Step>
   <Step title="Review">
-    Confirm the root and the accounts being merged. Each shows its supplier reference and open/close dates.
+    Click **Review**. Check the root and the accounts being merged, each with its supplier reference and open and close dates.
   </Step>
   <Step title="Merge">
-    Run the merge. Data is reassigned to the root and the merged accounts are processed.
+    Click **Merge**. UMS reassigns the data to the root while the **Load** step runs.
   </Step>
   <Step title="Results">
-    Review per-account **Success**/**Failed** results. Download the results as JSON, resolve any exceptions, and delete successfully-merged accounts as needed.
+    Review the **Success** and **Failed** counts. Click **Download Results** to save them as JSON, then resolve any failures.
   </Step>
 </Steps>
 
-{/* TODO screenshot: /images/retail-accounts/merge.png — retail account merge modal (Select/Review/Results) */}
-
 <Tip>
-  Use **Merge Recommendations** to let UMS surface likely duplicates automatically instead of selecting them by hand.
+  Use **Merge Recommendations** to let UMS surface likely duplicates instead of finding them by hand.
 </Tip>
+
+## Related
+
+- [Agreements](/agreements): the contracts retail accounts are linked to
+- [Validation](/validation): checks invoices against each retail account's tariffs
+- [Payments](/payments): pays validated invoices by retail account

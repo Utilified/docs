@@ -1,77 +1,107 @@
 ---
 title: "Managing Agreements"
-description: "View, create, and update energy supply agreements in UMS — set contract terms and dates, attach connections, and link the tariffs used for validation."
+description: "View, create, and update energy supply agreements in UMS: set contract terms and dates, attach connections, and link the tariffs used for validation."
+ums_routes:
+  - "/agreements"
+  - "/agreements/[id]"
+  - "/agreements/merge"
 ---
 
-Agreements are central to UMS — they link accounts, suppliers, connections, and tariffs together.
+Agreements link accounts, suppliers, connections and tariffs together. For a reference of the Agreements page, its views and statuses, see [Agreements](/agreements).
+
+## Creating a new agreement
+
+<Steps>
+  <Step title="Open the Agreements page">
+    Open **Agreements** in the **Commercial** group of the sidebar.
+  </Step>
+  <Step title="Open the create drawer">
+    Click **Add agreement**.
+  </Step>
+  <Step title="Fill in the agreement details">
+    The drawer groups the fields under **Agreement Information** (name, type and reference), **Dates** (start, end and executed), **Status** (an optional override and its reason), **Relationships** (account and supplier) and **Documents**. Name and type are required.
+  </Step>
+  <Step title="Save">
+    Save the drawer. The new agreement appears in the list.
+  </Step>
+  <Step title="Complete the setup">
+    Open the agreement and add its connections and tariffs.
+  </Step>
+</Steps>
 
 ## Viewing agreement details
 
-Click **See Details** on any agreement to open the detail page.
+Click an agreement's name in the **Agreement** column to open its detail page.
 
+{/* screenshot-stale */}
 <Frame>
   ![Agreement detail page in UMS](/images/agreements/agreement-detail.png)
 </Frame>
 
-The agreement detail page has tabs for:
+The detail page has these tabs:
 
-- **Overview** — Agreement summary, dates, supplier, and key details
-- **Connections** — Connections covered by this agreement
-- **Tariffs** — Tariff structures and rates for this agreement
-- **Brokerage** — Brokerage records linked to this agreement
-- **Settings** — Agreement-specific settings
+- **Overview**: agreement summary, dates, supplier and key details
+- **Connections**: connections covered by this agreement
+- **Tariffs**: tariff structures and rates for this agreement
+- **Brokerage**: brokerage records linked to this agreement
+- **Settings**: agreement-specific settings
 
-Creating a retail account or attaching a document are header actions on the agreement detail page (**New Retail Account** and **Add Document**), not separate tabs.
+Header actions cover the rest: **Extract from contract**, **New tariff** (on the **Tariffs** tab), **New Retail Account**, **Add Document**, **Add a Connection**, **Bulk Add Connections**, **Merge Into This Agreement** and **Add a Brokerage Record**.
 
 ## Managing connections
 
-The **Connections** tab shows which meter connections are covered by this agreement.
+The **Connections** tab lists the **Agreement Connections**: the meter connections this agreement covers. Click a row to open it.
 
+{/* screenshot-stale */}
 <Frame>
   ![Agreement connections tab in UMS](/images/agreements/agreement-connections-tab.png)
 </Frame>
 
 ### Adding connections
 
-You can add connections individually or in bulk:
+- **One connection**: click **Add a Connection**. The drawer starts with the agreement's dates; pick the connection and, optionally, its retail account.
+- **Many connections**: click **Bulk Add Connections** to open **Link connections to agreement**.
 
-- **Individual** — Click **Add a Connection** and search for the connection identifier (NMI, MIRN).
-- **Bulk** — Click **Bulk Add Connections** to open the wizard, where you can:
-  - Enter connection identifiers manually
-  - Upload a CSV file with identifiers
-  - Paste identifiers from a spreadsheet
-  - Set effective dates for all connections at once
+<Steps>
+  <Step title="Connections">
+    Choose the **Namespace**, then paste the connection identifiers (NMIs or MIRNs). UMS looks each one up in that namespace. **Start Date** and **End Date** default from the agreement and apply to every connection created.
+  </Step>
+  <Step title="Review">
+    Check how many are **Ready to create** and how many are **Invalid or pending**, then create the links.
+  </Step>
+</Steps>
 
 ## Managing tariffs
 
-The **Tariffs** tab shows tariff structures linked to this agreement.
+The **Tariffs** tab shows the tariff structures linked to this agreement.
 
+{/* screenshot-stale */}
 <Frame>
   ![Agreement tariffs tab in UMS](/images/agreements/agreement-tariffs-tab.png)
 </Frame>
 
-See the [Managing Tariffs](/guides/managing-tariffs) guide for detailed instructions on creating and editing tariffs.
+- **New tariff** opens the tariff builder with the agreement and supplier filled in. The button shows only while the **Tariffs** tab is open.
+- **Extract from contract** reads a contract for you. See below.
 
-## Creating a new agreement
+See the [Managing Tariffs](/guides/managing-tariffs) guide for creating and editing tariffs.
+
+### Extracting a tariff from a contract
 
 <Steps>
-  <Step title="Open the Agreements page">
-    Navigate to the **Agreements** page.
+  <Step title="Upload the contract">
+    Click **Extract from contract** and drop a signed contract or offer document into **Extract Tariff from Contract**.
   </Step>
-  <Step title="Open the create drawer">
-    Click the **+** button in the top-right corner.
+  <Step title="Review the proposal">
+    Joule reads the document, usually in under a minute, and proposes a tariff. Nothing is created yet.
   </Step>
-  <Step title="Fill in the agreement details">
-    - **Name** — Descriptive name for the agreement
-    - **Type** — ELEC_RETAIL, ELEC_METERING, NGAS_RETAIL, and so on
-    - **Account** — The account this agreement belongs to
-    - **Supplier** — The energy retailer or metering provider
-    - **Date Start** / **Date End** — Contract period
-  </Step>
-  <Step title="Save">
-    Click **Save**.
-  </Step>
-  <Step title="Complete the setup">
-    Add connections and tariffs to complete the setup.
+  <Step title="Confirm or reject">
+    Click **Confirm & Create Tariff** to create it, or **Reject** to discard the proposal.
   </Step>
 </Steps>
+
+## Other actions
+
+- **New Retail Account** creates a retail account with the agreement's account, supplier and dates filled in.
+- **Add Document** attaches a contract or other file to the agreement.
+- **Add a Brokerage Record** creates a [brokerage](/brokerage) record for this agreement, starting as pending, with its dates filled in from the agreement.
+- **Merge Into This Agreement** opens the merge flow with this agreement as the root. Pick the duplicate agreements to fold into it, review, then merge. The merge cannot be undone. You can also start a merge from **Merge Agreements** on the Agreements list.
