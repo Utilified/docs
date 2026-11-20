@@ -1,37 +1,70 @@
 ---
 title: "Suppliers"
-description: "Manage the energy retailers, metering providers, and utility service companies your accounts hold agreements with — the counterparties to every contract."
+description: "Manage the retailers, networks, metering providers and other utility companies your accounts deal with, including how each one is paid."
+ums_routes: ["/suppliers", "/suppliers/[id]"]
 ---
 
-Suppliers represent energy retailers, metering providers, and other utility service companies that your accounts have agreements with.
+Go to **Accounts** in the sidebar, then the **Suppliers** tab. The tab only appears if you have access to suppliers.
 
+Suppliers are the energy retailers, network operators, metering providers and other utility companies your accounts hold agreements and retail accounts with, and who issue your invoices.
+
+{/* screenshot-stale */}
 <Frame>
   ![UMS Suppliers list showing suppliers in a data grid](/images/suppliers/suppliers-list.png)
 </Frame>
 
 ## Suppliers list
 
-The Suppliers page displays all suppliers in a data grid:
+Tiles above the grid show **Active Suppliers** and **New Suppliers** (this month and this year).
 
-| Column       | Description                                                           |
-| ------------ | --------------------------------------------------------------------- |
-| **Name**     | The supplier company name                                             |
-| **Type**     | Supplier type — RETAIL (energy retailer) or METER (metering provider) |
-| **Tax Id**   | The supplier's ABN or ACN                                             |
-| **Location** | Country code (for example, AU for Australia)                          |
+Suppliers form a hierarchy: a parent supplier can have associated (child) suppliers. The grid opens on top-level suppliers, sorted by name. Click the expand control on a row to show its associated suppliers.
 
-Summary cards show:
+| Column       | Description                            |
+| ------------ | -------------------------------------- |
+| **Name**     | The supplier name. Click it to open the supplier. |
+| **Type**     | The supplier type (see below)          |
+| **Tax ID**   | The supplier's ABN or ACN              |
+| **Location** | Country code, for example `AU`         |
 
-- **# Suppliers** — Total active and inactive suppliers
-- **New Suppliers** — Added this month and year with growth percentages
-
-### Creating a supplier
-
-Click the **+** button in the top-right corner to add a new supplier.
+Click **New Supplier** to open the **Create New Supplier** drawer.
 
 ### Supplier types
 
-| Type       | Description                                                   |
-| ---------- | ------------------------------------------------------------- |
-| **RETAIL** | Energy retailer that supplies electricity, gas, or water      |
-| **METER**  | Metering provider responsible for meter installation and data |
+| Type                      | Code           |
+| ------------------------- | -------------- |
+| **Retailer**              | `RETAIL`       |
+| **Network Operator**      | `NETWORK`      |
+| **Distributor**           | `DISTRIBUTION` |
+| **Transmission Operator** | `TRANSMISSION` |
+| **Metering Provider**     | `METER`        |
+| **Wholesaler**            | `WHOLESALE`    |
+
+## Supplier detail page
+
+The header shows the supplier name and an **Active** or **Inactive** status chip.
+
+| Tab                 | What it shows                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------- |
+| **Overview**        | Counts of **Associated Suppliers**, **Agreements**, **Invoices** and **Retail Accounts**; **Recent agreements**; **Associated suppliers**; and **Supplier details** |
+| **Agreements**      | [Agreements](/agreements) with this supplier                                                   |
+| **Retail Accounts** | [Retail accounts](/retail-accounts) held with this supplier                                    |
+| **Invoices**        | [Invoices](/invoices) issued by this supplier                                                  |
+| **Brokerage**       | **Brokerage records** and **Revenue data** segments for this supplier. See [Brokerage](/brokerage). |
+| **Settings**        | Supplier settings (see below)                                                                  |
+
+### Actions
+
+| Action             | What it does                                                                     |
+| ------------------ | -------------------------------------------------------------------------------- |
+| **Edit**           | Opens the **Edit Supplier** drawer                                               |
+| **Add Associated** | Opens the **Add Associated Supplier** drawer to create a child supplier. Only shown on top-level suppliers. |
+
+### Settings tab
+
+| Section              | What you can do                                                                                     |
+| -------------------- | --------------------------------------------------------------------------------------------------- |
+| **Supplier Details** | Edit **Name**, **Type**, **Parent**, **Tax ID**, **Tax URL**, **Location** and **Entity Type**        |
+| **Payment Details**  | Set the **Payment Method** and **Remittance Email**, and the bank details used in ABA direct-entry [payment files](/payments): **BSB**, **Account Number** and **Account Name**. Only organisation admins can change the bank details. |
+| **Contacts**         | The supplier's contacts. Turn on **Receives submissions** for each contact who should be emailed the signed retail agreement pack. |
+| **Learned rules**    | Rules learned while resolving invoice exceptions for this supplier. They apply immediately; click **Remove** to start flagging again. |
+| **Data management**  | **Archive supplier** (set it inactive) or **Delete supplier** (permanent)                            |

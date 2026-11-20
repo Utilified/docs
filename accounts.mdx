@@ -1,84 +1,98 @@
 ---
 title: "Accounts"
 description: "Manage the businesses you supply energy for. Accounts are the top-level container for sites, connections, agreements, invoices, and contacts."
+ums_routes: ["/accounts", "/accounts/[id]"]
 ---
 
-Accounts represent the businesses or entities you manage energy for. Each account is the top-level container for sites, connections, agreements, invoices, and contacts.
+Go to **Accounts** in the sidebar. The **Accounts** hub has tabs for **Accounts**, **Sites**, **Retail accounts**, **Contacts** and **Suppliers**; this page covers the **Accounts** tab.
 
+Accounts represent the businesses or entities you manage energy for. Each account is the top-level container for its sites, connections, agreements, invoices and contacts. An account can have associated (child) accounts, for example the entities in a group.
+
+{/* screenshot-stale */}
 <Frame>
   ![UMS Accounts list showing accounts in a data grid](/images/accounts/accounts-list.png)
 </Frame>
 
 ## Accounts list
 
-The Accounts page displays all accounts in your organisation in a data grid with the following columns:
+Tiles above the grid show **Active Accounts**, **New Accounts** (this month and this year) and **Expiring Agreements** (within the next 90 days).
 
-| Column          | Description                                                                              |
-| --------------- | ---------------------------------------------------------------------------------------- |
-| **Name**        | The business or entity name                                                              |
-| **Tax Id**      | ABN or ACN for the entity                                                                |
-| **Entity Type** | The legal entity type (for example, Australian Private Company, Strata-title, Other Partnership) |
+The grid opens on active, top-level accounts. Click the expand control on a row to show its associated accounts. Click an account name, or **See Details**, to open it.
 
-Summary cards at the top show:
+The grid shows the **Account** column by default. Add other columns from the grid's column settings:
 
-- **# Accounts** — Total active and inactive accounts
-- **New Accounts** — Accounts added this month and this year, with percentage growth
+| Column                  | Description                                    |
+| ----------------------- | ---------------------------------------------- |
+| **Account**             | The account name                               |
+| **Tax ID**              | The account's ABN or other tax ID              |
+| **Entity Type**         | The legal entity type                          |
+| **Annual Cost**         | Annual utility cost for the account            |
+| **Next Expiry**         | The nearest agreement end date                 |
+| **Sites**               | Active sites                                   |
+| **Connections**         | Active connections                             |
+| **Associated Accounts** | Active child accounts                          |
+| **Status**              | **Active** or **Inactive**                     |
 
-### Toolbar actions
+### Actions
 
-The data grid toolbar provides:
+| Action             | What it does                                                                                     |
+| ------------------ | ------------------------------------------------------------------------------------------------ |
+| **Add account**    | Opens a drawer to create an account                                                              |
+| **Guided setup**   | Creates an account, then opens guided onboarding to load its sites, connections, agreements and invoices |
 
-- **Filter** — Filter accounts by any column
-- **Column visibility** — Show or hide columns
-- **Export** — Download account data as CSV
-- **Refresh** — Reload the data
-- **Density** — Toggle between compact, standard, and comfortable row heights
-- **Search** — Quick-search across all visible columns
-
-### Row actions
-
-Each row has action buttons on the right:
-
-- **See Details** (arrow icon) — Navigate to the account detail page
-- **Quick Edit** (pencil icon) — Open a drawer to edit account fields inline
-- **More** (three dots) — Additional actions
-
-### Creating an account
-
-Click the **+** button in the top-right corner to create a new account. You are prompted to enter the account name, tax ID, entity type, and other details.
-
-<Tip>
-  For a detailed walkthrough, see the [Creating Accounts](/guides/creating-accounts) guide.
-</Tip>
+See [Creating accounts](/guides/creating-accounts).
 
 ## Account detail page
 
+{/* screenshot-stale */}
 <Frame>
   ![UMS account detail page with a tabbed interface](/images/accounts/account-detail.png)
 </Frame>
 
-Clicking **See Details** on an account opens the detail page with a tabbed interface:
+The header shows the account name, its icon and an **Active** or **Inactive** status chip.
 
-| Tab                 | Description                                                                     |
-| ------------------- | ------------------------------------------------------------------------------- |
-| **Overview**        | Summary stats, site map, account details, entity health score, and inbox status |
-| **Sites**           | Physical locations associated with this account                                 |
-| **Agreements**      | Energy agreements linked to this account                                        |
-| **Retail Accounts** | Retailer account references                                                     |
-| **Connections**     | Energy connections (NMIs, MIRNs) under this account                             |
-| **Invoices**        | Invoices associated with this account                                           |
-| **Contacts**        | People associated with this account                                             |
-| **Inbox**           | Email inbox for this account (shown when the account has an email inbox)         |
-| **Settings**        | Account-specific settings                                                       |
+| Tab            | Segments                                                          | What it shows                                                     |
+| -------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| **Overview**   | None                                                              | Stats, site map, spend trend, account details and people          |
+| **Sites**      | **Sites**, **Site data**, **Consumption**                         | The account's sites, their [site data](/site-data), and consumption |
+| **Connections**| None                                                              | The account's [connections](/connections)                         |
+| **Invoices**   | **Invoices**, **Retail accounts**, **Completeness**, **Inbox**    | [Invoices](/invoices), [retail accounts](/retail-accounts), billing completeness, and the account's email inbox |
+| **Agreements** | None                                                              | The account's [agreements](/agreements)                           |
+| **Settings**   | None                                                              | Account settings (see below)                                      |
+
+The **Inbox** segment only appears when the account has an email address. The **Sites** segment has a **Bulk Upload Sites** button that opens a site import scoped to the account.
+
+### Header actions
+
+| Action                                 | What it does                                                                                     |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Launch Onboarding with Joule** (Joule icon) | Opens guided onboarding for this account                                                  |
+| **New**                                | Opens a menu: **New Associated Account**, **New Contact**, **New Site**, **New Retail Account**, **New Connection**, **New Agreement** |
+| **View in portal** (eye icon)          | Previews the account as a portal user sees it. Only shown when your organisation has a customer portal. |
 
 ### Overview tab
 
-The Overview tab provides an at-a-glance summary:
+- Stats: **Active Sites**, **Connections**, **Agreements**, **Retail Accounts** and **Inbox Unread**, plus a data coverage score with **Site**, **Retail** and **Tariff** percentages. Aim for a score of 75 or more.
+- **Site locations**: a map of the account's sites and those of its associated accounts.
+- **Invoice spend trend**: invoiced spend for the last 12 months.
+- Details panel: **Annual utility cost**, a **Needs attention** list (expiring agreements, retail accounts rolling off or on, unread inbox items), **Budgets**, **Account details** (email, ABN, entity type, parent account, created date) and **Associated accounts**.
+- **People**: the account's contacts, with an option to add one.
 
-- **Summary Cards** — Active Sites, Active Connections, Active Agreements, Retail Accounts, and Inbox (Unread) counts
-- **Score** — An entity health score showing completeness of Site, Retail, and Tariff data as percentages
-- **Sites Map** — Interactive map showing the geographic location of all sites under this account
-- **Annual Utility Cost** — Total annual energy expenditure
-- **Account Details** — Entity type and other key information
-- **Entity Health** — Progress bars showing Sites, Connections, Agreements, and Retail Accounts with active vs total counts
-- **Inbox** — Unread, Processed, and Total inbox items for this account
+### Settings tab
+
+| Section                  | What you can do                                                                                   |
+| ------------------------ | ------------------------------------------------------------------------------------------------- |
+| **Account Details**      | Edit **Account name**, **Tax ID**, **Website**, **Tax URL**, **Company type** and **Parent account** |
+| **Account Icon**         | Set the icon shown beside the account name                                                        |
+| **Email Configuration**  | Set or generate the **Account Email Address** used to import invoices by email                    |
+| **Data Feeds**           | List the account's [data feeds](/data-feeds) and click **Create Data Feed** to add one            |
+| **Portal Access**        | Manage **Portal users** and choose which portal features and sites they can reach                 |
+| **Gap Check Settings**   | Turn on **Default Gap Check for New Retail Accounts**, or enable or disable gap check for retail accounts across all associated accounts |
+| **Onboarding Tools**     | Click **Launch Onboarding with Joule** to open guided onboarding                                  |
+| **Custom Fields**        | Store organisation-defined fields against the account                                             |
+| **Data management**      | **Archive account** (set it inactive) or **Delete account** (permanent)                            |
+
+## Related guides
+
+- [Creating accounts](/guides/creating-accounts)
+- [Getting set up](/getting-started/getting-set-up)

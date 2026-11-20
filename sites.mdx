@@ -1,82 +1,97 @@
 ---
 title: "Sites"
 description: "Manage the physical locations linked to your accounts — offices, warehouses, retail stores, or any premises with energy connections."
+ums_routes: ["/sites", "/sites/[id]"]
 ---
 
-Sites represent the physical locations associated with your accounts — offices, warehouses, retail stores, or any premises with energy connections. Each site sits under an [account](/accounts) and contains the [connections](/connections) (electricity, gas, water meters) at that location. Sites also appear on the dashboard and account map.
+Go to **Accounts** in the sidebar, then the **Sites** tab.
 
+Sites represent the physical locations associated with your accounts: offices, warehouses, retail stores, or any premises with energy connections. Each site sits under an [account](/accounts) and holds the [connections](/connections) at that location.
+
+{/* screenshot-stale */}
 <Frame>
   ![UMS Sites list showing sites in a data grid](/images/sites/sites-list.png)
 </Frame>
 
 ## Sites list
 
-The Sites page displays all sites across your organisation in a data grid:
+Tiles above the grid show **Active Sites** and **New Sites** (this month and this year). A **List** / **Map** switch at the start of the grid toolbar changes the view:
 
-| Column             | Description                                    |
-| ------------------ | ---------------------------------------------- |
-| **Name**           | The site name or description                   |
-| **Address Line 1** | Street address                                 |
-| **Address Line 2** | Additional address details (unit, level, etc.) |
-| **Account Name**   | The parent account this site belongs to        |
-| **Active**         | Whether the site is currently active           |
+| View     | What it shows                                                                  |
+| -------- | ------------------------------------------------------------------------------ |
+| **List** | A grid of active sites, most recently edited first                             |
+| **Map**  | Your sites on a map. Sites appear once they have coordinates.                  |
 
-Summary cards at the top show:
+| Column        | Description                             |
+| ------------- | --------------------------------------- |
+| **Site**      | The site name. Click it to open the site. |
+| **Address**, **Address 2**, **Address 3** | Street address lines |
+| **State**     | State code                              |
+| **Account**   | The parent account                      |
+| **Status**    | **Active** or **Inactive**              |
 
-- **# Sites** — Total active and inactive sites
-- **New Sites** — Sites added this month and this year, with percentage growth
+### Actions
 
-### Toolbar actions
+| Action          | What it does                                                               |
+| --------------- | -------------------------------------------------------------------------- |
+| **New Site**    | Opens the **Create New Site** drawer                                       |
+| **Site data**   | Opens the [site data](/site-data) records across all sites                 |
+| **Data types**  | Opens the [site data types](/site-data#site-data-types)                    |
 
-Alongside the standard grid toolbar (filter, column visibility, export, density, search), the header provides:
-
-- **New Site** (**+** icon) — Create a new site
-- **Site Data** — Jump to the site data records across all sites
-- **Data Types** — Manage the site data type definitions
-
-### Creating a site
-
-Click the **+** button in the top-right corner to create a new site. The drawer asks for a `name` and parent `account` (both required), then an address. Typing into the address field uses Google Places autocomplete to populate `address_line_1`, `address_line_2`, `city`, `state`, `postcode`, `country`, and the `latitude`/`longitude` coordinates. You can also add sites from within an [account's](/accounts) Sites tab.
+The create drawer asks for the site `name` and parent `account`, then the address. Start typing in the first address line to search with Google Places, or enter it manually. You can also add a site from an account's **New** menu, or bulk-upload sites from the account's **Sites** tab.
 
 ## Site detail page
 
+{/* screenshot-stale */}
 <Frame>
   ![A site detail page showing the stats row, location map, and connections](/images/sites/site-detail.png)
 </Frame>
 
-Clicking **See Details** on a site opens the detail page with a tabbed interface. The header also exposes quick actions: **Add a Connection**, **Change Location** (edit the address and map pin), and **Deactivate Site**. A banner is shown when a site has been deactivated.
+The header shows the site name, "Site of" its account and the address, and a status chip. A deactivated site shows **Deactivated** with the date.
 
-| Tab                 | Description                                                                                  |
-| ------------------- | ------------------------------------------------------------------------------------------- |
-| **Overview**        | Summary stats, a location map, and the active connections at this site                      |
-| **Connections**     | All [connections](/connections) (site connections) at this location                         |
-| **Utilities**       | The underlying energy connections by utility (electricity, gas, water)                       |
-| **Data**            | Site data records, with a toggle between **Site Data** (add or bulk-upload) and **Consumption** |
-| **Invoices**        | Invoices for connections at this site                                                       |
-| **Retail Accounts** | The [retailer account](/retail-accounts) references tied to this site's connections         |
-| **Settings**        | Edit site details, location, custom fields, and deactivate or delete the site               |
+| Tab             | Segments                                                                    | What it shows                                                        |
+| --------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| **Overview**    | None                                                                        | The site's active connections and a **Location** panel with a map     |
+| **Connections** | None                                                                        | Every [connection](/connections) linked to the site                   |
+| **Usage**       | **Site data**, **Consumption**, **Usage analytics**, **Solar**, **Energy assets** | Site data records, consumption, analytics and installed equipment |
+| **Invoices**    | **Invoices**, **Retail accounts**                                           | [Invoices](/invoices) and [retail accounts](/retail-accounts) for the site's connections |
+| **Budgets**     | None                                                                        | Budgets set for the site                                             |
+| **Settings**    | None                                                                        | Site settings (see below)                                            |
 
-### Overview tab
+On the **Overview** tab, a banner appears when a network outage affects the site. Click a row on the **Connections** tab to open the connection, or use **Edit site link** to change how the connection is linked to the site.
 
-The Overview tab gives an at-a-glance summary of the site:
+### Usage segments
 
-- **Stats row** — **Active Connections** count, a **Status** chip (Active or Inactive), and the **Deactivation Date** (or N/A)
-- **Location** — An interactive map centred on the site's coordinates
-- **Connections** — A grid of the active connections at the site, showing identifier, connection address, utility, and namespace
+| Segment             | What it shows                                                                    | Appears when                                       |
+| ------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **Site data**       | The site's [site data](/site-data). **Add New** adds a record; **Bulk Upload** imports many. | Always                                  |
+| **Consumption**     | Consumption for the site's connections                                           | Always                                             |
+| **Usage analytics** | Usage analytics for the site                                                     | The feature is enabled for your organisation and you have analytics access |
+| **Solar**           | Solar generation for the site                                                    | The feature is enabled for your organisation and you have analytics access |
+| **Energy assets**   | Equipment installed at the site (see [Energy assets](#energy-assets))            | You have modelling access                          |
+
+### Header actions
+
+| Action                                       | What it does                                                         |
+| -------------------------------------------- | -------------------------------------------------------------------- |
+| **Add a Connection** (connection icon)       | Links a connection to this site                                      |
+| **Model opportunities**                      | Starts a [scenario](/scenarios) to model tariff, power factor, solar, battery and generator options for the site. Shown for active sites when you can create modelling records. |
+| **Change Location** (location icon)          | Edits the site's address and map pin                                 |
+| **Deactivate site** (warning icon)           | Deactivates the site. Only shown while the site is active.           |
 
 ### Settings tab
 
-The Settings tab is where site data is maintained:
-
-- **Site Details** — Name, parent account, active status, and active/inactive dates
-- **Location Details** — The full address, coordinates, and an **Edit Site** action to update the map pin
-- **Custom Fields** — Organisation-defined fields stored against the site
-- **Danger Zone** — Archive (deactivate) or permanently delete the site
-
-For more on what connects to a site, see [Connections](/connections) and [Agreements](/agreements).
+| Section                | What you can do                                                                         |
+| ---------------------- | --------------------------------------------------------------------------------------- |
+| **Site Details**       | Edit **Site name**, **Account**, **Active Status**, **Date Active** and **Date Inactive** |
+| **Location**           | View the address and coordinates. Click **Edit location** to change them.               |
+| **Cost Allocations**   | Split the site's charges across cost centres on [payment files](/payments)              |
+| **Custom Fields**      | Store organisation-defined fields against the site                                      |
+| **Additional details** | View the site's other recorded fields                                                   |
+| **Danger Zone**        | **Archive site** (set it inactive) or **Delete site** (permanent)                        |
 
 ## Energy assets
 
-The **Energy assets** tab appears when your user has modelling access. It records the solar, batteries, inverters and generators already installed at the Site. Declare equipment and maintain its specifications and operating assumptions before selecting it for an [energy assessment](/scenarios#energy-assessments-and-existing-equipment).
+The **Energy assets** segment on the **Usage** tab appears when your user has modelling access. It records the solar, batteries, inverters and generators already installed at the site. Declare equipment and maintain its specifications and operating assumptions before selecting it for an [energy assessment](/scenarios#energy-assessments-and-existing-equipment).
 
 For existing generators, check the rating, fuel costs, parallel approval and operating limits. Detected equipment needs a declaration so the study knows its specifications. Energy assessments require modelling and DER-modelling access for your organisation and the relevant user permissions. Proposals require proposal access as well.
