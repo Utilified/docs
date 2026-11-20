@@ -1,6 +1,10 @@
 ---
 title: "Proposals"
 description: "Create energy proposals in UMS. Assess a site, prepare a draft, review the proposed options, and issue the proposal for your customer."
+ums_routes:
+  - "/proposals"
+  - "/proposals/new"
+  - "/proposals/[id]"
 ---
 
 The Proposals module lists every assessment proposal in your organisation, newest first. A proposal starts from an assessment of a [site](/sites) and can draw on solar and battery studies from [Scenarios](/scenarios).
@@ -20,6 +24,8 @@ The Proposals module lists every assessment proposal in your organisation, newes
   </Step>
   <Step title="Set the assessment details">
     Choose the **Template**, the **Baseline period** and any **Assumptions**. You can attach up to five existing studies.
+
+    Enter a **Proposal title**, or leave it blank to use the suggested one. You can change it in the editor.
   </Step>
 </Steps>
 
@@ -33,13 +39,22 @@ Click a row in the list to open the proposal editor. The editor has three panes:
 
 Changes save automatically. The header shows **Saving** or **Saved**.
 
-Joule can draft narrative text from the proposal's figures. Wait for the analysis to finish before you ask it to draft. If you have already written text in a section, UMS asks before replacing it.
+Joule can draft narrative text from the proposal's figures. Select a section and click **Draft with Joule**. Once Joule has drafted a section, the button reads **Regenerate with Joule**. Wait for the analysis to finish before you ask it to draft. If you have already written text in a section, UMS asks before replacing it.
+
+The **Tariff options**, **Power factor and demand** and **Solar and battery** sections list their costed options under **Options shown**. Tick the options the section presents. At least one stays shown.
 
 ## Issuing a proposal
 
 The readiness bar shows **Ready to issue** once the proposal is complete, or lists **Warnings to resolve**. Acknowledge or fix each warning, then issue the proposal.
 
 An issued proposal opens for anyone signed in to your organisation. A proposal shows as **Draft** until you issue it, then as **Issued**.
+
+Once issued, the readiness bar offers:
+
+- **Download PDF**: downloads the issued proposal.
+- **Copy link**: copies a link that opens the proposal for anyone signed in to your organisation. Public client links aren't available yet.
+
+If issuing takes longer than expected, nothing has been issued yet. Click **Issue again**.
 
 ## Related
 
