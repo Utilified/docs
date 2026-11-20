@@ -1,14 +1,15 @@
 ---
 title: "Dashboards"
-description: "Build dashboards from KPI, chart, table, ranking, and text blocks, then publish them to your customers' portal."
+description: "Build dashboards from KPI, chart, map, table, ranking and text blocks, then publish them to your customers' portal."
+ums_routes: ["/dashboards", "/dashboards/[id]", "/dashboards/measures"]
 ---
+
+Select **Reports** in the **Insights** group of the sidebar, then the **Dashboards** tab (`/dashboards`).
 
 Dashboards let you build views of spend and usage and publish them to the white-label portal for the accounts they are for. Custom measures add your own formulas for any dashboard to use.
 
-Go to **Reports** and select the **Dashboards** tab (`/dashboards`).
-
 <Note>
-  The **Dashboards** and **Custom measures** tabs only appear when your role includes the dashboards permission. Creating, duplicating, and deleting dashboards each need the matching permission.
+  The **Dashboards** and **Custom measures** tabs only appear when your role includes the dashboards permission. Creating, duplicating and deleting dashboards each need the matching permission.
 </Note>
 
 ## The dashboards list
@@ -17,9 +18,9 @@ The grid shows each dashboard's **Name**, **Status**, **Audience** (how many acc
 
 **Status** is one of:
 
-- **Draft** — not yet published
-- **Published** — live in the portal
-- **Draft differs from published** — published, with unpublished edits
+- **Draft**: not yet published
+- **Published**: live in the portal
+- **Draft differs from published**: published, with unpublished edits
 
 ## Creating a dashboard
 
@@ -31,7 +32,7 @@ The grid shows each dashboard's **Name**, **Status**, **Audience** (how many acc
     Leave **Start with a standard layout** ticked to begin with a set of spend blocks, or untick it to start empty.
   </Step>
   <Step title="Add blocks">
-    Use the block buttons above the canvas: **KPI**, **Line chart**, **Bar chart**, **Table**, **Ranking**, and **Text**. Drag a block to move it, or use the arrow keys (Shift+arrows to resize). Click **Edit block** to configure it.
+    Click a block button above the canvas (see [Block types](#block-types)). Drag a block to move it, or use the arrow keys (Shift+arrows to resize). Click **Edit block** to set its **Title**, measures, comparison, filters and other options.
   </Step>
   <Step title="Set the audience">
     Click **Settings** and choose the **Audience**. Portal users of these accounts, and of every account beneath them, see the dashboard once published.
@@ -43,15 +44,31 @@ The grid shows each dashboard's **Name**, **Status**, **Audience** (how many acc
 
 Changes save automatically while you edit.
 
+## Block types
+
+| Block          | Use it for                                                    |
+| -------------- | ------------------------------------------------------------- |
+| **KPI**        | One headline figure, optionally compared with an earlier period |
+| **Line chart** | Up to four measures along an x axis                           |
+| **Area chart** | Up to four measures along an x axis, filled                   |
+| **Bar chart**  | Up to four measures along an x axis, vertical or horizontal   |
+| **Pie chart**  | One measure split by a dimension                              |
+| **Treemap**    | One measure split by a dimension, sized by value              |
+| **Funnel**     | One measure split by a dimension, drawn as a funnel           |
+| **Site map**   | One measure by site, on a map                                 |
+| **Table**      | Up to four measures, one row per dimension value              |
+| **Ranking**    | One measure ranked across a dimension                         |
+| **Text**       | Headings and notes, written in Markdown                       |
+
 ## Dashboard settings
 
 Click **Settings** to open the settings drawer:
 
 - **Name** and **Description**
-- **Audience** — the accounts the dashboard is published to
-- **Template** — marks the dashboard as a starting point to duplicate for other accounts
-- **Dashboard filters** — filters applied to every block
-- **Filters viewers can change** — choose which of **Period**, **Site**, **Utility**, and **Site tag** portal users can adjust
+- **Audience**: the accounts the dashboard is published to
+- **Template (a starting point to duplicate for other accounts)**
+- **Dashboard filters**: filters applied to every block
+- **Filters viewers can change**: which of **Period**, **Account**, **Agreement**, **State**, **Site**, **Utility** and **Site tag** portal users can adjust
 
 ## Previewing and unpublishing
 
@@ -59,13 +76,18 @@ Click **View as customer** to see the published dashboard as a portal user does.
 
 ## Custom measures
 
-The **Custom measures** tab (`/dashboards/measures`) holds formulas over spend, consumption, demand, emissions, and [site data](/site-data) that any dashboard can use.
+The **Custom measures** tab (`/dashboards/measures`) holds formulas over spend, consumption, demand, emissions and [site data](/site-data) that any dashboard can use.
 
 Click **New measure** and fill in:
 
 - **Name** and **Key**
 - **Formula**
-- **Format** — **Number**, **Currency**, or **Percent (0.25 shows as 25%)**
+- **Format**: **Number**, **Decimal**, **Currency**, or **Percent (0.25 shows as 25%)**
 - **Decimals** and **Unit label** (for example, `$/kWh`)
 
-The grid lists each measure's **Name**, **Key**, **Formula**, **Format**, and **Unit**.
+The grid lists each measure's **Name**, **Key**, **Formula**, **Format** and **Unit**.
+
+## Related guides
+
+- [Reports](/reports)
+- [Site data](/site-data)

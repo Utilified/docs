@@ -1,51 +1,106 @@
 ---
 title: "Market"
-description: "Track wholesale spot prices, electricity futures, commodity indices, and energy news, and build your own market charts."
+description: "Follow wholesale energy prices, futures, market signals, supply changes and news, and build your own market charts."
+ums_routes:
+  [
+    "/market",
+    "/market/news",
+    "/market/forwards",
+    "/market/insights",
+    "/market/supply",
+    "/market/analyse",
+  ]
 ---
 
-The Market module brings wholesale energy market data and news into UMS. Use it to follow prices and explain market movements to your customers.
+Select **Market** in the **Commercial** group of the sidebar (`/market`).
 
-Select **Market** in the main navigation (`/market`). It has three tabs: **Desk**, **News**, and **Analyse**.
+Market brings wholesale energy prices, forward prices, computed market signals, supply changes and news into UMS. Use it to follow the market and explain movements to your customers.
+
+## Tabs
+
+| Tab          | Route              | What it holds                                                                     |
+| ------------ | ------------------ | --------------------------------------------------------------------------------- |
+| **Desk**     | `/market`          | What is happening now: status, signals, the price board, a chart, regions, news and supply |
+| **News**     | `/market/news`     | Market news and market notices, with filters                                      |
+| **Forwards** | `/market/forwards` | Futures contracts and strips, settlement history and forward curves               |
+| **Insights** | `/market/insights` | Signals, region statistics and price shape                                        |
+| **Supply**   | `/market/supply`   | Generation capacity leaving and arriving, and the supply register                 |
+| **Analyse**  | `/market/analyse`  | A custom chart of up to six series, with notes and export                         |
+
+## Choosing a market
+
+Every tab starts with the market bar. Pick a market by its code, or **All markets**. The bar also shows the market's time, its trading sessions (**Open**, **Closed** or **Continuous**), the **Last settlement** date, and **Feeds**: how many price series are on time and how many are late against their usual publishing pattern. On the **Desk**, click the late count to highlight the late prices on the board.
 
 ## Desk
 
-The desk is a live overview of the market:
+The **Desk** reads top to bottom in order of urgency:
 
-- **Ticker** — every instrument, grouped into **Spot**, **Futures**, and **Indices**, with the latest value and change. Stale values are marked **Stale**. Selecting an instrument focuses the desk on it.
-- **Price map** — a map of Australia with each wholesale region shaded and labelled by its spot price. Click a region to select it, or **Expand map** for a larger view. The map shows on desktop widths only.
-- **Regional spot prices** — a table of each spot region's latest price and change
-- **Chart** — with nothing selected, a whole-market chart overlays each region's daily average. Toggle between **Absolute** and **Indexed** (rebased to 100 at the start of the range), and pick a **7d**, **30d**, or **90d** range or **From** / **To** dates.
-- **Forward prices** — the next financial-year base-load strip for each region
-- **Futures** — quarterly base-load contracts per region, and FY (July to June) and CAL (calendar year) strips where traded
-- **Commodities** — fuel and commodity indices that drive wholesale energy costs
-- **Market brief** — a daily summary of the market with numbered links to its sources
-- **News** — the latest headlines, with a link to the full **News** tab
+- Active signals: a strip of **Alert** and **Watch** signals for the market, with a link to the rest in **Insights**. It only shows when a signal is active.
+- **Prices**: the quote board. Rows are grouped into **Spot**, **Gas**, **Fuels and FX**, and **Futures** (WA shows Synergy's offered curve instead). With **All markets** selected, each group is named for its market. The **1D**, **1W**, **1M**, **3M** and **1Y** toggle sets the change period for every row. A price that is behind its usual schedule shows **Late**; hover it to see when the last price landed. Click a row to chart it; a futures row opens **Forwards** instead.
+- **Today in the market**: a daily summary of the market, with numbered links to its sources. Expand it to read the whole brief.
+- The chart: with nothing selected, all regions' prices for the market (**All markets** or the market's prices). Switch between **Full scale** and **Zoom** (cuts off spikes), pick **7D**, **30D** or **90D** or **From** / **To** dates, and use the export menu to **Download CSV** or **Download PNG**. Selecting an instrument charts it alone, with a back button to return.
+- **Regions**: each region's latest spot price, with **High**, **Low**, **Spread** and **Simple average**. The expand button (**Open the live grid**) shows a larger map.
+- **Recent news**: the latest headlines, filtered to the selected instrument where possible. **All news** opens the **News** tab.
+- **Next in supply**: the next capacity **Leaving** and **Arriving, firm**. **Supply** opens the **Supply** tab.
 
-Each price panel shows the data's attribution underneath.
+On narrower screens the rail panels stack under the chart and news moves into a drawer behind the news button.
 
 ## News
 
-The **News** tab lists energy market news. Use **Search news**, filter by **Source** and by **From** / **To** dates, and sort by **Newest** or **Oldest**. Click **Load more** to see older stories.
+The **News** tab opens with **Today in the market**, then filters:
+
+- Category buttons: **All news** plus categories such as **Regulatory**, **Policy**, **Projects**, **Prices**, **Corporate**, **Analysis** and **General**, each with its count
+- **Search news**
+- **Region**, **Commodity** (**Coal**, **Gas**, **Renewables**) and **Source**
+- **Dates**, a date range
+- **Clear filters**, once any filter is set
+
+Below the filters are **Top stories**, the **Latest** stream and a **Market notices** panel. Click **Load more** for older items.
+
+## Forwards
+
+The **Forwards** tab gathers forward prices:
+
+- **Contracts**: quarterly base-load contracts by **Region**, and the **Strips** (financial-year and calendar-year) where traded. Click a contract to chart its history.
+- **Settlement history**: every region's futures settlements over time, or one contract's when selected
+- **Forward curves**: each region's quarterly base-load curve against the curve **1 week ago**, **1 month ago** and **3 months ago**
+
+WA prices are Synergy's offered curve and are labelled that way. A market with no forward prices says so.
+
+## Insights
+
+The **Insights** tab holds computed facts about the selected market:
+
+- **Signals**: rule checks on prices, feeds and announced closures, each **Alert**, **Watch** or **Info**
+- **Region statistics**: spot price statistics per region over **7D**, **30D**, **90D** or **1Y**: **Avg**, **Peak**, **Off-peak**, **P5**, **P95**, **Max**, **Neg.**, **High**, volatility and, where relevant, **Coverage** and **Z vs 1y**. Hover a column heading for its definition. Select a region to see its price shape.
+- **Price shape**: for one region over **30D**, **90D**, **1Y** or **2Y**, an **Average price by hour and month** heat map and a **Duration curve**
+
+## Supply
+
+The **Supply** tab compares generation capacity leaving the market with capacity arriving.
+
+- **Leaving and arriving**: headline **Leaving**, **Firm arriving** and **Net** capacity, with the **Next exit** and **Next firm arrival**. Firm means committed, under construction or commissioning. Turn on **Pipeline** to include projects that aren't firm yet. The **Region** filter scopes the whole tab.
+- **Register**: closures and new projects of 100 MW or more, each linked to its primary source. Narrow it by side (**All**, **Arriving**, **Leaving**), **Status**, fuel or technology, **From** / **To** dates, and **Search**.
 
 ## Analyse
 
-The **Analyse** tab builds a custom chart from up to six series.
+The **Analyse** tab builds a custom chart.
 
 <Steps>
   <Step title="Pick series">
-    Choose up to six instruments in **Series**.
+    Choose up to six instruments in **Series**: spot regions, quarterly futures and other indices.
   </Step>
   <Step title="Shape the chart">
-    Choose **Absolute** or **Indexed**, an aggregation period (**Daily**, **Weekly**, **Monthly**, or **Quarterly**), a statistic (**Avg**, **Max**, or **Min**), and the date range.
+    Choose **Absolute** or **Indexed** (rebased to 100 at the start), an aggregation period (**Daily**, **Weekly**, **Monthly** or **Quarterly**), a statistic (**Avg**, **Max** or **Min**), and the date range.
   </Step>
   <Step title="Add notes">
-    Click **Add note**, click a date on the chart, type the **Note**, and click **Save note**. Notes appear as markers on the chart.
+    Click **Add note**, click a date on the chart, type the **Note**, and click **Add to chart**. Notes appear as markers on the chart.
   </Step>
   <Step title="Export">
-    Download the chart as an image or its data as CSV. Notes are included in the CSV.
+    Use the export menu to **Download PNG** of the chart or **Download CSV** of its data. Notes are included in the CSV.
   </Step>
 </Steps>
 
-If your organisation has portal branding configured, switch between **App theme** and your organisation's branding so an exported chart matches your portal.
+If your organisation has portal branding, switch between **App theme** and your organisation's branding so an exported chart matches your portal.
 
 For a futures series, the tab also lists known forward-looking factors for that delivery period, such as scheduled closures and policy milestones.

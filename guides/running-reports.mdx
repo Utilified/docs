@@ -1,93 +1,81 @@
 ---
-title: "Running Reports"
-description: "Generate, download, and schedule recurring reports in UMS — covering agreements, consumption, invoices, gaps, connections, and brokerage revenue."
+title: "Running reports"
+description: "Run a standard UMS report, pick up the file from History, and schedule a report for recurring email delivery."
+ums_routes:
+  [
+    "/reports",
+    "/reports/[reportId]",
+    "/reports/generate/[id]",
+    "/reports/invoice-batch-export",
+    "/reports/schedule",
+    "/reports/schedules",
+    "/reports/history",
+    "/reports/history/[id]",
+  ]
 ---
 
-UMS provides 14 pre-built reports covering agreements, consumption, invoices, and connections.
+This guide covers running a report from the **Library**, finding its output in **History**, and setting up a schedule. For the full report catalogue and custom reports, see [Reports](/reports).
 
-## Selecting a report
-
-Navigate to the **Reports** page from the sidebar.
-
+{/* screenshot-stale */}
 <Frame>
   ![Reports page listing available reports in UMS](/images/reports/reports-list.png)
 </Frame>
 
-Each report card shows:
-
-- **Report name** and description
-- **Parameters Required** badge (if the report needs configuration)
-- **Run** button — Generate the report immediately
-- **Schedule** button — Set up recurring generation
-
-## Running a report
+## Run a report
 
 <Steps>
-  <Step title="Find the report you need">
-    Locate the report you want to run on the Reports page.
+  <Step title="Open the Library">
+    Select **Reports** in the **Insights** group of the sidebar. The **Library** tab lists the reports you can run.
   </Step>
   <Step title="Click Run">
-    Click **Run** on the report card.
+    Click **Run** on the report's card. A **Parameters Required** chip means you must fill in filters first.
   </Step>
-  <Step title="Configure parameters">
-    If the report requires parameters, a configuration form appears:
+  <Step title="Fill in the parameters">
+    Depending on the report, either a full page or a **Generate Report** dialog opens with its filters, such as dates, accounts and connections.
 
-    - **Date range** — Start and end dates for the report period
-    - **Accounts** — Filter to specific accounts
-    - **Connections** — Filter to specific meter connections
+    On the full page you can save the filters you use often: type a **Preset name** and click **Save preset**. Click a saved preset under **Saved presets** to apply it.
   </Step>
-  <Step title="Generate the report">
-    Click **Generate** to start the report. The report runs in the background.
-  </Step>
-  <Step title="Wait for the notification">
-    You receive a **notification** when it is ready.
+  <Step title="Generate it">
+    Click **Generate report** (or **Generate Report** in the dialog). The report is queued and runs in the background.
   </Step>
 </Steps>
 
-## Downloading results
+<Tip>
+  **Invoice Batch Export** has its own form: choose the **Root Account** and **Date From** (both required) and optionally **Date To**. It produces a ZIP of an invoice CSV and the invoice PDFs.
+</Tip>
+
+## Find the output
 
 <Steps>
-  <Step title="Open the report history">
-    Click **View Report History** or the **View History** button in the top-right.
+  <Step title="Open History">
+    Select the **History** tab. You also get a notification when the report finishes.
   </Step>
-  <Step title="Find your report">
-    Find your report in the history list.
+  <Step title="Find your run">
+    Search by report name or user, or filter by **Status** and **From** / **To** dates. A run shows **Pending** until it finishes, then **Completed** or **Failed**.
   </Step>
-  <Step title="Download the file">
-    Click **Download** to get the report file (CSV or ZIP).
+  <Step title="Get the file">
+    Click **Download**. For a CSV, **View in browser** previews the rows first. If a run failed, its reason shows under the name; where it can be retried, click **Retry this report**.
   </Step>
 </Steps>
 
-## Available reports
-
-| Report                                            | What it shows                                                  |
-| ------------------------------------------------- | -------------------------------------------------------------- |
-| **Agreement Expiry Report**                       | Connections with agreements expiring in a specified timeframe  |
-| **Bulk Consumption Export**                       | Consumption data across multiple meters with time aggregation  |
-| **Connections With No Active Agreement**          | Connections missing a current energy agreement                 |
-| **Connections With No Retail Accounts**           | Connections without active retail accounts                     |
-| **Connections With No Sites**                     | Connections not linked to any site                             |
-| **Electricity Consumption Report**                | Electricity usage statistics per connection                    |
-| **Gas Consumption Report**                        | Gas usage statistics per connection                            |
-| **Invoice Batch Export**                          | ZIP of all invoices (CSV + PDFs) for an account and date range |
-| **Invoice Gap Report**                            | Missing invoices detected per retail account                   |
-| **Invoice Report**                                | Invoice summary over a period for specific accounts            |
-| **Metering and Energy Agreement End Date Report** | Agreement end dates grouped by connection                      |
-| **Monthly Spend Accrual Report**                  | Monthly spend with projections for incomplete months           |
-| **Retail Account Transfer Report**                | Retail accounts in transfer or pending states                  |
-| **Water Consumption Report**                      | Water usage statistics per connection                          |
-
-## Scheduling a report
+## Schedule a report
 
 <Steps>
-  <Step title="Open the schedule dialog">
-    Click **Schedule** on any report card.
+  <Step title="Start a schedule">
+    Click **Schedule** on the report's card, or select the **Schedules** tab and click **Create Schedule**.
   </Step>
-  <Step title="Configure the schedule">
-    - **Frequency** — How often to run (for example, weekly, monthly)
-    - **Parameters** — Pre-configure the report filters
+  <Step title="Name it and choose the report">
+    Enter a **Schedule Name** and pick the **Report**.
   </Step>
-  <Step title="Save">
-    Scheduled reports run automatically and deliver results via notification.
+  <Step title="Set the parameters">
+    Fill in **Report Parameters**. For a date field, turn on **Use Relative Date** and pick a **Relative Date** such as **Previous Month** or **Since last successful run**, so each run covers a new period.
+  </Step>
+  <Step title="Choose the format and recipients">
+    Pick the **Format** (**CSV**, **Excel (XLSX)** or **JSON**) and enter the **Email Addresses** that should receive it.
+  </Step>
+  <Step title="Set when it runs">
+    Choose the **Frequency** and **Time**, plus the **Day of Week**, **Day of Month** or **Month** where needed. Leave **Enable Schedule** on, then click **Create Schedule**.
   </Step>
 </Steps>
+
+Manage schedules on the **Schedules** tab: use the **Enabled** switch to pause one, or **Edit** and **Delete** in the **Actions** column. Scheduled runs also appear in **History**.
