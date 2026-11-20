@@ -1,12 +1,26 @@
 ---
 title: "Brokerage revenue and invoicing"
 description: "The month-end brokerage workflow in UMS: run and approve revenue, raise invoices to retailers, process supplier statements (RCTIs), correct revenue, and handle retailer disputes."
+ums_routes:
+  [
+    "/brokerage/runs",
+    "/brokerage/runs/new",
+    "/brokerage/runs/[id]",
+    "/brokerage/records/[id]",
+    "/brokerage/revenue",
+    "/brokerage/revenue/[id]",
+    "/brokerage/invoices",
+    "/brokerage/invoices/new",
+    "/brokerage/rctis/[id]",
+    "/brokerage/import",
+    "/brokerage/settings",
+  ]
 ---
 
 This guide follows brokerage revenue from calculation to a paid invoice, and covers what to do when a figure is wrong or a retailer disputes an invoice. Everything here lives under **Billing** → **Brokerage**.
 
 <Info>
-  The Brokerage hub has six tabs: **Overview**, **Contracts**, **Revenue**, **Runs**, **Invoices & RCTIs** and **Analytics**. Header buttons such as **New run**, **Raise invoice** and **Import** are available from every tab.
+  The Brokerage hub has six tabs: **Overview**, **Contracts**, **Revenue**, **Runs**, **Invoices & RCTIs** and **Analytics**. The header actions, such as **New run**, **Raise invoice**, import and settings, are available from every tab. Off their own tab they show as icons; hover to see the name.
 </Info>
 
 ## How revenue gets billed
@@ -21,19 +35,14 @@ Each contract (brokerage record, identified by its **OppID** — the external ID
 You can see and change each supplier's method under **Invoices & RCTIs** → **Supplier billing**. Metering providers default to RCTI.
 
 <Note>
-  Every contract also has an **Invoice Recipient** (contract **Settings** tab): **Supplier** or **Account**. For Utilizer, brokerage is always billed to the retailer, so it should be **Supplier**. A contract set to **Account** is invoiced to the customer on its own invoice.
+  Every contract also has an **Invoice Recipient** (contract **Settings** tab): **Supplier** or **Account**. To bill the retailer, set it to **Supplier**. A contract set to **Account** is invoiced to the customer on its own invoice.
 </Note>
 
 ## The monthly workflow
 
 <Steps>
   <Step title="Run the month's revenue">
-    On the **Runs** tab click **New run**. In the **Records** step, filter and select the contracts to include and click **Add to Selection**. In the **Review** step, set the **Batch Description** and **Calculation End Date**, then click **Preview revenue**.
-
-    - **Raise missing revenue** adds estimates and zero-value placeholder lines where data is missing. These aren't actual usage and can't be invoiced.
-    - **Minimum adjustment** sets the smallest difference from already-billed revenue that the run proposes as an adjustment.
-
-    The run opens as a **Draft** so you can preview it before anything goes live.
+    On the **Runs** tab click **New run**, select the contracts and dates, then click **Preview revenue**. The run opens as a **Draft** so you can preview it before anything goes live. See [Running a run](#running-a-run) for each field.
   </Step>
   <Step title="Review the draft">
     On the run's **Overview** tab, check the **If committed** panel: new, changed and removed lines, the net change, coverage gaps and lines that need review.
@@ -42,7 +51,7 @@ You can see and change each supplier's method under **Invoices & RCTIs** → **S
   </Step>
   <Step title="Commit or approve">
     - Without approval rules, click **Commit run**.
-    - With approvals turned on, click **Submit for approval**. An approver reviews the **Approval** tab and clicks **Approve** (or **Reject**).
+    - When the run needs approval, click **Submit for approval**. An approver reviews the **Approval** tab and clicks **Approve** (or **Reject**). See [Approvals](#approvals) for when a run needs one.
 
     Approving a run raises invoices for every recipient that isn't held or paid by RCTI. On the **Approval** tab you can **Hold** a recipient to keep it out of this invoice, and **Release hold** later.
   </Step>
@@ -66,6 +75,46 @@ You can see and change each supplier's method under **Invoices & RCTIs** → **S
   The **Unbilled revenue** step only lists lines that can be raised. Lines waiting on a supplier's RCTI aren't listed — the step tells you how many there are and to import the supplier's statement instead.
 </Tip>
 
+To see how the month landed against forecast, and what's at risk next, open the [Analytics](/brokerage#analytics) tab.
+
+## Running a run
+
+A run calculates revenue for a set of contracts up to an end date. Start one in either of two ways:
+
+- **New run** on the **Runs** tab opens the **Brokerage Run** wizard.
+- **Run for this contract** (the icon on a contract's page) starts a draft run of that contract up to today and opens it straight away.
+
+<Steps>
+  <Step title="Records">
+    Narrow the list with the filters: **Root Supplier**, **Root Account**, **Connection**, **External ID**, **Status**, **Rate Type**, **Start Date (From)** and **End Date (To)**. Select contracts and click **Add to Selection**. **Selected Records** shows what you've picked, with counts by status.
+  </Step>
+  <Step title="Review">
+    Check the totals, then set the options:
+
+    - **Raise missing revenue** adds estimates and zero-value placeholder lines where data is missing. These aren't actual usage and can't be invoiced.
+    - **Minimum adjustment** sets the smallest difference from already-billed revenue that the run proposes as an adjustment.
+    - **Batch Description** (optional) names the run.
+    - **Start date** and **Calculation End Date** (both optional) limit the period calculated.
+
+    A contract with no rate basis blocks the run. Per-unit contracts need tariff rates; percentage contracts need tariff rates or basis categories. Go back and add them, or remove those contracts.
+  </Step>
+  <Step title="Preview">
+    Click **Preview revenue for N records**. The run is created as a **Draft** and its page opens.
+  </Step>
+</Steps>
+
+On the run's page, **Overview** shows the run's totals and the **If committed** preview, **Revenue** lists its draft lines and **Records** lists the contracts it covered. From a draft you can **Commit run** (or **Submit for approval**) or **Discard** it. **Retry calculation** starts a new draft over the same contracts and dates. To analyse revenue outside UMS, use **Export CSV** on the **Revenue** tab.
+
+### Approvals
+
+Approval rules live in **Brokerage settings**: click the settings icon in the Brokerage header. In the **Approval** section:
+
+- Scheduled runs (**Scheduled runs** section) always wait for approval. Manual runs wait only when **Manual Runs Require Approval** is on.
+- **Approvers** can approve a run. Leave it empty to let anyone with brokerage edit access approve.
+- **Require Separate Approver** stops whoever started or submitted a run from approving it, unless they're a named approver.
+- Above the **Dual Approval Threshold**, a run needs a second approval from one of the **Secondary approvers**.
+- **Approval Reminder Days**, **Approval Escalation Days** and **Escalation approver** chase runs left waiting.
+
 ## Supplier statements (RCTIs)
 
 When a supplier sends you a statement of what it is paying (a recipient-created tax invoice, or a commission report), import it as an RCTI rather than as plain revenue.
@@ -86,9 +135,9 @@ When a supplier sends you a statement of what it is paying (a recipient-created 
   <Step title="Check the preview">
     Each row is matched to a contract for that supplier, NMI and period:
 
-    - **Fills in calculated** — the statement replaces a calculated figure; the difference shows as a variance.
+    - **Update** — the statement fills in a calculated figure ("Fills in calculated $X with $Y"); the difference shows as a variance.
     - **Create** — no calculated line existed, so one is added.
-    - **Errors** — fix and re-upload, or tick **Exclude** for that row.
+    - **Error** — fix and re-upload, or tick **Exclude** for that row.
     - A row on a contract set to bill the customer is still matched, with a warning to set its **Invoice Recipient** to **Supplier**.
 
     If a row overlaps revenue that's already billed, tick **Adjustment** (or **Mark N overlap(s) as adjustments**) to record it as the supplier's difference instead.
@@ -131,7 +180,7 @@ When a run recalculates a period you've already billed (for example, revised met
 
 ### Gaps
 
-The **Revenue** tab's **Coverage** view shows each connection by month as **Billed**, **Calculated**, **Gap** or **Excluded**, with the reason for each gap: not installed, no invoice, no meter data, missing tariff rate, account inactive, or not yet run. Fix the cause, then rerun.
+The **Revenue** tab's **Coverage** view shows each connection by month as **Billed**, **Calculated**, **RCTI**, **Gap** or **Excluded**, with the reason for each gap: not installed, no invoice, no meter data, missing tariff rate, account inactive, or not yet run. Fix the cause, then rerun.
 
 ## When a retailer disputes an invoice
 
@@ -168,7 +217,6 @@ The **Revenue** tab's **Coverage** view shows each connection by month as **Bill
 
 ## Related
 
-- [Running Brokerage Calculations](/guides/running-brokerage-calculations)
-- [Customising Xero Brokerage Invoicing](/guides/customising-xero-brokerage-invoicing)
+- [Customising Xero brokerage invoicing](/guides/customising-xero-brokerage-invoicing)
 - [Bulk importing data](/guides/bulk-importing-data)
 - [Brokerage](/brokerage)

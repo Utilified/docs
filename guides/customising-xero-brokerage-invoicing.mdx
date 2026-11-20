@@ -1,6 +1,7 @@
 ---
-title: "Customising Xero Brokerage Invoicing"
+title: "Customising Xero brokerage invoicing"
 description: "Connect Xero to UMS, map brokerage data to invoice fields, and customise line descriptions for your organisation or a single invoice."
+ums_routes: ["/brokerage/invoices/new", "/brokerage/settings"]
 ---
 
 Once Xero is connected, you can raise brokerage invoices straight from unbilled revenue in UMS. Every invoice UMS creates is pushed to Xero as a **draft** — nothing is approved or sent automatically.
@@ -42,6 +43,8 @@ There are two places, and they work together:
   The **Invoice field mapping** panel only appears once the status is **Connected**. If you disconnect and reconnect, your saved mapping is retained.
 </Warning>
 
+Brokerage invoices go to your only connected accounting system automatically. To choose one, set **Accounting connection** in **Brokerage settings** (the settings icon in the Brokerage header).
+
 ## Setting your organisation-wide mapping
 
 With Xero connected, the **Invoice field mapping** panel appears below the connection card: "Choose how brokerage data is mapped into Xero invoice fields."
@@ -81,7 +84,7 @@ renders as:
 Acme Retail Supply Agreement — Origin Energy commission 2026-04-01 to 2026-06-30 (6203847561)
 ```
 
-If you leave the template blank, UMS falls back to `Brokerage commission <period start>–<period end>`.
+If you leave the template blank, UMS falls back to `<NMI/MIRN> — Brokerage for <period>`, for example `62037242917 — Brokerage for Jun 2026`.
 
 #### Available fields
 
@@ -154,11 +157,11 @@ Click **Save mapping** to apply. The mapping applies to all future raises; invoi
 
 ## Overriding a single raise
 
-Start a raise from **Brokerage → Revenue** (or go to `/billing/raise-invoice`). The wizard, **Raise invoice from unbilled revenue**, has five steps:
+Start a raise with **Raise invoice** on **Brokerage** › **Invoices & RCTIs** (the same action is an icon on the hub's other tabs). It opens the **Raise invoice from unbilled revenue** wizard at `/brokerage/invoices/new`. Starting from a committed run's **Raise invoice** skips the first step, because the run already fixes the lines.
 
 <Steps>
-  <Step title="Select supplier">
-    Choose the supplier whose unbilled revenue you want to bill. This step only picks the supplier — description editing is in the next-but-one step.
+  <Step title="Select suppliers">
+    Choose one or more suppliers whose unbilled revenue you want to bill. Each root supplier is raised as its own invoice. Description editing comes two steps later.
   </Step>
   <Step title="Unbilled revenue">
     Select the revenue rows to include on the invoice.
@@ -185,7 +188,7 @@ When a field is set in more than one place, UMS resolves it in this order — la
 
 <Steps>
   <Step title="Supplier defaults">
-    For supplier-billed invoices, the supplier's **Default GL account** and **Default tax code** seed the account code and tax type. Suppliers do not carry a description template.
+    For supplier-billed invoices, the supplier's default tax code, if it has one, seeds the tax type. Account codes and descriptions don't come from the supplier.
   </Step>
   <Step title="Saved connection mapping">
     Whatever you saved in **Settings → Integrations**.
@@ -194,7 +197,7 @@ When a field is set in more than one place, UMS resolves it in this order — la
     Anything you set in the wizard's **Adjust fields** step.
   </Step>
   <Step title="Built-in fallbacks">
-    If account code or tax type is still empty, UMS uses your **Default account code** / **Default tax type**, then the platform defaults `200` and `OUTPUT`. An empty description falls back to `Brokerage commission <period start>–<period end>`.
+    If account code or tax type is still empty, UMS uses your **Default account code** / **Default tax type**, then the platform defaults `200` and `OUTPUT`. An empty description falls back to `<NMI/MIRN> — Brokerage for <period>`.
   </Step>
 </Steps>
 
@@ -210,6 +213,6 @@ When a field is set in more than one place, UMS resolves it in this order — la
 
 ## Related
 
-- [Running Brokerage Calculations](/guides/running-brokerage-calculations) — generate the revenue you invoice from
+- [Brokerage revenue and invoicing](/guides/brokerage-revenue-and-invoicing) — run the revenue you invoice from, and raise, void and reconcile invoices
 - [Brokerage](/brokerage) — the Brokerage module reference
 - [Organisation Settings](/settings/organisation) — other organisation-wide configuration
