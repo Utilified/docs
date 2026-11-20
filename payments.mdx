@@ -1,6 +1,14 @@
 ---
 title: "Payments"
 description: "Manage invoice payments in UMS. Group invoices for payment, generate payment files, and review and approve each group before it is sent."
+ums_routes:
+  - "/payments"
+  - "/payments/groups"
+  - "/payments/groups/[id]"
+  - "/payments/groups/create"
+  - "/payments/files"
+  - "/payments/files/[id]"
+  - "/payments/files/create"
 ---
 
 The Payments module turns validated [invoices](/invoices) into payment files. You set up payment groups that decide which invoices are paid together, then generate, review and approve a payment file for each run.
