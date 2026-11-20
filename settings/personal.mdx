@@ -1,94 +1,95 @@
 ---
-title: "Personal Settings"
-description: "Manage your own profile, security, appearance, notification preferences, and alert routing rules from the Personal group of Settings."
+title: "My account"
+description: "Manage your own profile, password, two-factor authentication, theme and notification preferences in the Account group of UMS Settings."
+ums_routes: ["/settings"]
 ---
 
-Personal settings cover the preferences that apply to you as an individual user — separate from organisation-wide configuration. To reach them, click your avatar in the top-right corner and select **My account** (or **Organisation**), then open any item in the **Personal** group of the left nav rail at `/settings`.
+The **Account** group of [Settings](/settings) holds the settings that apply only to you. Open the account menu at the bottom of the sidebar and choose **My Account** to land on your profile. Everyone sees these four sections, whatever their role.
+
+| Section | What it covers |
+| --- | --- |
+| [**Profile**](#profile) | Your photo and personal details, and what your role lets you do |
+| [**Security**](#security) | Your password and two-factor authentication |
+| [**Appearance**](#appearance) | The theme on this device |
+| [**Notifications**](#notifications) | Desktop notifications and your subscriptions |
 
 ## Profile
 
-The **Profile** section manages your personal details and profile picture.
-
-- **Profile picture** — Click the camera badge on your avatar to upload an image. Files must be a valid image type and under 5 MB.
-- **Personal details** — Each field has a pencil icon to edit inline; click the save icon to confirm or cancel to discard:
-  - `first_name` and `last_name` — required, up to 150 characters.
-  - `phone_number` — optional.
-  - `date_of_birth` — optional.
-
-Your `email` is shown alongside your avatar but is not editable here. Below the form, **My Permissions** displays a read-only matrix of what your access group can create, read, update, and delete across each application.
-
+{/* screenshot-stale */}
 <Frame>
   ![The Profile section of personal settings](/images/settings/profile.png)
 </Frame>
 
+- **Change photo** uploads a profile picture. Use an image file under 5 MB.
+- **Personal details** lists **First name**, **Last name**, **Phone number** and **Date of birth**. Click the pencil beside a field to edit it, then **Save** or **Cancel**. Your email address is shown but can't be changed here.
+
+### Your permissions
+
+**Your permissions** shows your role and the access level it gives you in each module: **None**, **View**, **Edit** or **Admin**. It is read-only. An org admin can change your role or adjust individual modules from **Settings** › **Users**. See [Setting up a user](/guides/setting-up-a-user).
+
 ## Security
 
-The **Security** section manages your password and two-factor authentication (2FA). A **Security Score** at the top reflects which protections you have enabled.
+{/* screenshot-stale */}
+<Frame>
+  ![The Security section showing the password and two-factor authentication panels](/images/settings/security-2fa.png)
+</Frame>
 
-- **Change Password** — Enter your **Current Password**, then a **New Password** (at least 8 characters, and different from the current one) and confirm it.
-- **Two-Factor Authentication** — Add one or more methods: **Authenticator App** (recommended), **Email Verification**, or **Backup Codes**. Each active method is listed as a device you can remove (password required) or, for backup codes, regenerate.
+### Password
 
-### Enable two-factor authentication
+Click **Change password**, enter your **Current password**, then a **New password** and **Confirm new password**. The new password needs at least 12 characters and must differ from the current one.
+
+### Two-factor authentication
+
+The **Two-factor authentication** panel shows **On** or **Off** and lists each method you have set up, with when it was last used. Two-factor authentication asks for a code from your phone or email as well as your password when you sign in.
+
+Your organisation may require it. If an org admin has turned on **Require two-factor authentication**, you set it up at your next sign-in. See [Organisation settings](/settings/organisation#sign-in-security).
 
 <Steps>
-  <Step title="Open the 2FA setup">
-    Click **Setup 2FA** or **Add Device** in the Two-Factor Authentication card.
+  <Step title="Start setup">
+    Click **Set up 2FA**. If you already have a method, the button reads **Add method**.
   </Step>
   <Step title="Choose a method">
-    Select **Authenticator App**, **Email Verification**, or **Backup Codes**, then click **Continue**.
+    Choose **Authenticator app (recommended)**, **Email verification** or **Backup codes**.
   </Step>
-  <Step title="Configure the authenticator">
-    For an authenticator app, scan the displayed **QR code** with your app (for example Google Authenticator or Authy), then enter the **6-digit code** it generates. For email, click **Send Verification Email** and enter the code sent to your inbox.
-  </Step>
-  <Step title="Complete setup">
-    Click **Verify & Complete**. The new method then appears in your list of active 2FA devices.
+  <Step title="Verify it">
+    - **Authenticator app**: scan the QR code with an app such as Google Authenticator or Authy, or type the manual entry code. Enter the 6-digit code from the app and **Your password**, then click **Verify**.
+    - **Email verification**: click **Send verification email**. Enter the **Verification code** from the email and **Your password**, then click **Verify**.
+    - **Backup codes**: enter **Your password**, or click **Use a code from my authenticator app instead** and enter a code. Click **Generate backup codes**, save the codes somewhere safe, then click **Complete setup**.
   </Step>
 </Steps>
 
-<Frame>
-  ![The Security section showing the security score and two-factor authentication](/images/settings/security-2fa.png)
-</Frame>
+<Warning>
+  Backup codes are shown only once. Save them before you click **Complete setup**.
+</Warning>
 
-<Note>
-  Regenerating backup codes invalidates your existing codes. Save the new codes somewhere secure — they are shown only once.
-</Note>
+To manage a method, use the icons on its row:
+
+- **Regenerate backup codes** asks for your password, then shows a new set. Your old codes stop working.
+- **Remove device** asks for your password before it removes the method.
+
+If you lose your authenticator app and your backup codes, an org admin can reset your two-factor authentication from your user record. You then set it up again at your next sign-in.
 
 ## Appearance
 
-The **Appearance** section controls the application theme for your device. Choose a **Theme Mode**:
-
-- **System** — Follow your operating system's light or dark setting.
-- **Light** — Always use the light theme.
-- **Dark** — Always use the dark theme.
-
-Your choice takes effect immediately and is remembered on this device.
+Choose a **Theme**: **System** (follow your operating system), **Light** or **Dark**. The choice applies straight away and is remembered on this device. You can also switch with **Dark mode** or **Light mode** in the account menu.
 
 ## Notifications
 
-The **Notifications** section manages your notification *preferences*. This is distinct from the in-app **Notifications** drawer, which lists the messages you have received — see [Notifications](/notifications) for that.
+This section controls which notifications you get and where. The notifications themselves are in the drawer and on the `/notifications` page. See [Notifications](/notifications).
 
-- **Browser Notifications** — Enable real-time browser notifications, and use the test button to confirm they work.
-- **Notification Overview** — See your unread count, notifications from the last 24 hours, and browser-notification status, with a **Mark All as Read** action.
-- **Priority Breakdown** — A count of notifications by **Urgent**, **High**, **Normal**, and **Low** priority.
-- **Notification Subscriptions** — Toggle a switch for each subscribable notification type to opt in or out. Subscriptions are delivered both by email and in-app.
+### Desktop notifications
 
-## Alert Routing
+**Desktop notifications** shows Utilified notifications on your desktop, even when no Utilified tab is open. Each browser and device is set up separately.
 
-The **Alert Routing** section defines rules that forward incoming alerts and notifications to specific contacts based on event type and filters. Existing rules are listed in a table showing each rule's **Name**, **Account**, **Event Type**, **Enabled** state, recipient count, and filter summary.
+| Status | What you can do |
+| --- | --- |
+| **Off** | Click **Turn on** and allow notifications when the browser asks. |
+| **On** | Click **Send a test** to check, or **Turn off**. |
+| **Blocked** | The browser is blocking notifications from this site. Allow them in the browser's site settings, then reload the page. |
+| **Unavailable** | This browser doesn't support desktop notifications, or they aren't available yet. |
 
-### Create a routing rule
+### Subscriptions
 
-Click **Create Rule** and complete:
+**Subscriptions** lists the notification types you can opt in to, each with a short description. Turn a switch on to subscribe. A subscription sends that type both by email and in the app. Turn it off to stop receiving it.
 
-- **Name** — required.
-- **Account** — scope the rule to a single account, or leave as **All accounts (org-wide)**.
-- **Event Type** — required; the event that triggers the rule.
-- **Enabled** — toggle the rule on or off.
-- **Filter Criteria** — narrow which messages match:
-  - **Email Types** — one or more types (for example `INVOICE`, `OVERDUE_NOTICE`, `RATE_CHANGE_NOTICE`).
-  - **Sender Contains** — comma-separated patterns matched against the sender (for example `origin.com.au, agl.com.au`).
-  - **Subject Contains** — comma-separated patterns matched against the subject (for example `overdue, reminder`).
-
-### Manage recipients
-
-Use the **Manage Recipients** action on a rule to add or remove the contacts that receive its alerts. Pick a contact from the search field and click **Add**; remove a recipient with the delete icon. You can edit or delete a rule from its row actions — deleting a rule also removes its recipients.
+Some notifications only go to subscribers. For example, agreement expiry warnings go out 90, 60 and 30 days before an agreement ends, and only to subscribers who are assigned to that agreement's account.

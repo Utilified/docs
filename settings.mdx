@@ -1,49 +1,77 @@
 ---
 title: "Settings"
-description: "Configure UMS preferences, security, users, automation and billing. Manage your organisation, white-label portal and single sign-on settings."
+description: "Find every UMS settings section: your own account, the organisation, access and integrations, operations and commercial defaults, and who can see each one."
+ums_routes: ["/settings"]
 ---
 
-The Settings area gathers your personal preferences and your organisation's configuration in one place. Open it from your avatar in the top-right corner — choose **My account** for personal settings or **Organisation** for organisation settings — then use the left nav rail at `/settings`.
+Settings holds your own preferences and your organisation's configuration. Open the account menu at the bottom of the sidebar (your name and avatar) and choose **Settings**, or **My Account** to go straight to your profile.
 
-## Navigating Settings
-
-Settings uses a left-hand navigation rail split into two groups:
-
-- **Personal** — settings scoped to your own account, such as your profile, security, and preferences.
-- **Organisation** — settings that affect everyone in your organisation, such as users, automation, and billing.
+The left rail lists the sections in five groups. Type in **Search settings** at the top of the rail to filter them by name or keyword. Each section has its own address, such as `/settings#security`, so you can bookmark or share a link to it.
 
 <Note>
-  The rail is permission-aware: sections you don't have permission to view are **hidden**, not greyed out. Organisation sections require manager or admin access, and some (Portal & Domain, Single Sign-On) also require a Business or Enterprise plan. If you're expecting a section and it's missing, contact your organisation administrator.
+  The rail only lists the sections you can use. Sections you don't have access to are hidden, not greyed out. "Org admin" below means the **Organisation Admin** role. If a section you expect is missing, ask an org admin to check your role and permissions.
 </Note>
 
-## Personal
+## Account
 
-Settings scoped to you. See [Personal Settings](/settings/personal) for the full detail.
+Settings about you. Everyone sees this group. See [My account](/settings/personal).
 
 | Section | What it covers |
 | --- | --- |
-| **Profile** | Your name, contact details, and profile picture |
-| **Security** | Password and two-factor authentication (2FA) |
-| **Appearance** | Light, dark, or system theme |
-| **Notifications** | Your notification preferences and subscriptions |
-| **Alert Routing** | Rules that forward alerts to specific contacts |
+| **Profile** | Your photo, name and phone number, and **Your permissions** |
+| **Security** | Your password and two-factor authentication |
+| **Appearance** | Light, dark or system theme on this device |
+| **Notifications** | Desktop notifications and the notification types you subscribe to |
 
 ## Organisation
 
-Settings that affect your whole organisation.
+Who the organisation is, who is in it and what it pays for.
 
-| Section | What it covers | Reference |
+| Section | Who sees it | What it covers |
 | --- | --- | --- |
-| **General** | Organisation profile, logo, and timezone | [Organisation Settings](/settings/organisation) |
-| **Users** | Invite users, assign roles, manage access | [Setting Up a User](/guides/setting-up-a-user) |
-| **Auto-Pilot** | AI automation for the invoice pipeline | [Organisation Settings](/settings/organisation) |
-| **Billing** | Plan, usage, and payments | [Billing & Plans](/billing) |
-| **Integrations** | Connect Xero and map brokerage data onto invoice fields | [Customising Xero Brokerage Invoicing](/guides/customising-xero-brokerage-invoicing) |
-| **Portal & Domain** | White-label customer portal and custom domain | [Portal & custom domain](/settings/portal-domain) |
-| **Single Sign-On** | SSO against your identity provider | [Portal & Single Sign-On](/settings/white-label) |
+| **General** | Org admins | Logo, business details, timezone and sign-in security. See [Organisation settings](/settings/organisation#general). |
+| **Users** | Users with access to the users module | Invite people, set roles and account access. See [Setting up a user](/guides/setting-up-a-user). |
+| **Plan & billing** | Org admins | Your plan, usage and payments. See [Plan & billing](/billing). |
+| **Usage analytics** | Org admins | How your users are using UMS and the client portal, ranked by days active. |
+
+## Access & integrations
+
+How people and other systems get in.
+
+| Section | Who sees it | What it covers |
+| --- | --- | --- |
+| **Single sign-on** | Org admins, on plans that include SSO | Sign-in through Microsoft Entra ID or Google Workspace. See [Portal theme and single sign-on](/settings/white-label#single-sign-on). |
+| **API keys** | Org admins | Keys for programmatic access. Each key acts with the role you give it. Click **Create key** to add one. |
+| **Integrations** | Org admins | Xero for brokerage invoices, and email-triggered imports. See [Organisation settings](/settings/organisation#integrations). |
+| **Solar monitoring** | Users with access to solar monitoring | Connect an owner's inverter portal, choose the plants to sync and link each one to its connection. See also [Solar watch](/solar-watch). |
+| **Portal & domain** | Org admins, on plans that include the portal | Your white-label customer portal, its custom domain and default portal access. See [Portal & custom domain](/settings/portal-domain). |
+
+## Operations
+
+How invoices and alerts are processed.
+
+| Section | Who sees it | What it covers |
+| --- | --- | --- |
+| **Invoice autopilot** | Org admins | How much of invoice processing runs on its own, from intake through validation. See [Organisation settings](/settings/organisation#invoice-autopilot). |
+| **Validation tolerances** | Org admins | How far a charge may differ from the expected amount before it counts as an error. Tolerances are scoped by region, supplier, charge category and connection namespace. The narrowest matching scope wins, and anything not covered uses the platform defaults. See [Validation](/validation). |
+| **Alert routing** | Everyone | Rules that send alerts to contacts by event type and filter. See [Organisation settings](/settings/organisation#alert-routing). |
+| **Support queues** | Org admins, when support chat is turned on for your organisation | The queues portal users choose from when they start a conversation. Queue members are notified of new messages. |
+| **Automations** | Users with access to automations | Rules that act for you, such as emailing retailers the signed submission pack or generating draft retail accounts. Every automation starts off, and a preview logs what it would do without doing it. |
+
+## Commercial
+
+The defaults behind assessments, studies and proposals.
+
+| Section | Who sees it | What it covers |
+| --- | --- | --- |
+| **Assessment autopilot** | Users with solar and battery modelling access (only org admins can edit) | Screens your sites for solar and battery, runs full studies for the promising ones and queues them on **Scenarios** › **Opportunities**. Money thresholds are ex-GST. |
+| **Hardware catalogue** | Users with solar and battery modelling access | Modules, inverters and batteries a study can use. The Clean Energy Council approved lists are included and read-only. You can add your own products alongside them. |
+| **System templates** | Users with solar and battery modelling access | The hardware your organisation usually proposes. A study prefills its battery, module and cost assumptions from the default template. |
+| **Assumption presets** | Users who can edit proposals or solar and battery modelling | Defaults that prefill new assessments and studies, for the whole organisation or one account. Changing a preset never alters an existing assessment or study. |
+| **Proposal templates** | Users who can edit proposals | Branding, section order and standard text for proposals. New assessments use the default template unless the preparer picks another. See [Proposals](/proposals). |
 
 ## Related
 
-- [Bulk Importing Data](/guides/bulk-importing-data) — import accounts, sites, connections, and more in bulk
-- [Imports](/imports) — the Imports page reference and status meanings
-- [Notifications](/notifications) — the in-app notifications drawer
+- [Notifications](/notifications): the notifications drawer and the `/notifications` page
+- [Setting up a user](/guides/setting-up-a-user): invite and manage users
+- [Bulk importing data](/guides/bulk-importing-data): import accounts, sites, connections and more

@@ -1,82 +1,118 @@
 ---
-title: "Organisation Settings"
-description: "Configure organisation-wide settings in UMS — general profile, users, invoice Auto-Pilot automation, and billing."
+title: "Organisation settings"
+description: "Configure organisation-wide settings in UMS: general details and sign-in security, integrations, invoice autopilot and alert routing."
+ums_routes: ["/settings"]
 ---
 
-The **Organisation** group in [Settings](/settings) holds the controls that affect everyone in your organisation: your business profile, user accounts, invoice automation, and billing.
+These [Settings](/settings) sections affect everyone in your organisation. Open the account menu at the bottom of the sidebar, choose **Settings**, then pick a section in the left rail.
 
-<Note>
-  These sections require **manager** or **admin** access. The Settings rail is permission-aware — sections you can't access are **hidden**, not greyed out. If a section described here is missing from your rail, ask your organisation administrator to check your role.
-</Note>
+| Section | Group | Who sees it |
+| --- | --- | --- |
+| [**General**](#general) | Organisation | Org admins |
+| [**Users**](#users) | Organisation | Users with access to the users module |
+| [**Plan & billing**](#billing) | Organisation | Org admins |
+| [**Integrations**](#integrations) | Access & integrations | Org admins |
+| [**Invoice autopilot**](#invoice-autopilot) | Operations | Org admins |
+| [**Alert routing**](#alert-routing) | Operations | Everyone |
 
-Looking for **Portal & Domain** or **Single Sign-On**? Those are covered separately in [Portal & Single Sign-On](/settings/white-label).
+For the customer portal and single sign-on, see [Portal & custom domain](/settings/portal-domain) and [Portal theme and single sign-on](/settings/white-label).
 
 ## General
 
-The **General** section manages your organisation's profile and business information.
+**General** holds your organisation's name, logo, business details and timezone.
 
+{/* screenshot-stale */}
 <Frame>
-  ![The Organisation General settings — logo, details, and regional settings](/images/settings/organisation-general.png)
+  ![The Organisation General settings: logo, details, and regional settings](/images/settings/organisation-general.png)
 </Frame>
 
-- **Organisation Logo** — Upload a logo to represent your organisation. Use an image file up to 5 MB; the recommended size is 400×200 px.
-- **Organisation Details** — Edit your organisation's name and business details inline. Changes save per field.
-- **Regional Settings** — Set your **Timezone** (Australian timezones only). This is used for scheduling, reporting, and data processing.
-- **Additional Information** — Read-only reference values: your `Organisation ID` and `Parent Organisation`.
+| Panel | What it holds |
+| --- | --- |
+| **Logo** | An image that represents your organisation, around 400 × 200 px and up to 5 MB. Click **Upload logo**, or **Replace logo** if one is set. |
+| **Details** | Your organisation's name and business details. Edit and save them in place. |
+| **Region** | Your **Timezone** (Australian timezones only), used for scheduling, reporting and data processing. |
+| **Sign-in security** | Who must use two-factor authentication, and whether Utilified support can open sessions. See [below](#sign-in-security). |
+| **Reference** | Read-only **Organisation ID** (with a copy button) and **Parent organisation**. |
 
-<Warning>
-  Platform administrators see a **Danger Zone** with a **Deactivate Organisation** action. Deactivating immediately revokes access for every user in the organisation. Data is preserved and a platform administrator can reactivate later, but you must type the organisation name to confirm.
-</Warning>
+### Sign-in security
+
+- **Require two-factor authentication**: everyone who signs in with a password also needs a code from an authenticator app or their email. Anyone who hasn't set it up does so at their next sign-in to UMS. People who sign in with SSO use your identity provider's multi-factor authentication instead, and portal users aren't included.
+- **Allow Utilified support sessions**: lets authorised Utilified staff view your organisation read-only, for up to an hour at a time, to help with support. Each session and its reason appear in your audit log. It is on unless you turn it off.
 
 ## Users
 
-The **Users** section is where you invite team members, assign roles, and deactivate access. Because the rail is permission-aware, this section appears only for managers and admins.
-
-For the full walkthrough, see [Setting Up a User](/guides/setting-up-a-user).
-
-## Auto-Pilot
-
-The **Auto-Pilot** section configures AI-powered automation for the invoice pipeline — letting high-confidence invoices flow from intake through validation without manual handling. Low-confidence items still surface in your Inbox for review.
-
-Toggle **Enable Auto-Pilot** to switch automation on. When it's off, items continue through the pipeline manually via the Inbox and Invoices pages. The section also shows live **Auto-processed**, **Manual overrides**, and **Automation rate** stats once items have flowed through.
-
-**Inbox stage**
-
-- **OCR confidence threshold** — Records below this confidence (50–100%) are sent to manual review or AI re-extraction.
-- **Auto-create invoices from high-confidence OCR** — Create invoices automatically when OCR confidence clears the threshold.
-- **Auto-archive email types** — Select email types (for example, **Overdue Notice**, **Payment Receipt**) to auto-archive without entering the inbox queue.
-
-**Validation stage**
-
-- **Auto-run validation** — Run validation automatically after an invoice is created.
-- **Variance tolerance for auto-pass** — Invoices within this variance (0–20%) of expected charges auto-pass.
-- **Require AI PASS recommendation** — The AI must also recommend PASS before an invoice auto-passes.
-
-Edits are staged until you click **Save changes**; **Discard changes** reverts to the last saved configuration.
-
-## Integrations
-
-The **Integrations** section connects accounting systems so you can raise brokerage invoices from UMS. Xero is available now; MYOB, QuickBooks, and NetSuite are listed as coming soon.
-
-Once Xero is connected, an **Invoice field mapping** panel appears where you set the description template, account code, tax type, invoice reference, and tracking categories used for every brokerage invoice. See [Customising Xero Brokerage Invoicing](/guides/customising-xero-brokerage-invoicing).
+**Users** is where you invite people, set their roles and choose which accounts they can see. See [Setting up a user](/guides/setting-up-a-user).
 
 ## Billing
 
-The **Billing** section manages your plan, usage, and payments.
+The **Plan & billing** section shows your plan and usage and is where you change plans or open the Stripe billing portal. See [Plan & billing](/billing).
 
+{/* screenshot-stale */}
 <Frame>
-  ![The Billing section showing the current plan and usage meters](/images/settings/billing.png)
+  ![The Plan & billing section showing the current plan and usage meters](/images/settings/billing.png)
 </Frame>
 
-- **Current plan** — Your plan name, status (Active, Trial, or Cancelled), monthly price, and renewal date. Plans on a 12-month commitment show the commitment end date.
-- **Usage** — Live meters for **Connections**, **Users**, and **Invoices this month** against your plan limits.
-- **Change plan** — Open the plan picker to upgrade or switch plans.
-- **Manage billing** — Open the Stripe billing portal in a new tab to update your payment method and view invoices.
+## Integrations
 
-<Warning>
-  Plan changes and cancellations take effect through Stripe and may change what you're charged. Organisations on a 12-month commitment can upgrade anytime, but downgrades and cancellation are only available once the term ends.
-</Warning>
+**Integrations** connects accounting systems for brokerage invoicing and sets up email-triggered imports.
 
-<Note>
-  If your organisation is **billed directly by Utilified** (manual billing), self-serve checkout and the Stripe portal are hidden. Contact us to change your plan.
-</Note>
+- **Xero**: click **Connect Xero** to create draft brokerage invoices in Xero, or **Disconnect** to remove the link. MYOB, QuickBooks and NetSuite are listed as coming soon.
+- **Invoice field mapping**: appears once Xero is connected. Choose how brokerage data maps into Xero invoice fields. See [Customising Xero brokerage invoicing](/guides/customising-xero-brokerage-invoicing).
+- **Import email addresses**: dedicated addresses for specific data types, such as accounts, sites or invoices. Files sent to them are processed as bulk imports. They aren't tied to an account, so they suit supplier data feeds.
+- **Account import emails**: an account can have its own address. Attachments sent to it become bulk uploads you can track in the inbox and import history.
+- **Recent email-triggered imports**: the latest imports that arrived by email. See [Imports](/imports).
+
+## Invoice autopilot
+
+**Invoice autopilot** sets how much of invoice processing runs on its own, from intake through validation. Turn on **Enable auto-pilot** to let high-confidence invoices flow through automatically. Low-confidence items still surface in your Inbox for review. With it off, items move through the Inbox and Invoices pages by hand.
+
+Once items have flowed through, the section shows **Auto-processed**, **Manual overrides** and **Automation rate**.
+
+### Inbox stage
+
+| Setting | What it does |
+| --- | --- |
+| **OCR confidence threshold for auto-creation** | 50–100%. Records below it go to manual review or AI re-extraction. |
+| **Auto-create invoices from high-confidence OCR** | Creates invoices automatically when OCR confidence clears the threshold. |
+| **Auto-archive email types** | Emails of the types you tick are archived without entering the inbox queue: **Overdue Notice**, **General Notice**, **Supply Disruption**, **Rate Change Notice**, **Payment Receipt**, **Payment Remittance** or **Other**. |
+
+### Validation stage
+
+| Setting | What it does |
+| --- | --- |
+| **Auto-run validation after invoice creation** | Validates each new invoice automatically. |
+| **Variance tolerance for auto-pass** | 0–20%. Invoices within this variance of the expected charges pass automatically. |
+| **Minimum interval-read coverage for recalculation** | 50–100%. Below this coverage, validation falls back to a rate check instead of recalculating the bill from interval data. |
+| **Smart validation namespaces** | Limits smart validation to the namespaces you pick. Leave it empty for all namespaces. It applies to automatic and manual smart validation, so you can change it even with autopilot off. |
+| **Derive tariffs from invoices** | When an account has no tariff, builds an unconfirmed one from the invoice so it can still be validated. |
+| **Use AI for tariff derivation** | Lets the model interpret rate structures the parser can't. Available only when **Derive tariffs from invoices** is on. |
+| **Require AI PASS recommendation** | The AI must also recommend PASS before an invoice passes automatically. |
+
+The validation settings, apart from **Smart validation namespaces**, need **Enable auto-pilot** and **Auto-run validation after invoice creation** on. Changes are held until you click **Save changes**. **Discard changes** goes back to the saved configuration.
+
+## Alert routing
+
+**Alert routing** sends alerts to the right contacts by event type and filter. Everyone can see this section. The table lists each rule's **Name**, **Account**, **Event Type**, **Enabled** state, **Recipients** and **Filters**.
+
+### Create a rule
+
+<Steps>
+  <Step title="Open the form">
+    Click **Create rule**.
+  </Step>
+  <Step title="Describe the rule">
+    Enter a **Name**. Choose an **Account**, or leave **All accounts (org-wide)**. Choose the **Event Type** that triggers the rule, and set **Enabled**.
+  </Step>
+  <Step title="Narrow it (optional)">
+    Some event types offer **Filter Criteria**. For incoming inbox emails you can filter by **Email Types**, **Sender Contains** and **Subject Contains**. The text filters take comma-separated patterns, such as `origin.com.au, agl.com.au`. Data feed errors filter by **Providers**, and budget alerts by **Utilities** and **Metric**. Empty filters don't narrow the rule.
+  </Step>
+  <Step title="Save">
+    Click **Create**.
+  </Step>
+</Steps>
+
+### Manage recipients
+
+Click **Manage Recipients** on a rule's row. Pick a contact in **Add Contact** and click **Add**. Remove a recipient with the delete icon on their row.
+
+Use **Edit Rule** to change a rule, or **Delete Rule** to remove it along with its recipients.

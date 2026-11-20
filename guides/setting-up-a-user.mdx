@@ -1,91 +1,99 @@
 ---
-title: "Setting Up a User"
-description: "Invite a new team member to your UMS organisation, assign their role and permissions, and manage existing users from the Settings area."
-keywords: ["invite user", "add user", "user roles", "permissions", "user management"]
+title: "Setting up a user"
+description: "Invite a new team member to your UMS organisation, choose their role and account access, and manage existing users from Settings › Users."
+keywords: ["invite user", "add user", "user roles", "permissions", "user management", "deactivate user"]
+ums_routes: ["/settings", "/settings/users/[id]/profile", "/settings/users/[id]/access", "/settings/users/[id]/activity"]
 ---
 
-This guide walks you through inviting a new user to your UMS organisation and assigning their access. Inviting and managing users requires administrator permissions — if you don't see the **Users** section in the Settings nav rail, contact your organisation administrator.
+This guide covers inviting someone to your UMS organisation, choosing their role and accounts, and managing users afterwards.
+
+You need access to the users module to see the **Users** section, and permission to create users to see **Invite user**. If you don't see them, ask an org admin.
 
 ## Open user management
 
-User management lives in the **Users** section of Settings, under the **Organisation** group in the left nav rail.
+Open the account menu at the bottom of the sidebar and choose **Settings**. Then select **Users** in the **Organisation** group of the left rail.
 
-<Steps>
-  <Step title="Open Settings">
-    Click your avatar in the top-right corner and select **Organisation**.
-  </Step>
-  <Step title="Open Users">
-    In the left nav rail, select **Users** under **Organisation**.
+{/* screenshot-stale */}
+<Frame>
+  ![UMS user management showing the user counts above the users table](/images/users/users-list.png)
+</Frame>
 
-    <Frame>
-      ![UMS user management showing the Total Users, Active Users, and Pending Invitations stats with the users table](/images/users/users-list.png)
-    </Frame>
-  </Step>
-</Steps>
+A row of counts sits above the users table. Click a count to filter the table to those users, and click **All users** to clear the filter.
 
-The Users section shows three summary cards — **Total Users**, **Active Users**, and **Pending Invitations** — above a table of everyone in your organisation, with their role, status, and last login.
+| Count | Users it includes |
+| --- | --- |
+| **All users** | Everyone in your organisation |
+| **Active** | Users who can sign in |
+| **Invited** | Users invited in the last 14 days who haven't registered yet |
+| **Invite expired** | Users invited more than 14 days ago who still haven't registered |
+| **Dormant** | Users with no activity in the last 30 days |
+| **Never active** | Users who have never signed in or used UMS |
+| **Deactivated** | Users whose access you have turned off |
 
 ## Invite a new user
 
 <Steps>
-  <Step title="Start an invitation">
-    Click **Invite User** in the top-right of the Users card. This opens the **Invite New User** wizard.
+  <Step title="Open the invitation">
+    Click **Invite user** at the top of the Users section. The **Invite user** dialog opens, with a summary of the new user's access on the right.
   </Step>
-  <Step title="Enter user details">
-    On the **User Details** step, enter the new user's **First Name**, **Last Name**, and **Email Address**. The invitation is sent to the email address you enter here. **Phone Number** is optional.
-
-    <Frame>
-      ![Invite New User wizard on the User Details step with name, email, and phone fields](/images/users/invite-user-details.png)
-    </Frame>
-
-    <Note>
-      If you enter a phone number, Australian format is preferred — `04XX XXX XXX` or `+614XX XXX XXX`.
-    </Note>
+  <Step title="Enter their details">
+    Under **Details**, enter **First Name**, **Last Name** and **Email Address**. The invitation goes to that email address. **Phone Number (optional)** takes Australian formats such as `04XX XXX XXX` or `+614XX XXX XXX`.
   </Step>
   <Step title="Choose a role">
-    Click **Next** to move to **Role & Permissions**, then pick a role from the curated **role cards**. The list is filtered to your own privilege level — you can only invite users at or below your role (Superuser and above are never offered). The permissions preview shown next to each card is fetched from the backend, so it always reflects what the role can actually create, read, update, and delete across each application.
-
-    <Frame>
-      ![Role and Permissions step showing the Account Manager role selected with its permissions matrix](/images/users/invite-role-permissions.png)
-    </Frame>
+    Under **Role**, pick a role card. Each card shows the role's default access level. You can only choose roles at or below your own. For **Portal Admin** or **Portal User**, also choose a **Portal Account**. A portal admin must have one.
   </Step>
-  <Step title="Set account access (account-scoped roles only)">
-    If the role you picked is account-scoped — **Portal Admin**, **Portal User**, **Account User**, or **Account Viewer** — the wizard adds an **Account Access** step where you choose the account(s) the user should be scoped to. This step is skipped for organisation-wide roles. It's the same picker that appears on the **Account Access** tab of the edit dialog for existing users.
+  <Step title="Choose account access (optional)">
+    For **Organisation Admin**, **Member** and **Viewer**, an **Account access** section lets you assign the accounts this user can access. You can change this later. Portal roles don't have this step, because they see only their portal account.
   </Step>
-  <Step title="Review and send">
-    Click **Next** to reach **Review & Send**. Check the summary, then click **Finish** to send the invitation. The new user receives an email to complete their registration and set a password.
+  <Step title="Send the invitation">
+    Click **Send invitation**. The user gets an email to complete registration and appears as **Invited** until they do.
   </Step>
 </Steps>
 
 <Tip>
-  If a required field is missing or invalid when you submit, the wizard jumps back to the step that owns the field and highlights the error inline — you don't have to hunt through earlier steps.
+  If a field is missing or invalid when you send, a summary at the top of the dialog lists the problems. Click one to jump to the field.
 </Tip>
 
 ## User roles
 
-The role you choose controls what the user can access. UMS provides the following roles:
-
-| Role | Typical use |
+| Role | Default access |
 | --- | --- |
-| **Organisation Admin** | Full administrative access, including user management |
-| **Account Manager** | Manage accounts, sites, connections, and agreements |
-| **Account User** | Day-to-day work within assigned accounts |
-| **Account Viewer** | Read-only access to assigned accounts |
-| **Account Operations User** | Operational tasks such as invoice processing |
-| **Brokerage Operations User** | Brokerage records and calculations |
-| **Portal Admin** / **Portal User** | Access to a white-label portal account |
+| **Organisation Admin** | Admin in every module, including users, settings and billing |
+| **Member** | Edit, on their assigned accounts |
+| **Viewer** | View, on their assigned accounts |
+| **Portal Admin** | Administers one customer account in your white-label portal, and can invite portal users to it |
+| **Portal User** | Uses one customer account in your white-label portal |
 
-Only roles at or below your own privilege level appear as cards in the wizard.
+A role sets the default level for each module. By default, Organisation Admins see every account, and Members and Viewers see only the accounts assigned to them. You can raise or lower individual modules, or change account visibility, for one user on their **Access** tab.
 
 ## Manage existing users
 
-Each row in the users table has actions for managing that user:
+Each row in the users table shows the user's **Name**, **Role**, **Status** and **Activity**, with more columns such as **Last active** and **Last login**. Row actions:
 
-- **Edit user** — Update their name, role, **Active** status, and which accounts they can access (on the **Account Access** tab, which uses the same picker as the wizard's Account Access step).
-- **Resend invitation** — Re-send the registration email to a user whose invitation is still pending.
-- **Deactivate user** — Revoke access immediately without deleting the account. Use **Reactivate user** to restore it.
-- **Delete user** — Permanently remove the user. This cannot be undone.
+- **Manage user** opens the user's record.
+- **Resend invitation** sends the invitation email again. It shows only for users who are **Invited** or **Invite expired**.
+- **Deactivate user** turns off their access straight away. Their data and history are kept. **Reactivate user** lets them sign in again.
+- **Delete user** removes the account outright. You type the user's email address to confirm. Deactivating is usually better, because it keeps their history and can be undone.
 
-<Info>
-  A user with a pending invitation shows a **Pending Invitation** status until they complete registration, after which they appear as **Active**.
-</Info>
+### Bulk actions
+
+Tick several users to act on them together: **Resend invitations**, **Deactivate** or **Reactivate**. Each asks you to confirm. A bulk resend skips anyone who has already signed in, and a bulk deactivation leaves you out.
+
+| Status | Meaning |
+| --- | --- |
+| **Invited** | Invitation sent, not yet registered |
+| **Invite expired** | Invitation lapsed. Resend it. |
+| **Active** | Registered and able to sign in |
+| **Deactivated** | Access turned off |
+
+## The user record
+
+**Manage user** opens the user's record with three tabs.
+
+| Tab | What it holds |
+| --- | --- |
+| **Profile** | **First name**, **Last name**, **Email** and **Portal account** (the account a portal user sees). Click **Save changes** after editing. Under **Security**, **Reset 2FA** removes every two-factor method so the user sets it up again at their next sign-in. Use it when they have lost their authenticator app and backup codes. |
+| **Access** | **Role and permissions**: change the **Role** and adjust each module's level (**None**, **View**, **Edit** or **Admin**). An override is saved only when it differs from the role's default. **Account access**: choose the user's assigned accounts. Click **Save role**, or **Save role and accounts** if you changed accounts, and confirm with **Apply**. **Account visibility** is set to **All accounts in the organisation** or **Only assigned accounts**, and has its own **Save visibility** button. Only org admins can change it. |
+| **Activity** | **Engagement**, **Account state**, **Last active**, **Days active (30d)** and usage of UMS and the **Client portal**, with the dates the user was invited, registered, first joined and last signed in. |
+
+Portal users always see only their portal account and its sub-accounts, so the **Access** tab doesn't offer account visibility for them.

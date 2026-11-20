@@ -1,30 +1,41 @@
 ---
 title: "Notifications"
-description: "Stay informed in UMS with in-app and email notifications for completed reports, invoice imports, agreement expiry warnings, and other system events."
+description: "See UMS notifications in the drawer beside search and on the Notifications page, open what each one is about, and choose which types you receive."
+ums_routes: ["/notifications", "/notifications/open/[id]"]
 ---
 
-UMS sends notifications for important events — completed reports, invoice imports, agreement expiry warnings, and more.
+UMS notifies you about exports, imports, validations and the alerts you follow. Notifications appear in a drawer you can open from anywhere, and on the **Notifications** page.
 
-## Viewing notifications
+## The notifications drawer
 
-{/* TODO screenshot: /images/notifications/drawer.png — the notification drawer open on the right, showing unread items and the avatar unread badge */}
+The bell beside **Search…** at the top of the sidebar shows your unread count. Click it to open the drawer. You can also open the account menu at the bottom of the sidebar and choose **Notifications**. A red dot on your avatar means you have unread notifications.
 
-Open the user menu (click your avatar in the bottom-left of the sidebar) and select **Notifications** to open the notification drawer. An unread count badge appears on your avatar when you have unread notifications. Notifications include:
+In the drawer:
 
-- **Report completions** — When a scheduled or manual report finishes generating
-- **Invoice imports** — Status updates for bulk invoice uploads
-- **Agreement expiry** — Warnings for contracts expiring within 30, 60, or 90 days
-- **Brokerage calculations** — When calculation runs complete
+- Switch between **All** and **Unread**.
+- Click **Refresh** to fetch new notifications.
+- Click **Mark All Read** to clear the unread count.
+- Click a notification to mark it as read and open what it's about.
 
-Each notification can navigate you directly to the relevant page.
+## The Notifications page
 
-## Notification preferences
+The **Notifications** page at `/notifications` shows your totals and the full list. Open it from **View all** on the **Notifications** module on [Home](/home).
 
-Configure which notifications you receive and how:
+| Panel | What it shows |
+| --- | --- |
+| **Overview** | **Total** and **Unread** counts, and whether **Desktop notifications** are **On** or **Off** in this browser. Click **Mark all as read** to clear the unread count. |
+| **By priority** | How many notifications you have at each priority: **Urgent**, **High**, **Normal** and **Low**. |
+| **All notifications** | Every notification, with unread ones in bold. Click **Load more** to see older ones. |
 
-- **In-app notifications** — Shown in the notification drawer
-- **Email notifications** — Sent to your registered email address
+Clicking a notification marks it as read and takes you to what it's about. **Notification settings** at the top of the page opens your preferences.
 
-## Subscriptions
+## Choosing what you receive
 
-Subscribe to specific notification types to stay informed about the events that matter most to you. For example, subscribe to agreement expiry notifications for accounts you manage.
+Your preferences are in **Settings** › **Notifications**, in the **Account** group. See [My account](/settings/personal#notifications).
+
+- **Desktop notifications** shows notifications on your desktop even when no Utilified tab is open. Turn it on separately in each browser.
+- **Subscriptions** lists the notification types you can opt in to. Subscribing to a type sends it both by email and in the app.
+
+Some notifications only go to subscribers. For example, agreement expiry warnings go out 90, 60 and 30 days before an agreement ends, and only to subscribers who are assigned to that agreement's account.
+
+To send alerts to your contacts by event type, use [Alert routing](/settings/organisation#alert-routing).
