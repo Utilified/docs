@@ -1,88 +1,76 @@
 ---
-title: "Editing Invoices"
-description: "Review and edit invoice details, line items, and attached documents in UMS, then re-run invoices through the validation engine to clear flagged issues."
+title: "Editing invoices"
+description: "Edit invoice details, line items, quantities and factors in UMS, correct or reverse an invoice, and re-run validation once it is fixed."
+ums_routes: ["/invoices", "/invoices/[id]"]
 ---
 
-This guide explains how to review and edit invoice details, line items, and documents.
+This guide covers fixing an invoice's details and line items, then re-validating it.
 
-## Invoice detail page
+## Open an invoice
 
-Click **See Details** on any invoice to open the detail page.
+Go to **Invoices** › **Invoices** and click the invoice number, or use the **See Details** row action. You can also open an invoice from a validation run or an exception.
 
+{/* screenshot-stale */}
 <Frame>
   ![Invoice detail page in UMS](/images/invoices/invoice-detail.png)
 </Frame>
 
-The invoice detail page has these tabs:
+The detail page has six tabs: **Overview**, **Lines**, **Ledger**, **Review**, **Activity** and **Settings**. See [Invoices](/invoices#invoice-detail) for what each holds.
 
-- **Overview** — Invoice summary with dates, amounts, supplier, and connection information
-- **Lines** — Individual line items (charges) on the invoice
-- **Ledger** — Accounting ledger entries for the invoice
-- **Documents** — Attached PDF documents
-- **Review** — Validation results, flagged review items, and rules
-- **History** — Change history for the invoice
+<Tip>
+  On a wide screen, click **Show source document side-by-side** in the header to keep the PDF open beside the tab you're editing.
+</Tip>
 
-## Editing line items
+## Edit invoice details
 
-The **Lines** tab shows all charges on the invoice.
+Open the **Settings** tab. **Invoice Details** holds **Invoice number**, **Date issued**, **Date due**, **Account number**, **Account name**, **Tax ID**, **Retail account** and **Supplier**. **Financials** holds **Amount due**, **Current charges**, **Tax**, **Previous balance**, **Payments**, **Other charges/credits** and **Starting balance**. Edit the fields in place.
 
+To change one field across many invoices, select them on the **Invoices** tab and click **Edit selected**.
+
+## Edit line items
+
+{/* screenshot-stale */}
 <Frame>
   ![Invoice lines tab showing charge line items in UMS](/images/invoices/invoice-lines-tab.png)
 </Frame>
 
-Each line item displays:
+The **Lines** tab opens on **All lines**. Columns are **#**, **Description**, **Category**, **Type**, **Connection**, **Rate**, **Amount**, **Factors** and **Quantities**. Switch to **By connection** to see the connection records the lines belong to.
 
-- **Description** — What the charge is for (for example, Peak Usage, Network Access)
-- **Category** — Charge category
-- **Charge Type** — Type of charge
-- **Rate** — Unit rate applied
-- **Amount** — Total charge amount
-- **Tax** — Whether GST applies
-- **Connection** — Which meter connection this charge relates to
+- Quick edit: double-click **#**, **Description**, **Category**, **Type** or **Amount** to change it in the grid.
+- Full edit: open the row's actions menu and click **Edit** to change every field in a drawer.
+- **Delete**: open the row's actions menu and click **Delete**.
+- Quantities and factors: expand a row to see its **Factors** and **Quantities**. Use **Add Factor** or **Add Quantity**, or the edit and delete icons on each entry.
 
-### Editing a line item
+### Add a line item
 
 <Steps>
-  <Step title="Open the line item editor">
-    Click the **edit** icon on a line item row.
+  <Step title="Start a new line">
+    Click **Add Line Item**. The invoice needs at least one connection record first.
   </Step>
-  <Step title="Edit the line details">
-    The edit drawer opens with tabs:
-
-    - **Details** — Description, category, charge type, amount, tax flag, and unit rate/currency
-    - **Quantities** — Associated quantity records (kWh, MJ, kL)
-    - **Factors** — Tax and conversion factors
+  <Step title="Fill in the line">
+    Enter the description, category, charge type and amount. If the invoice has more than one connection record, pick the connection.
   </Step>
-  <Step title="Save your changes">
-    Make your changes and click **Save**.
+  <Step title="Save">
+    Save the drawer. The line appears in the grid.
   </Step>
 </Steps>
 
-### Adding a line item
+## Correct or reverse an invoice
 
-Click **Add Line Item** to create a new charge line on the invoice.
+The **Corrections** panel on **Overview**, and the **Danger zone** on **Settings**, change what is owed without editing the bill:
 
-## Viewing documents
+- **Reverse** nets the invoice's outstanding amount to zero, so future payment files skip it.
+- **Adjust** applies a signed adjustment, such as a credit memo or an extra charge.
+- **Hold from payment** (on **Overview** only) keeps the invoice out of payment files, with a reason. **Include in batches** lifts the hold.
 
-The **Documents** tab shows any attached files.
+Deleting the invoice (from the **Danger zone**) removes it and everything derived from it.
 
-<Frame>
-  ![Invoice documents tab in UMS](/images/invoices/invoice-documents-tab.png)
-</Frame>
+## Re-run validation
 
-You can:
+After fixing an invoice, click **Validate this invoice** in the header, then **Run validation**. Check the result on the **Review** tab. See [Working the validation queue](/guides/invoice-validation).
 
-- **Download** individual documents
-- **Preview** PDF invoices directly in the browser
-- **Upload** additional documents
+## Related
 
-## Running validation
-
-From the invoice detail page header, click **Validate** to run the invoice through the validation engine. This checks:
-
-- Amount calculations match line items
-- Dates are consistent
-- Connection and retail account references are valid
-- Rates match expected tariff rates
-
-See the [Invoice Validation & Review](/guides/invoice-validation) guide for more details.
+- [Invoices](/invoices)
+- [Working the validation queue](/guides/invoice-validation)
+- [Reviewing OCR-extracted invoices](/guides/utiliread-review)
