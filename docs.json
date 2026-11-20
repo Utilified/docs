@@ -69,6 +69,7 @@
         "pages": [
           "invoices",
           "validation",
+          "invoice-exceptions",
           "payments",
           {
             "group": "Operations guides",

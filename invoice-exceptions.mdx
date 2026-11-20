@@ -1,0 +1,103 @@
+---
+title: "Invoice exceptions"
+description: "Work the UMS invoice exceptions queue, find and request missing bills from Billing gaps, and track disputed charges in the Billing errors tracker."
+ums_routes: ["/invoices/exceptions", "/invoices/gaps", "/invoices/billing-errors"]
+---
+
+Exceptions are invoices UMS can't settle on its own: a missing bill, a charge that doesn't match the tariff, an invoice it can't match to an account, a suspected duplicate. Open **Invoices** in the **Operations** group of the sidebar, then the **Exceptions** tab.
+
+Two related pages sit under the Invoices hub: **Billing gaps** (missing bills by account) and **Billing errors** (disputed charges and their credits).
+
+## Exceptions tab
+
+The **Exceptions** strip counts open exceptions, the accounts they span and the age of the oldest, with **For review**, **Failed** and **Passed** validation counts beside it.
+
+### Filters and grouping
+
+| Filter | Exception types |
+| --- | --- |
+| **All** | Every type except legacy reviews. |
+| **Gaps** | Missing invoices for a period. |
+| **Variance** | Validation variances. |
+| **No match** | No retail account or connection match, or a low-confidence match. |
+| **Duplicate** | Suspected duplicates. |
+| **Low confidence** | Low-confidence extraction. |
+| **Over threshold** | Amounts over your threshold. |
+| **Reconciliation** | Correction candidates, balance mismatches, ledger divergence, gaps, standalone credits and payment receipts. |
+| **Legacy** | Reviews raised by the old review queue. |
+
+You can also filter by **Root account** and **Connection**, and use **Group by** to group by **Retail account**, **Supplier**, **Client organisation**, **Age bucket** or **Billing month**. The **Views** rail on the left holds saved views, and below them the suppliers with the most open gaps. Click a supplier to scope the queue to it.
+
+Columns are **Exception**, **Type**, **Why queued**, **Age** and **Severity** (**Info**, **Warning** or **Blocker**).
+
+### Resolving an exception
+
+Click a row to open it beside the queue. The detail shows why it was queued and a layout for that type, with the resolve buttons at the bottom. The buttons depend on the type, for example **Accept**, **Dismiss**, **Merge**, **Upload invoice**, **Not expected**, **Snooze**, **Correct tariff**, **Dispute** or **Post to ledger**. **Dismiss** means the check is never raised on that invoice again.
+
+Hover a row for quick actions: **Upload**, **Not expected**, **Snooze**, **Acknowledge** and **Dismiss**. **Not expected** asks for a reason (**Account paused**, **One-off skip** or **Manual override**). **Snooze** asks how long (**1 week**, **2 weeks**, **Next month** or a date you pick).
+
+**Upload** opens the **Uploads** tab scoped to the gap's retail account and period. Uploading the missing invoice closes the gap.
+
+Press <kbd>?</kbd> for keyboard shortcuts, including <kbd>j</kbd>/<kbd>k</kbd> to step through rows, <kbd>a</kbd> to acknowledge and <kbd>d</kbd> to dismiss.
+
+### Header actions
+
+- **Detect gaps for the current scope**: checks for missing invoices across the accounts in scope.
+- **Upload invoices to resolve gaps**: opens the **Uploads** tab.
+- **Billing gaps by account**: opens [Billing gaps](#billing-gaps).
+- **Run the gap report**: opens the invoice gap report.
+
+An invoice's own exceptions also appear in the **Exceptions** section of its **Review** tab, with a link to each one here.
+
+### GST treatment and missing invoice numbers
+
+UMS flags a line whose GST treatment differs from the jurisdiction's tax rate. Open the exception and choose **Correct line**, **Accept once** or **Remember as rule**. Flags don't correct tax treatment automatically.
+
+New invoices without a printed number no longer raise a missing-number exception. Older ones stay open until you resolve them: type the number and click **Save number**, or record that the supplier never issues invoice numbers. Re-checking doesn't close them automatically.
+
+## Billing gaps
+
+**Billing gaps** lists tracked retail accounts with missing bills. Open it from **Billing gaps by account** on the **Exceptions** tab. Check it before a payment run, report or validation sweep.
+
+Tiles show **Tracked retail accounts**, **With gaps**, **Missing periods**, **Partial periods**, **Requested**, **Follow-ups due** and **Completeness, last 12 months**.
+
+Group rows **By account** or **By supplier**, and filter by **Client account**, **Supplier**, **Utility**, **Request state** (**Not requested**, **Requested**, **Follow-up due**, **Snoozed**) and **Missing for** (**Up to 30 days** to **Over 180 days**). Columns are **Tracked RAs**, **Complete**, **Missing**, **Partial**, **Oldest missing**, **Requested**, **Not requested**, **Follow-ups due** and **Last bill**. Clicking an account opens its invoice completeness view.
+
+To ask retailers for the missing bills:
+
+<Steps>
+  <Step title="Select rows">
+    Tick the accounts or suppliers you want bills for.
+  </Step>
+  <Step title="Compose the request">
+    Click **Request missing bills**. Pick the recipients in **To**, and check the **Subject** and **Message**.
+  </Step>
+  <Step title="Send it">
+    Click **Send request** (or **Send N requests** when there are several). UMS confirms once the requests are sent.
+  </Step>
+</Steps>
+
+**Export** opens the invoice gap report with the same filters.
+
+## Billing errors
+
+**Billing errors** tracks confirmed invoice errors from identified to credited. Open it from the **Billing errors** button on the **Validations** tab. You record a billing error from a run's review panel or the **Dispute** tab of a validation run. See [Validation](/validation).
+
+| View | Shows |
+| --- | --- |
+| **Needs action** | Errors identified but not yet raised. |
+| **With retailer** | Errors raised with the retailer. |
+| **Awaiting credit** | Errors the retailer accepted. |
+| **Closed** | Credited, rejected and abandoned errors. |
+
+Columns are **Invoice**, **Supplier**, **Account**, **Direction** (**Overcharge** or **Undercharge**), **Status**, **Reason**, **Identified**, **Agreed**, **Credited**, **Days open** and **Retailer ref**. Click a row to open the invoice's **Review** tab, where the error's card lives.
+
+Statuses: **Identified**, **Raised with retailer**, **Accepted, credit expected**, **Credited**, **Rejected by retailer** and **Abandoned**. Move an error along from its card with **Mark raised**, **Retailer accepted**, **Record credit**, **Retailer rejected**, **Abandon**, **Move back a step** or **Reopen**.
+
+**Accuracy report** opens the Overview dashboard. **Export these billing errors as CSV** downloads the current view.
+
+## Related guides
+
+- [Working the validation queue](/guides/invoice-validation)
+- [Validation](/validation)
+- [Invoices](/invoices)
