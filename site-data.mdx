@@ -1,11 +1,12 @@
 ---
 title: "Site data"
 description: "Record non-utility values against a site — such as floor area or occupancy — and define the data types they use."
+ums_routes: ["/site-data", "/site-data/[id]", "/site-data-types", "/site-data-types/[id]"]
 ---
 
 Site data lets you store values against a site that don't come from a utility bill, for example floor area, headcount, or production output. Each value belongs to a **data type**, which sets how the value is interpreted and the units it displays in.
 
-Site data and site data types have no menu entry of their own. You reach them from a site, or directly at `/site-data` and `/site-data-types`.
+Site data and site data types have no menu entry of their own. Go to **Accounts** › **Sites** and click **Site data** or **Data types** at the top of the page. You can also reach a site's data from the site itself.
 
 ## Viewing a site's data
 
@@ -48,10 +49,12 @@ A data type's page has two tabs:
 
 The **Type** sets how values are interpreted over time:
 
-| Type                     | Meaning                                         |
-| ------------------------ | ----------------------------------------------- |
-| **Constant over Period** | The value holds steady across the period        |
-| **Total over Period**    | The value is a total for the period             |
-| **Accumulation Total**   | The value is a running, accumulating total      |
+| Type                     | Code                 | Meaning                                    |
+| ------------------------ | -------------------- | ------------------------------------------ |
+| **Constant over Period** | `PERIOD_CONSTANT`    | The value holds steady across the period   |
+| **Total over Period**    | `PERIOD_TOTAL`       | The value is a total for the period        |
+| **Accumulation Total**   | `ACCUMULATION_TOTAL` | The value is a running, accumulating total |
+
+The data type's page shows the code.
 
 Site data can be used in dashboard [custom measures](/dashboards#custom-measures).

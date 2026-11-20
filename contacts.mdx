@@ -1,78 +1,40 @@
 ---
 title: "Contacts"
 description: "Manage the people linked to your UMS accounts — key personnel, billing contacts, site managers, and other stakeholders for each business you supply."
+ums_routes: ["/contacts", "/contacts/[id]"]
 ---
 
-Contacts represent the people associated with your accounts — key personnel, billing contacts, site managers, and other stakeholders. Each contact is linked to an [account](/accounts) and can be managed from the Contacts page or from within an account's **Contacts** tab.
+Go to **Accounts** in the sidebar, then the **Contacts** tab.
 
+Contacts are the people at your accounts: key personnel, billing contacts, site managers and other stakeholders. Each contact belongs to one [account](/accounts). An account's contacts also appear in the **People** panel on its **Overview** tab.
+
+{/* screenshot-stale */}
 <Frame>
   ![UMS Contacts list showing contacts in a data grid](/images/contacts/contacts-list.png)
 </Frame>
 
 ## Contacts list
 
-The Contacts page displays all contacts across your organisation in a data grid with the following columns:
+Tiles above the grid show **Active Contacts** and **New Contacts** (this month and this year). The grid shows active contacts by default, sorted by name; clear the status filter to include inactive ones.
 
-| Column           | Description                                              |
-| ---------------- | ------------------------------------------------------- |
-| **Full Name**    | The contact's full name                                 |
-| **Email**        | Primary email address                                   |
-| **Phone Number** | Landline or primary phone number                        |
-| **Mobile Number**| Mobile phone number                                     |
-| **Position**     | The contact's role or job title                         |
-| **Department**   | The department or team the contact belongs to           |
-| **Account**      | The [account](/accounts) the contact is linked to       |
-| **Active**       | Whether the contact is active                           |
-| **Date Added**   | When the contact was created                            |
-| **Date Edited**  | When the contact was last updated                       |
+| Column      | Description                                     |
+| ----------- | ----------------------------------------------- |
+| **Name**    | The contact's full name. Click it to open the contact. |
+| **Email**   | Email address                                   |
+| **Phone**   | Phone number                                    |
+| **Account** | The account the contact belongs to              |
 
-Summary cards at the top show contact totals for your organisation.
+A **Status** column (**Active** or **Inactive**) is hidden by default; add it from the grid's column settings.
 
-### Toolbar and row actions
+### Adding a contact
 
-The data grid toolbar provides **Filter**, **Column visibility**, **Export** (CSV), **Refresh**, **Density**, and **Search**, matching the [Accounts](/accounts) grid. Each row offers **See Details** to open the contact detail page and **Quick Edit** to edit fields inline in a drawer.
-
-### Creating a contact
-
-Click the **+** button in the top-right corner to open the **Create New Contact** drawer. The form captures:
-
-- `first_name` — First name (required)
-- `last_name` — Last name (required)
-- `email` — Email address (required, validated)
-- `phone_number` — Phone number
-- `mobile_number` — Mobile number
-- `position` — Role or job title
-- `department` — Department or team
-- `account` — The [account](/accounts) to link the contact to (required)
-
-You can also add a contact from an account's **Contacts** tab, which pre-fills the linked account.
+Click **Add contact** to open the **Create New Contact** drawer. Enter the first name, last name, email, phone number and account; all are required. You can also click **New** › **New Contact** on an account's detail page, which fills in the account for you.
 
 ## Contact detail page
 
-{/* TODO screenshot: /images/contacts/contact-detail.png — contact detail page with Overview, Details, and Settings tabs */}
+The header shows the contact's name, a status chip, and "Contact at" with a link to their account. You edit fields in place on the tabs.
 
-Clicking **See Details** on a contact opens the detail page with a tabbed interface:
-
-| Tab          | Description                                                              |
-| ------------ | ----------------------------------------------------------------------- |
-| **Overview** | Summary cards plus editable Contact Details and Contact Info sections   |
-| **Details**  | Additional profile fields for the contact                               |
-| **Settings** | Archive or delete the contact                                           |
-
-### Overview tab
-
-The Overview tab opens with summary cards for **Name**, **Email**, **Phone**, and **Account**, followed by two editable sections:
-
-- **Contact Details** — `id` (read-only), `first_name`, `last_name`, and `account`
-- **Contact Info** — `email` and `phone_number`
-
-### Details tab
-
-The Details tab shows additional profile information for the contact, including any extended fields captured beyond the core name, contact, and account details.
-
-### Settings tab
-
-The Settings tab lets you manage the contact's lifecycle:
-
-- **Archive** — Set the contact to inactive (`active` is set to `false`) while keeping its history
-- **Delete** — Permanently remove the contact
+| Tab          | What it shows                                                                                   |
+| ------------ | ----------------------------------------------------------------------------------------------- |
+| **Overview** | **Contact Details** (**First name**, **Last name**, **Account**) and **Contact Info** (**Email**, **Phone number**) |
+| **Settings** | **Additional details** for the contact, and **Data management**: **Archive contact** (set it inactive) or **Delete contact** (permanent) |

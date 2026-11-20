@@ -1,61 +1,82 @@
 ---
-title: "Dashboard"
-description: "The dashboard gives you a high-level overview of your organisation's energy management — totals, spend, connections, sites map, and expiring agreements."
+title: "Home"
+description: "Your landing page in UMS: a portfolio summary, the work that needs attention, market headlines and a set of modules you can choose and reorder."
+ums_routes: ["/home"]
 ---
 
-The Dashboard is the first page you see after logging in. It provides a high-level overview of your organisation's energy management activities.
+**Home** is the first item in the sidebar and the page you land on after signing in. It shows what is in your portfolio, what needs doing, and a grid of modules you can customise.
 
+{/* screenshot-stale */}
 <Frame>
-  ![UMS dashboard overview with summary cards, spend, and a sites map](/images/home/dashboard.png)
+  ![UMS Home page](/images/home/dashboard.png)
 </Frame>
 
-## Summary cards
+The page is built from four bands, top to bottom:
 
-At the top of the dashboard, five summary cards display your key totals:
+| Band                | What it shows                                                                          |
+| ------------------- | -------------------------------------------------------------------------------------- |
+| Greeting            | A greeting with your first name and a one-line count of accounts, connections and sites |
+| Attention strip     | Tiles for work that needs doing, each linking to the list behind it                     |
+| **Market news**     | A scrolling ticker of the latest market headlines                                      |
+| Modules             | The modules you have chosen, in your order                                             |
 
-| Card                | Description                                            |
-| ------------------- | ------------------------------------------------------ |
-| **Accounts**        | Total number of customer accounts in your organisation |
-| **Sites**           | Total physical locations across all accounts           |
-| **Connections**     | Total electricity, gas, and water connections          |
-| **Agreements**      | Total energy agreements (active and historical)        |
-| **Retail Accounts** | Total retail account references with energy retailers  |
+## Scope
 
-Each card shows the current count along with growth indicators — how many were added in the last 30 days and last year.
+The **Showing** selector beside the greeting sets which accounts Home counts. Your choice is saved and applies to the greeting, the attention strip and the modules.
 
-## Total spend
+| Option                | What Home counts                                                           |
+| --------------------- | -------------------------------------------------------------------------- |
+| **All accounts**      | Your whole organisation                                                    |
+| **Accounts I follow** | The accounts you follow and their associated accounts                      |
+| **Specific accounts** | The accounts you pick in the **Accounts** field. Choose at least one.      |
 
-Below the summary cards, the **Total Spend** section breaks down your energy expenditure by utility type:
+When the scope is narrowed, the selector is highlighted and the greeting says "in scope". Some modules can't narrow to every scope. They show all accounts instead and say so in a caption under the module title.
 
-- **Electricity** — Total spend and consumption in kWh
-- **Natural Gas** — Total spend and consumption in MJ
-- **Water** — Total spend and consumption in kL
+## Attention strip
 
-Each utility type is colour-coded: yellow for electricity, blue for natural gas, and light blue for water.
+Each tile shows a count and opens the list it counts. A tile with nothing to report is hidden. When every tile is empty, the strip reads "Nothing needs your attention right now."
 
-## Active connections by utility
+| Tile                         | Counts                                                        | Opens                                   |
+| ---------------------------- | ------------------------------------------------------------- | --------------------------------------- |
+| **Billing errors**           | Invoices with an unresolved billing error, and the amount at stake | [Validation](/validation), errors view |
+| **Issues to review**         | Unresolved invoice exceptions in the review queue             | Invoice exceptions                      |
+| **Duplicates**               | Suspected duplicate invoices                                  | Invoice exceptions, duplicates          |
+| **Data gaps**                | Billing periods with no invoice                               | Invoice exceptions, gaps                |
+| **Expiring in 90 days**      | Agreements whose end date falls within 90 days                | [Agreements](/agreements), expiring view |
+| **Failed uploads (30 days)** | Imports that failed, or failed validation, in the last 30 days | [Imports](/imports), failed            |
+| **Off supply**               | Connections affected by a current network outage              | Connection outages, in progress         |
 
-A donut chart showing the distribution of your active connections across utility types. Hover over each segment to see the exact count.
+**Billing errors** and **Failed uploads (30 days)** can't be narrowed by account, so they only appear under **All accounts**. Under a narrowed scope the other counts follow the scope, but the lists they open aren't filtered.
 
-## Sites map
+## Market news
 
-An interactive map of Australia showing the geographic distribution of your sites. Clustered markers indicate groups of nearby sites — click a cluster to zoom in. Individual site markers can be clicked to view site details.
+The **Market news** ticker scrolls the latest headlines and pauses when you hover over it. Click a headline to open the story, or click **Market news** to open the news on the [Market](/market) page. The ticker is hidden when there are no headlines.
 
-## Recent accounts
+## Modules
 
-A quick-access list of the most recently created or viewed accounts. Click any account name to navigate directly to that account's detail page.
+| Module                        | What it shows                                                                        |
+| ----------------------------- | ------------------------------------------------------------------------------------ |
+| **Spend over time**           | Monthly billed spend, stacked by utility, to the last complete month                 |
+| **Growth**                    | Account, connection and site counts and spend under management, with growth          |
+| **Data quality**              | Invoice completeness score and the most common missing fields                        |
+| **Sites**                     | Map of the sites in scope                                                            |
+| **Renewals**                  | Agreements expiring in the next 90 days                                              |
+| **Accounts**                  | Titled **Accounts you're following** under **Accounts I follow**, otherwise **Recent accounts** |
+| **Connections by utility**    | Active connection mix                                                                |
+| **Market**                    | Wholesale market snapshot                                                            |
+| **Notifications**             | Your latest [notifications](/notifications), newest first                            |
+| **Processing**                | Invoices in flight, by pipeline stage                                                |
+| **Contracted annual volumes** | Contracted annual cost per utility, from connection records rather than billed data  |
 
-## Agreements expiring soon
+### Customising Home
 
-Displays agreements expiring within the next 90 days, sorted by urgency. Each entry shows:
+<Steps>
+  <Step title="Open the drawer">
+    Click the customise icon at the top right of the page (tooltip: **Choose which modules appear on your home page**). The **Customise home** drawer lists every module, including hidden ones.
+  </Step>
+  <Step title="Choose and order modules">
+    Tick or clear a module's checkbox to show or hide it. Use the **Move up** and **Move down** arrows to change its position.
+  </Step>
+</Steps>
 
-- Agreement name and type
-- Customer name
-- Days remaining until expiry
-- Expiry date
-
-A badge at the top shows the total count of expiring agreements. Click any agreement to view its full details.
-
-## Filtering
-
-Use the filter icon in the top-right corner of the dashboard to narrow the data displayed. Filters allow you to focus on specific accounts, utility types, or date ranges.
+Changes apply straight away and are saved to your user, so Home looks the same on any device.
