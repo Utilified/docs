@@ -1,9 +1,13 @@
 ---
-title: "Meters, Registers & Reads"
+title: "Meters, registers and reads"
 description: "Work with the physical metering hierarchy beneath a connection — meters, their measurement registers, and the time-series consumption reads they record."
+ums_routes:
+  - "/meters"
+  - "/meters/[id]"
+  - "/registers/[id]"
 ---
 
-Meters, registers, and reads sit beneath a [connection](/connections) and describe how energy use is physically measured and recorded. A connection can have many meters, each meter has one or more registers (measurement channels), and each register records a stream of time-series reads.
+Meters, registers and reads sit beneath a [connection](/connections) and describe how energy use is measured and recorded. A connection can have many meters. Each meter has one or more registers (measurement channels), and each register records a stream of time-series reads.
 
 ```text
 Connection (utility meter point — NMI, MIRN)
@@ -12,54 +16,67 @@ Connection (utility meter point — NMI, MIRN)
         └── Reads (time-series consumption data)
 ```
 
-These entities are managed in context rather than as standalone lists. Meters appear under the **Meters** tab of a [connection](/connections), registers under the **Registers** tab of a meter, and reads under the **Reads** tab of a register (or aggregated on a connection). They are gated by the `utilities` permission.
+Find meters under **Portfolio** › **Connections** › **Meters**, or on a connection's **Metering** › **Meters** segment. Registers have no list of their own: open one from its meter. You need access to the Utilities module.
 
 ## Meters
 
-A meter is the physical device installed at a connection. Open a connection and select the **Meters** tab to see every meter on that connection in a data grid.
+The **Meters** tab lists every meter across your connections. Click **New Meter** to add one, or use **New Meter** on a connection's page to add it to that connection directly.
 
-<Frame>
-  ![The Meters tab on a connection, showing the meter data grid columns](/images/meters/meters-list.png)
-</Frame>
+| Column            | Description                                                                 |
+| ----------------- | --------------------------------------------------------------------------- |
+| **Serial**        | The meter's serial number. Click it to open the meter                       |
+| **Type**          | The meter type                                                              |
+| **Installed**     | When the meter was installed. Marked "from meter data" when UMS filled it in from the reads |
+| **Removed**       | When the meter was removed (blank if still installed)                       |
+| **Data provider** | Where the meter's data comes from                                           |
+| **First read**    | The date of the earliest read                                               |
+| **Last read**     | The date of the latest read                                                 |
 
-| Column              | Description                                              |
-| ------------------- | -------------------------------------------------------- |
-| **Serial**          | The meter's serial number                                |
-| **Type**            | The meter type                                           |
-| **Date Installed**  | When the meter was installed at the connection           |
-| **Date Removed**    | When the meter was removed (blank if still installed)    |
+### Meter page
 
-Opening a meter shows **Overview**, **Settings**, **Registers**, and **Reads** tabs. The Overview tab summarises the meter's active status, serial number, type, description, install and removal dates, and a link back to its parent connection.
+The header shows the serial number and the connection it's on. Click **New Register** to add a register to the meter.
+
+| Tab           | What it shows                                                                          |
+| ------------- | -------------------------------------------------------------------------------------- |
+| **Overview**  | **Status**, **Meter details** (serial number, type, description, install and removal dates) and a link to the **Connection** |
+| **Registers** | The meter's registers                                                                  |
+| **Reads**     | Every read from all of the meter's registers                                           |
+| **Settings**  | Edit the meter's details, or archive or delete it                                      |
 
 ## Registers
 
-A register is a measurement channel on a meter — for example, separate channels for peak and off-peak usage, or for import and export. Open a meter and select the **Registers** tab to list its registers.
+A register is a measurement channel on a meter, for example separate channels for peak and off-peak use, or for import and export. A meter's **Registers** tab lists them.
 
-{/* TODO screenshot: /images/meters/registers-list.png — the Registers tab on a meter detail page showing the register data grid */}
+| Column           | Description                                                     |
+| ---------------- | --------------------------------------------------------------- |
+| **Serial**       | The register's serial number                                    |
+| **Interval (s)** | The read interval length in seconds                             |
+| **Accumulator**  | How readings accumulate: cumulative or actual                   |
+| **Flow**         | Injection, extraction or net                                    |
+| **Units**        | The unit of measure for the register's reads                    |
+| **Status**       | Active or Inactive                                              |
 
-| Column                  | Description                                                          |
-| ----------------------- | -------------------------------------------------------------------- |
-| **Serial**              | The register's serial number                                         |
-| **Intervals (seconds)** | The read interval length in seconds                                  |
-| **Accumulator Type**    | `C` (Cumulative) or Actual — how readings accumulate                 |
-| **Flow Direction**      | Injection (`in`), Extraction (`ex`), or Net (`net`)                  |
-| **Base Units**          | The unit of measure for the register's reads                         |
-| **Active**              | Whether the register is currently active                             |
+### Register page
 
-Opening a register shows **Overview**, **Settings**, and **Reads** tabs. The Overview tab surfaces the register's serial, base units, interval length, accumulator type, flow direction, active status, and a link to its parent meter.
+The header shows the serial number and the meter it's on. Click **New Read** to add a read by hand.
+
+| Tab          | What it shows                                                                                                   |
+| ------------ | --------------------------------------------------------------------------------------------------------------- |
+| **Overview** | **Status**, **Register details** (serial number, base units, interval, accumulator type, flow direction) and a link to the **Meter** |
+| **Reads**    | The register's reads                                                                                            |
+| **Settings** | Edit the register's details, or archive or delete it                                                            |
 
 ## Reads
 
-Reads are the time-series measurements a register records — the raw consumption data that underpins validation, modelling, and brokerage. View individual reads on a register's **Reads** tab, or see aggregated reads with charting on a connection's **Reads** tab.
+Reads are the time-series measurements a register records. They underpin validation, modelling and brokerage. A register's **Reads** tab lists them one by one; a meter's **Reads** tab lists them across all its registers.
 
-{/* TODO screenshot: /images/meters/reads-list.png — the Reads tab on a register detail page showing the read data grid */}
+| Column       | Description                                   |
+| ------------ | --------------------------------------------- |
+| **Date**     | The date of the read                          |
+| **Interval** | The interval within the day the read covers   |
+| **Value**    | The recorded measurement                      |
+| **Recorded** | When the read was recorded                    |
 
-| Column          | Description                                              |
-| --------------- | -------------------------------------------------------- |
-| **Date**        | The date of the read                                     |
-| **Interval**    | The interval within the day the read covers              |
-| **Value**       | The recorded measurement value                           |
-| **Actual**      | Whether the value is an actual reading or an estimate    |
-| **Record Date** | When the read was recorded                               |
+The grid also shows whether each read is an actual reading or an estimate. Reads are sorted by **Date**, then **Interval**, most recent first.
 
-Reads are sorted by **Date** then **Interval**, most recent first.
+To chart and export a connection's reads across all its meters, use the connection's **Metering** › **Reads** segment. See [Connections](/connections#metering).

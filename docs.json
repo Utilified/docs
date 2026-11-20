@@ -51,6 +51,7 @@
           "meters",
           "tariffs",
           "data-feeds",
+          "solar-watch",
           {
             "group": "Portfolio guides",
             "pages": [
