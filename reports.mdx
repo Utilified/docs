@@ -1,64 +1,187 @@
 ---
 title: "Reports"
-description: "Run pre-built UMS reports on demand or schedule them for recurring email delivery — consumption, invoices, agreements, billing gaps, connections, and more."
+description: "Run standard UMS reports, schedule them for email delivery, pick up results in History, and design custom reports for your customers' portal."
+ums_routes:
+  [
+    "/reports",
+    "/reports/[reportId]",
+    "/reports/generate/[id]",
+    "/reports/invoice-batch-export",
+    "/reports/schedule",
+    "/reports/schedules",
+    "/reports/history",
+    "/reports/history/[id]",
+    "/reports/custom",
+    "/reports/custom/[id]",
+  ]
 ---
 
-The Reports module provides a library of pre-built reports that you can run on demand or schedule for recurring delivery.
+Select **Reports** in the **Insights** group of the sidebar (`/reports`).
 
+Reports is where you run the standard report library, schedule reports for email delivery, collect finished files, and build custom reports and dashboards for your customers' portal.
+
+## Tabs
+
+| Tab                 | Route                  | What it holds                                                                         |
+| ------------------- | ---------------------- | ------------------------------------------------------------------------------------- |
+| **Library**         | `/reports`             | Every standard report you can run, as cards with **Run** and **Schedule**             |
+| **Schedules**       | `/reports/schedules`   | Recurring report schedules and their recipients                                        |
+| **History**         | `/reports/history`     | Every report run, with its status and file                                            |
+| **Custom reports**  | `/reports/custom`      | Tabular reports you design and publish to the portal                                   |
+| **Dashboards**      | `/dashboards`          | Portal dashboards. See [Dashboards](/dashboards).                                      |
+| **Custom measures** | `/dashboards/measures` | Your own formulas for dashboards. See [Custom measures](/dashboards#custom-measures). |
+
+<Note>
+  **Custom reports** only appears when your role includes the custom reports permission. **Dashboards** and **Custom measures** need the dashboards permission.
+</Note>
+
+## Library
+
+The **Library** tab lists the reports available to you under **Available reports**. Each card shows the report's name and description, a **Parameters Required** chip if it needs filters, and **Run** and **Schedule** buttons.
+
+{/* screenshot-stale */}
 <Frame>
   ![UMS Reports page listing available pre-built reports](/images/reports/reports-list.png)
 </Frame>
 
-## Quick actions
+### Standard report catalogue
 
-At the top of the Reports page:
+The reports under **Brokerage** only appear when your role includes the brokerage module. **Automation Activity** needs the automations module.
 
-- **View Report History** — See previously generated reports and download their results
-- **Schedule Management** — Manage recurring report schedules
+#### Agreements
 
-Top-right buttons:
+| Report                                              | What it shows                                                                                                |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Agreement Connections Expiry and Billing Report** | Agreement connections by term, status and onboarding stage, and optionally whether each was billed in term |
+| **Metering and Energy Agreement End Date Report**   | Energy and metering agreement end dates, grouped by connection                                               |
+| **Connection Agreement Detail Report**              | Current and maximum energy and metering agreements, and the active retail account, per connection            |
+| **Agreement Onboarding Pipeline**                   | Each agreement connection's onboarding milestones, stage, days in stage, overdue rule and blocker            |
 
-- **Refresh** — Reload the reports list
-- **View History** — Jump to report execution history
+#### Connections and data health
 
-## Available reports
+| Report                                          | What it shows                                                                                             |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| **Connections With No Sites Report**            | Connections not linked to any site                                                                        |
+| **Connections With No Retail Accounts Report**  | Connections with no active retail account                                                                 |
+| **Connections With No Active Agreement Report** | Connections with no current energy retail agreement                                                       |
+| **Connection Data Recency Report**              | Supplier, retail account status, agreement end date, last invoice and last meter read per connection      |
+| **Retail Account Transfer Report**              | Retail accounts in transfer or pending states that need action                                            |
+| **Account Email Activity Report**               | Each account's inbound email address, email counts by processing outcome, and last received date          |
+| **Contestable Metering Opportunities**          | Contestable or unclassified NEM electricity connections with no active metering agreement                 |
 
-There are 14 available reports, each with a description and **Run** / **Schedule** buttons:
+#### Consumption
 
-| Report                                            | Description                                                                           |
-| ------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| **Agreement Expiry Report**                       | Summarises agreement connections pending expiry within a specified timeframe          |
-| **Bulk Consumption Export Report**                | Exports consumption data with time aggregation for multiple meters                    |
-| **Connections With No Active Agreement Report**   | Identifies connections without a current energy retail agreement                      |
-| **Connections With No Retail Accounts Report**    | Identifies connections without active retail accounts                                 |
-| **Connections With No Sites Report**              | Identifies connections not linked to any site                                         |
-| **Electricity Consumption Report**                | Electricity consumption statistics per connection over a period                       |
-| **Gas Consumption Report**                        | Natural gas and LPG consumption statistics per connection over a period               |
-| **Invoice Batch Export**                          | Generates a ZIP file with CSV and PDF documents for a selected account and date range |
-| **Invoice Gap Report**                            | Detects invoice gaps per retail account and connection                                |
-| **Invoice Report**                                | Summarises invoices issued over a period for specific accounts                        |
-| **Metering and Energy Agreement End Date Report** | End dates for energy and metering agreements grouped by connection                    |
-| **Monthly Spend Accrual Report**                  | Monthly spend with accrual projection for incomplete months per connection            |
-| **Retail Account Transfer Report**                | Retail accounts in transfer or pending states requiring action                        |
-| **Water Consumption Report**                      | Water consumption statistics per connection over a period                             |
+| Report                                   | What it shows                                                                                                   |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Electricity Consumption Report**       | Electricity consumption statistics per connection over a period                                                 |
+| **Gas Consumption Report**               | Natural gas and LPG consumption statistics per connection over a period                                         |
+| **Water Consumption Report**             | Water consumption statistics per connection over a period                                                       |
+| **Bulk Consumption Export Report**       | Consumption for many connections with time aggregation                                                          |
+| **Period Consumption & Coverage Report** | Metered and invoiced usage side by side by day, month or year, with days-of-data coverage                        |
+| **Sub-connection Consumption Report**    | Consumption for a parent connection and its sub-connections, with on-site consumption and variance              |
+| **Invoiced Consumption Report**          | Consumption and charges from every invoice overlapping the range, with site context for emissions and audits    |
+| **Interval Consumption Sync Export**     | Interval reads changed since the last sync, for loading into an external database                               |
 
-### Running a report
+#### Invoices and spend
+
+| Report                           | What it shows                                                                                 |
+| -------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Invoice Report**               | Invoices issued over a period for specific accounts                                           |
+| **Invoice Gap Report**           | One row per missing billing period, with what you need to chase it                            |
+| **Invoice Batch Export**         | A ZIP of an invoice CSV and the invoice PDFs for an account and date range                    |
+| **Invoice Sync Export**          | Invoices flattened to one row per connection invoice record, with documents, for syncing out  |
+| **Monthly Spend Accrual Report** | Monthly spend and usage per connection, projecting an accrual for incomplete months           |
+
+#### Brokerage
+
+| Report                                       | What it shows                                                                                    |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Brokerage Revenue Report**                 | Revenue records with supplier, account, connection and billing details                           |
+| **Brokerage Revenue Forecast**               | Projected revenue from active brokerage records and historical usage                             |
+| **Contracted Revenue Detail**                | Expected, billed and remaining contracted revenue per brokerage record                            |
+| **Contracted Revenue Movement**              | Monthly movement in contracted revenue from new contracts, billing and write-offs                |
+| **Brokerage Revenue Position**               | Revenue invoiced before, during and to the end of a period, and what remains contracted          |
+| **Brokerage Billing Recency Audit**          | How recently each brokerage record and connection was billed, and the gap to expected billing     |
+| **Brokerage Go-Live & Revenue Commencement** | Go-live rate and average revenue-commencement delay by financial year and supplier                |
+| **Metering Coverage**                        | Contestable NEM connections on an active retail contract, their metering agreement and whether it earns |
+| **Supplier Statement Reconciliation**        | Each RCTI row's paid and calculated amounts and variance, summarised by supplier and month       |
+
+#### Automations
+
+| Report                  | What it shows                                                         |
+| ----------------------- | --------------------------------------------------------------------- |
+| **Automation Activity** | Automation runs and target outcomes, with blocked reasons, per automation |
+
+### How a run reaches History
+
+Every run is queued and generated in the background.
+
+- Some reports open a full page with the report's own filters, **Saved presets**, and **Generate report**. Submitting it takes you straight to **History**.
+- Other reports open a **Generate Report** dialog with the report's parameters. **Invoice Batch Export** opens its own form instead. Submitting closes the dialog.
+
+Either way, the run appears on the **History** tab as **Pending**, then **Completed** or **Failed**. You get a notification when it's ready.
+
+## Schedules
+
+The **Schedules** tab lists recurring schedules in a grid:
+
+| Column         | Shows                                                    |
+| -------------- | -------------------------------------------------------- |
+| **Name**       | The schedule's name                                      |
+| **Report**     | The report it runs                                       |
+| **Frequency**  | Daily, weekly, monthly or yearly                         |
+| **Next Run**   | When it runs next                                        |
+| **Last Run**   | When it last ran, or **Never**                           |
+| **Format**     | The file format sent                                     |
+| **Recipients** | How many recipients; hover to see the addresses          |
+| **Enabled**    | A switch to pause or resume the schedule                 |
+| **Actions**    | **Edit** and **Delete**                                  |
+
+Click **Create Schedule** to add one. The form asks for:
+
+- **Schedule Name** and **Report**
+- **Report Parameters**, where any date field can **Use Relative Date** (for example **Previous Month** or **Since last successful run**) so each run covers a fresh period
+- **Output Format**: **CSV**, **Excel (XLSX)** or **JSON**
+- **Recipients**: the **Email Addresses** that receive the file
+- **Schedule Configuration**: **Frequency**, **Time**, and the **Day of Week**, **Day of Month** or **Month** the frequency needs
+- **Enable Schedule**
+
+Clicking **Schedule** on a Library card opens the same form with the report already chosen. Scheduled runs of standard reports also land in **History**.
+
+## History
+
+The **History** tab lists every run, newest first. Filter it with the search box (report name or user), **Status** (**All**, **Completed**, **Pending**, **Failed**) and **From** / **To** dates.
+
+Each row shows the report, who requested it and when, the file format, and its status. A failed run shows its reason. Row actions:
+
+- **Download** the file
+- **View in browser** (CSV only) to preview the rows, with a **Download** button
+- **Retry this report**, where a failed run can be retried
+
+## Custom reports
+
+The **Custom reports** tab holds tabular reports you design and publish to your customers' portal. The grid shows **Name**, **Source**, **Status**, **Audience**, **Template** and **Updated**, with **Duplicate** and **Delete** row actions.
+
+**Status** is **Draft**, **Published**, or **Draft differs from published** (published, with edits not yet published).
 
 <Steps>
-  <Step title="Find the report you need">
-    Locate the report in the list of available reports.
+  <Step title="Create the report">
+    Click **New custom report**, enter a **Name**, and choose **Blank report** with a **Source** (what one row of the report is) or **Start from template**. Click **Create**.
   </Step>
-  <Step title="Click Run">
-    If the report requires parameters, a form will appear asking for date ranges, accounts, or other filters.
+  <Step title="Add columns">
+    Click **Add column**. Each column is a **Source field**, **Measure**, **Attribute**, **Formula** or **Text template**, with a **Header label** and **Format**. The **Preview** panel updates as you go.
   </Step>
-  <Step title="Wait for generation">
-    The report generates in the background.
+  <Step title="Set the audience and filters">
+    Choose the **Audience** accounts. Portal users of these accounts, and of every account beneath them, can run the report once published. Click **Settings** for **Report filters**, **Filters viewers can change** (**Period**, **Account**, **Site**, **Connection**, **Utility**, **State**, **Site tag**), grouping, sorting and totals.
   </Step>
-  <Step title="Download the result">
-    You will receive a notification when it is ready to download.
+  <Step title="Publish">
+    Click **Publish**. After later edits, click **Publish changes**. **Unpublish** takes the report out of the portal straight away.
   </Step>
 </Steps>
 
-### Scheduling a report
+**Export** downloads the report as **Excel (XLSX)** or **CSV**. Once a report is published to at least one audience account, **Schedule** sends it to recipients on a schedule for one of those accounts.
 
-Click **Schedule** on any report to set up recurring generation (for example, weekly or monthly). Completed reports are delivered via notification.
+## Related guides
+
+- [Running reports](/guides/running-reports)
+- [Dashboards](/dashboards)
