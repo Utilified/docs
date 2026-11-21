@@ -3,22 +3,23 @@ title: "Bulk Importing Data"
 description: "Import accounts, sites, connections, tariffs, meter reads, brokerage records and more into UMS in bulk from CSV or Excel files, then review the results."
 keywords: ["bulk import", "csv upload", "bulk upload wizard", "import template", "data import", "column mapping"]
 ums_routes:
-  - "/imports"
-  - "/imports/new"
+  - "/import"
+  - "/import/history"
+  - "/import/new"
 ---
 
 When you are onboarding a large portfolio or loading data from another system, the bulk upload wizard imports many records at once. Each import uses a template that defines the expected columns, so you can download a sample, fill it in and upload it back.
 
-Bulk importing is for organisation admins. For a reference of the Imports page and its statuses, see [Imports](/imports).
+The import options you see depend on your permissions. For a reference of the Import page and its statuses, see [Imports](/imports).
 
 ## Open the Imports page
 
 <Steps>
-  <Step title="Open Imports">
-    Open the account menu at the bottom of the sidebar and select **Bulk Imports**.
+  <Step title="Open Import">
+    Open the account menu at the bottom of the sidebar and select **Import**.
   </Step>
   <Step title="Review previous imports">
-    The **Imports** page lists your previous imports with their type, file name, status and timestamps.
+    Open the **History** tab. The **Portfolio data** view lists your previous imports with their type, file name, status and timestamps.
 
     {/* screenshot-stale */}
     <Frame>
@@ -26,7 +27,7 @@ Bulk importing is for organisation admins. For a reference of the Imports page a
     </Frame>
   </Step>
   <Step title="Start a new import">
-    Click **New Import** to open the **Bulk upload** wizard.
+    Open the **New import** tab and choose **Portfolio data** to open the **Bulk upload** wizard.
   </Step>
 </Steps>
 
@@ -34,6 +35,7 @@ Bulk importing is for organisation admins. For a reference of the Imports page a
 
 The first step, **Template**, lists **Recommended Templates** and, below them, **Auto-Generated Templates**. Each card shows how many fields the template has and how many are required. Use **Search templates...** to find one quickly.
 
+{/* screenshot-stale */}
 <Frame>
   ![Bulk Upload Wizard on the Select Template step showing template cards for meter reads, invoices, site data, and more](/images/imports/select-template.png)
 </Frame>

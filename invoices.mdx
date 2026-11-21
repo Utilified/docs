@@ -1,7 +1,7 @@
 ---
 title: "Invoices"
 description: "The Invoices hub in UMS: the invoice list, uploads and UtiliRead extraction, import batches, the review activity log, and each invoice's detail page."
-ums_routes: ["/invoices", "/invoices/uploads", "/invoices/uploads/[id]", "/invoices/import-batches", "/invoices/import-batches/[id]", "/invoices/activity", "/invoices/[id]"]
+ums_routes: ["/invoices", "/invoices/uploads", "/invoices/uploads/[id]", "/import/batches/[id]", "/invoices/activity", "/invoices/[id]"]
 ---
 
 Open **Invoices** from the **Operations** group in the sidebar. It is the hub for every energy invoice in UMS, from upload and extraction through validation, exceptions and payment.
@@ -69,7 +69,7 @@ The **Uploads** tab is where you upload invoice files and follow their extractio
 
 Other header actions:
 
-- **View import batches**: opens the list of upload batches (see [Import batches](#import-batches)).
+- **Import history** (the eye icon): opens the list of upload batches (see [Import batches](#import-batches)).
 - **Import from CSV (advanced)**: imports invoice data from a CSV file instead of extracting documents.
 - **Auto-pilot settings**: opens the Auto-pilot section of **Settings**.
 
@@ -120,7 +120,7 @@ To resolve flagged fields and migrate the result, see [Reviewing OCR-extracted i
 
 ## Import batches
 
-Each upload creates an import batch. Open the list from **View import batches** on the **Uploads** tab. Columns are **Name**, **Files**, **Status**, **Succeeded**, **Failed**, **Uploaded** and **By**. Batch statuses are **Empty**, **Processing**, **Completed** and **Completed with failures**.
+Each upload creates an import batch. Open the list from the **Import history** icon on the **Uploads** tab, or open the account menu, select **Import** and choose the **Invoice PDFs** view on the **History** tab. Columns are **Name**, **Files**, **Status**, **Succeeded**, **Failed**, **Uploaded** and **By**. Batch statuses are **Empty**, **Processing**, **Completed** and **Completed with failures**.
 
 Click a batch to see each file's status, with counts for **Succeeded**, **Needs review**, **Failed**, **Processing** and **Skipped**.
 
