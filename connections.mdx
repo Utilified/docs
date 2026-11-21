@@ -37,7 +37,7 @@ Use the view switch at the top of the grid to change the list:
 
 | View                     | Shows                                                                                                               |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| **All**                  | Every connection                                                                                                    |
+| **All**                  | All connections. The grid starts filtered to active ones: open **Filters** in the grid toolbar and remove the **Status** filter to include inactive connections |
 | **Metering opportunity** | Contestable connections, or ones whose customer size isn't confirmed, with no active or upcoming metering agreement |
 
 | Column              | Description                                                         |
@@ -81,13 +81,15 @@ The grid shows each outage's **Network**, **Kind**, **Phase**, **Window**, **Sit
 | **Restored**            | The distributor confirmed supply is back                 |
 | **Ended (unconfirmed)** | The window has passed but no restoration notice arrived  |
 | **Cancelled**           | The distributor cancelled the outage                     |
+| **Unknown**             | The distributor hasn't given a start time                |
 
 A connection with a current or upcoming outage also shows a banner on its **Overview** tab.
 
 ## Connection detail
 
-Click a connection's identifier to open it. The header shows the identifier, the address (or site name) and an **Active** or **Inactive** status.
+Click a connection's identifier to open it. The header shows the identifier and an **Active** or **Inactive** status. Beneath it are the address (only when it differs from the site name), a link to the site and the utility.
 
+{/* screenshot-stale */}
 <Frame>
   ![A connection detail page on its Overview tab, with energy consumption and the connection details](/images/connections/connection-detail.png)
 </Frame>
@@ -118,6 +120,7 @@ Only **Add to Site** shows a label. The others are icon buttons; hover to see th
 ### Overview
 
 - Consumption chart: reads over the last 12 months, with drill-down. Download the visible data as CSV from the chart. For a full export, use **Metering** › **Reads**.
+- **Billing and contract**: the active retail account and its status, the supplier, and the current energy and metering agreements. Links to **All retail accounts** and **All agreements** open the **Accounts** tab. A sub-connection doesn't show this panel.
 - **Details**: identifier, utility, namespace, the annual estimate, loss factors when set, and the parent or sub-connection count.
 - **Sites**: the sites the connection is linked to.
 - **Location**: the site on a map.
@@ -131,8 +134,8 @@ Pick a segment with the switch at the top of the tab.
 | Segment             | What it shows                                                                                                                     |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | **Meters**          | The connection's meters. See [Meters, registers and reads](/meters)                                                               |
-| **Sub-connections** | Submeters beneath this connection, such as a tenant or a generation asset. Click **Add Sub-Connection** to add one               |
-| **Reads**           | A report of the connection's reads. Choose a date range, time aggregation, **Units** and **TOU**, then click **Get Report**. Click **Export** to download the reads as ZIP or XLSX. A parent can turn on **Include sub-connections** |
+| **Sub-connections** | Submeters beneath this connection, such as a tenant or a generation asset. To add one, use the **Add Sub-Connection** header action, or the **Add Sub-Connection** button shown while there are none yet |
+| **Reads**           | A report of the connection's reads. Choose a date range, time aggregation, **Units** and **TOU**, then click **Get Report**. Click **Export** to download the reads as ZIP or XLSX, choosing a scope: **This connection only**, **Connection + sub-connections** (when it has sub-connections), or every connection on its site or account. A parent can turn on **Include sub-connections** |
 | **Data feeds**      | Metering feeds connected to this connection. **Alert routing** links to where you choose who hears about a failing feed           |
 | **Usage analytics** | How the connection uses its utility and what drives its cost                                                                     |
 
