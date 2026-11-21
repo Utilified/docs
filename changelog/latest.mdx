@@ -1,61 +1,60 @@
 ---
 title: "Latest"
-description: "UMS v4.27.0 — usage analytics, a Forwards tab and supply register, and more reliable exports. Released 14 November 2026."
+description: "UMS v4.42.0 — an audit log, saved views on every list, help beside the page and ESG reporting. Released 21 November 2026."
 ---
 
 Stay up to date with the latest features and improvements in UMS.
 
-<Update label="v4.27.0" description="2026-11-14">
-  ## Usage analytics, a Forwards tab and supply register, and more reliable exports
+<Update label="v4.42.0" description="2026-11-21">
+  ## An audit log, saved views on every list, and help beside the page
 
-  This release covers everything since v4.17.0.
-
-  ### Connections and sites
-
-  - **Usage analytics for Connections** — Open a Connection's Metering tab and choose Usage analytics to see interval usage against your tariff's time-of-use periods, 12 months of daily usage split by period, an average weekday and weekend day, an hour-by-date heatmap, and your measured monthly peak against the demand charges that apply.
-  - **Usage analytics for Sites** — The Site Usage tab rolls the same views up across a Site's Connections, with the Site's coincident peak demand beside the sum of its Connection peaks and each Connection's contribution at the peak.
-
-  ### Market
-
-  - **Forwards tab** — Futures contracts, strips, forward curves and settlement history now live in one place. WEM curves are labelled as Synergy's offered prices.
-  - **Supply tab** — See generation leaving and arriving by year, fuel and technology, the committed and announced pipeline, and the next closure and next arrival in each region.
-  - **Clearer market desk** — Price changes compare like with like and say so, spot changes show in $/MWh, news reads as one tidy list, insight signals state direction and size, and Analyse charts share one date axis.
-  - **ARENA news** — News from the Australian Renewable Energy Agency joins the market news feed.
-
-  ### Invoices and validation
-
-  - **Supplier credits** — Credits are booked with net settlement, and a repeated credit that could post twice is held for review instead.
-  - **Red Energy CSVs** — Usage and line quantities are recorded from Red Energy CSV invoices.
-  - **Origin rebills** — An Origin cancel-and-rebill that arrives in a separate file is linked to the bill it replaces.
-  - **UtiliRead balance check** — Other charges shown inside current charges no longer fail the balance check.
-  - **Per-unit daily rates** — Validation prices daily rates with no binding over the days in the period.
-
-  ### Payments
-
-  - **Consolidated accounts** — Consolidated Retail Accounts are coded per meter in payment coding.
-
-  ### Reports and exports
-
-  - **Grid exports** — Grid exports now complete and email your download link.
-  - **Export size limit** — Exports and scheduled reports covering more than 2,000 Connections are refused with a message asking you to filter by Account, Site or Connection.
-  - **Export notifications** — You're notified only once the export file is ready.
-  - **Account uploads and stats** — Account CSV uploads report unsupported rows accurately, and Account stats count Retail Account and Agreement links.
-
-  ### Brokerage
-
-  - **Preview draft invoice amendments** — Preview corrections to a manually raised draft brokerage invoice before anything changes.
-  - **Contract matching on upload** — Uploads prefer open contracts over closed ones.
-  - **Delete Rows** — Delete Rows no longer reports success on draft brokerage rows it didn't delete.
-  - **Faster overview** — The brokerage overview loads faster and shows its layout while figures load.
+  This release covers everything since v4.27.0.
 
   ### Settings
 
-  - **SSO callback URLs** — The SSO setup wizard shows every callback URL your Microsoft Entra application needs, with copyable guidance.
+  - **Audit log** — Organisation admins can open Audit log in Settings, under Access & integrations, to see your organisation's sign-ins, credential changes, exports and Utilified staff access, filtered by user, event and date.
+  - **Unsaved changes warning** — Settings forms, including AutoPilot settings, warn you before you leave with unsaved changes.
+  - **Solar plant setup** — In Settings, Solar monitoring, Sync all sets up every unlinked SolisCloud or Sungrow plant in one grid, with fill-down for install dates. A plant with no Connection is skipped instead of blocking the batch.
+
+  ### Lists and navigation
+
+  - **Saved views** — Save the filters and sort you use on the Accounts, Sites, Agreements, Connections, Contacts, Suppliers, Meters and Tariffs lists.
+  - **Filters in the link** — Filters, sort and page stay in the URL on more lists, including Payment groups, Data feeds and Data sources, so you can bookmark or share a filtered view.
+  - **Simpler navigation** — Help and Import each have one entry in the navigation. Old links still work.
+  - **Keyboard shortcuts** — Press ? anywhere to see the keyboard shortcuts.
+
+  ### Connections, sites and accounts
+
+  - **Billing and contract on the Connection Overview** — A Connection's Overview shows its active Retail Account and current energy and metering Agreements, so you no longer open the Accounts tab to see who bills it.
+  - **Consistent detail pages** — Tabs stay in place while a page loads, count tiles open the tab that lists them, and subtitles link to the parent record. The Account overview loads faster.
+  - **Generation sub-connections** — Generation sub-connections show as generation, not consumption.
+  - **Modelled energy charts** — Reported zero battery discharge and zero generator output now show on charts, and modelled half-hourly supply reconciles with Site load.
+
+  ### Invoices and inbox
+
+  - **Copy invoice numbers** — Copy an invoice number with one click.
+  - **Undo archive** — Archiving an inbox email happens straight away, with an Undo button in place of a confirm dialog.
+  - **Litre units** — Invoices that spell litres as "LT" are read correctly.
+  - **Clearer load failures** — Invoice, payment file and Connection pages tell you when they fail to load, and a failed Connection load can be retried.
+  - **No double-submits** — Actions on detail pages, including activating and closing a Retail Account, can't submit twice or report success when they failed.
+
+  ### ESG
+
+  - **ESG reporting** — Prepare your data for NGER, NPI, ASRS S2 and GHG Protocol in one step, check each framework's readiness checklist, and export multi-sheet XLSX files. NGER thresholds now match the Clean Energy Regulator's. The ESG section appears only when it is enabled for your organisation.
+
+  ### Help
+
+  - **Contact Utilified beside the page** — Contact Utilified opens beside the page you need help with and already knows any error that page showed.
+  - **Documentation links** — The ten busiest screens link to their documentation.
 
   ### Other improvements
 
-  - **Page scrolling** — The page no longer scrolls behind the app.
-  - **Spend charts** — Tidier legends, labels and axis colours.
+  - **Printing** — Printing or saving as PDF gives you the page without the sidebar and toolbars.
+  - **Connection lost banner** — A banner tells you when your internet connection drops.
+  - **Exact timestamps** — Hover over a relative time such as "2 hours ago" to see the exact time.
+  - **Shorter wizards** — Wizards skip steps the page you started from already answers.
+  - **Accessibility** — Higher contrast for secondary buttons, count badges, approvals and Joule links, and Joule respects reduced motion.
+  - **Supplier types** — The Transmission Operator supplier type is labelled correctly.
 </Update>
 
-See [Previous Releases](/changelog/archive) for v4.17.0 (10 November 2026) and older versions, including the outage board, full grid exports and brokerage balances.
+See [Previous Releases](/changelog/archive) for v4.27.0 (14 November 2026) and older versions, including usage analytics, the Forwards tab and the supply register.
