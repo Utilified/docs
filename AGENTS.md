@@ -35,6 +35,7 @@
 
 - The `docs.json` navigation mirrors the app sidebar's groups: Home and inbox, Portfolio, Operations, Commercial, Billing, Insights, then Settings and tools. Put a page in the group where its screen lives in the app. Guides go in that group's guides sub-group.
 - Removing or renaming a page needs an entry in `docs.json` `redirects`, and every inbound link updated. `mint broken-links` must pass.
+- Preview locally with `mint dev` (serves http://localhost:3000; install the CLI with `npm i -g mint`), and run `mint broken-links` before pushing.
 - Module pages follow this order: where to find it (sidebar group › item › tab), what it's for, tabs and views (a table), actions, statuses, related guides.
 - Every module page and guide lists the app routes it documents in frontmatter, for example `ums_routes: ["/connections", "/connections/[id]"]`. Mintlify ignores the key. Drift checks use it to find the page to update when those routes change.
 - Name buttons by their label, such as **New Connection**. Don't write "+".
