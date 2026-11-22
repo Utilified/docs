@@ -35,7 +35,7 @@ Go to **Invoices** › **Uploads**. The **Upload queue** strip counts records in
     Click the row. The detail page title reads `Upload #id`, with the file name underneath.
   </Step>
   <Step title="Compare extracted data to the source">
-    The **Overview** tab shows the source document beside the extracted metadata. Use the zoom and rotate controls to read the original. Cross-check the values in the **Invoices**, **Connections**, **Line Items** and **Raw Output** tabs against the document.
+    The **Overview** tab shows the source document beside the extracted metadata. Use the zoom and rotate controls to read the original. Cross-check the values in the **Invoices**, **Connections**, **Line items** and **Raw Output** tabs against the document. To correct a value before you migrate, double-click its cell on the **Invoices** or **Line items** tab. See [Editing extracted data](/invoices#editing-extracted-data).
   </Step>
 </Steps>
 
@@ -56,21 +56,14 @@ Open the **Review** tab. A warning banner shows the **Review Reason**, and each 
 </Steps>
 
 <Tip>
-  Resolve every flagged field before approving. When you resolve the **last** outstanding field, UtiliRead approves the record for you automatically — you'll see "All fields resolved. Record approved automatically."
+  You don't need to click **Approve** after resolving fields. When you resolve the **last** outstanding field, UtiliRead approves the record automatically and shows "All fields resolved. Record approved automatically." The record moves to **Success**.
 </Tip>
 
 ## Approve or reject
 
-The **Review Decision** bar at the top of the tab carries the final call.
+The **Review Decision** bar at the top of the tab shows only while the record is in **Needs review**. Resolving the last field approves the record and the bar disappears, so you rarely need **Approve**. It stays disabled while any field is unresolved.
 
-<Steps>
-  <Step title="Approve">
-    Once all fields are resolved, click **Approve**. The button stays disabled while any field is unresolved.
-  </Step>
-  <Step title="Reject">
-    If the extraction is unusable — wrong document, unreadable scan — click **Reject**. Rejection is available at any time, even with fields outstanding.
-  </Step>
-</Steps>
+If the extraction is unusable — wrong document, unreadable scan — click **Reject**. You can reject at any point while the record is in review, even with fields outstanding. Rejecting sets the record to **Failed**.
 
 <Warning>
   For records that arrived by email, reprocessing must go through the **Inbox**, not the OCR record in isolation. The detail header shows **Reprocess from inbox** for these — it re-runs the whole email pipeline so the inbox, import records, and invoices stay consistent. Direct uploads instead offer **Retry processing from scratch**, **Force process**, **Re-run AI extraction (keeps OCR data)** and **Re-run OCR from scratch (discards extracted data)**.
@@ -82,7 +75,7 @@ Approval confirms the data; it does not yet create the invoice. To do that, migr
 
 <Steps>
   <Step title="Start the migration">
-    Click **Migrate extracted invoices to UMS** (the primary action in the detail header). It appears once extraction has produced data.
+    Click **Migrate to UMS** (the primary action in the detail header). It appears once extraction has produced data.
   </Step>
   <Step title="Choose overwrite behaviour">
     The **Migrate UtiliRead Result to UMS** dialog warns that this creates new invoices, and possibly new connections, retail accounts and suppliers. Toggle **Overwrite** only if you need to replace records already imported from this result.

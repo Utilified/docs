@@ -28,14 +28,14 @@ All six tabs need the Invoices permission.
   ![UMS Invoices list showing invoices in a data grid](/images/invoices/invoices-list.png)
 </Frame>
 
-The **Invoices** tab lists every invoice. The invoice number links to the invoice's detail page, and the **See Details** row action opens it too. Visible columns include **Supplier Account**, **Supplier**, **Account**, **Issued**, **Due**, **Charges**, **Amount Due** and **Tags**. Add balance and custom-field columns from the column picker.
+The **Invoices** tab lists every invoice. The invoice number links to the invoice's detail page, and the **See Details** row action opens it too. Visible columns include **Supplier Account**, **Supplier**, **Account**, **Issued**, **Due**, **Charges**, **Tax**, **Previous Balance**, **Starting Balance**, **Payments**, **Other Charges Credits**, **Amount Due** and **Tags**. **Custom Fields** is hidden by default; add it from the column picker.
 
 ### Views
 
 | View | Shows |
 | --- | --- |
 | **All** | Every invoice (the default). |
-| **Needs Validation** | Invoices with no validation run yet. |
+| **Needs Validation** | Invoices with no validation run yet, or whose latest run is **Not validated**. |
 | **Failed** | Invoices whose latest run failed. |
 | **For Review** | Invoices whose latest run needs review. |
 | **Passed** | Invoices whose latest run passed. |
@@ -44,7 +44,7 @@ The **Invoices** tab lists every invoice. The invoice number links to the invoic
 
 ### Actions
 
-- **Edit selected**: select rows, then set one field across them. You can change **Retail account**, **Due date**, **Issue date** or **Exclude from payment files** (with a reason), then click **Apply to** the selected count.
+- **Edit selected**: select rows, then set one field across them. You can change **Retail account**, **Due date**, **Issue date**, **Exclude from payment files** (with a reason) or **Payment exclusion reason**, then click **Apply to** the selected count.
 - **Auto-Link Retail Accounts** (header icon): matches unlinked invoices to retail accounts and reports how many it linked.
 - **Open the validation queue** (header icon): goes to the **Validations** tab.
 - **View documentation** (header icon): opens this page.
@@ -99,7 +99,7 @@ Click a row to open its detail page, titled `Upload #id` with the file name unde
 | **Overview** | The source document beside the extraction metadata and linked records. |
 | **Invoices** | Invoices extracted from the document. |
 | **Connections** | Connections found on the selected invoice. |
-| **Line Items** | Line items for the selected connection. |
+| **Line items** | Line items for the selected connection. |
 | **Raw Output** | The raw extraction output. |
 | **Review** | Field-by-field resolution. Shown only for records in review or with a past review. |
 
@@ -107,14 +107,21 @@ Header actions depend on the record's state:
 
 | Action | When it shows |
 | --- | --- |
-| **Migrate extracted invoices to UMS** | Extraction has produced data. Creates the invoices. |
-| **Reprocess from inbox** | The file came from an email. Re-runs the whole email pipeline. |
+| **Migrate to UMS** | Extraction has produced data. Creates the invoices. |
+| **Reprocess from inbox** | The file came from an email and isn't processing. Re-runs the whole email pipeline. Asks you to confirm, because it deletes the existing import records and OCR data. |
 | **Retry processing from scratch** | A directly uploaded file that failed or is in review. |
 | **Force process** | Shown alongside **Retry processing from scratch**. Bypasses the page-limit and validation gates. |
 | **Re-run AI extraction (keeps OCR data)** | A directly uploaded file with OCR output. |
 | **Re-run OCR from scratch (discards extracted data)** | Any directly uploaded file. Asks you to confirm. |
 | **Export to CSV** | Extraction has produced data. Downloads `utiliread-<id>.csv`. |
 | **Reload record** | Always. |
+
+#### Editing extracted data
+
+Before you migrate, you can correct what UtiliRead extracted. Double-click a cell to edit it, and the change saves straight away.
+
+- **Invoices** tab: **Supplier**, **Invoice Number**, **Account Number**, **Account Name**, **Amount Due** and **Tax**.
+- **Line items** tab: **Order**, **Charge Description**, **Amount** and **Type**.
 
 To resolve flagged fields and migrate the result, see [Reviewing OCR-extracted invoices](/guides/utiliread-review).
 
@@ -126,7 +133,7 @@ Click a batch to see each file's status, with counts for **Succeeded**, **Needs 
 
 ## Activity
 
-The **Activity** tab lists review actions taken on invoices, including actions Joule took. Select a row to see what changed. Click **Revert** to put the record back as it was. The revert is refused if anyone has edited the same fields since.
+The **Activity** tab lists review actions taken on invoices, including actions Joule took. Select a row to see what changed. Click **Revert** to put the record back as it was. The revert is refused if anyone has edited the same fields since. **Revert** is unavailable when the rewind window has expired, the action is already reverted, or the action has no recorded prior state.
 
 ## Invoice detail
 
@@ -140,11 +147,15 @@ The page title is `Invoice #` and the invoice number. The supplier and account n
 | Tab | What it shows |
 | --- | --- |
 | **Overview** | Key figures, **Details**, **Payment files**, **Connection records**, **Tags & custom fields**, **Source documents**, **Corrections** (with the payment hold) and **Related**. |
-| **Lines** | Line items. Switch between **All lines** and **By connection**. See [Editing invoices](/guides/editing-invoices). |
+| **Line items** | Line items. Switch between **All lines** and **By connection**. See [Editing invoices](/guides/editing-invoices). |
 | **Ledger** | The invoice's place in the retail account ledger: payments, adjustments and ledger rows to date. |
 | **Review** | The validation workspace: each line beside its finding, an **Exceptions** section, and a **Validation runs** link to the full run. The tab badge counts unresolved errors. |
 | **Activity** | The invoice's audit trail: field changes, Joule actions, exceptions and manual ledger rows. |
 | **Settings** | Editable **Invoice Details**, **Financials** and **Custom Fields**, plus a **Danger zone** to reverse, adjust or delete the invoice. |
+
+### Corrections
+
+The **Corrections** card on **Overview** reverses or adjusts the invoice and holds it from payment. Its **More** menu also offers **Record payment**, **Apply supplier credit** and, for organisation admins only, **Not an invoice**. **Reverse**, **Adjust** and **More** also sit in the **Danger zone** on **Settings**, without the payment hold. See [Editing invoices](/guides/editing-invoices#correct-or-reverse-an-invoice).
 
 ### Header actions
 

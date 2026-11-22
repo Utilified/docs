@@ -26,7 +26,7 @@ The **Exceptions** strip counts open exceptions, the accounts they span and the 
 | **Reconciliation** | Correction candidates, balance mismatches, ledger divergence, gaps, standalone credits and payment receipts. |
 | **Legacy** | Reviews raised by the old review queue. |
 
-You can also filter by **Root account** and **Connection**, and use **Group by** to group by **Retail account**, **Supplier**, **Client organisation**, **Age bucket** or **Billing month**. The **Views** rail on the left holds saved views, and below them the suppliers with the most open gaps. Click a supplier to scope the queue to it.
+You can also filter by **Root account** and **Connection**, and use **Group by** to group by **Retail account**, **Supplier**, **Client organisation**, **Age bucket** or **Billing month**. Once you group, **Sort by** orders the groups: **Count (high to low)**, **Count (low to high)**, **Oldest first** or **Label A → Z**. The **Views** rail on the left holds saved views, and below them the suppliers with the most open gaps. Click a supplier to scope the queue to it.
 
 Columns are **Exception**, **Type**, **Why queued**, **Age** and **Severity** (**Info**, **Warning** or **Blocker**).
 
@@ -38,7 +38,7 @@ Hover a row for quick actions: **Upload**, **Not expected**, **Snooze**, **Ackno
 
 **Upload** opens the **Uploads** tab scoped to the gap's retail account and period. Uploading the missing invoice closes the gap.
 
-Press <kbd>?</kbd> for keyboard shortcuts, including <kbd>j</kbd>/<kbd>k</kbd> to step through rows, <kbd>a</kbd> to acknowledge and <kbd>d</kbd> to dismiss.
+Press <kbd>?</kbd> to open the **Keyboard shortcuts** sheet.
 
 ### Header actions
 
@@ -61,7 +61,7 @@ New invoices without a printed number no longer raise a missing-number exception
 
 Tiles show **Tracked retail accounts**, **With gaps**, **Missing periods**, **Partial periods**, **Requested**, **Follow-ups due** and **Completeness, last 12 months**.
 
-Group rows **By account** or **By supplier**, and filter by **Client account**, **Supplier**, **Utility**, **Request state** (**Not requested**, **Requested**, **Follow-up due**, **Snoozed**) and **Missing for** (**Up to 30 days** to **Over 180 days**). Columns are **Tracked RAs**, **Complete**, **Missing**, **Partial**, **Oldest missing**, **Requested**, **Not requested**, **Follow-ups due** and **Last bill**. Clicking an account opens its invoice completeness view.
+Group rows **By account** or **By supplier**, and filter by **Client account**, **Supplier**, **Utility**, **Request state** (**Not requested**, **Requested**, **Follow-up due**, **Snoozed**) and **Missing for** (**Up to 30 days** to **Over 180 days**). Columns are **Tracked RAs**, **Complete**, **Missing**, **Partial**, **Oldest missing**, **Requested**, **Not requested**, **Follow-ups due** and **Last bill**. In **By account**, clicking an account opens its invoice completeness view. In **By supplier**, clicking a supplier switches to **By account**, filtered to the accounts that supplier bills.
 
 To ask retailers for the missing bills:
 
@@ -81,7 +81,7 @@ To ask retailers for the missing bills:
 
 ## Billing errors
 
-**Billing errors** tracks confirmed invoice errors from identified to credited. Open it from the **Billing errors** button on the **Validations** tab. You record a billing error from a run's review panel or the **Dispute** tab of a validation run. See [Validation](/validation).
+**Billing errors** tracks confirmed invoice errors from identified to credited. Open it from the **Billing errors** button on the **Validations** tab. Click **Record billing error** to record one from a run's review panel, the **Dispute** tab of a validation run, an invoice's **Review** tab, or a **Variance** exception. The review panel and **Review** tab offer it on failed or needs-review runs only. See [Validation](/validation).
 
 | View | Shows |
 | --- | --- |
