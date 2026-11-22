@@ -15,7 +15,7 @@ Go to **Invoices** › **Invoices** and click the invoice number, or use the **S
   ![Invoice detail page in UMS](/images/invoices/invoice-detail.png)
 </Frame>
 
-The detail page has six tabs: **Overview**, **Lines**, **Ledger**, **Review**, **Activity** and **Settings**. See [Invoices](/invoices#invoice-detail) for what each holds.
+The detail page has six tabs: **Overview**, **Line items**, **Ledger**, **Review**, **Activity** and **Settings**. See [Invoices](/invoices#invoice-detail) for what each holds.
 
 <Tip>
   On a wide screen, click **Show source document side-by-side** in the header to keep the PDF open beside the tab you're editing.
@@ -34,7 +34,7 @@ To change one field across many invoices, select them on the **Invoices** tab an
   ![Invoice lines tab showing charge line items in UMS](/images/invoices/invoice-lines-tab.png)
 </Frame>
 
-The **Lines** tab opens on **All lines**. Columns are **#**, **Description**, **Category**, **Type**, **Connection**, **Rate**, **Amount**, **Factors** and **Quantities**. Switch to **By connection** to see the connection records the lines belong to.
+The **Line items** tab opens on **All lines**. Columns are **#**, **Description**, **Category**, **Type**, **Connection**, **Rate**, **Amount**, **Factors** and **Quantities**. Switch to **By connection** to see the connection records the lines belong to.
 
 - Quick edit: double-click **#**, **Description**, **Category**, **Type** or **Amount** to change it in the grid.
 - Full edit: open the row's actions menu and click **Edit** to change every field in a drawer.
@@ -61,7 +61,13 @@ The **Corrections** panel on **Overview**, and the **Danger zone** on **Settings
 
 - **Reverse** nets the invoice's outstanding amount to zero, so future payment files skip it.
 - **Adjust** applies a signed adjustment, such as a credit memo or an extra charge.
-- **Hold from payment** (on **Overview** only) keeps the invoice out of payment files, with a reason. **Include in batches** lifts the hold.
+- **Hold from payment** (on **Overview** only) keeps the invoice out of payment files. You must enter a **Reason** before you can click **Hold**. **Include in batches** lifts the hold.
+
+The **More** menu beside **Reverse** and **Adjust** has more corrections:
+
+- **Record payment** records a payment against the invoice.
+- **Apply supplier credit** applies a credit from the supplier.
+- **Not an invoice** marks the document as not an invoice. Only organisation admins see it.
 
 Deleting the invoice (from the **Danger zone**) removes it and everything derived from it.
 

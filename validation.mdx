@@ -36,11 +36,13 @@ Click a run to open its review panel beside the queue. It shows the status, whet
 | Action | What it does |
 | --- | --- |
 | **Accept variance** | Accepts the run as billed. Tick **Record the variance as justifiable so validation learns from it** to teach validation. |
-| **Fix tariff** | Opens the tariff to correct. Disabled when you can't edit it. |
+| **Fix tariff** | Opens the tariff to correct. When the run uses several tariff groups, a menu asks which one; shared groups are marked **shared** and can't be picked. Disabled when you can't edit any of them. |
 | **Hold payment** / **Release payment** | Holds the invoice out of payment files, or releases it. |
 | **Record billing error** | Records the variance as a billing error to dispute. Shown on failed or needs-review runs. |
 | **Re-run validation** | Runs validation again. |
 | **Open invoice review** | Opens the invoice's **Review** tab. |
+
+Below the outcomes, the panel lists the billing errors already recorded on the invoice, each as a card with its next step.
 
 ### Actions
 
@@ -73,7 +75,7 @@ Open a run from **Validation runs** on an invoice's **Review** tab. The page tit
 | Tab | What it shows |
 | --- | --- |
 | **Overview** | The run's status and review state, with **Pass**, **Fail** and (once reviewed) **Edit Review**, plus the invoice PDF. |
-| **Line Items** | The saved comparison: expected, invoiced and variance for each finding. |
+| **Line items** | The saved comparison: expected, invoiced and variance for each finding. |
 | **Variance** | The same saved comparison, read for the variance. |
 | **AI Analysis** | **Run AI Analysis**, **Re-run with Fresh Data** and **Error Analysis**, with the result and its confidence score. |
 | **Dispute** | **Billing errors** recorded against the invoice, and **Generate Dispute Letter** to draft a letter you can edit, copy or download. Available for failed or needs-review runs. |
