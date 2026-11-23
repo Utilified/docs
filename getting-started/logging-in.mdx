@@ -24,6 +24,7 @@ Signing up doesn't ask for a password. The verification link signs you in.
 
 ## Signing in
 
+{/* screenshot-stale */}
 <Frame>
   ![The UMS sign-in screen](/images/login/login.png)
 </Frame>
@@ -32,7 +33,7 @@ Sign-in asks for your email first, then works out how you sign in.
 
 <Steps>
   <Step title="Enter your email">
-    Open your organisation's UMS URL, enter your **Email Address** and click **Continue**.
+    Open your organisation's UMS URL, enter your **Email** and click **Continue**.
   </Step>
   <Step title="Sign in">
     - If your organisation uses single sign-on (SSO), UMS takes you to your organisation's identity provider. Sign in there and you return to UMS.
@@ -40,7 +41,9 @@ Sign-in asks for your email first, then works out how you sign in.
   </Step>
 </Steps>
 
-Tick **Remember me** to stay signed in on this browser. If your organisation uses SSO but you need to sign in with a password, click **Sign in with a password instead**.
+Tick **Remember me** to stay signed in on this browser. If your organisation uses SSO but you need to sign in with a password, click **Sign in with a password instead**. To sign in as someone else from the password step, click **Use a different email**.
+
+If an SSO sign-in doesn't complete, UMS shows **Single sign-on did not finish** with the reason. Click **Back to sign in** to try again.
 
 <Info>
   SSO is set up by your organisation's administrator. Your identity provider's own policies, including its multi-factor authentication, apply when you sign in through it.
@@ -81,7 +84,7 @@ With 2FA on, UMS asks for a code as well as your password when you sign in.
 
 ### When your organisation requires 2FA
 
-If your organisation requires 2FA and you haven't set it up, UMS asks you to at sign-in. The **Set up two-factor authentication** dialog appears after your password. Scan the code with an authenticator app, enter the 6-digit code and click **Verify** to finish signing in. You may also be asked for a **Code from the email we sent you**.
+If your organisation requires 2FA and you haven't set it up, UMS asks you to at sign-in. After your password, the sign-in page shows **Set up two-factor authentication**. Scan the code with an authenticator app, enter the 6-digit code and click **Verify** to finish signing in. You may also be asked for a **Code from the email we sent you**.
 
 This step doesn't create backup codes. Generate them afterwards from **Security**.
 
@@ -92,12 +95,14 @@ This step doesn't create backup codes. Generate them afterwards from **Security*
     Enter your email and password.
   </Step>
   <Step title="Choose how to verify">
-    In the **Two-Factor Authentication** dialog, pick **Authenticator App**, **Email Verification** or **Backup Codes**. Only the methods you've set up are shown. For email, click **Send Code** first.
+    After your password, the sign-in page shows **Verify your identity**. If you've set up more than one method, pick **Authenticator app**, **Email code** or **Backup code**. For email, click **Send email code** first.
   </Step>
   <Step title="Enter the code">
-    Enter the **Verification Code** and click **Verify**.
+    Enter the **Verification code** (or your **Backup code**) and click **Verify**.
   </Step>
 </Steps>
+
+To start again with different details, click **Back to sign in**.
 
 ## Resetting your password
 
@@ -121,5 +126,5 @@ To change a password you know, open **Security** and click **Change password**.
 | --- | --- |
 | Forgotten password | Click **Forgot password?** on the sign-in page |
 | 2FA code not working | Check your device's clock is correct, then wait for the next code |
-| Lost authenticator device | Sign in with **Backup Codes**, then set up 2FA on your new device |
+| Lost authenticator device | Sign in with a **Backup code**, then set up 2FA on your new device |
 | SSO not working | Ask your IT administrator to check your account is set up for UMS |
