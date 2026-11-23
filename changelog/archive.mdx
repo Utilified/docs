@@ -5,6 +5,58 @@ description: "Full release history for earlier UMS versions, from the initial la
 
 Browse the release notes for earlier versions of UMS.
 
+<Update label="v4.42.0" description="2026-11-21">
+  ## An audit log, saved views on every list, and help beside the page
+
+  This release covers everything since v4.27.0.
+
+  ### Settings
+
+  - **Audit log** — Organisation admins can open Audit log in Settings, under Access & integrations, to see your organisation's sign-ins, credential changes, exports and Utilified staff access, filtered by user, event and date.
+  - **Unsaved changes warning** — Settings forms, including AutoPilot settings, warn you before you leave with unsaved changes.
+  - **Solar plant setup** — In Settings, Solar monitoring, Sync all sets up every unlinked SolisCloud or Sungrow plant in one grid, with fill-down for install dates. A plant with no Connection is skipped instead of blocking the batch.
+
+  ### Lists and navigation
+
+  - **Saved views** — Save the filters and sort you use on the Accounts, Sites, Agreements, Connections, Contacts, Suppliers, Meters and Tariffs lists.
+  - **Filters in the link** — Filters, sort and page stay in the URL on more lists, including Payment groups, Data feeds and Data sources, so you can bookmark or share a filtered view.
+  - **Tidier navigation** — Help and Import each have one entry in the navigation. Old links still work.
+  - **Keyboard shortcuts** — Press ? anywhere to see the keyboard shortcuts.
+
+  ### Connections, sites and accounts
+
+  - **Billing and contract on the Connection Overview** — A Connection's Overview shows its active Retail Account and current energy and metering Agreements, so you no longer open the Accounts tab to see who bills it.
+  - **Consistent detail pages** — Tabs stay in place while a page loads, count tiles open the tab that lists them, and subtitles link to the parent record. The Account overview loads faster.
+  - **Generation sub-connections** — Generation sub-connections show as generation, not consumption.
+  - **Modelled energy charts** — Reported zero battery discharge and zero generator output now show on charts, and modelled half-hourly supply reconciles with Site load.
+
+  ### Invoices and inbox
+
+  - **Copy invoice numbers** — Copy an invoice number with one click.
+  - **Undo archive** — Archiving an inbox email happens straight away, with an Undo button in place of a confirm dialog.
+  - **Litre units** — Invoices that spell litres as "LT" are read correctly.
+  - **Clearer load failures** — Invoice, payment file and Connection pages tell you when they fail to load, and a failed Connection load can be retried.
+  - **No double-submits** — Actions on detail pages, including activating and closing a Retail Account, can't submit twice or report success when they failed.
+
+  ### ESG
+
+  - **ESG reporting** — Prepare your data for NGER, NPI, ASRS S2 and GHG Protocol in one step, check each framework's readiness checklist, and export multi-sheet XLSX files. NGER thresholds now match the Clean Energy Regulator's. The ESG section appears only when it is enabled for your organisation.
+
+  ### Help
+
+  - **Contact Utilified beside the page** — Contact Utilified opens beside the page you need help with and already knows any error that page showed.
+  - **Documentation links** — The ten busiest screens link to their documentation.
+
+  ### Other improvements
+
+  - **Printing** — Printing or saving as PDF gives you the page without the sidebar and toolbars.
+  - **Connection lost banner** — A banner tells you when your internet connection drops.
+  - **Exact timestamps** — Hover over a relative time such as "2 hours ago" to see the exact time.
+  - **Shorter wizards** — Wizards skip steps the page you started from already answers.
+  - **Accessibility** — Higher contrast for secondary buttons, count badges, approvals and Joule links, and Joule respects reduced motion.
+  - **Supplier types** — The Transmission Operator supplier type is labelled correctly.
+</Update>
+
 <Update label="v4.27.0" description="2026-11-14">
   ## Usage analytics, a Forwards tab and supply register, and more reliable exports
 
