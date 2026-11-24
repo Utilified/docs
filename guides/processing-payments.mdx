@@ -63,8 +63,10 @@ Templates include **Xero Bills CSV**, **MYOB Service Purchases**, **NetSuite Ven
     | **Bills not yet received** | Supplier accounts past their billing cadence |
     | **Validation warnings** | Unreviewed validation failures |
     | **Discounts at risk** | Early-payment discounts that lapse before the next run |
+    | **Currency mismatches** | Invoices in a different currency to the group's. Payment files are single-currency, so these are excluded from this run |
+    | **This run** | How many invoices this run will pay, and their total |
 
-    Passing checks are hidden. Click **Show all checks** to see them too.
+    Passing checks are hidden. Click **Show all checks** to see them too, or **Hide passing checks** to hide them again.
   </Step>
 
   <Step title="Check the eligible invoices">
@@ -74,7 +76,7 @@ Templates include **Xero Bills CSV**, **MYOB Service Purchases**, **NetSuite Ven
   </Step>
 
   <Step title="Generate the file">
-    Choose a **Format** and click **Generate Payment File**. You can also click **Generate payment file** in the group header, or on the **Files** tab (choose the **Payment Group**, **File Format** and **Due within (days)**).
+    Choose a **Format** in the **Eligible invoices** panel, then click **Generate payment file** in the group header. The button shows only on the **Overview** tab and is disabled when nothing is eligible. You can also click **Generate payment file** on the **Files** tab (choose the **Payment Group**, **File Format** and **Due within (days)**).
 
     The formats are CSV, XLSX, PDF, XML and ABA, limited to what the group's template can produce. An ABA group produces an ABA file only.
 

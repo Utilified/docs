@@ -44,9 +44,10 @@ The detail page has these tabs:
 - **Connections**: connections covered by this agreement
 - **Tariffs**: tariff structures and rates for this agreement
 - **Brokerage**: brokerage records linked to this agreement
+- **Activity**: who changed the agreement's details, and when
 - **Settings**: agreement-specific settings
 
-Header actions cover the rest: **Extract from contract**, **New tariff** (on the **Tariffs** tab), **New Retail Account**, **Add Document**, **Add a Connection**, **Bulk Add Connections**, **Merge Into This Agreement** and **Add a Brokerage Record**.
+Header actions cover the rest: **Extract from contract**, **New tariff** (on the **Tariffs** tab), **New Retail Account**, **Add Document**, **Add a Connection**, **Bulk Add Connections**, **Merge Into This Agreement** and **Add a Brokerage Record** (only when your plan includes brokerage).
 
 ## Managing connections
 
@@ -62,12 +63,20 @@ The **Connections** tab lists the **Agreement Connections**: the meter connectio
 - **One connection**: click **Add a Connection**. The drawer starts with the agreement's dates; pick the connection and, optionally, its retail account.
 - **Many connections**: click **Bulk Add Connections** to open **Link connections to agreement**.
 
+Everything happens on the wizard's single **Connections** screen:
+
 <Steps>
-  <Step title="Connections">
-    Choose the **Namespace**, then paste the connection identifiers (NMIs or MIRNs). UMS looks each one up in that namespace. **Start Date** and **End Date** default from the agreement and apply to every connection created.
+  <Step title="Set the namespace and dates">
+    Enter the **Namespace**. **Start Date** and **End Date** default from the agreement and apply to every connection created.
   </Step>
-  <Step title="Review">
-    Check how many are **Ready to create** and how many are **Invalid or pending**, then create the links.
+  <Step title="Add identifiers">
+    Paste the connection identifiers (NMIs or MIRNs) into **Paste connection identifiers** and click **Add identifiers**. UMS looks each one up in that namespace.
+  </Step>
+  <Step title="Check the summary">
+    The summary reads, for example, "8 of 10 ready to link". Identifiers that aren't found, are pending or have no picked match are skipped.
+  </Step>
+  <Step title="Link">
+    Click **Link N connections** (for example **Link 8 connections**) to create the links.
   </Step>
 </Steps>
 
@@ -103,5 +112,5 @@ See the [Managing Tariffs](/guides/managing-tariffs) guide for creating and edit
 
 - **New Retail Account** creates a retail account with the agreement's account, supplier and dates filled in.
 - **Add Document** attaches a contract or other file to the agreement.
-- **Add a Brokerage Record** creates a [brokerage](/brokerage) record for this agreement, starting as pending, with its dates filled in from the agreement.
+- **Add a Brokerage Record** creates a [brokerage](/brokerage) record for this agreement, starting as pending, with its dates filled in from the agreement. It only appears when your plan includes brokerage.
 - **Merge Into This Agreement** opens the merge flow with this agreement as the root. Pick the duplicate agreements to fold into it, review, then merge. The merge cannot be undone. You can also start a merge from **Merge Agreements** on the Agreements list.

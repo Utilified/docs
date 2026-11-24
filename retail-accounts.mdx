@@ -17,7 +17,7 @@ Retail accounts are the account references that energy retailers assign to your 
 Open **Accounts** in the **Portfolio** group of the sidebar, then select the **Retail accounts** tab.
 
 <Note>
-  The **Retail accounts** tab only appears for users with access to the Validation module.
+  The **Retail accounts** tab only appears for users with access to the Validation module, and only when your plan includes retail accounts.
 </Note>
 
 {/* screenshot-stale */}
@@ -57,13 +57,15 @@ The grid also shows whether invoice validation and gap checks are switched on fo
 | ---------------------------- | ------------------------------------------------------------- |
 | **New Retail Account**       | Opens a drawer to create a retail account                     |
 | **Update from CSV**          | Bulk-updates existing retail accounts from a spreadsheet      |
-| **Generate Retail Accounts** | Generates retail accounts from existing connection data       |
+| **Generate Retail Accounts** | Generates retail accounts for agreement connections on retail agreements that have none. New accounts start as **Draft** |
 | **Merge Retail Accounts**    | Combines duplicate accounts (see below)                       |
 | **Merge Recommendations**    | Reviews system-suggested merges of likely duplicates          |
 
 ### Creating a retail account
 
-Click **New Retail Account** to open the drawer. Enter the retailer's account reference and link the supplier, account and connection. You can also set the open and close dates, status, validation and gap-check settings, match tolerance, expected billing frequency and payment terms.
+Click **New Retail Account** to open the drawer. Enter the retailer's account reference and link the supplier, account and connection. You can also set a parent retail account, the open and close dates and the status.
+
+Set validation, billing and payment file settings, such as match tolerance, expected billing frequency and payment terms, on the detail page's **Settings** tab. Switch gap checks on or off on its **Validation** tab.
 
 <Note>
   A retail account links one connection to one retailer reference. When a connection transfers between retailers, a new retail account is created and the old one is closed, which keeps a full billing history per retailer.
@@ -89,14 +91,14 @@ The list and the detail page header label the same statuses slightly differently
   ![A retail account detail page with its tabbed interface and details panel](/images/retail-accounts/retail-account-detail.png)
 </Frame>
 
-The header shows the retailer's account reference, a status chip and a link to the parent account.
+The header shows the retailer's account reference, a status chip and links to its account, supplier and connection.
 
 | Tab            | What it shows                                                                                   |
 | -------------- | ----------------------------------------------------------------------------------------------- |
 | **Overview**   | **Retail Account Details**, a **Validation** summary and, if you have Modelling access, a **Scenarios** card |
 | **Invoices**   | **Calendar** (billing-period calendar) and **Grid** (invoice list with a document preview) views |
-| **Validation** | Validation and gap-check state, run validation for a period, and open gaps. The badge counts open items |
-| **Ledger**     | Charges and payments with the outstanding balance. **Set opening balance** records a starting balance |
+| **Validation** | Validation and gap-check state, and open gaps. **Run Validation** asks for a **Period From** and **Period To**, then **Generate** runs it. The badge counts open items |
+| **Ledger**     | Charges and payments with the outstanding balance. Add a **Payment**, **Adjustment** or **Opening Balance** row and click **Add**. **Set opening balance** records a starting balance |
 | **Agreements** | **Agreements** view: linked [agreement](/agreements) connections. **Tariffs** view: [tariff](/tariffs) assignments, with **Assign / switch tariff** |
 | **Settings**   | Account details, validation and billing settings, payment file settings and the change history |
 
@@ -108,14 +110,14 @@ The **Scenarios** card lists tariff-review [scenarios](/scenarios) for the accou
 | ---------------------------------- | ---------------------------------------------------------------------------- |
 | **Assign tariff**                  | Opens the **Tariffs** view of the **Agreements** tab and the assign/switch tariff dialog |
 | **New Associated Retail Account**  | Creates a retail account linked under this one                               |
-| **Activate Retail Account**        | Activates the account. Hidden when it is already active                      |
-| **Close Retail Account**           | Closes the account on a date you choose. Hidden when it is already inactive  |
+| **Activate**                       | Activates the account. Hidden when it is already active                      |
+| **Close account**                  | Closes the account on a date you choose. Hidden when it is already inactive  |
 
 Activating an account also closes any other active or pending accounts on the connection. Tick **Mark as Pending** to close those as **Deactivation pending** instead of **Inactive**. When closing, tick **Mark as Pending** to close this account as **Deactivation pending**.
 
 ## Merging retail accounts
 
-When duplicate retail accounts exist for the same connection, merge them into a single root. The merge is **irreversible**: agreements, connections, invoices and related data move into the root account.
+When duplicate retail accounts exist for the same connection, merge them into a single root. The merge is **irreversible**: agreement connections, invoices and other related data move into the root account.
 
 <Steps>
   <Step title="Select">
@@ -124,7 +126,7 @@ When duplicate retail accounts exist for the same connection, merge them into a 
   <Step title="Review">
     Click **Review**. Check the root and the accounts being merged, each with its supplier reference and open and close dates.
   </Step>
-  <Step title="Merge">
+  <Step title="Load">
     Click **Merge**. UMS reassigns the data to the root while the **Load** step runs.
   </Step>
   <Step title="Results">
