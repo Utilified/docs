@@ -1,7 +1,7 @@
 ---
 title: "Plan & billing"
-description: "Upgrade from the free trial, choose or change your UMS plan, manage your subscription through Stripe, request a custom plan and restore access after a failed payment."
-ums_routes: ["/settings", "/onboarding/plan"]
+description: "Subscribe online without an account, upgrade from the free trial, choose or change your UMS plan, manage your subscription through Stripe, request a custom plan and restore access after a failed payment."
+ums_routes: ["/settings", "/onboarding/plan", "/subscribe", "/subscribe/verify/[token]", "/subscribe/complete"]
 ---
 
 **Plan & billing** is where org admins choose a plan, change plans and manage payment details. Open the account menu at the bottom of the sidebar, choose **Settings**, then **Plan & billing** in the **Organisation** group.
@@ -34,6 +34,34 @@ To upgrade, choose a plan below and click **Subscribe**. Stripe Checkout takes y
 After 30 days, a trial organisation becomes read-only. Everyone can still sign in and see the data, but nothing can be added or changed. The banner at the top of the app reads *"Your free trial has ended. Your data is safe and read-only."*, and actions that would change data open the upgrade prompt.
 
 Your data is kept for 60 days after the trial ends. If you haven't upgraded by then, it's deleted.
+
+## Subscribe online
+
+You can buy UMS without a trial or an existing account. Start from **Choose a plan** on utilified.com, or go to `ums.utilified.com/subscribe`. You can buy Starter or Business here. For Enterprise, click **Contact sales**.
+
+<Steps>
+  <Step title="Choose a plan">
+    On **Subscribe to Utilified**, pick a plan and enter your organisation name, your name and your work email. Click **Continue**. Personal email addresses, such as Gmail, can't be used.
+  </Step>
+  <Step title="Confirm your email">
+    Open the link in the email we send you. It expires after 7 days.
+  </Step>
+  <Step title="Set up your subscription">
+    Check your plan and organisation name, choose a password and accept the Terms & Conditions. Click **Continue to payment**.
+  </Step>
+  <Step title="Pay with Stripe">
+    Stripe Checkout takes your card and billing address, and your ABN if you add one. When payment succeeds, Stripe returns you to UMS, and your organisation is ready within a few seconds.
+  </Step>
+  <Step title="Sign in">
+    When the page shows **You're all set**, click **Sign in** and use your email and the password you chose. You're the organisation's admin.
+  </Step>
+</Steps>
+
+<Note>
+  A plan bought online starts the [12-month commitment](#12-month-commitment) when payment succeeds. Refunds aren't available during the term.
+</Note>
+
+If your email already has a UMS account, we email you a sign-in link instead. Sign in and choose a plan here in **Plan & billing**. If your organisation already uses UMS, ask an org admin to invite you.
 
 ## Choose or change a plan
 
