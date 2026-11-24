@@ -1,0 +1,86 @@
+---
+title: "Free Trial"
+description: "Try UMS free for 30 days with up to 3 clients: request access, see what the trial includes and its limits, and upgrade to a paid plan."
+keywords: ["trial", "free trial", "consultant", "broker", "sample client", "upgrade"]
+ums_routes: ["/signup", "/onboarding-verify/[token]", "/home", "/settings"]
+---
+
+The free trial is for energy consultants and brokers who manage utilities for their clients. Load a few clients' bills and UMS reads them for you, so you can see validation and reporting on real data before you pay.
+
+In UMS, each client is an **Account**. See [Key Concepts](/getting-started/key-concepts).
+
+## Request a free trial
+
+<Steps>
+  <Step title="Send a request">
+    Open `ums.utilified.com/signup`, or click **Request a free trial** on the sign-in page. Enter your **Organisation name**, **Your name** and **Work email**, then click **Request a free trial**.
+  </Step>
+  <Step title="Wait for approval">
+    The Utilified team reviews each request. Once it's approved, you get an email with a link to set up your account. The link is valid for 7 days.
+  </Step>
+  <Step title="Set up your account">
+    Open the link. On **Set up your free trial**, choose a **Password**, enter it again in **Confirm password**, tick **I agree to the Terms & Conditions** and click **Start my trial**. UMS creates your organisation and signs you in.
+  </Step>
+</Steps>
+
+If the link has expired, the page offers **Request a new link**, which takes you back to the request form. If the link was already used, you land on the sign-in page with **Your account is ready. Sign in.**
+
+Each organisation gets one free trial, matched by email domain. If your email already has a UMS account, we tell you by email instead of starting a new trial.
+
+## What the trial includes
+
+The trial lasts 30 days and needs no card.
+
+| Limit | Trial allowance |
+| --- | --- |
+| Clients (accounts) | 3 |
+| Connections | 25 |
+| Bills processed | 25 in total, for the whole trial |
+| Users | 2 |
+
+**Included:** [invoices](/invoices) (upload a PDF and UtiliRead extracts it), [validation](/validation) and [invoice exceptions](/invoice-exceptions), [sites](/sites) and [meters](/meters), standard [reports](/reports), NEM12 interval-data import, [retail accounts](/retail-accounts), [agreements](/agreements), the [payments](/payments) overview and budgets.
+
+**Not included:** [brokerage](/brokerage), bulk upload, the email [inbox](/inbox), API keys, the [MCP connector](/mcp-connector), [Joule](/joule), the customer portal, [ESG](/esg), custom reports and payment files.
+
+### Daily AI limits
+
+Trial organisations also have daily limits on AI features:
+
+| Feature | Per day |
+| --- | --- |
+| AI analysis of a validation run | 20 |
+| AI validation checks | 200 |
+| AI onboarding runs | 10 |
+
+When you reach one, UMS tells you, for example *"You've reached today's AI analysis limit on the free trial. It resets tomorrow."*
+
+## The sample client
+
+Every trial starts with a sample client, **Sample client – Example Pty Ltd**, with the supplier **Example Energy (sample)**. It has sites, connections, invoices and validation results already loaded, so you can look around before you add your own.
+
+The sample client is marked **Sample**, is read-only and doesn't count toward your limits. Delete it when you no longer need it. See [The sample client](/accounts#the-sample-client).
+
+## Getting started on Home
+
+During the trial, [Home](/home#during-a-free-trial) shows a banner with the days and bills you have left, and a **Get started with your free trial** checklist:
+
+1. Explore the sample client
+2. Add your first client
+3. Upload a bill or import interval data (NEM12)
+4. Review processed results
+5. Run a client report
+6. Invite a colleague
+
+Each step links to the page where you do it and ticks itself off when it's done.
+
+When you upload bills without opening a client first, UMS asks which client they're for. See [Uploading files](/invoices#uploading-files).
+
+## Limits and upgrading
+
+When you reach a limit, or try a feature the trial doesn't include, UMS opens an upgrade prompt. For a limit it shows your usage, for example *3 of 3 clients used*. Click **Upgrade** to open **Settings** › **Plan & billing** and choose a paid plan, or **Not now** to close it. Only org admins can upgrade. Other users see *"Ask your organisation admin to upgrade."*
+
+## When the trial ends
+
+After 30 days your organisation becomes read-only. You can still sign in and see everything, but you can't add or change anything. The banner reads *"Your free trial has ended. Your data is safe and read-only."*
+
+To keep working, an org admin subscribes to a paid plan from [Plan & billing](/billing). Your data is kept for 60 days after the trial ends. If you haven't upgraded by then, it's deleted.
