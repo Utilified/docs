@@ -1,6 +1,6 @@
 ---
 title: "Plan & billing"
-description: "Choose or change your UMS plan, manage your subscription through Stripe, request a custom plan and restore access after a failed payment."
+description: "Upgrade from the free trial, choose or change your UMS plan, manage your subscription through Stripe, request a custom plan and restore access after a failed payment."
 ums_routes: ["/settings", "/onboarding/plan"]
 ---
 
@@ -22,6 +22,18 @@ Only org admins see **Plan & billing**. Other users don't see the section in the
 ### Billed directly by Utilified
 
 If Utilified invoices your organisation directly, the section shows *"Your subscription is billed directly by Utilified. Contact us to change your plan."* **Manage billing**, **Change plan** and the plan picker are hidden.
+
+## Upgrading from the free trial
+
+On the [free trial](/getting-started/free-trial), **Current plan** shows the **Trial** status. When you reach a trial limit or try a feature the trial doesn't include, UMS opens an upgrade prompt. **Upgrade** brings you here, and **Not now** closes it. Only org admins can upgrade. Other users are asked to contact one.
+
+To upgrade, choose a plan below and click **Subscribe**. Stripe Checkout takes your payment details, and when payment succeeds your organisation moves to the new plan with full access.
+
+### When the trial ends
+
+After 30 days, a trial organisation becomes read-only. Everyone can still sign in and see the data, but nothing can be added or changed. The banner at the top of the app reads *"Your free trial has ended. Your data is safe and read-only."*, and actions that would change data open the upgrade prompt.
+
+Your data is kept for 60 days after the trial ends. If you haven't upgraded by then, it's deleted.
 
 ## Choose or change a plan
 
@@ -66,6 +78,8 @@ When the term ends, it renews automatically for another 12 months. You can't can
 | --- | --- |
 | Billed directly by Utilified | Full access, no banner. |
 | Subscription active or in trial | Full access, no banner. |
+| Free trial running | Full access within the trial limits, with the trial banner. |
+| Free trial ended | Read-only access, with the trial-ended banner. |
 | A payment failed and is being retried | Full access, plus a warning banner on every page with an **Update billing** button. |
 | The subscription has lapsed | The **Subscription action required** screen replaces the app. |
 
