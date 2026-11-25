@@ -60,6 +60,17 @@ Changes save automatically while you edit.
 | **Ranking**    | One measure ranked across a dimension                         |
 | **Text**       | Headings and notes, written in Markdown                       |
 
+**Edit block** also offers options that depend on the block type:
+
+| Option                   | Blocks                       | What it does                                                        |
+| ------------------------ | ---------------------------- | ------------------------------------------------------------------- |
+| **Compare with**         | KPI                          | **No comparison**, **Previous period** or **Same period last year** |
+| **Orientation**          | Bar chart                    | **Automatic**, **Vertical** or **Horizontal**                       |
+| **Split into series by** | Line, area and bar charts    | Splits each measure into one series per dimension value             |
+| **Sort**                 | Table and ranking            | **Largest first** or **Smallest first**, or for a table, by its row dimension |
+| **Limit**                | Table and ranking            | How many rows to show                                               |
+| **Block filters**        | All except Text              | Filters that apply to this block only                               |
+
 ## Dashboard settings
 
 Click **Settings** to open the settings drawer:
@@ -72,7 +83,7 @@ Click **Settings** to open the settings drawer:
 
 ## Previewing and unpublishing
 
-Click **View as customer** to see the published dashboard as a portal user does. Click **Unpublish** to take it out of the portal; portal users stop seeing it straight away.
+Click **View as customer** to see the published dashboard as a portal user does. It's disabled until the dashboard is published. Click **Unpublish** to take it out of the portal; portal users stop seeing it straight away.
 
 ## Custom measures
 
@@ -85,7 +96,9 @@ Click **New measure** and fill in:
 - **Format**: **Number**, **Decimal**, **Currency**, or **Percent (0.25 shows as 25%)**
 - **Decimals** and **Unit label** (for example, `$/kWh`)
 
-The grid lists each measure's **Name**, **Key**, **Formula**, **Format** and **Unit**.
+You can't change a measure's **Key** after you create it.
+
+The grid lists each measure's **Name**, **Key**, **Formula**, **Format** and **Unit**, with a **Delete** row action.
 
 ## Related guides
 

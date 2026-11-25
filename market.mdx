@@ -14,6 +14,10 @@ ums_routes:
 
 Select **Market** in the **Commercial** group of the sidebar (`/market`).
 
+<Note>
+  Market must be included in your plan. If it isn't, **Market** shows a lock icon in the sidebar and selecting it opens an upgrade prompt.
+</Note>
+
 Market brings wholesale energy prices, forward prices, computed market signals, supply changes and news into UMS. Use it to follow the market and explain movements to your customers.
 
 ## Tabs
@@ -38,7 +42,7 @@ The **Desk** reads top to bottom in order of urgency:
 - Active signals: a strip of **Alert** and **Watch** signals for the market, with a link to the rest in **Insights**. It only shows when a signal is active.
 - **Prices**: the quote board. Rows are grouped into **Spot**, **Gas**, **Fuels and FX**, and **Futures** (WA shows Synergy's offered curve instead). With **All markets** selected, each group is named for its market. The **1D**, **1W**, **1M**, **3M** and **1Y** toggle sets the change period for every row. A price that is behind its usual schedule shows **Late**; hover it to see when the last price landed. Click a row to chart it; a futures row opens **Forwards** instead.
 - **Today in the market**: a daily summary of the market, with numbered links to its sources. Expand it to read the whole brief.
-- The chart: with nothing selected, all regions' prices for the market (**All markets** or the market's prices). Switch between **Full scale** and **Zoom** (cuts off spikes), pick **7D**, **30D** or **90D** or **From** / **To** dates, and use the export menu to **Download CSV** or **Download PNG**. Selecting an instrument charts it alone, with a back button to return.
+- The chart: with nothing selected, all regions' prices for the market (**All markets** or the market's prices). Switch between **Absolute** and **Indexed** (rebased to 100 at the range start) and between **Full scale** and **Zoom** (cuts off spikes), pick **7D**, **30D** or **90D** or **From** / **To** dates, turn **Market events** on to mark events on the chart, and use the export menu to **Download CSV**. Selecting an instrument charts it alone, with a back button to return.
 - **Regions**: each region's latest spot price, with **High**, **Low**, **Spread** and **Simple average**. The expand button (**Open the live grid**) shows a larger map.
 - **Recent news**: the latest headlines, filtered to the selected instrument where possible. **All news** opens the **News** tab.
 - **Next in supply**: the next capacity **Leaving** and **Arriving, firm**. **Supply** opens the **Supply** tab.
@@ -62,7 +66,7 @@ Below the filters are **Top stories**, the **Latest** stream and a **Market noti
 The **Forwards** tab gathers forward prices:
 
 - **Contracts**: quarterly base-load contracts by **Region**, and the **Strips** (financial-year and calendar-year) where traded. Click a contract to chart its history.
-- **Settlement history**: every region's futures settlements over time, or one contract's when selected
+- **Settlement history**: every region's futures settlements over time, or one contract's when selected. Pick the contract period to chart: **Front quarter**, or a specific quarter or strip. It has the same **Absolute** / **Indexed**, **Market events** and **Download CSV** controls as the **Desk** chart.
 - **Forward curves**: each region's quarterly base-load curve against the curve **1 week ago**, **1 month ago** and **3 months ago**
 
 WA prices are Synergy's offered curve and are labelled that way. A market with no forward prices says so.
@@ -79,7 +83,7 @@ The **Insights** tab holds computed facts about the selected market:
 
 The **Supply** tab compares generation capacity leaving the market with capacity arriving.
 
-- **Leaving and arriving**: headline **Leaving**, **Firm arriving** and **Net** capacity, with the **Next exit** and **Next firm arrival**. Firm means committed, under construction or commissioning. Turn on **Pipeline** to include projects that aren't firm yet. The **Region** filter scopes the whole tab.
+- **Leaving and arriving**: headline **Leaving**, **Firm arriving** and **Net** capacity, **Pipeline** (anticipated or announced projects), and **Date passed, not confirmed** (closures past their date but not yet confirmed, which no other figure counts; shown only when there are any). Below them are the **Next exit** and **Next firm arrival**. Firm means committed, under construction or commissioning. Turn on **Pipeline** to add projects that aren't firm yet to the chart. The **Region** filter scopes the whole tab.
 - **Register**: closures and new projects of 100 MW or more, each linked to its primary source. Narrow it by side (**All**, **Arriving**, **Leaving**), **Status**, fuel or technology, **From** / **To** dates, and **Search**.
 
 ## Analyse
@@ -100,6 +104,8 @@ The **Analyse** tab builds a custom chart.
     Use the export menu to **Download PNG** of the chart or **Download CSV** of its data. Notes are included in the CSV.
   </Step>
 </Steps>
+
+The chart's series and settings are kept in the page address, so you can share a link to it.
 
 If your organisation has portal branding, switch between **App theme** and your organisation's branding so an exported chart matches your portal.
 
