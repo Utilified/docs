@@ -17,7 +17,7 @@ ums_routes:
 Select **ESG** in the **Insights** group of the sidebar (`/esg`).
 
 <Note>
-  ESG is a gated module. **ESG** only appears in the sidebar when the module is enabled for your organisation and your role includes the emissions permission. If you don't see it, contact your administrator.
+  ESG is a gated module. **ESG** only appears in the sidebar when the module is enabled for your organisation and your role includes the emissions permission. If you don't see it, contact your administrator. ESG must also be included in your plan. If it isn't, **ESG** shows a lock icon and selecting it opens an upgrade prompt.
 </Note>
 
 ESG tracks greenhouse gas emissions across Scope 1, Scope 2 (location and market) and Scope 3. You record activity data against reporting periods, calculate emissions with emission factors, review data quality, and prepare disclosures.
@@ -39,27 +39,35 @@ Every tab also has a **Reference data** button in the header. See [Reference dat
 
 The **Overview** tab opens with KPI cards:
 
-- **Total Emissions**: combined emissions for the latest active period, in tCO2-e
-- **Active Periods**: reporting periods currently open
-- **Sites**: sites available for emissions reporting
+- **Total Emissions**: emissions for your most recent reporting period, in tCO2-e
+- **Active Periods**: reporting periods that aren't **Locked**
+- **Sites**: the sites you have access to
 - **Open Review Items**: data-quality issues awaiting attention
 
 Once you have data, the **Emissions by scope (latest period)**, **Emissions trend by scope** and **Emission reduction targets** charts appear below the cards.
 
 ## Reporting periods
 
-Open a reporting period from the **Reporting periods** tab. The header shows its name, date range and status, and the page has **Overview**, **Reports**, **Calculations**, **Activity data**, **Review items** and **History** tabs.
+Open a reporting period from the **Reporting periods** tab. The header shows its name, date range and status, and the page has **Overview**, **Reports**, **Calculations**, **Activity data**, **Review items** and **Activity** tabs.
+
+### Period overview
+
+The period's **Overview** tab shows **Total Emissions** and **Open Review Items** tiles; click either to open the **Calculations** or **Review items** tab. Below them:
+
+- **Emissions by scope**: a chart of the period's emissions split by scope
+- **Data quality**: the period's average quality score as a gauge, with **High**, **Med** and **Low** counts and, where available, **Evidence completeness**
+- **Review items**: shown when items are open, with a **View** button that opens the **Review items** tab
 
 ### Actions
 
 | Action                  | What it does                                                                                                      |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Prepare data**        | Imports activity data from your invoices, checks for gaps and recalculates the period's emissions in one run       |
+| **Prepare data**        | Imports electricity, gas and LPG activity data from your invoices, checks for gaps and recalculates the period's emissions in one run |
 | **Lock** / **Unlock**   | Freezes the period and its calculations once reporting is final, or reopens it                                    |
 
 **Prepare data** is the header's main button. While a run is in progress it shows **Preparing…** and the page updates itself when the run finishes. If a run shows **Calculating** for more than an hour, the button changes to **Restart prepare** so you can start it again. **Prepare data** is disabled while the period is locked.
 
-**Lock** and **Unlock** open a confirmation dialog with a **Reason (optional)** field; confirm with **Lock period** or **Unlock period**. The change is recorded on the **History** tab. Locking freezes the period's calculations, so reports use those figures until you unlock it. **Lock** is disabled while a prepare run is in progress.
+**Lock** and **Unlock** open a confirmation dialog with a **Reason (optional)** field; confirm with **Lock period** or **Unlock period**. The change is recorded on the **Activity** tab. Locking freezes the period's calculations, so reports use those figures until you unlock it. **Lock** is disabled while a prepare run is in progress.
 
 ### Statuses
 
@@ -109,7 +117,7 @@ Totals add Scope 1, location-based Scope 2 and, where the framework includes it,
     Add any activity that doesn't come from invoices, such as fleet fuel or refrigerants, on the **Activity data** tab.
   </Step>
   <Step title="Prepare the data">
-    Click **Prepare data**. It imports activity from your invoices, checks for gaps and recalculates. Results appear on the **Calculations** tab once the period moves to **In review**.
+    Click **Prepare data**. It imports electricity, gas and LPG activity from your invoices, checks for gaps and recalculates. Results appear on the **Calculations** tab once the period moves to **In review**.
   </Step>
   <Step title="Work through review items">
     Resolve the data gaps and other issues on the **Review items** tab. Click **Prepare data** again after you fix source data.
@@ -118,7 +126,7 @@ Totals add Scope 1, location-based Scope 2 and, where the framework includes it,
     Open the **Reports** tab and clear any failed checks for the frameworks you report against.
   </Step>
   <Step title="Lock the period">
-    Click **Lock** once reporting is final. The **History** tab records the change.
+    Click **Lock** once reporting is final. The **Activity** tab records the change.
   </Step>
   <Step title="Generate the reports">
     On the **Reports** tab, click the button for each report you need, such as **Generate NGER Corporate Report**.

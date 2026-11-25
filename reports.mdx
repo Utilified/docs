@@ -37,7 +37,7 @@ Reports is where you run the standard report library, schedule reports for email
 
 ## Library
 
-The **Library** tab lists the reports available to you under **Available reports**. Each card shows the report's name and description, a **Parameters Required** chip if it needs filters, and **Run** and **Schedule** buttons.
+The **Library** tab lists the reports available to you under **Available reports**. Each card shows the report's name and description, a **Parameters Required** chip if it needs filters, and **Run** and **Schedule** buttons. Both buttons are disabled on an inactive report.
 
 <Frame>
   ![UMS Reports page listing available pre-built reports](/images/reports/reports-list.png)
@@ -45,7 +45,7 @@ The **Library** tab lists the reports available to you under **Available reports
 
 ### Standard report catalogue
 
-The reports under **Brokerage** only appear when your role includes the brokerage module. **Automation Activity** needs the automations module.
+The reports under **Brokerage** only appear when your role includes the brokerage module. **Automation Activity** needs the automations module. The reports under **Emissions** need the emissions permission.
 
 #### Agreements
 
@@ -111,12 +111,28 @@ The reports under **Brokerage** only appear when your role includes the brokerag
 | ----------------------- | --------------------------------------------------------------------- |
 | **Automation Activity** | Automation runs and target outcomes, with blocked reasons, per automation |
 
+#### Emissions
+
+The framework reports (NGER, NPI, ASRS S2 and GHG Protocol) are covered in more detail under [ESG reports](/esg#reports).
+
+| Report                                | What it shows                                                                                  |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| **Emissions Summary Report**          | Scope 1, 2 and 3 breakdown with site comparison and a quality overview                         |
+| **Emissions Detail Report**           | Line-item emissions calculations with factor and evidence references                           |
+| **Emissions Audit Report**            | An audit trail of emissions lifecycle events                                                   |
+| **Data Quality Report**               | Data quality scores, evidence completeness and review items                                    |
+| **NGER Section 19 Facility Report**   | NGER facility-level figures: Scope 1 by source category, Scope 2 and energy consumed in GJ     |
+| **NGER Corporate Report**             | NGER corporate-level emissions across all facilities, with a threshold assessment              |
+| **NPI Facility Report**               | Fuel burnt and electricity against the NPI Category 2a and 2b thresholds, with the substances to report |
+| **ASRS S2 Climate Disclosure Report** | ASRS S2 climate disclosure: Scope 1, 2 and 3 metrics, targets and intensity                    |
+| **GHG Protocol Corporate Inventory**  | A GHG Protocol corporate inventory with dual Scope 2 reporting                                 |
+
 ### How a run reaches History
 
 Every run is queued and generated in the background.
 
-- Some reports open a full page with the report's own filters, **Saved presets**, and **Generate report**. Submitting it takes you straight to **History**.
-- Other reports open a **Generate Report** dialog with the report's parameters. **Invoice Batch Export** opens its own form instead. Submitting closes the dialog.
+- Some reports open a full page with the report's own filters, **Saved presets**, and **Generate report**. Saved presets are stored locally on this device, so they don't follow you to another browser. Submitting it takes you straight to **History**.
+- Other reports open a **Generate Report** dialog with the report's parameters. A report with no parameters also has **Schedule Report** in the dialog, which opens the schedule form. **Invoice Batch Export** opens its own form instead. Submitting closes the dialog.
 
 Either way, the run appears on the **History** tab as **Pending**, then **Completed** or **Failed**. You get a notification when it's ready.
 
@@ -168,15 +184,17 @@ The **Custom reports** tab holds tabular reports you design and publish to your 
     Click **New custom report**, enter a **Name**, and choose **Blank report** with a **Source** (what one row of the report is) or **Start from template**. Click **Create**.
   </Step>
   <Step title="Add columns">
-    Click **Add column**. Each column is a **Source field**, **Measure**, **Attribute**, **Formula** or **Text template**, with a **Header label** and **Format**. The **Preview** panel updates as you go.
+    Click **Add column**. Each column is a **Source field**, **Measure**, **Attribute**, **Formula** or **Text template**, with a **Header label** and **Format**. A report holds at most 40 columns. The **Preview** panel updates as you go.
   </Step>
   <Step title="Set the audience and filters">
-    Choose the **Audience** accounts. Portal users of these accounts, and of every account beneath them, can run the report once published. Click **Settings** for **Report filters**, **Filters viewers can change** (**Period**, **Account**, **Site**, **Connection**, **Utility**, **State**, **Site tag**), grouping, sorting and totals.
+    Choose the **Audience** accounts. Portal users of these accounts, and of every account beneath them, can run the report once published. Click **Settings** for **Report filters**, **Filters viewers can change** (**Period**, **Account**, **Site**, **Connection**, **Utility**, **State**, **Site tag**), grouping and sorting. Settings also has switches for a **Totals row**, **Include sub-connections** (never counted in totals) and **Keep rows that net to zero**.
   </Step>
   <Step title="Publish">
     Click **Publish**. After later edits, click **Publish changes**. **Unpublish** takes the report out of the portal straight away.
   </Step>
 </Steps>
+
+Your changes save automatically while you edit. If a change can't be saved when you leave the page, UMS asks **Leave without saving?** so you can stay and try again.
 
 **Export** downloads the report as **Excel (XLSX)** or **CSV**. Once a report is published to at least one audience account, **Schedule** sends it to recipients on a schedule for one of those accounts.
 
