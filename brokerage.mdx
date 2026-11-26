@@ -1,6 +1,6 @@
 ---
 title: "Brokerage"
-description: "The Brokerage hub in UMS: brokerage contracts, commission revenue, runs, invoices and supplier statements (RCTIs), and analytics."
+description: "The Brokerage hub in UMS: brokerage contracts, commission revenue, runs, invoices and supplier statements (RCTIs), portal plan service fees, and analytics."
 ums_routes:
   [
     "/brokerage",
@@ -33,7 +33,7 @@ The Brokerage hub tracks the commission you earn on energy contracts. You record
 | **Contracts** | `/brokerage/records` | **All**, **Active**, **Ended**, **Ready to close**, **Missing tariff**, **Pending**, **No revenue** | Brokerage contracts (records), one per agreement |
 | **Revenue** | `/brokerage/revenue` | **Lines**, **Grouped**, **Coverage** | Revenue lines per connection and period |
 | **Runs** | `/brokerage/runs` | **All**, **Drafts**, **Awaiting approval**, **Committed**, **Failed** | Calculation runs |
-| **Invoices & RCTIs** | `/brokerage/invoices` | **Invoices**, **RCTIs**, **Supplier billing** | Invoices you raised, supplier statements, and how each supplier pays |
+| **Invoices & RCTIs** | `/brokerage/invoices` | **Invoices**, **RCTIs**, **Supplier billing**, **Service fees** | Invoices you raised, supplier statements, how each supplier pays, and portal plan service fees |
 | **Analytics** | `/brokerage/analytics` | — | Value at risk, growth and performance |
 
 ### Overview
@@ -46,7 +46,7 @@ The **Month end** panel lists what needs doing. Each item links to the view that
 - **Open gaps (last 3 months)**, with the value at risk
 - **Contracts ready to close**
 
-The tiles above it show **Billed this month** (recurring and once-off), **Forecast this month**, **Contracted balance** and **Outstanding receivables**. Below are the **Billed and forecast** chart, **Renewals in the next 6 months** and **Retailers** (billed over 12 months, unbilled, outstanding and RCTI variance per retailer).
+The tiles above it show **Billed this month** (recurring and once-off), **Forecast this month**, **Contracted balance** and **Outstanding receivables**. When clients have [client plans](/settings/portal-domain#client-plans) paid through brokerage, a **Portal plans via brokerage** tile shows the plan revenue for this month and the year to date. Below are the **Billed and forecast** chart, **Renewals in the next 6 months** and **Retailers** (billed over 12 months, unbilled, outstanding and RCTI variance per retailer).
 
 ### Contracts
 
@@ -84,12 +84,55 @@ Columns include **State**, **Trigger**, **From**, **To**, **Started**, **Ended**
 - **Invoices**: columns **Invoice No.**, **Type** (Invoice or Credit note), **Provider**, **Recipient**, **Status**, **Errors**, **External Status**, **Subtotal**, **Tax**, **Total** and **Created**. The row menu has **View & reconcile** and, for a draft or authorised invoice, **Void invoice**.
 - **RCTIs**: **Supplier**, **RCTI number**, **Date**, **From**, **To**, **State**, **Rows**, **Paid**, **Expected**, **Variance** and **Variances**. Click a row to open the RCTI.
 - **Supplier billing**: whether each supplier pays by **Invoice from Utilified** or **RCTI**, and whether to **Raise RCTI invoice in Xero**. Use **Add supplier** to set one.
+- **Service fees**: monthly fees for clients on a client plan charged as a **Service fee**. See [Service fees](#service-fees).
 
 ### Analytics
 
 - Value at risk: **Ending within 3 months**, **Ending within 6 months** and **Ending within 12 months** (annualised commission), **Coverage gaps**, **Unbilled**, **Overdue receivables** and **RCTI short-payments**. Each tile links to the matching list.
+- **Revenue by source**: monthly revenue for the last 12 months, stacked by source. See [Revenue by source](#revenue-by-source).
 - **Growth**: earned commission for the last 24 months and the forecast for the next 24. Switch between **Contracted only** and **Assume retention**.
 - Performance: **Retention (12 months)**, **New contracts (12 months)**, **New contracted value per month**, **Net growth per month**, **Top customers**, **Top retailers**, **Commission by contract**, **Contracted balance movement** and **Forecast vs actual**.
+
+## Revenue by source
+
+When you fund [client plans](/settings/portal-domain#client-plans) through brokerage or bill them as service fees, your revenue comes from three sources:
+
+| Source | What it is |
+| --- | --- |
+| **Brokerage** | Commission on your brokerage contracts, less any share recorded as plan revenue |
+| **Portal plans via brokerage** | The share of brokerage revenue that pays for a client plan, set by the account's [brokerage recovery](/accounts#brokerage-recovery) |
+| **Service fees** | Fees billed directly to clients on a service-fee plan |
+
+UMS works out the plan share each time you view it. For each revenue line, the share is the line's revenue multiplied by the recovery's component rate over the contract rate, for the days the recovery covers. Nothing is written to the revenue lines, and the three sources add up to your total revenue to the cent.
+
+The **Revenue by source** chart on **Analytics** shows the last 12 months. For other periods, run the **Revenue by source** standard report from [Reports](/reports#brokerage). It splits revenue by month, client account and agreement type (energy, metering, or none for service fees).
+
+## Service fees
+
+Clients on a plan with a **Charge mode** of **Service fee** are billed directly, outside any brokerage contract. Open **Invoices & RCTIs** › **Service fees** to see and bill these fees.
+
+- Filter by **Month**, **Account** and **Status**. The grid shows **Account**, **Plan**, **Period**, **Amount ex GST**, **GST**, **Total**, **Status** and **Invoice reference**.
+- A monthly plan bills its price. An annual plan bills a twelfth of its price each month.
+- Every account on a service-fee plan is billed, whether or not it has active portal users. An account without portal settings of its own is billed for the plan on the default portal access.
+- When a client changes plan part way through a month, the fee is prorated by day.
+- Fees use the plan's current price.
+
+UMS generates the previous month's fees each day, so they're usually ready without you doing anything.
+
+| Action | What it does |
+| --- | --- |
+| **Generate** | Creates the fees for the selected **Month**. Running it again creates only fees that are missing. Org admins only. |
+| **Raise in Xero** | Raises the selected fees as draft invoices in Xero, one per client account. The confirmation shows the **Amount ex GST**, **GST** and **Total**. |
+| **Void** | Voids one unbilled fee. Select a single fee to use it. |
+| **Export CSV** | Downloads the fees that match your filters, including GST. |
+
+An invoiced fee is never generated again, and only unbilled fees can be voided. If Xero refuses some accounts, the dialog lists them and keeps them selected so you can retry. The rest are raised.
+
+<Warning>
+  If the raise times out and you can't tell whether Xero created the invoices, select exactly the same fees and click **Raise in Xero** again. UMS recognises the same selection and won't create duplicate invoices. A different selection counts as a new raise.
+</Warning>
+
+Set the account code and tax type for service fee lines under **Portal service fees** in the Xero invoice field mapping. See [Customising Xero brokerage invoicing](/guides/customising-xero-brokerage-invoicing#portal-service-fees).
 
 ## Header actions
 
@@ -164,9 +207,11 @@ Scheduled runs always wait for approval. Manual runs wait only when **Manual Run
 | Run state | Draft, Awaiting approval, Committed, Invoiced, Discarded, Failed |
 | Invoice | Pending, Draft, Authorised, Paid, Voided, Error |
 | RCTI | Uploaded, Accepted |
+| Service fee | Unbilled, Invoiced, Void |
 
 ## Related guides
 
 - [Brokerage revenue and invoicing](/guides/brokerage-revenue-and-invoicing): runs, invoices, supplier statements (RCTIs), corrections and disputes
 - [Customising Xero brokerage invoicing](/guides/customising-xero-brokerage-invoicing): connect Xero and customise invoice lines
+- [Offering portal plans to your clients](/guides/packaging-portal-access): define client plans and charge for them through brokerage or service fees
 - [Tracking metering coverage](/guides/tracking-metering-coverage): find large-market NMIs without metering, and metering agreements that aren't earning

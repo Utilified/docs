@@ -1,6 +1,6 @@
 ---
 title: "Organisation settings"
-description: "Configure organisation-wide settings in UMS: general details and sign-in security, integrations, invoice autopilot and alert routing."
+description: "Configure organisation-wide settings in UMS: general details and sign-in security, integrations including your CRM, invoice autopilot and alert routing."
 ums_routes: ["/settings"]
 ---
 
@@ -53,13 +53,55 @@ The **Plan & billing** section shows your plan and usage and is where you change
 
 ## Integrations
 
-**Integrations** connects accounting systems for brokerage invoicing and sets up email-triggered imports.
+**Integrations** connects accounting systems for brokerage invoicing, connects your CRM, and sets up email-triggered imports.
 
 - **Xero**: click **Connect Xero** to create draft brokerage invoices in Xero, or **Disconnect** to remove the link. MYOB, QuickBooks and NetSuite are listed as coming soon.
 - **Invoice field mapping**: appears once Xero is connected. Choose how brokerage data maps into Xero invoice fields. See [Customising Xero brokerage invoicing](/guides/customising-xero-brokerage-invoicing).
+- **CRM**: connect your CRM so each client's portal plan follows a field on their CRM account. See [CRM](#crm).
 - **Import email addresses**: dedicated addresses for specific data types, such as accounts, sites or invoices. Files sent to them are processed as bulk imports. They aren't tied to an account, so they suit supplier data feeds.
 - **Account import emails**: an account can have its own address. Attachments sent to it become bulk uploads you can track in the inbox and import history.
 - **Recent email-triggered imports**: the latest imports that arrived by email. See [Imports](/imports).
+
+### CRM
+
+Connect your CRM and a client's [client plan](/settings/portal-domain#client-plans) follows a field on their CRM account. When someone changes that field in the CRM, UMS moves the client onto the matching plan. Zoho CRM is the first CRM available.
+
+Each CRM has its own block under **Integrations**, showing a status of **Connected**, **Not connected**, **Reconnect required** or **Unavailable**. Once connected, it also shows when the last sync ran. Only org admins can change these settings.
+
+<Steps>
+  <Step title="Connect the CRM">
+    Click the CRM's connect button, such as **Connect Zoho CRM**. Sign in to the CRM and allow access.
+  </Step>
+  <Step title="Map field values to plans">
+    In the mappings table, enter the **CRM field** that holds the plan and a **Value** it can take. Choose the plan and click **Add mapping**. Add a row for each value. To change a mapping, choose another plan in its row. **Remove** deletes it. Only active plans can be mapped.
+  </Step>
+  <Step title="Link your accounts">
+    In the links table, choose the **UMS account**, enter its **CRM account ID**, and click **Link account**. **Unlink** removes a link. UMS only manages the plan of linked accounts.
+  </Step>
+  <Step title="Set up the webhook">
+    Copy the **Webhook URL**. Click **Show webhook secret** and copy the secret. Add both to a notification or workflow in your CRM that fires when an account changes.
+  </Step>
+  <Step title="Sync">
+    Click **Sync now** to bring every linked account up to date straight away.
+  </Step>
+</Steps>
+
+<Warning>
+  The webhook secret is shown once. After that, **Show webhook secret** disappears. If you lose the secret, click **Rotate webhook secret** to create a new one, then update it in your CRM. The old secret stops working.
+</Warning>
+
+#### How syncing works
+
+- When the CRM calls the webhook, UMS fetches the changed accounts from the CRM and reads the field from there. It doesn't trust plan values sent in the webhook itself.
+- UMS also syncs every linked account once a night, which catches any change the webhook missed.
+- If an account's field value doesn't match exactly one mapping to an active plan, UMS leaves its plan as it is.
+- A plan set by the CRM shows **Managed by** and the CRM's name on the account's [portal access](/accounts#managed-by-your-crm) settings, and can't be changed there. An org admin can click **Manage locally instead** to take the plan back. After that, CRM changes no longer update that account.
+
+<Note>
+  For Zoho CRM, UMS works with the Zoho data centre your account signs in to. Zoho can send the webhook secret either in the `X-Zoho-Webhook-Token` header or as a `token` field in the request body.
+</Note>
+
+To remove the connection, click the CRM's disconnect button, such as **Disconnect Zoho CRM**.
 
 ## Invoice autopilot
 

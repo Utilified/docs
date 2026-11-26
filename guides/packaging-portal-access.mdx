@@ -1,0 +1,94 @@
+---
+title: "Offering portal plans to your clients"
+description: "Package your client portal into plans: choose the features each plan includes or locks, assign plans to clients, charge through brokerage or a service fee, handle quote requests and see the revenue."
+keywords: ["client plans", "portal plans", "locked features", "request a quote", "service fee", "brokerage recovery", "CRM", "Zoho"]
+ums_routes: ["/settings", "/accounts/[id]", "/brokerage", "/brokerage/invoices", "/brokerage/analytics"]
+---
+
+Client plans let you sell your customer portal in tiers. A plan decides which portal features a client gets, which ones they can see but have to ask for, and how you charge for it. This guide walks through setting plans up and running them.
+
+You need to be an org admin, on a plan that includes the portal. Charging through brokerage and billing service fees also need the Brokerage permission.
+
+## 1. Define your plans
+
+Go to **Settings** › **Portal & domain** › **Client plans** and click **New plan**. See [Client plans](/settings/portal-domain#client-plans) for every field.
+
+For each plan, set every portal feature to one of three states:
+
+- **Included**: the client has the feature.
+- **Locked**: the client sees the feature in their menu with a lock, and can ask you for a quote.
+- **Hidden**: the client doesn't see the feature at all.
+
+Lock the features you want to upsell. A client on a lower plan then sees what the next plan adds, and can ask for it from inside the portal. Hide the features that don't suit the plan's audience.
+
+<Note>
+  A locked feature shows only its name and description. It never shows the client's data, and the quote page doesn't show plan names or prices.
+</Note>
+
+## 2. Choose how to charge
+
+Each plan has a **Price**, a **Billing period** of **Monthly** or **Annual**, and a **Charge mode**:
+
+| Charge mode | Use it when | What you set up |
+| --- | --- | --- |
+| **Brokerage** | You already earn brokerage on the client's energy or metering contract, and part of that rate pays for the portal | A brokerage recovery on each client's account (step 4) |
+| **Service fee** | The client has no brokered agreement, or you bill the portal separately | Nothing per client. UMS generates a fee every month (step 6) |
+| **None** | The portal is free, or you bill it outside UMS | Nothing |
+
+## 3. Assign plans to clients
+
+Open the client's account, go to its **Settings** tab and find **Portal Access**. Choose the plan in **Plan** and click **Save Portal Access**. See [Portal access](/accounts#portal-access).
+
+To give every client without settings of its own the same plan, choose it under **Default portal access** in **Settings** › **Portal & domain**, then click **Save Portal Defaults**.
+
+**Custom** in the **Plan** picker keeps the per-feature switches, for a client that doesn't fit any plan.
+
+<Tip>
+  If your client records live in a CRM, connect it and let a field on each CRM account choose the plan. See [CRM](/settings/organisation#crm). Plans the CRM sets show **Managed by** on the account.
+</Tip>
+
+## 4. Set up brokerage recovery
+
+For a client on a **Brokerage** plan, open **Portal Access** on their account after saving the plan. In the **Brokerage recovery** panel, click **Add recovery**. Choose the agreement whose brokerage contract pays for the plan, and enter the **Component Rate**: the part of the contract rate that covers the portal, in the contract's units.
+
+For example, say a contract earns 0.5 c/kWh and you agreed that 0.1 c/kWh of it pays for the portal. Enter 0.1 c/kWh in the contract's rate unit. UMS then reports a fifth of that contract's revenue as portal plan revenue. The contract and its invoices to the retailer don't change.
+
+See [Brokerage recovery](/accounts#brokerage-recovery) for the warnings a recovery can show.
+
+## 5. Handle quote requests
+
+When a client clicks **Request a quote** on a locked feature, the people linked to their account get an in-app notification and an email. If nobody is linked, your org admins get it. The request appears under **Requests** in the account's **Portal Access** section.
+
+1. Talk to the client, then click **Mark contacted**.
+2. If they say yes, click **Mark won**. Choose a plan that includes the feature under **New plan** and click **Switch plan**. The client gets the feature straight away.
+3. If they decline, click **Mark lost**.
+
+See [Quote requests](/accounts#quote-requests).
+
+## 6. Bill service fees
+
+UMS generates last month's service fees each day. To bill them:
+
+1. Go to **Brokerage** › **Invoices & RCTIs** › **Service fees**.
+2. Pick the **Month** and check the fees. Click **Generate** if you need to create a month's fees yourself.
+3. Select the fees and click **Raise in Xero**. UMS creates one draft invoice in Xero per client account. Approve and send them in Xero.
+
+Set the Xero account code and tax type for these lines under **Portal service fees** in your Xero invoice field mapping. See [Service fees](/brokerage#service-fees) for voiding fees, exporting and what to do if Xero times out.
+
+## 7. See the revenue
+
+On the **Brokerage** **Overview**, the **Portal plans via brokerage** tile shows this month's plan revenue from brokerage and the year to date. On **Analytics**, **Revenue by source** charts the last 12 months, split into brokerage, portal plans via brokerage and service fees. For other periods, run the **Revenue by source** report. See [Revenue by source](/brokerage#revenue-by-source).
+
+## Things to know
+
+- A plan in use can't be deleted. Move its clients to another plan first.
+- An inactive plan stays on the clients already using it, with all its features. You can't assign it to anyone new.
+- Service fees use the plan's current price, so a price change applies from the next fee generated.
+- Every account on a service-fee plan is billed, whether or not anyone uses the portal.
+
+## Related
+
+- [Portal & custom domain](/settings/portal-domain)
+- [Accounts](/accounts)
+- [Brokerage](/brokerage)
+- [Customising Xero brokerage invoicing](/guides/customising-xero-brokerage-invoicing)

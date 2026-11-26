@@ -84,12 +84,69 @@ The **Inbox** segment only appears when the account has an email address. The **
 | **Account Icon**         | Set the icon shown beside the account name. Click **Upload icon** to upload one. When the account has a **Website**, click **Refetch** to fetch the icon from it again; after an upload, the button reads **Use website icon**. |
 | **Email Configuration**  | Set or generate the **Account Email Address** used to import invoices by email                    |
 | **Data Feeds**           | List the account's [data feeds](/data-feeds) and click **Create Data Feed** to add one            |
-| **Portal Access**        | Manage **Portal users** and choose which portal features and sites they can reach                 |
+| **Portal Access**        | Manage **Portal users**, choose the client plan or portal features, and set which sites they can reach. See [Portal access](#portal-access) |
 | **Gap Check Settings**   | Turn on **Default Gap Check for New Retail Accounts**, or enable or disable gap check for retail accounts across all associated accounts |
 | **Onboarding Tools**     | Click **Launch Onboarding with Joule** to open guided onboarding                                  |
 | **Custom Fields**        | Store organisation-defined fields against the account                                             |
 | **Change history**       | Who changed this account's details, and when                                                      |
 | **Data management**      | **Archive account** (set it inactive) or **Delete account** (permanent)                            |
+
+### Portal access
+
+The **Portal Access** section of the **Settings** tab controls what this account's portal users see. Until you save it, the account uses the organisation's [default portal access](/settings/portal-domain#default-portal-access). Saving gives the account its own settings, and **Revert to organisation defaults** goes back to the default.
+
+#### Plan
+
+The **Plan** picker sets which [client plan](/settings/portal-domain#client-plans) the account is on.
+
+- Choose a plan to take the account's portal features from it. The plan's features show read-only under **Plan features**, each marked **Included**, **Locked** or **Hidden**. To change them, edit the plan in **Settings** › **Portal & domain**.
+- Choose **Custom** to set the account's features yourself with the **Portal Features** and **Optional Portal Features** switches.
+- **Portal Reports** and **Site Access** apply either way.
+
+Only active plans appear in the picker. If the account is on a plan that has since been made inactive, the picker shows it with **(inactive)** and the account keeps it. Click **Save Portal Access** to apply a change.
+
+#### Quote requests
+
+When a portal user clicks **Request a quote** on a locked feature, the request appears under **Requests** at the top of the section. Each request shows the feature, its status, who asked and when, and any message they left. UMS also sends an in-app notification and an email to the people linked to the account, or to your org admins if no one is linked. The notification opens this section.
+
+A client can have one open request per feature. If they ask again, the portal shows **Request sent** and no new request is created.
+
+Org admins work each request with **Mark contacted**, **Mark won** and **Mark lost**. UMS records who handled it. When a request is **Won**, a **New plan** picker offers the active plans that include the feature. Choose one and click **Switch plan** to move the account onto it. Save or discard any other changes in the section first.
+
+#### Managed by your CRM
+
+If your organisation has [connected a CRM](/settings/organisation#crm) and linked this account, the CRM sets the account's plan. The **Plan** picker is locked and reads **Managed by** followed by the CRM's name, such as Zoho CRM. **Revert to organisation defaults** is hidden while the CRM manages the plan.
+
+To change the plan in UMS instead, an org admin clicks **Manage locally instead**, picks a plan and saves. From then on, changes in the CRM no longer update this account's plan.
+
+#### Brokerage recovery
+
+When the account's saved plan has a **Charge mode** of **Brokerage**, a **Brokerage recovery** panel appears. You need the Brokerage permission to see it. A recovery records how much of an existing brokerage contract's rate pays for the plan. UMS reports that share of the contract's revenue as plan revenue, and the rest as brokerage. The brokerage contract, its invoices and supplier statements don't change.
+
+<Steps>
+  <Step title="Add a recovery">
+    Click **Add recovery**. You need an energy or metering agreement on the account first.
+  </Step>
+  <Step title="Choose the agreement">
+    Pick the **Agreement** whose brokerage contract funds the plan.
+  </Step>
+  <Step title="Enter the component rate">
+    **Component Rate** is the part of the contract rate that covers the plan, in the contract's own units. The hint under the field shows the contract's rate. For a percentage contract, enter a decimal, such as 0.05 for 5%.
+  </Step>
+  <Step title="Set the dates">
+    Set a **Start Date**, and an **End Date** if the arrangement ends. Leave **End Date** empty for an ongoing recovery. Click **Save recovery**.
+  </Step>
+</Steps>
+
+To change a recovery, or to end it, click **Edit recovery** and update its rate or **End Date**.
+
+A recovery can show these warnings. It still saves, but the revenue split may not be what you expect:
+
+| Warning | What to check |
+| --- | --- |
+| "No open or pending brokerage contract overlaps this recovery." | The agreement has no brokerage contract covering the recovery's dates, so there's no revenue to share. |
+| "The component rate is above the rate on an overlapping brokerage contract." | The component rate is higher than the contract's whole rate. Check the units. |
+| "This plan's charge mode is not brokerage." | The plan has changed to another charge mode. |
 
 ## The sample client
 
@@ -103,4 +160,5 @@ On the [free trial](/getting-started/free-trial), your organisation starts with 
 ## Related guides
 
 - [Creating accounts](/guides/creating-accounts)
+- [Offering portal plans to your clients](/guides/packaging-portal-access)
 - [Getting set up](/getting-started/getting-set-up)

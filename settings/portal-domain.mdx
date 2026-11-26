@@ -1,17 +1,18 @@
 ---
 title: "Portal & custom domain"
-description: "Connect a custom domain by delegating nameservers to Utilified, deploy your white-label portal, route email through the domain and set default portal access."
-keywords: ["portal", "custom domain", "white label", "nameserver delegation", "DKIM", "inbound email", "outbound email", "default portal access"]
+description: "Connect a custom domain by delegating nameservers to Utilified, deploy your white-label portal, route email through the domain, define client plans and set default portal access."
+keywords: ["portal", "custom domain", "white label", "nameserver delegation", "DKIM", "inbound email", "outbound email", "default portal access", "client plans", "portal plans", "locked features"]
 ums_routes: ["/settings"]
 ---
 
-The **Portal & domain** section of [Settings](/settings), in the **Access & integrations** group, runs your white-label customer portal on a domain you control. The same domain carries inbound and outbound email. The section has four parts:
+The **Portal & domain** section of [Settings](/settings), in the **Access & integrations** group, runs your white-label customer portal on a domain you control. The same domain carries inbound and outbound email. The section has five parts:
 
 | Part | What it does |
 | --- | --- |
 | [**Domain**](#add-a-custom-domain) | Attach a custom domain, delegate its nameservers and turn on email delivery. |
 | [**Deployment**](#deploy-the-portal) | Stand up a dedicated portal instance on that domain. |
 | **Theme** | Branding for the portal. See [Portal theme and single sign-on](/settings/white-label#portal-theme). |
+| [**Client plans**](#client-plans) | Named packages of portal features you assign to clients. |
 | [**Default portal access**](#default-portal-access) | What portal users see when their account has no settings of its own. |
 
 ## Who can use this
@@ -104,13 +105,70 @@ You can't rename a domain in place.
 
 Both open a confirmation dialog (**Change domain?** or **Remove domain?**) that warns the action can't be undone. It lists what will stop, such as inbound or outbound email on the domain.
 
+## Client plans
+
+A client plan is a named package of portal features. Assign a plan to a client's account, or to the default portal access, and the plan decides which features that client's portal shows. Plans also carry a price and say how you charge for them. For the full workflow, see [Offering portal plans to your clients](/guides/packaging-portal-access).
+
+The **Client plans** table lists each plan with its **Name**, **Price**, **Charge mode** and **Clients**, the number of client accounts using it.
+
+### Create or edit a plan
+
+<Steps>
+  <Step title="Open the plan">
+    Click **New plan**, or **Edit** on a plan's row. When you edit a plan that's in use, the dialog shows how many clients it applies to.
+  </Step>
+  <Step title="Describe it">
+    Enter a **Name** and, if you like, a **Description**.
+  </Step>
+  <Step title="Set the price">
+    Enter a **Price** and choose a **Billing period** of **Monthly** or **Annual**. Turn off **GST applicable** if the plan is GST-free. You can leave the price empty.
+  </Step>
+  <Step title="Choose how it's charged">
+    Set **Charge mode** to one of the options below.
+  </Step>
+  <Step title="Set each feature">
+    The feature table lists every portal feature. Set each one to **Included**, **Locked** or **Hidden**, then click **Create plan** or **Save plan**.
+  </Step>
+</Steps>
+
+| Charge mode | How the client pays |
+| --- | --- |
+| **Brokerage** (the default) | Through an energy or metering brokerage contract you already hold for the client. You record the plan's share of the contract rate on the account. See [Brokerage recovery](/accounts#brokerage-recovery). |
+| **Service fee** | Directly. UMS generates a monthly fee you raise in Xero. See [Service fees](/brokerage#service-fees). |
+| **None** | You don't charge for the plan through UMS. |
+
+### Included, locked and hidden
+
+| Access | What the client sees in their portal |
+| --- | --- |
+| **Included** | The feature, working as normal. |
+| **Locked** | The feature in the menu with a lock. Opening it shows a description of the feature and a **Request a quote** button. The request reaches you on the client's account. See [Quote requests](/accounts#quote-requests). |
+| **Hidden** | Nothing. The feature doesn't appear. |
+
+<Note>
+  A locked feature never shows the client's data. The portal shows only the feature's name and description until you include it in the client's plan. The quote page doesn't show plan names or prices either.
+</Note>
+
+### Delete a plan
+
+Click **Delete** on the plan's row, then **Delete plan** to confirm. You can't delete a plan while any client or the default portal access uses it. Move those clients to another plan first.
+
+### Inactive plans
+
+An inactive plan shows **(inactive)** after its name. It stays on every client already using it, and those clients keep its features. You can't assign it to another client, and it doesn't appear in the **Plan** picker or in CRM plan mappings.
+
+<Note>
+  Making a plan inactive doesn't change what existing clients see. To move a client off it, choose another plan on the client's account.
+</Note>
+
 ## Default portal access
 
 **Default portal access** sets what portal users see when their account has no portal access settings of its own. An account's own settings, in the **Portal Access** section of its **Settings** tab, override these defaults. See [Accounts](/accounts#settings-tab).
 
+- **Plan**: choose a client plan for every account without settings of its own, or **Custom** to use the switches below. With a plan chosen, its features show read-only under **Plan features** instead of the switches.
 - **Single sign-on**: **Let portal admins set up single sign-on** lets portal admins connect their own company's Microsoft sign-in for their account and its sub-accounts.
 - **Portal Features**: turn portal areas on or off, such as **Validation outcomes**, **Invoices**, **Connections & meters**, **Agreements** and **Reports**. Everything is on unless you switch it off. Features marked **(opt-in)**, such as **Budgets (opt-in)** and **Dashboards (opt-in)**, stay off until you switch them on.
-- **Portal Reports**: the reports portal users can run. Standard reports are on unless you switch them off, and opt-in reports are off unless you switch them on. This only applies while **Reports** is on.
+- **Portal Reports**: the reports portal users can run. Standard reports are on unless you switch them off, and opt-in reports are off unless you switch them on. Without a plan, this only applies while **Reports** is on.
 
 Click **Save Portal Defaults** to apply your changes.
 

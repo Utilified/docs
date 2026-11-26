@@ -148,7 +148,8 @@
             "group": "Settings guides",
             "pages": [
               "guides/setting-up-a-user",
-              "guides/bulk-importing-data"
+              "guides/bulk-importing-data",
+              "guides/packaging-portal-access"
             ]
           }
         ]
