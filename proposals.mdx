@@ -7,7 +7,11 @@ ums_routes:
   - "/proposals/[id]"
 ---
 
-The Proposals module lists every assessment proposal in your organisation, newest first. A proposal starts from an assessment of a [site](/sites) and can draw on solar and battery studies from [Scenarios](/scenarios).
+Find it in the sidebar under **Commercial** › **Proposals**.
+
+The Proposals module lists every assessment proposal in your organisation, newest first. A proposal starts from an assessment of a [site](/sites) and can draw on tariff reviews and solar and battery studies from [Scenarios](/scenarios).
+
+The list shows each proposal's **Title**, **Site**, **Status**, **Issued** date and **Prepared by**.
 
 <Note>
   Proposals only appears when the Proposals module is enabled for you. Creating a proposal also needs create access to both Modelling and Proposals. Without it, the **New proposal** button is hidden. Ask an organisation admin.
@@ -20,43 +24,66 @@ The Proposals module lists every assessment proposal in your organisation, newes
     Click **New proposal**. UMS opens the **New assessment** wizard.
   </Step>
   <Step title="Choose the site">
-    Select the **Site** to assess.
+    On the **Site** step, select the site to assess. UMS skips this step when the site is already chosen.
   </Step>
   <Step title="Set the assessment details">
-    Choose the **Template**, the **Baseline period** and any **Assumptions**. You can attach up to five existing studies.
+    On the **Assessment** step, choose the **Template** and the **Assumptions**.
 
     Enter a **Proposal title**, or leave it blank to use the suggested one. You can change it in the editor.
+
+    For the **Baseline period**, keep the default period or pick **Choose dates** and set **From** and **To**.
+  </Step>
+  <Step title="Create it">
+    **What happens when you create it** summarises what the assessment will do. Click **Create assessment**. UMS opens the draft proposal for you to review before anything is issued.
   </Step>
 </Steps>
+
+### Starting from a study
+
+You can also start a proposal from a completed tariff review or solar and battery study. On its **Overview**, click **Create proposal**. The wizard opens with that study attached and lists it under **What happens when you create it**.
+
+When a tariff review is attached, the proposal reuses its saved assumptions and results. **Assumptions** is hidden and the baseline period is fixed to the review's period.
 
 ## Editing a proposal
 
 Click a row in the list to open the proposal editor. The editor has three panes:
 
-- **Sections**: the proposal's sections. Select one to change it under **Edit section**.
-- **Preview**: the proposal as it will read.
-- **Section settings**: options for the selected section.
+- **Sections**: the proposal's sections and how many are in the document. Select one to work on it.
+- **Preview**: the proposal as it will read. Switch between **Fit width** and **Actual size**.
+- The section inspector: the selected section's settings. Turn **Include in this proposal** on or off, review its warnings, and write its **Introduction**. The cover section also holds the **Proposal title**, **Template**, **Preparer name** and **ABN**.
 
-Changes save automatically. The header shows **Saving** or **Saved**.
+On narrower screens the panes become tabs: **Sections**, **Preview** and **Edit section**.
 
-Joule can draft narrative text from the proposal's figures. Select a section and click **Draft with Joule**. Once Joule has drafted a section, the button reads **Regenerate with Joule**. Wait for the analysis to finish before you ask it to draft. If you have already written text in a section, UMS asks before replacing it.
+Changes save automatically. The readiness bar shows **Saving** or **Saved**. If a save fails, it shows the error. Click **Retry**.
+
+Joule can draft narrative text from the proposal's figures. Select a section and click **Draft with Joule**. Once Joule has drafted a section, the button reads **Regenerate with Joule**. To draft every section at once, click **Draft all with Joule** in the readiness bar. Wait for the analysis to finish before you ask it to draft. If you have already written text in a section, UMS asks before replacing it.
 
 The **Tariff options**, **Power factor and demand** and **Solar and battery** sections list their costed options under **Options shown**. Tick the options the section presents. At least one stays shown.
 
 ## Issuing a proposal
 
-The readiness bar shows **Ready to issue** once the proposal is complete, or lists **Warnings to resolve**. Acknowledge or fix each warning, then issue the proposal.
+The readiness bar shows **Ready to issue** once the proposal is complete. Otherwise it shows each warning as a chip. On narrower screens a single chip counts the warnings, for example **2 to resolve**, and opens the list.
 
-An issued proposal opens for anyone signed in to your organisation. A proposal shows as **Draft** until you issue it, then as **Issued**.
+Click a warning to open its section. Some warnings can be acknowledged instead of fixed. Clicking one of those also opens the acknowledge dialog, or click **Acknowledge** on it in the section inspector. Enter a **Note** explaining why it's acceptable, then click **Acknowledge**. The note is printed in the proposal's assumptions section. Acknowledging doesn't change the figures. Other warnings must be fixed.
 
-Once issued, the readiness bar offers:
+Once every warning is resolved, click **Issue proposal**. The **Issue proposal?** dialog summarises the proposal. Click **Issue proposal** to confirm. Issuing freezes the document as previewed and creates its PDF. An issued proposal can't be edited or deleted.
+
+An issued proposal opens for anyone signed in to your organisation. Once issued, the readiness bar offers:
 
 - **Download PDF**: downloads the issued proposal.
 - **Copy link**: copies a link that opens the proposal for anyone signed in to your organisation. Public client links aren't available yet.
 
 If issuing takes longer than expected, nothing has been issued yet. Click **Issue again**.
 
+## Statuses
+
+| Status      | Meaning                                                    |
+| ----------- | ---------------------------------------------------------- |
+| **Draft**   | Being prepared. You can edit it                            |
+| **Issuing** | Freezing the document and creating its PDF. Editing is paused |
+| **Issued**  | Final. It can't be edited                                  |
+
 ## Related
 
 - [Sites](/sites) — the sites you assess
-- [Scenarios](/scenarios) — solar and battery studies you can attach
+- [Scenarios](/scenarios) — tariff reviews and solar and battery studies you can start a proposal from
