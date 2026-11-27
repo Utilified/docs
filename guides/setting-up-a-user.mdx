@@ -68,7 +68,7 @@ A role sets the default level for each module. By default, Organisation Admins s
 
 ## Manage existing users
 
-Each row in the users table shows the user's **Name**, **Role**, **Status** and **Activity**, with more columns such as **Last active** and **Last login**. Row actions:
+Each row in the users table shows the user's **Name**, email, **Role**, **Status**, **Activity**, **Requests (30d)** and **Joined** date. **Activity** reads **Recent**, **Dormant** or **Never**, with the date the user was last active if they have been. Add **Last active**, **Last login**, **Phone** or **Login enabled** from the column picker. Row actions:
 
 - **Manage user** opens the user's record.
 - **Resend invitation** sends the invitation email again. It shows only for users who are **Invited** or **Invite expired**.
@@ -93,7 +93,7 @@ Tick several users to act on them together: **Resend invitations**, **Deactivate
 | Tab | What it holds |
 | --- | --- |
 | **Profile** | **First name**, **Last name**, **Email** and **Portal account** (the account a portal user sees). Click **Save changes** after editing. Under **Security**, **Reset 2FA** removes every two-factor method so the user sets it up again at their next sign-in. Use it when they have lost their authenticator app and backup codes. |
-| **Access** | **Role and permissions**: change the **Role** and adjust each module's level (**None**, **View**, **Edit** or **Admin**). An override is saved only when it differs from the role's default. **Account access**: choose the user's assigned accounts. Click **Save role**, or **Save role and accounts** if you changed accounts, and confirm with **Apply**. **Account visibility** is set to **All accounts in the organisation** or **Only assigned accounts**, and has its own **Save visibility** button. Only org admins can change it. |
+| **Access** | **Role and permissions**: change the **Role** and adjust each module's level (**None**, **View**, **Edit** or **Admin**). A module override is saved only when it differs from the selected role's default level. Click **Save Role & Overrides** to save just the role and overrides. **Account access**: choose the user's assigned accounts. Click **Save role**, or **Save role and accounts** if you changed accounts, and confirm with **Apply**. **Account visibility** is set to **All accounts in the organisation** or **Only assigned accounts**, and has its own **Save visibility** button. Only org admins can change it. |
 | **Activity** | **Engagement**, **Account state**, **Last active**, **Days active (30d)** and usage of UMS and the **Client portal**, with the dates the user was invited, registered, first joined and last signed in. |
 
 Portal users always see only their portal account and its sub-accounts, so the **Access** tab doesn't offer account visibility for them.

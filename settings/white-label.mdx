@@ -12,8 +12,9 @@ Both sections sit in the **Access & integrations** group of [Settings](/settings
 
 ## Portal theme
 
-The **Portal & domain** section runs top to bottom: **Domain**, **Deployment**, then **Theme**. Domain setup and deployment are covered in [Portal & custom domain](/settings/portal-domain). This page covers the theme.
+The **Portal & domain** section runs top to bottom: **Domain**, **Deployment**, **Theme**, then **Client plans** and **Default portal access**. Everything but the theme is covered in [Portal & custom domain](/settings/portal-domain). This page covers the theme.
 
+{/* screenshot-stale */}
 <Frame>
   ![The Portal & domain settings: domain, deployment and theme](/images/settings/portal-domain.png)
 </Frame>
@@ -28,7 +29,9 @@ The **Portal & domain** section runs top to bottom: **Domain**, **Deployment**, 
 | **Branding & links** | **Logo URL** (SVG or PNG, up to 400×200 px), **Favicon URL** (PNG, 32×32 or 192×192 px), **Support URL**, **Terms of Use URL** and **Privacy Policy URL**. |
 | Analytics and chat | **Google Analytics measurement ID** (optional, for example `G-ABC123`) loads Google Analytics 4 in the portal. **Zoho SalesIQ widget code** (optional, the `wc=` value from your SalesIQ embed code) shows the SalesIQ chat widget, with **Zoho data centre** set to **Australia**, **United States**, **Europe** or **India**. Leave them blank to turn them off. |
 
-Click **Save theme** to apply your changes. **Reset to default** returns every field to the Utilified theme, and you still need to click **Save theme** to apply it.
+Click **Save theme** to apply your changes. While you have unsaved changes, a banner at the top of **Theme** says so, with a **Save now** button.
+
+**Reset to default** asks you to confirm. Click **Reset theme** to return every colour, font and branding field to the Utilified theme. The reset isn't saved until you click **Save theme**.
 
 ## Single sign-on
 
@@ -49,7 +52,7 @@ The **Set up single sign-on** wizard has five steps. Each step is saved as you g
 
 <Steps>
   <Step title="Verify your email domain">
-    Enter your **Email domain**, such as `example.com`, and click **Add domain**. Add the TXT record shown in the **Verified domains** table at your domain's DNS provider. The **Status** moves from **Pending** to **Verified** once UMS finds it. Click **Check now** on the row to check straight away. Single sign-on only works for verified domains.
+    Enter your **Email domain**, such as `example.com`, and click **Add domain**. Add the TXT record shown in the **Verified domains** table at your domain's DNS provider. The **Status** moves from **Pending** to **Verified** once UMS finds it, and **Last checked** shows when UMS last looked. Click **Check now** on the row to check straight away. A verified domain becomes **Lapsed** if UMS repeatedly can't find the record. Single sign-on only works for verified domains. To stop trusting a domain, click the **Remove** icon on its row and confirm with **Remove domain**.
   </Step>
   <Step title="Connect your identity provider">
     Choose **Microsoft Entra ID** or **Google Workspace**.
@@ -82,7 +85,7 @@ The **Set up single sign-on** wizard has five steps. Each step is saved as you g
 
 ### Customer accounts
 
-**Customer accounts** lists the accounts whose portal admins have set up their own single sign-on, with **Account**, **Single sign-on** (**Off**, **Optional** or **Required**), **Required since** and **Connection health**. You allow this per account in the **Portal Access** section of the account's **Settings** tab, or for every account under **Default portal access** in [Portal & custom domain](/settings/portal-domain#default-portal-access).
+**Customer accounts** lists the accounts whose portal admins have set up their own single sign-on, with **Account**, **Single sign-on** (**Off**, **Optional** or **Required**), **Required since** and **Connection health**. If a customer's identity provider fails, click **Turn off** on its row. **Turn off single sign-on?** warns that the account's portal users will sign in with passwords again. Click **Turn off** to confirm. You allow this per account in the **Portal Access** section of the account's **Settings** tab, or for every account under **Default portal access** in [Portal & custom domain](/settings/portal-domain#default-portal-access).
 
 ### Manage connections
 

@@ -10,11 +10,12 @@ The **Account** group of [Settings](/settings) holds the settings that apply onl
 | --- | --- |
 | [**Profile**](#profile) | Your photo and personal details, and what your role lets you do |
 | [**Security**](#security) | Your password and two-factor authentication |
-| [**Appearance**](#appearance) | The theme on this device |
-| [**Notifications**](#notifications) | Desktop notifications and your subscriptions |
+| [**Appearance**](#appearance) | The theme on this device, and page tours |
+| [**Notifications**](#notifications) | Desktop notifications and the notification types you receive |
 
 ## Profile
 
+{/* screenshot-stale */}
 <Frame>
   ![The Profile section of personal settings](/images/settings/profile.png)
 </Frame>
@@ -24,7 +25,7 @@ The **Account** group of [Settings](/settings) holds the settings that apply onl
 
 ### Your permissions
 
-**Your permissions** shows your role and the access level it gives you in each module: **None**, **View**, **Edit** or **Admin**. It is read-only. An org admin can change your role or adjust individual modules from **Settings** › **Users**. See [Setting up a user](/guides/setting-up-a-user).
+**Your permissions** shows your role and, for each module, its level (**None**, **View**, **Edit** or **Admin**) and whether that level allows **Create**, **Read**, **Update** and **Delete**. It is read-only. An org admin can change your role or adjust individual modules from **Settings** › **Users**. See [Setting up a user](/guides/setting-up-a-user).
 
 ## Security
 
@@ -72,6 +73,8 @@ If you lose your authenticator app and your backup codes, an org admin can reset
 
 Choose a **Theme**: **System** (follow your operating system), **Light** or **Dark**. The choice applies straight away and is remembered on this device. You can also switch with **Dark mode** or **Light mode** in the account menu.
 
+When page tours are turned on for you, **Offer page tours** sets whether each page with a tour asks once if you'd like one. Tours stay available from the page's help button and ⌘K either way. Click **Reset tours** to have every page offer its tour again.
+
 ## Notifications
 
 This section controls which notifications you get and where. The notifications themselves are in the drawer and on the `/notifications` page. See [Notifications](/notifications).
@@ -87,8 +90,10 @@ This section controls which notifications you get and where. The notifications t
 | **Blocked** | The browser is blocking notifications from this site. Allow them in the browser's site settings, then reload the page. |
 | **Unavailable** | This browser doesn't support desktop notifications, or they aren't available yet. |
 
-### Subscriptions
+### Notification types
 
-**Subscriptions** lists the notification types you can opt in to, each with a short description. Turn a switch on to subscribe. A subscription sends that type both by email and in the app. Turn it off to stop receiving it.
+**Notification types** sets which notifications you receive and how each one reaches you. The table lists each **Notification** with a short description, and has an **Email** and an **In-app** column. Tick a channel to receive that notification on it, or clear it to stop. A dash means that notification isn't sent on that channel. Budget alerts show **Per budget**: each budget's **Notify** list decides who hears about it.
 
-Some notifications only go to subscribers. For example, agreement expiry warnings go out 90, 60 and 30 days before an agreement ends, and only to subscribers who are assigned to that agreement's account.
+Changes are held until you click **Save changes**. If you try to leave with unsaved changes, UMS asks you to confirm first.
+
+Some notifications only go to people who have opted in. For example, agreement expiry warnings go out 90, 60 and 30 days before an agreement ends, and only to opted-in users who are assigned to that agreement's account.
