@@ -1,17 +1,18 @@
 ---
 title: "Portal & custom domain"
-description: "Connect a custom domain by delegating nameservers to Utilified, deploy your white-label portal, route email through the domain and set default portal access."
-keywords: ["portal", "custom domain", "white label", "nameserver delegation", "DKIM", "inbound email", "outbound email", "default portal access"]
+description: "Connect a custom domain by delegating nameservers to Utilified, deploy your white-label portal, route email through the domain, set up client plans and set default portal access."
+keywords: ["portal", "custom domain", "white label", "nameserver delegation", "DKIM", "inbound email", "outbound email", "default portal access", "client plans"]
 ums_routes: ["/settings"]
 ---
 
-The **Portal & domain** section of [Settings](/settings), in the **Access & integrations** group, runs your white-label customer portal on a domain you control. The same domain carries inbound and outbound email. The section has four parts:
+The **Portal & domain** section of [Settings](/settings), in the **Access & integrations** group, runs your white-label customer portal on a domain you control. The same domain carries inbound and outbound email. The section has these parts:
 
 | Part | What it does |
 | --- | --- |
 | [**Domain**](#add-a-custom-domain) | Attach a custom domain, delegate its nameservers and turn on email delivery. |
 | [**Deployment**](#deploy-the-portal) | Stand up a dedicated portal instance on that domain. |
 | **Theme** | Branding for the portal. See [Portal theme and single sign-on](/settings/white-label#portal-theme). |
+| [**Client plans**](#client-plans) | Named bundles of portal features and pricing you assign to client accounts. |
 | [**Default portal access**](#default-portal-access) | What portal users see when their account has no settings of its own. |
 
 ## Who can use this
@@ -77,8 +78,12 @@ Once the portal is deployed, click **Update** to redeploy it or **Delete portal*
 | **Not deployed** | No portal exists yet. |
 | **Deploying…**, **Updating…**, **Deleting…** | A change is in progress. The buttons are disabled until it finishes. |
 | **Deployed** | The portal is live at your domain. |
+| **Rolling back…**, **Rolling back update…** | A failed change is being undone. The buttons are disabled until it finishes. |
 | **Deployment failed**, **Update failed**, **Delete failed**, **Deployment stuck** | Something went wrong. Click **Retry deployment**, or contact Utilified support if it keeps failing. |
 | **Deployment rolled back**, **Update rolled back** | The change failed and was undone. Click **Retry deployment**. |
+| **Rollback failed**, **Update rollback failed** | The change failed and couldn't be undone. Click **Retry deployment**, or contact Utilified support. |
+
+Once deployed, a read-only **Configuration** panel shows the portal's **Image tag**, whether **Dynamic theme** is **Enabled** or **Disabled**, and its **Domain**. UMS derives these from your organisation settings and domain.
 
 ## Inbound and outbound email
 
@@ -104,13 +109,33 @@ You can't rename a domain in place.
 
 Both open a confirmation dialog (**Change domain?** or **Remove domain?**) that warns the action can't be undone. It lists what will stop, such as inbound or outbound email on the domain.
 
+## Client plans
+
+**Client plans** appears when you can view portal plans. Each plan is a named set of portal features, with an optional price, that you can assign to client accounts. The table shows each plan's **Name** (marked "(inactive)" if switched off), **Price** per month or year, **Charge mode** and how many **Clients** use it.
+
+<Steps>
+  <Step title="Open the form">
+    Click **New plan**. To change a plan, click **Edit** on its row.
+  </Step>
+  <Step title="Describe the plan">
+    Enter a **Name** and an optional **Description**. Set the **Price**, the **Billing period** (**Monthly** or **Annual**) and the **Charge mode** (**Brokerage**, **Service fee** or **None**). Set **GST applicable** and **Active**, and choose the portal features the plan includes.
+  </Step>
+  <Step title="Save">
+    Click **Create plan**, or **Save plan** when editing.
+  </Step>
+</Steps>
+
+An inactive plan can't be assigned to more clients, but clients already on it keep it. To delete a plan, click **Delete** on its row and confirm with **Delete plan**.
+
 ## Default portal access
 
 **Default portal access** sets what portal users see when their account has no portal access settings of its own. An account's own settings, in the **Portal Access** section of its **Settings** tab, override these defaults. See [Accounts](/accounts#settings-tab).
 
+- **Plan**: leave it on **Custom** to choose features below, or pick a client plan. With a plan selected, a read-only **Plan features** panel shows what the plan includes, in place of the feature switches.
 - **Single sign-on**: **Let portal admins set up single sign-on** lets portal admins connect their own company's Microsoft sign-in for their account and its sub-accounts.
-- **Portal Features**: turn portal areas on or off, such as **Validation outcomes**, **Invoices**, **Connections & meters**, **Agreements** and **Reports**. Everything is on unless you switch it off. Features marked **(opt-in)**, such as **Budgets (opt-in)** and **Dashboards (opt-in)**, stay off until you switch them on.
-- **Portal Reports**: the reports portal users can run. Standard reports are on unless you switch them off, and opt-in reports are off unless you switch them on. This only applies while **Reports** is on.
+- **Portal Features**: turn portal areas on or off: **Validation outcomes**, **Invoices**, **Connections & meters**, **Agreements** and **Reports**. Everything is on unless you switch it off.
+- **Optional Portal Features**: these stay off until you switch them on: **Invoice validation results (opt-in)**, **Payment files (opt-in)**, **Supplier directory (opt-in)**, **Budgets (opt-in)**, **Scenario outcomes (opt-in)**, **Dashboards (opt-in)** and **Custom reports (opt-in)**.
+- **Portal Reports**: the reports portal users can run. Standard reports are on unless you switch them off, and opt-in reports are off unless you switch them on. Without a plan, this only applies while **Reports** is on.
 
 Click **Save Portal Defaults** to apply your changes.
 

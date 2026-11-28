@@ -1,6 +1,6 @@
 ---
 title: "Organisation settings"
-description: "Configure organisation-wide settings in UMS: general details and sign-in security, integrations, invoice autopilot and alert routing."
+description: "Configure organisation-wide settings in UMS: general details and sign-in security, accounting and CRM integrations, invoice autopilot and alert routing."
 ums_routes: ["/settings"]
 ---
 
@@ -21,6 +21,7 @@ For the customer portal and single sign-on, see [Portal & custom domain](/settin
 
 **General** holds your organisation's name, logo, business details and timezone.
 
+{/* screenshot-stale */}
 <Frame>
   ![The Organisation General settings: logo, details, and regional settings](/images/settings/organisation-general.png)
 </Frame>
@@ -36,7 +37,7 @@ For the customer portal and single sign-on, see [Portal & custom domain](/settin
 ### Sign-in security
 
 - **Require two-factor authentication**: everyone who signs in with a password also needs a code from an authenticator app or their email. Anyone who hasn't set it up does so at their next sign-in to UMS. People who sign in with SSO use your identity provider's multi-factor authentication instead, and portal users aren't included.
-- **Allow Utilified support sessions**: lets authorised Utilified staff view your organisation read-only, for up to an hour at a time, to help with support. Each session and its reason appear in your audit log. It is on unless you turn it off.
+- **Allow Utilified support sessions**: lets authorised Utilified staff view your organisation read-only, for up to an hour at a time, to help with support. Each session and its reason appear in **Settings** › **Audit log**. It is on unless you turn it off.
 
 ## Users
 
@@ -53,13 +54,23 @@ The **Plan & billing** section shows your plan and usage and is where you change
 
 ## Integrations
 
-**Integrations** connects accounting systems for brokerage invoicing and sets up email-triggered imports.
+**Integrations** connects accounting and CRM systems, and sets up email-triggered imports.
 
-- **Xero**: click **Connect Xero** to create draft brokerage invoices in Xero, or **Disconnect** to remove the link. MYOB, QuickBooks and NetSuite are listed as coming soon.
+- **Xero**: click **Connect Xero** to create draft brokerage invoices in Xero, or **Disconnect** to remove the link.
 - **Invoice field mapping**: appears once Xero is connected. Choose how brokerage data maps into Xero invoice fields. See [Customising Xero brokerage invoicing](/guides/customising-xero-brokerage-invoicing).
 - **Import email addresses**: dedicated addresses for specific data types, such as accounts, sites or invoices. Files sent to them are processed as bulk imports. They aren't tied to an account, so they suit supplier data feeds.
 - **Account import emails**: an account can have its own address. Attachments sent to it become bulk uploads you can track in the inbox and import history.
 - **Recent email-triggered imports**: the latest imports that arrived by email. See [Imports](/imports).
+- **Need another accounting system?**: Xero is the accounting connection available today. Click **Tell us** to say which system you use. This shows only when [Contact Utilified](/help) is turned on for your organisation.
+
+### CRM
+
+The CRM panel connects **Zoho CRM**. It doesn't show if your account visibility is limited to assigned accounts. Its status reads **Connected**, **Not connected**, **Reconnect required** or **Unavailable** (the connection isn't available yet).
+
+- Click **Connect Zoho CRM** to link it. Once connected, the panel shows when it last synced. Click **Sync now** to queue a sync, **Refresh status** to update the panel, or **Disconnect Zoho CRM** to remove the link.
+- Once connected, **Webhook URL** is the address Zoho CRM sends changes to. **Show webhook secret** displays the secret once, so copy it straight away. **Rotate webhook secret** replaces it.
+- The plan mapping table assigns a client plan from a CRM field. Enter a **CRM field**, its **Value** and a **Plan**, then click **Add mapping**. Change a row's plan in place, or click **Remove**. Client plans are set up under [Portal & custom domain](/settings/portal-domain#client-plans).
+- The account link table pairs a **UMS account** with its **CRM account ID**. Pick both and click **Link account**, or click **Unlink** on a row.
 
 ## Invoice autopilot
 
